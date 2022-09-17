@@ -56,14 +56,18 @@ describe('WeeklyMatchesSummaryIngestionService', () => {
         matchesApiMock,
         randomIpMock
       )
+      jest
+        .useFakeTimers()
+        .setSystemTime(new Date('2022-01-30'));
 
       await weeklyMatchesSummaryIngestionService.ingest();
       expect(weeklyMatchesSummaryIngestionService).toBeDefined();
       expect(findAllMatchesMock).toHaveBeenCalledTimes(2);
       expect(findAllMatchesMock).toHaveBeenNthCalledWith(1, {
+
         club: "club a",
         withDetails: true,
-        yearDateFrom: "2022-01-08",
+        yearDateFrom: "2022-01-23",
         yearDateTo: "2022-01-30",
         showDivisionName: 'yes'
       }, {
@@ -75,7 +79,7 @@ describe('WeeklyMatchesSummaryIngestionService', () => {
       expect(findAllMatchesMock).toHaveBeenNthCalledWith(2, {
         club: "club b",
         withDetails: true,
-        yearDateFrom: "2022-01-08",
+        yearDateFrom: "2022-01-23",
         yearDateTo: "2022-01-30",
         showDivisionName: 'yes'
       }, {
