@@ -1,0 +1,26 @@
+[
+  {
+    "UniqueIndex": "",
+    "Name": "",
+    "LongName": "",
+    "Category": 0,
+    "CategoryName": "",
+    "VenueCount": 0,
+    "VenueEntries": [
+      {
+        "Id": 0,
+        "ClubVenue": 0,
+        "Name": "",
+        "Street": "",
+        "Town": "",
+        "Phone": "",
+        "Comment": "",
+        "Lat": "",
+        "Lon": "",
+        "BoundingBox": [
+          {}
+        ]
+      }
+    ]
+  }
+]

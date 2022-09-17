@@ -1,32 +1,27 @@
-/**
- * Some predefined delay values (in milliseconds).
- */
-export enum Delays {
-  Short = 500,
-  Medium = 2000,
-  Long = 5000,
-}
+import 'reflect-metadata';
+import {Container} from "typedi";
+import {IngestionService} from "./ingestion/ingestion-service";
+import {ConfigurationService} from "./configuration/configuration.service";
+import {ProcessingService} from "./processing/processing-service";
+import {DigestingService} from "./digestion/digesting-service";
+import {ClubsApi, DivisionsApi, MatchesApi} from "./common";
+import randomIP from 'random-ipv4';
 
-/**
- * Returns a Promise<string> that resolves after a given time.
- *
- * @param {string} name - A name.
- * @param {number=} [delay=Delays.Medium] - A number of milliseconds to delay resolution of the Promise.
- * @returns {Promise<string>}
- */
-function delayedHello(
-  name: string,
-  delay: number = Delays.Medium,
-): Promise<string> {
-  return new Promise((resolve: (value?: string) => void) =>
-    setTimeout(() => resolve(`Hello, ${name}`), delay),
-  );
-}
+const run = async () => {
+  Container.set([
+    {id: 'clubs.api', factory: () => new ClubsApi()},
+    {id: 'matches.api', factory: () => new MatchesApi()},
+    {id: 'divisions.api', factory: () => new DivisionsApi()},
+    {id: 'randomip', value: randomIP}
+  ])
 
-// Below are examples of using ESLint errors suppression
-// Here it is suppressing a missing return type definition for the greeter function.
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export async function greeter(name: string) {
-  return await delayedHello(name, Delays.Long);
+  await Container.get(ConfigurationService).init();
+  await Container.get(IngestionService).ingest();
+  await Container.get(ProcessingService).process();
+  await Container.get(DigestingService).digest();
 }
+run();
+
+
+

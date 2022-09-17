@@ -1,0 +1,145 @@
+[
+  {
+    "UniqueIndex": 0,
+    "Name": "",
+    "ResultCount": 0,
+    "ResultEntries": [
+      {
+        "Position": 0,
+        "HomePlayerMatchIndex": [
+          {}
+        ],
+        "HomePlayerUniqueIndex": [
+          {}
+        ],
+        "AwayPlayerMatchIndex": [
+          {}
+        ],
+        "AwayPlayerUniqueIndex": [
+          {}
+        ],
+        "HomeSetCount": 0,
+        "AwaySetCount": 0,
+        "IsHomeForfeited": true,
+        "IsAwayForfeited": true,
+        "Scores": "",
+        "HomePlayer": [
+          {
+            "Position": 0,
+            "UniqueIndex": 0,
+            "FirstName": "",
+            "LastName": "",
+            "Ranking": "",
+            "VictoryCount": 0,
+            "IsForfeited": true
+          }
+        ],
+        "AwayPlayer": [
+          {
+            "Position": 0,
+            "UniqueIndex": 0,
+            "FirstName": "",
+            "LastName": "",
+            "Ranking": "",
+            "VictoryCount": 0,
+            "IsForfeited": true
+          }
+        ]
+      }
+    ],
+    "RegistrationCount": 0,
+    "RegistrationEntries": [
+      {
+        "UniqueIndex": 0,
+        "RegistrationDate": "",
+        "Member": {
+          "Position": 0,
+          "UniqueIndex": 0,
+          "RankingIndex": 0,
+          "FirstName": "",
+          "LastName": "",
+          "Ranking": "",
+          "Status": "",
+          "Club": "",
+          "Gender": "",
+          "Category": "",
+          "BirthDate": "",
+          "MedicalAttestation": true,
+          "RankingPointsCount": 0,
+          "RankingPointsEntries": [
+            {
+              "MethodName": "",
+              "Value": "",
+              "LastModified": ""
+            }
+          ],
+          "Email": "",
+          "Phone": {
+            "Home": "",
+            "Work": "",
+            "Mobile": "",
+            "Fax": ""
+          },
+          "Address": {
+            "Line1": "",
+            "Line2": "",
+            "ZipCode": 0,
+            "Town": ""
+          },
+          "ResultCount": 0,
+          "ResultEntries": [
+            {
+              "Date": "",
+              "UniqueIndex": 0,
+              "FirstName": "",
+              "LastName": "",
+              "Ranking": "",
+              "Result": "",
+              "SetFor": 0,
+              "SetAgainst": 0,
+              "CompetitionType": "",
+              "Club": "",
+              "MatchId": "",
+              "MatchUniqueId": "",
+              "TournamentName": "",
+              "TournamentSerieName": "",
+              "TeamName": "",
+              "RankingEvaluationCount": 0,
+              "RankingEvaluationEntries": [
+                {
+                  "EvaluationType": "",
+                  "EvaluationValue": ""
+                }
+              ]
+            }
+          ],
+          "NationalNumber": ""
+        },
+        "Club": {
+          "UniqueIndex": "",
+          "Name": "",
+          "LongName": "",
+          "Category": 0,
+          "CategoryName": "",
+          "VenueCount": 0,
+          "VenueEntries": [
+            {
+              "Id": 0,
+              "ClubVenue": 0,
+              "Name": "",
+              "Street": "",
+              "Town": "",
+              "Phone": "",
+              "Comment": "",
+              "Lat": "",
+              "Lon": "",
+              "BoundingBox": [
+                {}
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,76 @@
+import {Configuration, TOP_LEVEL, TOP_REGIONS} from "./configuration.model";
+import {ServiceAccount} from "firebase-admin";
+
+export const configuration: Configuration = {
+  top6: {
+    clubsPerTop: {
+      [TOP_REGIONS.HUY_WAREMME]: [
+        'L029', 'L126', 'L193', 'L205', 'L230', 'L246', 'L257',
+        'L266', 'L267', 'L275', 'L276', 'L282', 'L293', 'L295',
+        'L333', 'L335', 'L358', 'L365', 'L374', 'L387', 'L393',
+        'L398', 'L400', 'L310', 'L124', 'L234', 'L205'
+      ],
+      [TOP_REGIONS.LIEGE]: [
+        'L030', 'L043', 'L098', 'L111', 'L119', 'L143',
+        'L152', 'L165', 'L170', 'L185', 'L199', 'L217', 'L218',
+        'L263', 'L312', 'L316', 'L338', 'L351', 'L355', 'L370',
+        'L377', 'L383', 'L384', 'L390', 'L391', 'L396', 'L401'
+      ],
+      [TOP_REGIONS.VERVIERS]: [
+        'L095', 'L323', 'L264', 'L002', 'L318', 'L320', 'L337', 'L348',
+        'L313', 'L328', 'L125', 'L389', 'L382', 'L179', 'L360', 'L399',
+        'L066', 'L368', 'L003', 'L184', 'L252', 'L272', 'L274', 'L284',
+        'L296', 'L326', 'L329', 'L344', 'L349', 'L357', 'L378', 'L403'
+      ]
+    },
+    divisionsByLevel: {
+      /*
+      [TOP_LEVEL.NAT_WB]: [5315, 5316],
+      [TOP_LEVEL.P1]: [5694, 5696],
+      [TOP_LEVEL.P2]: [5698, 5700],
+      [TOP_LEVEL.P3]: [5706, 5708],
+      [TOP_LEVEL.P4]: [5718, 5720],
+      [TOP_LEVEL.P5]: [5732, 5734],
+      [TOP_LEVEL.P6]: [5748, 5750]
+*/
+      [TOP_LEVEL.NAT_WB]: [5315, 5316, 5317, 5319, 5318, 5320, 5348, 5350, 5352, 5354, 5356],
+      [TOP_LEVEL.P1]: [5694, 5696],
+      [TOP_LEVEL.P2]: [5698, 5700, 5702, 5704],
+      [TOP_LEVEL.P3]: [5706, 5708, 5710, 5712, 5714, 5716],
+      [TOP_LEVEL.P4]: [5718, 5720, 5722, 5724, 5726, 5728, 5730],
+      [TOP_LEVEL.P5]: [5732, 5734, 5736, 5738, 5740, 5742, 5744, 5746],
+      [TOP_LEVEL.P6]: [5748, 5750, 5752, 5754, 5756, 5758, 5760, 5762, 5764, 5766, 5768]
+    }
+  },
+  email: {
+    recipients: [
+      'f.cardoen@me.com',
+      'ttdolhain@hotmail.com',
+      'brunosmets37@gmail.com',
+      'thomasbastin5@gmail.com',
+      'raphael.castillejos@hotmail.com'
+    ],
+    errorRecipients: [
+      'f.cardoen@me.com',
+    ],
+    subject: 'Top 6 / Techniques (Verviers, Huy-Waremme, Liège)',
+    text: 'Le nouveau classement TOP 6 de Verviers & Huy-Waremme vient d\'être calculé automatiquement par le serveur de BePing.<br/>Vous trouverez en pièces jointes de ce mail le classement du TOP6 ainsi que les techniques des rencontres dans la région de Verviers & Huy-Waremme de cette semaine. <br/>Si des erreurs étaient à constater, merci de répondre à ce mail.<br/><br/>'
+  },
+  facebook: {
+    apiKey: 'EAACEc1ZBREUQBAKeXy6LrfX0WUlYxdfN8SKYOxdfFWLsKPaNo0tWeJZAweN6yadjVcl4eolWMcYlXN0d384KZA9g7l1ZBCqYpsPODO62sIY0rBiZAYZBpygvFr6waX70ZAooH20mWFieB0b4QRDC1eFlvZB31VTXW8V3DONWVJU6RQXb0xwg9FgNMLvGmGsIwoOEGW7ITStNOwZDZD',
+    pageId: '144181319524102'
+  },
+  firebase: {
+    "type": "service_account",
+    "project_id": "top-6-653f6",
+    "private_key_id": "***REMOVED***",
+    "private_key": "***REMOVED***",
+    "client_email": "firebase-adminsdk-jgd6l@top-6-653f6.iam.gserviceaccount.com",
+    "client_id": "108626748190322471927",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-jgd6l%40top-6-653f6.iam.gserviceaccount.com"
+  } as ServiceAccount,
+  output: 'output',
+}

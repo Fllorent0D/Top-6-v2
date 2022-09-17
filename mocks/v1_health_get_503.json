@@ -1,0 +1,23 @@
+{
+  "status": "error",
+  "info": {
+    "database": {
+      "status": "up"
+    }
+  },
+  "error": {
+    "redis": {
+      "status": "down",
+      "message": "Could not connect"
+    }
+  },
+  "details": {
+    "database": {
+      "status": "up"
+    },
+    "redis": {
+      "status": "down",
+      "message": "Could not connect"
+    }
+  }
+}

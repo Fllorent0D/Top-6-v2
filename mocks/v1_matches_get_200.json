@@ -1,0 +1,123 @@
+[
+  {
+    "DivisionName": "",
+    "MatchId": "",
+    "WeekName": "",
+    "Date": "",
+    "Time": "",
+    "Venue": 0,
+    "VenueClub": "",
+    "VenueEntry": {
+      "Id": 0,
+      "ClubVenue": 0,
+      "Name": "",
+      "Street": "",
+      "Town": "",
+      "Phone": "",
+      "Comment": "",
+      "Lat": "",
+      "Lon": "",
+      "BoundingBox": [
+        {}
+      ]
+    },
+    "HomeClub": "",
+    "HomeTeam": "",
+    "AwayClub": "",
+    "AwayTeam": "",
+    "Score": "",
+    "MatchUniqueId": 0,
+    "NextWeekName": "",
+    "PreviousWeekName": "",
+    "IsHomeForfeited": true,
+    "IsAwayForfeited": true,
+    "MatchDetails": {
+      "DetailsCreated": true,
+      "StartTime": "",
+      "EndTime": "",
+      "HomeCaptain": 0,
+      "AwayCaptain": 0,
+      "Referee": 0,
+      "HallCommissioner": 0,
+      "HomePlayers": {
+        "PlayerCount": 0,
+        "DoubleTeamCount": 0,
+        "Players": [
+          {
+            "Position": 0,
+            "UniqueIndex": 0,
+            "FirstName": "",
+            "LastName": "",
+            "Ranking": "",
+            "VictoryCount": 0,
+            "IsForfeited": true
+          }
+        ],
+        "DoubleTeams": [
+          {
+            "Position": 0,
+            "Team": "",
+            "IsForfeited": true
+          }
+        ]
+      },
+      "AwayPlayers": {
+        "PlayerCount": 0,
+        "DoubleTeamCount": 0,
+        "Players": [
+          {
+            "Position": 0,
+            "UniqueIndex": 0,
+            "FirstName": "",
+            "LastName": "",
+            "Ranking": "",
+            "VictoryCount": 0,
+            "IsForfeited": true
+          }
+        ],
+        "DoubleTeams": [
+          {
+            "Position": 0,
+            "Team": "",
+            "IsForfeited": true
+          }
+        ]
+      },
+      "IndividualMatchResults": [
+        {
+          "Position": 0,
+          "HomePlayerMatchIndex": [
+            {}
+          ],
+          "HomePlayerUniqueIndex": [
+            {}
+          ],
+          "AwayPlayerMatchIndex": [
+            {}
+          ],
+          "AwayPlayerUniqueIndex": [
+            {}
+          ],
+          "HomeSetCount": 0,
+          "AwaySetCount": 0,
+          "IsHomeForfeited": true,
+          "IsAwayForfeited": true,
+          "Scores": ""
+        }
+      ],
+      "MatchSystem": 0,
+      "HomeScore": 0,
+      "AwayScore": 0,
+      "CommentCount": 0,
+      "CommentEntries": [
+        {}
+      ]
+    },
+    "DivisionId": 0,
+    "DivisionCategory": "",
+    "IsHomeWithdrawn": true,
+    "IsAwayWithdrawn": true,
+    "IsValidated": true,
+    "IsLocked": true
+  }
+]
