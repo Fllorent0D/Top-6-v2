@@ -69,10 +69,7 @@ export class EmailSenderService implements DigestingServiceContract {
             'Name': 'BePing server'
           },
           'To': (
-            this.configurationService.runtimeConfiguration.emails.length > 0 ?
-              this.configurationService.runtimeConfiguration.emails :
-              this.configurationService.emailConfig.recipients)
-            .map((email: string) => ({'Email': email})),
+            this.configurationService.emailsRecipients).map((email: string) => ({'Email': email})),
           'ReplyTo': {'Email': 'f.cardoen@me.com'},
           'Subject': this.configurationService.emailConfig.subject,
           'HTMLPart': text,
@@ -82,9 +79,7 @@ export class EmailSenderService implements DigestingServiceContract {
     };
 
     await this.mailClient.post('send', {'version': 'v3.1'}).request(data);
-    this.loggingService.trace('Emails sent to ' + (this.configurationService.runtimeConfiguration.emails.length > 0 ?
-      this.configurationService.runtimeConfiguration.emails :
-      this.configurationService.emailConfig.recipients).join(','), 2);
+    this.loggingService.trace('Emails sent to ' + (this.configurationService.emailsRecipients).join(','), 2);
 
   }
 }

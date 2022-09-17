@@ -35,7 +35,7 @@ export class ConfigurationService {
     this._loggingService.trace(`weeklySummary: ${this.commandConfiguration.weeklySummary}`, 2);
     this._loggingService.trace(`postToFacebook: ${this.commandConfiguration.postToFacebook}`, 2);
     this._loggingService.trace(`sendViaEmail: ${this.commandConfiguration.sendViaEmail}`, 2);
-    this._loggingService.trace(`emails: ${this.commandConfiguration.emails}`, 2);
+    this._loggingService.trace(`emails: ${this.emailsRecipients}`, 2);
 
     this._loggingService.debug(`TOP 6 CONFIGURATION`, 1);
 
@@ -149,6 +149,12 @@ export class ConfigurationService {
   get firebaseConfig(): ServiceAccount {
     // TODO: move to env?
     return this._configuration.firebase;
+  }
+
+  get emailsRecipients(): string[] {
+    return this.runtimeConfiguration.emails.length > 0 ?
+      this.runtimeConfiguration.emails :
+      this.emailConfig.recipients
   }
 
 }
