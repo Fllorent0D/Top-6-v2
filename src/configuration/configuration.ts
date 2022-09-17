@@ -33,13 +33,13 @@ export const configuration: Configuration = {
       [TOP_LEVEL.P5]: [5732, 5734],
       [TOP_LEVEL.P6]: [5748, 5750]
 */
-      [TOP_LEVEL.NAT_WB]: [5315, 5316, 5317, 5319, 5318, 5320, 5348, 5350, 5352, 5354, 5356],
-      [TOP_LEVEL.P1]: [5694, 5696],
-      [TOP_LEVEL.P2]: [5698, 5700, 5702, 5704],
-      [TOP_LEVEL.P3]: [5706, 5708, 5710, 5712, 5714, 5716],
-      [TOP_LEVEL.P4]: [5718, 5720, 5722, 5724, 5726, 5728, 5730],
-      [TOP_LEVEL.P5]: [5732, 5734, 5736, 5738, 5740, 5742, 5744, 5746],
-      [TOP_LEVEL.P6]: [5748, 5750, 5752, 5754, 5756, 5758, 5760, 5762, 5764, 5766, 5768]
+      [TOP_LEVEL.NAT_WB]: [6072, 6073, 6074, 6075, 6086, 6078, 6287, 6288, 6289, 6290, 6291],
+      [TOP_LEVEL.P1]: [6428, 6430],
+      [TOP_LEVEL.P2]: [6432, 6434, 6436, 6438],
+      [TOP_LEVEL.P3]: [6440, 6442, 6444, 6446, 6448],
+      [TOP_LEVEL.P4]: [6450, 6452, 6454, 6456, 6458, 6460],
+      [TOP_LEVEL.P5]: [6462, 6464, 6466, 6468, 6470, 6472, 6474],
+      [TOP_LEVEL.P6]: [6476, 6478, 6480, 6482, 6484, 6486, 6488, 6490, 6492, 6494]
     }
   },
   email: {
@@ -57,7 +57,7 @@ export const configuration: Configuration = {
     text: 'Le nouveau classement TOP 6 de Verviers & Huy-Waremme vient d\'être calculé automatiquement par le serveur de BePing.<br/>Vous trouverez en pièces jointes de ce mail le classement du TOP6 ainsi que les techniques des rencontres dans la région de Verviers & Huy-Waremme de cette semaine. <br/>Si des erreurs étaient à constater, merci de répondre à ce mail.<br/><br/>'
   },
   facebook: {
-    apiKey: 'EAACEc1ZBREUQBAKeXy6LrfX0WUlYxdfN8SKYOxdfFWLsKPaNo0tWeJZAweN6yadjVcl4eolWMcYlXN0d384KZA9g7l1ZBCqYpsPODO62sIY0rBiZAYZBpygvFr6waX70ZAooH20mWFieB0b4QRDC1eFlvZB31VTXW8V3DONWVJU6RQXb0xwg9FgNMLvGmGsIwoOEGW7ITStNOwZDZD',
+    apiKey: '***REMOVED***',
     pageId: '144181319524102'
   },
   firebase: {

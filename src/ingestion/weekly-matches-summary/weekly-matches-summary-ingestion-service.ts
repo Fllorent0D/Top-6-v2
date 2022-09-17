@@ -20,8 +20,8 @@ export class WeeklyMatchesSummaryIngestionService implements IngestionServiceCon
 
   async ingest(): Promise<void> {
     this._model = {
-      from: sub(new Date('2022-01-15'), {weeks: 1}),
-      to: new Date('2022-01-30'),
+      from: sub(new Date(), {weeks: 1}),
+      to: new Date(),
       matches: {}
     };
     this.logging.info(`Fetching matches for all divisions for weekly summary (${format(this._model.from, 'dd/MM')} - ${format(this._model.to, 'dd/MM')})`, 1);

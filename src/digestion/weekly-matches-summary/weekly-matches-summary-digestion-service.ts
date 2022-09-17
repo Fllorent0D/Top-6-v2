@@ -9,6 +9,14 @@ import {sortBy} from "lodash";
 import {TOP_REGIONS} from "../../configuration/configuration.model";
 import {toTitleCase} from "../../common/text-helper";
 
+enum CATEGORY_MAPPING {
+  "MEN" = "MEN",
+  "MEN_POST_23" = "MEN",
+  "WOMEN" = "WOMEN",
+  "WOMEN_POST_23" = "MEN",
+}
+
+
 @Service()
 export class WeeklyMatchesSummaryDigestionService implements DigestingServiceContract {
   constructor(
@@ -27,14 +35,14 @@ export class WeeklyMatchesSummaryDigestionService implements DigestingServiceCon
       for (const [level, divisions] of sortBy(Object.entries(levels), '0').reverse()) {
         for (const [division, categories] of sortBy(Object.entries(divisions), '0')) {
           for (const [category, matches] of Object.entries(categories)) {
-            texts += `## ${level} ${division} ${category} \n`;
+            texts += `## ${level} ${division} ${CATEGORY_MAPPING[category]} \n`;
             for (const match of matches) {
-              texts += `\t${match.homeTeam} - ${match.awayTeam} : ${match.score}\t`;
+              texts += `\t${match.homeTeam} - ${match.awayTeam} : ${match.score ?? ''}\t`;
               if (this.configurationService.getAllClubsForRegion(region as TOP_REGIONS).includes(match.homeClub)) {
-                texts += `${match.homePlayers?.map(p => `${toTitleCase(p.name)} ${p.individualScore}`).join(' ')} `;
+                texts += `${match.homePlayers?.map(p => `${toTitleCase(p.name)} ${p.individualScore}`).join(' ') ?? ''} `;
               }
               if (this.configurationService.getAllClubsForRegion(region as TOP_REGIONS).includes(match.awayClub)) {
-                texts += `${match.awayPlayers?.map(p => `${toTitleCase(p.name)} ${p.individualScore}`).join(' ')}`;
+                texts += `${match.awayPlayers?.map(p => `${toTitleCase(p.name)} ${p.individualScore}`).join(' ') ?? ''}`;
               }
               texts += '\n'
             }
