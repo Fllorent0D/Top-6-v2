@@ -23,8 +23,7 @@ export class FacebookPostingService implements DigestingServiceContract {
       const postid = await (new Promise((resolve, reject) => {
         FB.api(this.configurationService.facebookConfig.pageId + '/feed', 'post', {
           message: text,
-          published: false,
-          scheduled_publish_time: Math.round(this.getNextThursday().getTime() / 1000),
+          published: true,
         }, (res: any) => {
           if (!res || res.error) {
             reject(new Error('Error when posting to Facebook. ' + res.error.message));

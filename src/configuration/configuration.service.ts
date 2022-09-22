@@ -36,6 +36,7 @@ export class ConfigurationService {
     this._loggingService.trace(`postToFacebook: ${this.commandConfiguration.postToFacebook}`, 2);
     this._loggingService.trace(`sendViaEmail: ${this.commandConfiguration.sendViaEmail}`, 2);
     this._loggingService.trace(`emails: ${this.emailsRecipients}`, 2);
+    this._loggingService.trace(`uploadToFirebase: ${this.commandConfiguration.uploadToFirebase}`, 2);
 
     this._loggingService.debug(`TOP 6 CONFIGURATION`, 1);
 
