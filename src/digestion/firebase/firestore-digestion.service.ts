@@ -39,7 +39,7 @@ export class FirestoreDigestionService implements DigestingServiceContract {
 
       const levels: {[index: string]: PlayerPosition[]} = this.configurationService.allLevels.reduce((acc, level: TOP_LEVEL) => {
         const results: PlayerPosition[] = this.consolidateTopService
-          .getTopForRegionAndLevel(region, level, 12)
+          .getTopForRegionAndLevel(region, level, 13)
           .map((playerPosition: PlayerPosition, index: number) => ({...playerPosition, position: index}));
         return {...acc, [level]: results};
       }, {});
