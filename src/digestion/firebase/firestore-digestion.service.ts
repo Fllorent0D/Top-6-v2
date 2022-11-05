@@ -7,8 +7,9 @@ import {LoggingService} from "../../common";
 import {firestore} from "firebase-admin";
 import {PlayersPointsProcessingService} from "../../processing/top/1-players-points/players-points-processing-service";
 import {LevelAttributionService} from "../../processing/top/2-level-attribution/level-attribution-service";
-import CollectionReference = firestore.CollectionReference;
 import {PlayerPosition} from "../../processing/top/4-consolidate-tops/consolidate-top-model";
+import {TOP_LEVEL} from "../../configuration/configuration.model";
+import CollectionReference = firestore.CollectionReference;
 
 @Service()
 export class FirestoreDigestionService implements DigestingServiceContract {
@@ -34,20 +35,18 @@ export class FirestoreDigestionService implements DigestingServiceContract {
   private async updateTops() {
     const topsCollection: CollectionReference = this.firebaseService.firestore.collection('/tops');
     for (const region of this.configurationService.allRegions) {
-      this.loggingService.info(region, 2);
       const regionDoc = topsCollection.doc(region);
-      await regionDoc.set({
-        clubs: this.configurationService.getAllClubsForRegion(region)
-      })
-      for (const level of this.configurationService.allLevels) {
-        const levelCollection = regionDoc.collection(level);
-        const docs = await levelCollection.listDocuments();
-        const results = this.consolidateTopService.getTopForRegionAndLevel(region, level, 25)
-        await Promise.allSettled(docs.map((doc) => doc.delete()));
-        await Promise.allSettled(results.map((playerPos: PlayerPosition, index: number) => levelCollection.add({...playerPos, position: index})));
-        this.uniqueIndexesInTops.push(...results.map(pos => pos.uniqueIndex));
-        this.loggingService.info(level + ' ✅', 3);
-      }
+
+      const levels: {[index: string]: PlayerPosition[]} = this.configurationService.allLevels.reduce((acc, level: TOP_LEVEL) => {
+        const results: PlayerPosition[] = this.consolidateTopService
+          .getTopForRegionAndLevel(region, level, 12)
+          .map((playerPosition: PlayerPosition, index: number) => ({...playerPosition, position: index}));
+        return {...acc, [level]: results};
+      }, {});
+      const clubs = this.configurationService.getAllClubsForRegion(region);
+
+      await regionDoc.set({clubs, levels});
+      this.loggingService.info('✅ ' + region, 2);
     }
   }
 
