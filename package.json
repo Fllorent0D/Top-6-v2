@@ -14,7 +14,7 @@
     "build:watch": "tsc -w -p tsconfig.json",
     "build:release": "npm run clean && tsc -p tsconfig.release.json",
     "lint": "eslint . --ext .ts",
-    "test": "jest --coverage",
+    "test": "jest --coverage --runInBand",
     "test:watch": "jest --watch",
     "generate:openapi": "openapi-generator-cli generate -i http://localhost:3004/doc-json -g typescript-axios -o src/common/tabt-client --additional-properties enumNameSuffix=tabt --additional-properties useSingleRequestParameter=true"
   },

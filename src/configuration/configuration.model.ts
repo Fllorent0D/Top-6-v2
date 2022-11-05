@@ -1,6 +1,7 @@
 import {ServiceAccount} from "firebase-admin";
 
 export interface Configuration {
+  tabtBaseApi: string;
   top6: Top6;
   email: Email;
   facebook: {

@@ -29,7 +29,8 @@ export class ConfigurationService {
 
   private async logConfigAsync(): Promise<void> {
     this._loggingService.info(this._loggingService.getLayerInfo('CONFIGURATION'));
-
+    this._loggingService.debug(`GLOBAL CONFIGURATION`, 1);
+    this._loggingService.trace(`TabT API: ${this._configuration.tabtBaseApi}`, 2);
     this._loggingService.debug(`RUNTIME CONFIGURATION`, 1);
     this._loggingService.trace(`weekName: ${this.commandConfiguration.weekName}`, 2);
     this._loggingService.trace(`weeklySummary: ${this.commandConfiguration.weeklySummary}`, 2);

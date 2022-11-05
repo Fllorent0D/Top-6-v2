@@ -2,6 +2,7 @@ import {Configuration, TOP_LEVEL, TOP_REGIONS} from "./configuration.model";
 import {ServiceAccount} from "firebase-admin";
 
 export const configuration: Configuration = {
+  tabtBaseApi: 'http://api.beping.be',
   top6: {
     clubsPerTop: {
       [TOP_REGIONS.HUY_WAREMME]: [
@@ -24,15 +25,6 @@ export const configuration: Configuration = {
       ]
     },
     divisionsByLevel: {
-      /*
-      [TOP_LEVEL.NAT_WB]: [5315, 5316],
-      [TOP_LEVEL.P1]: [5694, 5696],
-      [TOP_LEVEL.P2]: [5698, 5700],
-      [TOP_LEVEL.P3]: [5706, 5708],
-      [TOP_LEVEL.P4]: [5718, 5720],
-      [TOP_LEVEL.P5]: [5732, 5734],
-      [TOP_LEVEL.P6]: [5748, 5750]
-*/
       [TOP_LEVEL.NAT_WB]: [6072, 6073, 6074, 6075, 6086, 6078, 6287, 6288, 6289, 6290, 6291],
       [TOP_LEVEL.P1]: [6428, 6430],
       [TOP_LEVEL.P2]: [6432, 6434, 6436, 6438],
