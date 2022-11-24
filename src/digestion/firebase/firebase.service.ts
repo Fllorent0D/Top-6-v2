@@ -1,7 +1,7 @@
 import {ConfigurationService} from "../../configuration/configuration.service";
 import admin, {firestore, messaging} from 'firebase-admin';
-import Firestore = firestore.Firestore;
 import {Service} from "typedi";
+import Firestore = firestore.Firestore;
 
 @Service()
 export class FirebaseService {
@@ -10,14 +10,22 @@ export class FirebaseService {
   constructor(
     private readonly configuration: ConfigurationService
   ) {
-    this._firebaseAdmin = admin.initializeApp({credential: admin.credential.cert(this.configuration.firebaseConfig)});
+    if (this.configuration.firebaseConfig) {
+      this._firebaseAdmin = admin.initializeApp({credential: admin.credential.cert(this.configuration.firebaseConfig)});
+    }
   }
 
   get firestore(): Firestore {
+    if (!this._firebaseAdmin) {
+      throw new Error('Firebase not initialized');
+    }
     return this._firebaseAdmin.firestore();
   }
 
-  get messaging(): messaging.Messaging{
+  get messaging(): messaging.Messaging {
+    if (!this._firebaseAdmin) {
+      throw new Error('Firebase not initialized');
+    }
     return this._firebaseAdmin.messaging();
   }
 
