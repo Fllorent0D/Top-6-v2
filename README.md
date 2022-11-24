@@ -1,4 +1,4 @@
-# node-typescript-boilerplate
+# TOP 6 calculation process
 
 [![TypeScript version][ts-badge]][typescript-4-6]
 [![Node.js version][nodejs-badge]][nodejs]
