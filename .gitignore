@@ -28,3 +28,5 @@ build/
 # Misc
 .DS_Store
 /output/
+.env
+top-6-adminsdk.json

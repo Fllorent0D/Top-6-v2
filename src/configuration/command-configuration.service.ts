@@ -51,12 +51,20 @@ export class CommandConfigurationService {
     return this.parsed.flags.uploadToFirebase;
   }
 
+  set uploadToFirebase(upload: boolean) {
+    this.parsed.flags.uploadToFirebase = upload;
+  }
+
   get emails(): string[] {
     return this.parsed.flags.emails;
   }
 
   get postToFacebook(): boolean {
     return this.parsed.flags.postToFacebook;
+  }
+
+  set postToFacebook(post: boolean) {
+    this.parsed.flags.postToFacebook = post;
   }
 
 }

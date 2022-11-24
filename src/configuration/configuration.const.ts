@@ -1,7 +1,6 @@
 import {Configuration, TOP_LEVEL, TOP_REGIONS} from "./configuration.model";
-import {ServiceAccount} from "firebase-admin";
 
-export const configuration: Configuration = {
+export const configurationConst: Configuration = {
   tabtBaseApi: 'http://api.beping.be',
   top6: {
     clubsPerTop: {
@@ -48,21 +47,5 @@ export const configuration: Configuration = {
     subject: 'Top 6 / Techniques (Verviers, Huy-Waremme, Liège)',
     text: 'Le nouveau classement TOP 6 de Verviers & Huy-Waremme vient d\'être calculé automatiquement par le serveur de BePing.<br/>Vous trouverez en pièces jointes de ce mail le classement du TOP6 ainsi que les techniques des rencontres dans la région de Verviers & Huy-Waremme de cette semaine. <br/>Si des erreurs étaient à constater, merci de répondre à ce mail.<br/><br/>'
   },
-  facebook: {
-    apiKey: '***REMOVED***',
-    pageId: '144181319524102'
-  },
-  firebase: {
-    "type": "service_account",
-    "project_id": "top-6-653f6",
-    "private_key_id": "***REMOVED***",
-    "private_key": "***REMOVED***",
-    "client_email": "firebase-adminsdk-jgd6l@top-6-653f6.iam.gserviceaccount.com",
-    "client_id": "108626748190322471927",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-jgd6l%40top-6-653f6.iam.gserviceaccount.com"
-  } as ServiceAccount,
   output: 'output',
 }

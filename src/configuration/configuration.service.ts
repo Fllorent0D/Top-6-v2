@@ -1,11 +1,12 @@
 import * as path from "path";
 import {Service} from "typedi";
 import {FileSystemHelper, LoggingService} from "../common";
-import {configuration} from "./configuration";
+import {configurationConst} from "./configuration.const";
 import {Configuration, DivisionsPerCategory, Email, TOP_LEVEL, TOP_REGIONS} from "./configuration.model";
 import {formatISO9075} from "date-fns";
 import {CommandConfigurationService} from "./command-configuration.service";
 import {ServiceAccount} from "firebase-admin";
+import * as fs from "fs";
 
 @Service()
 export class ConfigurationService {
@@ -18,17 +19,24 @@ export class ConfigurationService {
     private readonly _fileSystemHelper: FileSystemHelper,
     private readonly commandConfiguration: CommandConfigurationService,
     config: Configuration | undefined) {
-    this._configuration = (config === undefined) ? configuration : config;
+    this._configuration = config ?? configurationConst;
   }
 
   async init(): Promise<void> {
+    this._loggingService.info(this._loggingService.getLayerInfo('CONFIGURATION'));
+
     this.commandConfiguration.init();
+    if (this.runtimeConfiguration.postToFacebook) {
+      await this.loadFacebookAPIKey();
+    }
+    if (this.runtimeConfiguration.uploadToFirebase) {
+      await this.loadGoogleServiceAccountCredentials();
+    }
     await this.logConfigAsync();
     await this.initFileSystemAsync();
   }
 
   private async logConfigAsync(): Promise<void> {
-    this._loggingService.info(this._loggingService.getLayerInfo('CONFIGURATION'));
     this._loggingService.debug(`GLOBAL CONFIGURATION`, 1);
     this._loggingService.trace(`TabT API: ${this._configuration.tabtBaseApi}`, 2);
     this._loggingService.debug(`RUNTIME CONFIGURATION`, 1);
@@ -159,4 +167,37 @@ export class ConfigurationService {
       this.emailConfig.recipients
   }
 
+  private async loadGoogleServiceAccountCredentials() {
+    this._loggingService.debug('GOOGLE SERVICE ACCOUNT', 1)
+    const pathToFile = process.env.GOOGLE_SERVICE_ACCOUNT_JSON_CREDENTIALS;
+    if (!pathToFile) {
+      this._loggingService.error('Google service account information not found!', 2);
+      this._loggingService.trace('Disabling upload to firebase', 2);
+      this.runtimeConfiguration.uploadToFirebase = false;
+      return;
+    }
+    this._loggingService.trace('Loading from ' + pathToFile, 2);
+    try {
+      const apiKeys = fs.readFileSync(pathToFile, 'utf8');
+      this._configuration.firebase = JSON.parse(apiKeys);
+    } catch (e) {
+      this._loggingService.error('Error when loading Google Service Account!', 2);
+      this.runtimeConfiguration.uploadToFirebase = false;
+    }
+  }
+
+  private async loadFacebookAPIKey() {
+    this._loggingService.debug('FACEBOOK CREDENTIALS', 1)
+    if (!process.env.FACEBOOK_PAGE_ID || !process.env.FACEBOOK_API_TOKEN) {
+      this._loggingService.error('Facebook credentials not found!', 2);
+      this._loggingService.trace('Disabling facebook posting', 2);
+      this.runtimeConfiguration.postToFacebook = false;
+    }
+    this._configuration.facebook = {
+      pageId: process.env.FACEBOOK_PAGE_ID,
+      apiKey: process.env.FACEBOOK_API_TOKEN
+    }
+    this._loggingService.trace('Facebook API key loaded from env', 2)
+
+  }
 }
