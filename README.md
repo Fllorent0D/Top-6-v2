@@ -1,6 +1,5 @@
 # node-typescript-boilerplate
 
-[![Sponsor][sponsor-badge]][sponsor]
 [![TypeScript version][ts-badge]][typescript-4-6]
 [![Node.js version][nodejs-badge]][nodejs]
 [![APLv2][license-badge]][license]
