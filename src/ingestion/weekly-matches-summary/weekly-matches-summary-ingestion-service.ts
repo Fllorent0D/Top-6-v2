@@ -24,12 +24,12 @@ export class WeeklyMatchesSummaryIngestionService implements IngestionServiceCon
       to: new Date(),
       matches: {}
     };
-    this.logging.info(`Fetching matches for all divisions for weekly summary (${format(this._model.from, 'dd/MM')} - ${format(this._model.to, 'dd/MM')})`, 1);
+    this.logging.info(`Fetching matches for all divisions for weekly summary (${format(this._model.from, 'dd/MM')} - ${format(this._model.to, 'dd/MM')})`);
 
     const regions = this.config.allRegions;
     let total = 0;
     for (const region of regions) {
-      this.logging.info(`Fetching for ${region}`, 2);
+      this.logging.info(`Fetching for ${region}`);
       const clubs = this.config.getAllClubsForRegion(region);
       for (const club of clubs) {
         const {data: matches} = await this.matchesApi.findAllMatches({
@@ -51,11 +51,11 @@ export class WeeklyMatchesSummaryIngestionService implements IngestionServiceCon
           ], 'MatchId');
           total += nonByeMatches.length;
         }
-        this.logging.trace(`${matches.length > 0 ? '✅ ' : '⛔️'} ${club} - ${matches.length} matches`, 3);
+        this.logging.trace(`${matches.length > 0 ? '✅ ' : '⛔️'} ${club} - ${matches.length} matches`);
       }
     }
-    this.logging.trace(`---`, 2);
-    this.logging.trace(`Ingested ${total} matches`, 2);
+    this.logging.trace(`---`);
+    this.logging.trace(`Ingested ${total} matches`);
   }
 
   get model(): WeeklyMatchesSummaryIngestionModel {

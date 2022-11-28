@@ -29,7 +29,7 @@ export class PlayersPointsProcessingService implements ProcessingServiceContract
   }
 
   async process(): Promise<void> {
-    this.loggingService.info(`Processing all matches for players points...`, 1);
+    this.loggingService.info(`Processing all matches for players points...`);
     this._model = {}
     const matches = this.divisionsMatchesIngestionService.model.matches;
     const clubs = this.configurationService.allClubsUniqueIndex;
@@ -116,9 +116,9 @@ export class PlayersPointsProcessingService implements ProcessingServiceContract
     const checkAlreadyExistingPoint: Maybe<PlayerPoint> = this.model[uniqueIndex].points.find((p) => p.weekName === weekName);
     if (checkAlreadyExistingPoint) {
       if (checkAlreadyExistingPoint.matchId === matchId) {
-        this.errorProcessingService.warn(`${playerName} ${uniqueIndex} est inscrit plusieurs fois sur la feuille de match ${checkAlreadyExistingPoint.matchId}. Une seule participation est comptabilisée`, 2)
+        this.errorProcessingService.warn(`${playerName} ${uniqueIndex} est inscrit plusieurs fois sur la feuille de match ${checkAlreadyExistingPoint.matchId}. Une seule participation est comptabilisée`)
       } else {
-        this.errorProcessingService.error(`${playerName} ${uniqueIndex} a été inscrit sur deux feuilles de match différentes à la semaine ${weekName}. Match 1 : ${checkAlreadyExistingPoint.matchId}, Match2 : ${matchId}. Le match ${matchId} est ignoré`, 2)
+        this.errorProcessingService.error(`${playerName} ${uniqueIndex} a été inscrit sur deux feuilles de match différentes à la semaine ${weekName}. Match 1 : ${checkAlreadyExistingPoint.matchId}, Match2 : ${matchId}. Le match ${matchId} est ignoré`)
       }
       return;
     }
@@ -206,7 +206,7 @@ export class PlayersPointsProcessingService implements ProcessingServiceContract
       return;
     } else {
       if (positionScore !== 0) {
-        this.loggingService.warn(`Le match ${match.MatchId} a un score modifié, mais le score n'est pas le score maximum de défaite. Aucune décision prise pour le top6.`, 2);
+        this.loggingService.warn(`Le match ${match.MatchId} a un score modifié, mais le score n'est pas le score maximum de défaite. Aucune décision prise pour le top6.`);
       }
     }
   }

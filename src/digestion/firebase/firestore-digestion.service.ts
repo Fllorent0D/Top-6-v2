@@ -27,7 +27,7 @@ export class FirestoreDigestionService implements DigestingServiceContract {
   }
 
   async digest(): Promise<void> {
-    this.loggingService.info('Saving to firebase...', 1);
+    this.loggingService.info('Saving to firebase...');
     await this.updateTops();
     await this.updateDetails();
   }
@@ -46,7 +46,7 @@ export class FirestoreDigestionService implements DigestingServiceContract {
       const clubs = this.configurationService.getAllClubsForRegion(region);
 
       await regionDoc.set({clubs, levels});
-      this.loggingService.info('✅ ' + region, 2);
+      this.loggingService.info('✅ ' + region);
     }
   }
 

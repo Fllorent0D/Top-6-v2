@@ -17,13 +17,13 @@ export class TopExcelOutputService implements DigestingServiceContract {
   }
 
   async digest(): Promise<void> {
-    this.loggingService.info(`Writing excels...`, 1);
+    this.loggingService.info(`Writing excels...`);
     for (const region of this.configurationService.allRegions) {
       const workbook = new Workbook();
       workbook.title = region;
       this.digestTops(workbook, region);
       await workbook.xlsx.writeFile(this.configurationService.absolutePathConsolidatedTopExcelFileName(region));
-      this.loggingService.trace(`xslx ${region} written...`, 2);
+      this.loggingService.trace(`xslx ${region} written...`);
 
     }
     //await this.digestDebugPoints();

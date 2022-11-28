@@ -16,14 +16,14 @@ export class DivisionsIngestionService implements IngestionServiceContract<Divis
   }
 
   async ingest() {
-    this.logging.info('Fetching divisions info', 1);
+    this.logging.info('Fetching divisions info');
     const {data: divisions} = await this.divisionsApi.findAllDivisions({
       showDivisionName: "short"
     });
     this._model = {
       divisions
     }
-    this.logging.trace('✅  done', 2);
+    this.logging.trace('✅  done');
   }
 
   get model(): DivisionsIngestionModel {

@@ -42,28 +42,28 @@ export class LoggingService {
     });
   }
 
-  trace(msg: string, indentation = 0, ...args: any[]): void {
-    this.log(LogLevel.TRACE, msg, indentation, args);
+  trace(msg: string, ...args: any[]): void {
+    this.log(LogLevel.TRACE, msg, args);
   }
 
-  debug(msg: string, indentation = 0, ...args: any[]): void {
-    this.log(LogLevel.DEBUG, msg, indentation, args);
+  debug(msg: string, ...args: any[]): void {
+    this.log(LogLevel.DEBUG, msg, args);
   }
 
-  info(msg: string, indentation = 0, ...args: any[]): void {
-    this.log(LogLevel.INFO, msg, indentation, args);
+  info(msg: string, ...args: any[]): void {
+    this.log(LogLevel.INFO, msg, args);
   }
 
-  warn(msg: string, indentation = 0, ...args: any[]): void {
-    this.log(LogLevel.WARN, msg, indentation, args);
+  warn(msg: string, ...args: any[]): void {
+    this.log(LogLevel.WARN, msg, args);
   }
 
-  error(msg: string, indentation = 0, ...args: any[]): void {
-    this.log(LogLevel.ERROR, msg, indentation, args);
+  error(msg: string, ...args: any[]): void {
+    this.log(LogLevel.ERROR, msg, args);
   }
 
-  private log(loglevel: LogLevel, msg: string, indentation: number, ...args: any[]) {
-    const indentedMessage = this.getIndentedMessage(msg, indentation);
+  private log(loglevel: LogLevel, msg: string, ...args: any[]) {
+    const indentedMessage = msg //this.getIndentedMessage(msg, indentation);
     switch (loglevel) {
       case LogLevel.TRACE:
         this.logger.trace(chalk.grey(indentedMessage, args));
@@ -82,14 +82,6 @@ export class LoggingService {
         this.logger.error(chalk.redBright(indentedMessage, args));
         break;
     }
-  }
-
-  private getIndentation(indentation: number, indentChar = '\t'): string {
-    return indentChar.repeat(indentation);
-  }
-
-  private getIndentedMessage(msg: string, indentation: number): string {
-    return `${this.getIndentation(indentation)}${msg}`;
   }
 
   getSeparatorLine(char = '-', count = 50): string {

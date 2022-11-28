@@ -24,7 +24,7 @@ export class DebugDigestionService implements DigestingServiceContract {
   }
 
   async digest(): Promise<void> {
-    this.logging.info(`Saving debug`, 1);
+    this.logging.info(`Saving debug`);
 
     const debug: [string, any][] = [
       [this.configurationService.absolutePathPlayerPointsFileName, this.playersPointsProcessingService.model],
@@ -36,7 +36,7 @@ export class DebugDigestionService implements DigestingServiceContract {
       debug.push([this.configurationService.absolutePathTechniqueDebugFileName, this.weeklyMatchesSummaryProcessingService.model]);
     }
     for (const [file, model] of debug) {
-      this.fileSystemHelper.writeToFileA(model, true, file, 2);
+      this.fileSystemHelper.writeToFileA(model, true, file);
 
     }
   }

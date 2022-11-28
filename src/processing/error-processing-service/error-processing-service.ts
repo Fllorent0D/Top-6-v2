@@ -20,13 +20,13 @@ export class ErrorProcessingService implements ProcessingServiceContract<ErrorPr
     }
   }
 
-  error(error: string, indent = 1) {
-    this.loggingService.error(error, indent);
+  error(error: string) {
+    this.loggingService.error(error);
     this._model.errors.push(error);
   }
 
-  warn(warn: string, indent = 1) {
-    this.loggingService.warn(warn, indent);
+  warn(warn: string) {
+    this.loggingService.warn(warn);
     this._model.warnings.push(warn);
   }
 

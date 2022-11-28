@@ -29,13 +29,13 @@ export class WeeklyMatchesSummaryProcessingService implements ProcessingServiceC
   }
 
   async process(): Promise<void> {
-    this.logging.info(`Processing weekly summary`, 1);
+    this.logging.info(`Processing weekly summary`);
     this.createEmptyModel();
     const matchesPerRegions = this.weeklyMatchesSummaryIngestionService.model.matches;
 
 
     for (const [region, matches] of Object.entries(matchesPerRegions)) {
-      this.logging.trace(`Processing ${region} matches`, 2);
+      this.logging.trace(`Processing ${region} matches`);
 
       for (const match of matches) {
         const division = this.divisionsIngestionService.getDivision(match.DivisionId);

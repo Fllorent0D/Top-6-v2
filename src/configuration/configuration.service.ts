@@ -37,26 +37,26 @@ export class ConfigurationService {
   }
 
   private async logConfigAsync(): Promise<void> {
-    this._loggingService.debug(`GLOBAL CONFIGURATION`, 1);
-    this._loggingService.trace(`TabT API: ${this._configuration.tabtBaseApi}`, 2);
-    this._loggingService.debug(`RUNTIME CONFIGURATION`, 1);
-    this._loggingService.trace(`weekName: ${this.commandConfiguration.weekName}`, 2);
-    this._loggingService.trace(`weeklySummary: ${this.commandConfiguration.weeklySummary}`, 2);
-    this._loggingService.trace(`postToFacebook: ${this.commandConfiguration.postToFacebook}`, 2);
-    this._loggingService.trace(`sendViaEmail: ${this.commandConfiguration.sendViaEmail}`, 2);
-    this._loggingService.trace(`emails: ${this.emailsRecipients}`, 2);
-    this._loggingService.trace(`uploadToFirebase: ${this.commandConfiguration.uploadToFirebase}`, 2);
+    this._loggingService.debug(`GLOBAL CONFIGURATION`);
+    this._loggingService.trace(`TabT API: ${this._configuration.tabtBaseApi}`);
+    this._loggingService.debug(`RUNTIME CONFIGURATION`);
+    this._loggingService.trace(`weekName: ${this.commandConfiguration.weekName}`);
+    this._loggingService.trace(`weeklySummary: ${this.commandConfiguration.weeklySummary}`);
+    this._loggingService.trace(`postToFacebook: ${this.commandConfiguration.postToFacebook}`);
+    this._loggingService.trace(`sendViaEmail: ${this.commandConfiguration.sendViaEmail}`);
+    this._loggingService.trace(`emails: ${this.emailsRecipients}`);
+    this._loggingService.trace(`uploadToFirebase: ${this.commandConfiguration.uploadToFirebase}`);
 
-    this._loggingService.debug(`TOP 6 CONFIGURATION`, 1);
+    this._loggingService.debug(`TOP 6 CONFIGURATION`);
 
-    this._loggingService.debug(`CLUBS`, 2);
+    this._loggingService.debug(`CLUBS`);
     for (const region of Object.values(TOP_REGIONS)) {
-      this._loggingService.trace(`- ${region}: ${this.getAllClubsForRegion(region).join(', ')}`, 2);
+      this._loggingService.trace(`- ${region}: ${this.getAllClubsForRegion(region).join(', ')}`);
     }
 
-    this._loggingService.debug(`DIVISIONS`, 2);
+    this._loggingService.debug(`DIVISIONS`);
     for (const [category, divisions] of Object.entries(this.divisionsPerCategory)) {
-      this._loggingService.trace(`- ${category}: ${divisions.join(', ')}`, 2);
+      this._loggingService.trace(`- ${category}: ${divisions.join(', ')}`);
     }
 
   }
@@ -168,36 +168,36 @@ export class ConfigurationService {
   }
 
   private async loadGoogleServiceAccountCredentials() {
-    this._loggingService.debug('GOOGLE SERVICE ACCOUNT', 1)
+    this._loggingService.debug('GOOGLE SERVICE ACCOUNT')
     const pathToFile = process.env.GOOGLE_SERVICE_ACCOUNT_JSON_CREDENTIALS;
     if (!pathToFile) {
-      this._loggingService.error('Google service account information not found!', 2);
-      this._loggingService.trace('Disabling upload to firebase', 2);
+      this._loggingService.error('Google service account information not found!');
+      this._loggingService.trace('Disabling upload to firebase');
       this.runtimeConfiguration.uploadToFirebase = false;
       return;
     }
-    this._loggingService.trace('Loading from ' + pathToFile, 2);
+    this._loggingService.trace('Loading from ' + pathToFile);
     try {
       const apiKeys = fs.readFileSync(pathToFile, 'utf8');
       this._configuration.firebase = JSON.parse(apiKeys);
     } catch (e) {
-      this._loggingService.error('Error when loading Google Service Account!', 2);
+      this._loggingService.error('Error when loading Google Service Account!');
       this.runtimeConfiguration.uploadToFirebase = false;
     }
   }
 
   private async loadFacebookAPIKey() {
-    this._loggingService.debug('FACEBOOK CREDENTIALS', 1)
+    this._loggingService.debug('FACEBOOK CREDENTIALS')
     if (!process.env.FACEBOOK_PAGE_ID || !process.env.FACEBOOK_API_TOKEN) {
-      this._loggingService.error('Facebook credentials not found!', 2);
-      this._loggingService.trace('Disabling facebook posting', 2);
+      this._loggingService.error('Facebook credentials not found!');
+      this._loggingService.trace('Disabling facebook posting');
       this.runtimeConfiguration.postToFacebook = false;
     }
     this._configuration.facebook = {
       pageId: process.env.FACEBOOK_PAGE_ID,
       apiKey: process.env.FACEBOOK_API_TOKEN
     }
-    this._loggingService.trace('Facebook API key loaded from env', 2)
+    this._loggingService.trace('Facebook API key loaded from env')
 
   }
 }

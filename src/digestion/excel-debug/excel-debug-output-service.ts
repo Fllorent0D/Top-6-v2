@@ -27,7 +27,7 @@ export class ExcelDebugOutputService implements DigestingServiceContract {
   }
 
   async digest(): Promise<void> {
-    this.loggingService.info(`Writing debug excels...`, 1);
+    this.loggingService.info(`Writing debug excels...`);
     await this.digestTops();
     //await this.digestDebugPoints();
 
@@ -46,7 +46,7 @@ export class ExcelDebugOutputService implements DigestingServiceContract {
       this.digestPointsPerWeek(workbook);
 
       await workbook.xlsx.writeFile(this.configurationService.absolutePathConsolidatedTopCompleteExcelFileName(region));
-      this.loggingService.trace(`Complete xslx ${region} written...`, 2);
+      this.loggingService.trace(`Complete xslx ${region} written...`);
 
     }
   }

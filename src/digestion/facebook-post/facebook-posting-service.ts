@@ -16,7 +16,7 @@ export class FacebookPostingService implements DigestingServiceContract {
   }
 
   async digest(): Promise<void> {
-    this.loggingService.info('Posting on facebook...', 1);
+    this.loggingService.info('Posting on facebook...');
     const text = this.generateText();
     FB.setAccessToken(this.configurationService.facebookConfig.apiKey);
     try {
@@ -31,9 +31,9 @@ export class FacebookPostingService implements DigestingServiceContract {
           resolve(res.id);
         })
       }));
-      this.loggingService.trace('Posted on facebook: ' + postid, 2);
+      this.loggingService.trace('Posted on facebook: ' + postid);
     } catch (e) {
-      this.loggingService.error(e.message, 2);
+      this.loggingService.error(e.message);
     }
   }
 

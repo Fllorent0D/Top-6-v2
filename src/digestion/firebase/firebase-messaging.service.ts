@@ -16,7 +16,7 @@ export class FirebaseMessagingService implements DigestingServiceContract {
 
 
   async digest(): Promise<void> {
-    this.loggingService.info('Sending push notifications...', 1);
+    this.loggingService.info('Sending push notifications...');
     const message = await this.firebaseService.messaging.send({
       topic: 'all',
       notification: {
@@ -24,7 +24,7 @@ export class FirebaseMessagingService implements DigestingServiceContract {
         title: 'Top 6 mis à jour!'
       }
     });
-    this.loggingService.info('Sent - ' + message, 2);
+    this.loggingService.info('Sent - ' + message);
 
   }
 

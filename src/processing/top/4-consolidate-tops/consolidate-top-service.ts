@@ -30,7 +30,7 @@ export class ConsolidateTopService implements ProcessingServiceContract<Consolid
   }
 
   async process(): Promise<void> {
-    this.loggingService.info(`Consolidating tops...`, 1);
+    this.loggingService.info(`Consolidating tops...`);
     this._model = {};
     for (const region of Object.keys(TOP_REGIONS)) {
       this._model[region] = {};

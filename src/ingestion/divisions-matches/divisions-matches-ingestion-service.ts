@@ -17,7 +17,7 @@ export class DivisionsMatchesIngestionService implements IngestionServiceContrac
   }
 
   async ingest(): Promise<void> {
-    this.logging.info('Fetching matches for all divisions', 1);
+    this.logging.info('Fetching matches for all divisions');
     let total = 0;
     this._model = {matches: []};
     for (const divisionId of this.config.allDivisions) {
@@ -27,10 +27,10 @@ export class DivisionsMatchesIngestionService implements IngestionServiceContrac
       });
       this._model.matches.push(...matches.filter(m => Number(m.WeekName) <= this.config.runtimeConfiguration.weekName));
       total += matches.length;
-      this.logging.trace(`${matches.length > 0 ? '✅ ' : '⛔️'} ${divisionId} - ${matches.length} matches`, 2);
+      this.logging.trace(`${matches.length > 0 ? '✅ ' : '⛔️'} ${divisionId} - ${matches.length} matches`);
     }
-    this.logging.trace(`---`, 2);
-    this.logging.trace(`Ingested ${total} matches`, 2);
+    this.logging.trace(`---`);
+    this.logging.trace(`Ingested ${total} matches`);
   }
 
   get model(): DivisionsMatchesIngestionModel {

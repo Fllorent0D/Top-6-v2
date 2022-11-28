@@ -23,7 +23,7 @@ export class LevelAttributionService implements ProcessingServiceContract<Player
   }
 
   async process(): Promise<void> {
-    this.loggingService.info(`Attributing levels...`, 1);
+    this.loggingService.info(`Attributing levels...`);
 
     this._model = {}
     for (const [uniqueIndex, points] of Object.entries(this.playersPointsProcessingService.model)) {

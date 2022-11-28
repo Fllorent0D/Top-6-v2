@@ -27,7 +27,7 @@ export class SumPointsService implements ProcessingServiceContract<PlayersTotalP
   }
 
   async process(): Promise<void> {
-    this.loggingService.info(`Counting points...`, 1);
+    this.loggingService.info(`Counting points...`);
     this._model = {};
     for (const [uniqueIndex] of Object.entries(this.levelAttributionService.model)) {
       const pointsToCount = this.getAllPointsForUniqueIndex(uniqueIndex);

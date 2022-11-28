@@ -21,7 +21,7 @@ export class EmailSenderService implements DigestingServiceContract {
   }
 
   async digest(): Promise<void> {
-    this.loggingService.info('Sending emails...', 1);
+    this.loggingService.info('Sending emails...');
     const attachments = [];
 
     for (const region of this.configurationService.allRegions) {
@@ -79,7 +79,7 @@ export class EmailSenderService implements DigestingServiceContract {
     };
 
     await this.mailClient.post('send', {'version': 'v3.1'}).request(data);
-    this.loggingService.trace('Emails sent to ' + (this.configurationService.emailsRecipients).join(','), 2);
+    this.loggingService.trace('Emails sent to ' + (this.configurationService.emailsRecipients).join(','));
 
   }
 }

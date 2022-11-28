@@ -30,7 +30,7 @@ export class WeeklyMatchesSummaryDigestionService implements DigestingServiceCon
   async digest(): Promise<void> {
     const matches = this.weeklyMatchesSummaryProcessingModel.model.matches;
     for (const [region, levels] of Object.entries(matches)) {
-      this.logging.info(`Printing Techniques ${region}`, 1);
+      this.logging.info(`Printing Techniques ${region}`);
       let texts = `# Technique ${region}\n\n`;
       for (const [level, divisions] of sortBy(Object.entries(levels), '0').reverse()) {
         for (const [division, categories] of sortBy(Object.entries(divisions), '0')) {
@@ -53,8 +53,7 @@ export class WeeklyMatchesSummaryDigestionService implements DigestingServiceCon
       this.fileSystemHelper.writeToFileA(
         texts,
         false,
-        this.configurationService.getAbsolutePathTechniqueTxtFileName(region as TOP_REGIONS),
-        2);
+        this.configurationService.getAbsolutePathTechniqueTxtFileName(region as TOP_REGIONS));
     }
   }
 
