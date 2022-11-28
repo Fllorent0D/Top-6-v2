@@ -10,14 +10,21 @@ import {ProcessingService} from "./processing/processing-service";
 import {DigestingService} from "./digestion/digesting-service";
 import {ClubsApi, DivisionsApi, MatchesApi} from "./common";
 import {TabtClientConfigFactory} from "./common/tabt-client-config-factory";
+import axios, {AxiosInstance} from "axios";
+import axiosRetry from "axios-retry";
 
 dotenv.config();
 
 const run = async () => {
+  const axiosInstance: AxiosInstance = axios.create();
+  axiosRetry(axiosInstance, {
+    retries: 3,
+    retryDelay: (retryCount) => retryCount * 5_000,
+  });
   Container.set([
-    {id: 'clubs.api', factory: () => new ClubsApi(TabtClientConfigFactory.createConfiguration())},
-    {id: 'matches.api', factory: () => new MatchesApi(TabtClientConfigFactory.createConfiguration())},
-    {id: 'divisions.api', factory: () => new DivisionsApi(TabtClientConfigFactory.createConfiguration())},
+    {id: 'clubs.api', factory: () => new ClubsApi(TabtClientConfigFactory.createConfiguration(), null, axiosInstance)},
+    {id: 'matches.api', factory: () => new MatchesApi(TabtClientConfigFactory.createConfiguration(), null, axiosInstance)},
+    {id: 'divisions.api', factory: () => new DivisionsApi(TabtClientConfigFactory.createConfiguration(), null, axiosInstance)},
     {id: 'randomip', value: randomIP}
   ])
 
