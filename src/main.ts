@@ -19,6 +19,7 @@ const run = async () => {
   const axiosInstance: AxiosInstance = axios.create();
   axiosRetry(axiosInstance, {
     retries: 3,
+    retryCondition: () => true,
     retryDelay: (retryCount) => retryCount * 5_000,
   });
   Container.set([
