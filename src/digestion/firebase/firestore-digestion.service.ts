@@ -14,7 +14,7 @@ import CollectionReference = firestore.CollectionReference;
 @Service()
 export class FirestoreDigestionService implements DigestingServiceContract {
 
-  uniqueIndexesInTops = [];
+  uniqueIndexesInTops: string[] = [];
 
   constructor(
     private readonly firebaseService: FirebaseService,
@@ -27,17 +27,17 @@ export class FirestoreDigestionService implements DigestingServiceContract {
   }
 
   async digest(): Promise<void> {
-    this.loggingService.info('Saving to firebase...');
     await this.updateTops();
     await this.updateDetails();
   }
 
   private async updateTops() {
+    this.loggingService.info('Saving tops to Firebase...');
     const topsCollection: CollectionReference = this.firebaseService.firestore.collection('/tops');
     for (const region of this.configurationService.allRegions) {
       const regionDoc = topsCollection.doc(region);
 
-      const levels: {[index: string]: PlayerPosition[]} = this.configurationService.allLevels.reduce((acc, level: TOP_LEVEL) => {
+      const levels: { [index: string]: PlayerPosition[] } = this.configurationService.allLevels.reduce((acc, level: TOP_LEVEL) => {
         const results: PlayerPosition[] = this.consolidateTopService
           .getTopForRegionAndLevel(region, level, 13)
           .map((playerPosition: PlayerPosition, index: number) => ({...playerPosition, position: index}));
@@ -46,11 +46,16 @@ export class FirestoreDigestionService implements DigestingServiceContract {
       const clubs = this.configurationService.getAllClubsForRegion(region);
 
       await regionDoc.set({clubs, levels});
-      this.loggingService.info('✅ ' + region);
+      this.loggingService.trace('✅ ' + region);
+
+      // Adding indexes into array to update only them
+      this.uniqueIndexesInTops.push(...Object.values(levels).flat().map(playerPosition => playerPosition.uniqueIndex));
     }
   }
 
   private async updateDetails() {
+    this.loggingService.info('Saving player details to Firebase...');
+
     for (const uniqueIndex of this.uniqueIndexesInTops) {
       const playerPoints = this.playersPointsProcessingService.model[uniqueIndex]
       playerPoints.points.sort((a, b) => b.weekName - a.weekName);
@@ -59,7 +64,8 @@ export class FirestoreDigestionService implements DigestingServiceContract {
       await playerPointsCollection.doc(uniqueIndex).set({
         ...playerPoints,
         levelAttributed: level
-      })
+      });
+      this.loggingService.trace('✅ ' + uniqueIndex);
     }
   }
 }

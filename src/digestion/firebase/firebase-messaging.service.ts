@@ -24,7 +24,7 @@ export class FirebaseMessagingService implements DigestingServiceContract {
         title: 'Top 6 mis à jour!'
       }
     });
-    this.loggingService.info('Sent - ' + message);
+    this.loggingService.trace('Sent - ' + message);
 
   }
 
