@@ -1,0 +1,3 @@
+# WeeklyMatchesSummaryProcessingService
+
+La fonction process a pour but de traiter les données de résumé des matchs hebdomadaires d'une ligue de sport. Elle commence par initialiser un modèle vide, puis récupère une liste de matchs par région à partir du WeeklyMatchesSummaryIngestionService. Elle itère ensuite sur chaque match, récupère les données de division correspondantes à partir du DivisionsIngestionService, map les données de match à un objet WeeklyMatchSummary en utilisant la méthode mapTeamMatchEntry, et ajoute cet objet au modèle.

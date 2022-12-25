@@ -1,0 +1,10 @@
+# SumPointsService
+Cette classe représente un service qui calcule des points pour chaque joueur en fonction de différents critères. Il utilise deux autres services, `PlayersPointsProcessingService` et `LevelAttributionService`, pour obtenir les données nécessaires à ce calcul.
+
+La méthode `process` est utilisée pour effectuer le calcul des points. Elle commence par initialiser un objet vide qui servira à stocker les résultats du calcul, `this._model`. Ensuite, elle itère sur chaque joueur du modèle du `LevelAttributionService`, en utilisant l'index unique du joueur comme clé. Pour chaque joueur, elle appelle la méthode `getAllPointsForUniqueIndex` pour obtenir tous les points du joueur, et calcule le total de ces points en utilisant la méthode `reduce`. Elle calcule également le nombre de points de chaque niveau possible en appelant la méthode `countPtsForUniqueIndex` pour chaque valeur. Le résultat final est stocké dans `this._model` sous la forme d'un objet de type `PlayerTotalPoints`, qui contient le total de points et le nombre de points de chaque niveau pour chaque joueur.
+
+La méthode `getAllPointsForUniqueIndex` utilise elle-même le modèle du `PlayersPointsProcessingService` pour obtenir tous les points d'un joueur, puis filtre cette liste pour ne conserver que les points correspondant à un niveau inférieur ou égal au niveau du joueur dans le modèle du `LevelAttributionService`. Enfin, elle utilise la méthode `map` pour extraire uniquement les valeurs de points gagnés de chaque élément de la liste filtrée.
+
+La méthode `countPtsForUniqueIndex` compte le nombre de points de la valeur spécifiée dans la liste de points d'un joueur, en utilisant à nouveau la méthode `reduce`.
+
+Il y a également deux méthodes de lecture pour l'objet model : `get model()` renvoie le modèle complet, tandis que `getPlayerPoints(uniqueIndex: string)` renvoie les points d'un joueur spécifique en utilisant son index unique comme clé.
