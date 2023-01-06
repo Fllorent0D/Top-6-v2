@@ -35,24 +35,19 @@ Download all:
 
 #### 1 - Player points
 
-Computes all the points for all players for all matches.
-
-| 1 victory   | 1 points |
-|-------------|----------|
-| 2 victories | 2 points |
-| 3 victories | 3 points |
-| 4 victories | 5 points |
-
-If a opposite player are forfeited, a points is given to the present player.
-Example: 
-
+`PlayersPointsProcessingService` is a service that processes player points for each match. It uses raw match data to calculate each player's points, which are stored in a `PlayerPoints` object that contains the player's name, unique player index, club the player belongs to, and an array of points won for each match.
 
 #### 2 - Level attribution
 
+`LevelAttributionService` is a service that assigns a level to each player based on their points. It uses the points calculated by `PlayersPointsProcessingService` and predefined configuration to determine each player's level, which is stored in an object with the player's unique index as the key.
+
 #### 3 - Sum points
+
+`SumPointsService` is a service that counts the total points and number of points of each type (1, 2, 3, or 5 points) for each player. It uses the points calculated by `PlayersPointsProcessingService` and the levels assigned by `LevelAttributionService` to perform its calculations, which are stored in an object with the player's unique index as the key.
 
 #### 4 - Consolidation
 
+`ConsolidateTopService` is a service that aggregates player data and points to create a ranking by region and by level. It uses the points calculated by `SumPointsService`, configuration information on clubs and divisions, and raw club data to create a `ConsolidateTopModel` object that contains the ranking for each region and each level. Each ranking entry contains the player's unique index, the club's unique index, the club's name, the player's name, and the player's points.
 
 ### Digestion
 
