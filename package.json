@@ -16,7 +16,8 @@
     "lint": "eslint . --ext .ts",
     "test": "jest --coverage --runInBand",
     "test:watch": "jest --watch",
-    "generate:openapi": "openapi-generator-cli generate -i http://localhost:3004/doc-json -g typescript-axios -o src/common/tabt-client --additional-properties enumNameSuffix=tabt --additional-properties useSingleRequestParameter=true"
+    "generate:openapi": "openapi-generator-cli generate -i http://localhost:3004/doc-json -g typescript-axios -o src/common/tabt-client --additional-properties enumNameSuffix=tabt --additional-properties useSingleRequestParameter=true",
+    "release": "release-it"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.26",
@@ -31,6 +32,7 @@
     "jest": "~27.5",
     "jest-ts-auto-mock": "^2.1.0",
     "prettier": "~2.5",
+    "release-it": "^15.6.0",
     "rimraf": "~3.0",
     "ts-auto-mock": "^3.6.2",
     "ts-jest": "~27.1",
