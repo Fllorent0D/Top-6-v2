@@ -187,11 +187,12 @@ export class AiSummaryService {
     for (let attempt = 0; attempt < retries; attempt++) {
       try {
         return await fn();
-      } catch (error: any) {
+      } catch (error: unknown) {
         lastError = error instanceof Error ? error : new Error(String(error));
+        const errorWithStatus = error as { status?: number };
         
         // Check if error is retryable (rate limit or server error)
-        const isRetryable = error?.status === 429 || (error?.status >= 500 && error?.status < 600);
+        const isRetryable = errorWithStatus?.status === 429 || (errorWithStatus?.status !== undefined && errorWithStatus.status >= 500 && errorWithStatus.status < 600);
         
         if (!isRetryable || attempt === retries - 1) {
           throw lastError;
@@ -232,7 +233,7 @@ export class AiSummaryService {
     }
   }
 
-  private trackTokenUsage(response: any): void {
+  private trackTokenUsage(response: { usage?: { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number } }): void {
     if (response?.usage) {
       const usage: APIUsage = {
         promptTokens: response.usage.prompt_tokens || 0,

@@ -15,6 +15,11 @@ enum CATEGORY_MAPPING {
   "WOMEN" = "WOMEN",
   // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
   "WOMEN_POST_23" = "WOMEN",
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+  "SEN_M" = "MEN",
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+  "SEN_W" = "WOMEN",
+
 }
 
 
@@ -35,7 +40,7 @@ export class WeeklyMatchesSummaryDigestionService implements DigestingServiceCon
       for (const [level, divisions] of sortBy(Object.entries(levels), '0').reverse()) {
         for (const [division, categories] of sortBy(Object.entries(divisions), '0')) {
           for (const [category, matches] of Object.entries(categories)) {
-            texts += `## ${level} ${division} ${CATEGORY_MAPPING[category]} \n`;
+            texts += `## ${level} ${division} ${category ? CATEGORY_MAPPING[category] : ''} \n`;
             for (const match of matches) {
               texts += `\t${match.homeTeam} - ${match.awayTeam} : ${match.score ?? ''}\t`;
               if (this.configurationService.getAllClubsForRegion(region as TOP_REGIONS).includes(match.homeClub)) {

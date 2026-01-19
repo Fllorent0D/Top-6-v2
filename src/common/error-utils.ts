@@ -1,36 +1,45 @@
 /**
  * Error handling utilities for API calls
  */
+interface ErrorWithResponse {
+  response?: {
+    data?: { message?: string };
+    status?: number;
+  };
+  message?: string;
+}
+
+function isErrorWithResponse(error: unknown): error is ErrorWithResponse {
+  return error !== null && typeof error === 'object';
+}
+
 export function extractErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
   }
-  if (error && typeof error === 'object') {
-    const errorObj = error as any;
-    if (errorObj.response?.data?.message) {
-      return errorObj.response.data.message;
+  if (isErrorWithResponse(error)) {
+    if (error.response?.data?.message) {
+      return error.response.data.message;
     }
-    if (errorObj.message) {
-      return errorObj.message;
+    if (error.message) {
+      return error.message;
     }
   }
   return 'Unknown error';
 }
 
 export function extractErrorStatus(error: unknown): string | number {
-  if (error && typeof error === 'object') {
-    const errorObj = error as any;
-    if (errorObj.response?.status) {
-      return errorObj.response.status;
+  if (isErrorWithResponse(error)) {
+    if (error.response?.status) {
+      return error.response.status;
     }
   }
   return 'N/A';
 }
 
-export function extractErrorData(error: unknown): any {
-  if (error && typeof error === 'object') {
-    const errorObj = error as any;
-    return errorObj.response?.data;
+export function extractErrorData(error: unknown): unknown {
+  if (isErrorWithResponse(error)) {
+    return error.response?.data;
   }
   return null;
 }

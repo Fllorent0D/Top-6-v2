@@ -27,7 +27,7 @@ export class ConfigurationService {
     private readonly _loggingService: LoggingService,
     private readonly _fileSystemHelper: FileSystemHelper,
     private readonly commandConfiguration: RuntimeConfigurationService,
-    // @ts-ignore - Kept for potential future use (currently commented out in init)
+    // @ts-expect-error - Kept for potential future use (currently commented out in init)
     private readonly _googleCredentialsLoader: GoogleCredentialsLoaderService,
     private _firebaseAdmin: admin.app.App,
     private readonly seasonsApi?: SeasonsApi,
@@ -52,7 +52,8 @@ export class ConfigurationService {
     try {
       if (this.seasonsApi) {
         // Update axios base URL if it's different from config
-        const axiosInstance = (this.seasonsApi as any).axios;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const axiosInstance = (this.seasonsApi as unknown as { axios: { defaults: { baseURL: string } } }).axios;
         if (axiosInstance && axiosInstance.defaults.baseURL !== this.bepingUrl) {
           axiosInstance.defaults.baseURL = this.bepingUrl;
         }

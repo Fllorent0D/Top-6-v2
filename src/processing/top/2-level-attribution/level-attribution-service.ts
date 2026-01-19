@@ -33,8 +33,8 @@ export class LevelAttributionService implements ProcessingServiceContract<Player
         const pointsPerLevels: [string, PlayerPoint[]][] = Object.entries(groupBy(pointsForWeekname, 'level'));
         const mainLevel =
           pointsPerLevels.sort((
-              [_levelA, pointsA]: [TOP_LEVEL, PlayerPoint[]],
-              [_levelB, pointsB]: [TOP_LEVEL, PlayerPoint[]],
+              [, pointsA]: [TOP_LEVEL, PlayerPoint[]],
+              [, pointsB]: [TOP_LEVEL, PlayerPoint[]],
             ) => {
               // First, sort by count (descending) - level with most matches wins
               const countDiff = pointsB.length - pointsA.length;
