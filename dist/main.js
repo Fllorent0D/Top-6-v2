@@ -379,7 +379,7 @@ var require_shams = __commonJS({
       }
       var symVal = 42;
       obj[sym] = symVal;
-      for (var _2 in obj) {
+      for (var _ in obj) {
         return false;
       }
       if (typeof Object.keys === "function" && Object.keys(obj).length !== 0) {
@@ -3497,7 +3497,7 @@ var require_lightFormatters = __commonJS({
         return token === "M" ? String(month + 1) : (0, _index.default)(month + 1, 2);
       }, "M"),
       // Day of the month
-      d: /* @__PURE__ */ __name(function d2(date, token) {
+      d: /* @__PURE__ */ __name(function d(date, token) {
         return (0, _index.default)(date.getUTCDate(), token.length);
       }, "d"),
       // AM or PM
@@ -3517,7 +3517,7 @@ var require_lightFormatters = __commonJS({
         }
       }, "a"),
       // Hour [1-12]
-      h: /* @__PURE__ */ __name(function h2(date, token) {
+      h: /* @__PURE__ */ __name(function h(date, token) {
         return (0, _index.default)(date.getUTCHours() % 12 || 12, token.length);
       }, "h"),
       // Hour [0-23]
@@ -3525,7 +3525,7 @@ var require_lightFormatters = __commonJS({
         return (0, _index.default)(date.getUTCHours(), token.length);
       }, "H"),
       // Minute
-      m: /* @__PURE__ */ __name(function m2(date, token) {
+      m: /* @__PURE__ */ __name(function m(date, token) {
         return (0, _index.default)(date.getUTCMinutes(), token.length);
       }, "m"),
       // Second
@@ -3574,7 +3574,7 @@ var require_formatters = __commonJS({
     };
     var formatters2 = {
       // Era
-      G: /* @__PURE__ */ __name(function G2(date, token, localize) {
+      G: /* @__PURE__ */ __name(function G(date, token, localize) {
         var era = date.getUTCFullYear() > 0 ? 1 : 0;
         switch (token) {
           case "G":
@@ -3621,7 +3621,7 @@ var require_formatters = __commonJS({
         return (0, _index6.default)(weekYear, token.length);
       }, "Y"),
       // ISO week-numbering year
-      R: /* @__PURE__ */ __name(function R2(date, token) {
+      R: /* @__PURE__ */ __name(function R(date, token) {
         var isoWeekYear = (0, _index3.default)(date);
         return (0, _index6.default)(isoWeekYear, token.length);
       }, "R"),
@@ -3728,7 +3728,7 @@ var require_formatters = __commonJS({
         }
       }, "M"),
       // Stand-alone month
-      L: /* @__PURE__ */ __name(function L2(date, token, localize) {
+      L: /* @__PURE__ */ __name(function L(date, token, localize) {
         var month = date.getUTCMonth();
         switch (token) {
           case "L":
@@ -3758,7 +3758,7 @@ var require_formatters = __commonJS({
         }
       }, "L"),
       // Local week of year
-      w: /* @__PURE__ */ __name(function w2(date, token, localize, options) {
+      w: /* @__PURE__ */ __name(function w(date, token, localize, options) {
         var week = (0, _index4.default)(date, options);
         if (token === "wo") {
           return localize.ordinalNumber(week, {
@@ -3778,7 +3778,7 @@ var require_formatters = __commonJS({
         return (0, _index6.default)(isoWeek, token.length);
       }, "I"),
       // Day of the month
-      d: /* @__PURE__ */ __name(function d2(date, token, localize) {
+      d: /* @__PURE__ */ __name(function d(date, token, localize) {
         if (token === "do") {
           return localize.ordinalNumber(date.getUTCDate(), {
             unit: "date"
@@ -3787,7 +3787,7 @@ var require_formatters = __commonJS({
         return _index7.default.d(date, token);
       }, "d"),
       // Day of year
-      D: /* @__PURE__ */ __name(function D2(date, token, localize) {
+      D: /* @__PURE__ */ __name(function D(date, token, localize) {
         var dayOfYear = (0, _index.default)(date);
         if (token === "Do") {
           return localize.ordinalNumber(dayOfYear, {
@@ -3797,7 +3797,7 @@ var require_formatters = __commonJS({
         return (0, _index6.default)(dayOfYear, token.length);
       }, "D"),
       // Day of week
-      E: /* @__PURE__ */ __name(function E2(date, token, localize) {
+      E: /* @__PURE__ */ __name(function E(date, token, localize) {
         var dayOfWeek = date.getUTCDay();
         switch (token) {
           case "E":
@@ -3963,7 +3963,7 @@ var require_formatters = __commonJS({
         }
       }, "a"),
       // AM, PM, midnight, noon
-      b: /* @__PURE__ */ __name(function b2(date, token, localize) {
+      b: /* @__PURE__ */ __name(function b(date, token, localize) {
         var hours = date.getUTCHours();
         var dayPeriodEnumValue;
         if (hours === 12) {
@@ -3999,7 +3999,7 @@ var require_formatters = __commonJS({
         }
       }, "b"),
       // in the morning, in the afternoon, in the evening, at night
-      B: /* @__PURE__ */ __name(function B2(date, token, localize) {
+      B: /* @__PURE__ */ __name(function B(date, token, localize) {
         var hours = date.getUTCHours();
         var dayPeriodEnumValue;
         if (hours >= 17) {
@@ -4033,7 +4033,7 @@ var require_formatters = __commonJS({
         }
       }, "B"),
       // Hour [1-12]
-      h: /* @__PURE__ */ __name(function h2(date, token, localize) {
+      h: /* @__PURE__ */ __name(function h(date, token, localize) {
         if (token === "ho") {
           var hours = date.getUTCHours() % 12;
           if (hours === 0)
@@ -4054,7 +4054,7 @@ var require_formatters = __commonJS({
         return _index7.default.H(date, token);
       }, "H"),
       // Hour [0-11]
-      K: /* @__PURE__ */ __name(function K2(date, token, localize) {
+      K: /* @__PURE__ */ __name(function K(date, token, localize) {
         var hours = date.getUTCHours() % 12;
         if (token === "Ko") {
           return localize.ordinalNumber(hours, {
@@ -4064,7 +4064,7 @@ var require_formatters = __commonJS({
         return (0, _index6.default)(hours, token.length);
       }, "K"),
       // Hour [1-24]
-      k: /* @__PURE__ */ __name(function k2(date, token, localize) {
+      k: /* @__PURE__ */ __name(function k(date, token, localize) {
         var hours = date.getUTCHours();
         if (hours === 0)
           hours = 24;
@@ -4076,7 +4076,7 @@ var require_formatters = __commonJS({
         return (0, _index6.default)(hours, token.length);
       }, "k"),
       // Minute
-      m: /* @__PURE__ */ __name(function m2(date, token, localize) {
+      m: /* @__PURE__ */ __name(function m(date, token, localize) {
         if (token === "mo") {
           return localize.ordinalNumber(date.getUTCMinutes(), {
             unit: "minute"
@@ -4133,7 +4133,7 @@ var require_formatters = __commonJS({
         }
       }, "x"),
       // Timezone (GMT)
-      O: /* @__PURE__ */ __name(function O2(date, token, _localize, options) {
+      O: /* @__PURE__ */ __name(function O(date, token, _localize, options) {
         var originalDate = options._originalDate || date;
         var timezoneOffset = originalDate.getTimezoneOffset();
         switch (token) {
@@ -4167,7 +4167,7 @@ var require_formatters = __commonJS({
         return (0, _index6.default)(timestamp, token.length);
       }, "t"),
       // Milliseconds timestamp
-      T: /* @__PURE__ */ __name(function T2(date, token, _localize, options) {
+      T: /* @__PURE__ */ __name(function T(date, token, _localize, options) {
         var originalDate = options._originalDate || date;
         var timestamp = originalDate.getTime();
         return (0, _index6.default)(timestamp, token.length);
@@ -5377,8 +5377,8 @@ var require_formatDuration = __commonJS({
         return "";
       }
       var result = format2.reduce(function(acc, unit) {
-        var token = "x".concat(unit.replace(/(^.)/, function(m2) {
-          return m2.toUpperCase();
+        var token = "x".concat(unit.replace(/(^.)/, function(m) {
+          return m.toUpperCase();
         }));
         var value = duration[unit];
         if (typeof value === "number" && (zero || duration[unit])) {
@@ -6798,10 +6798,10 @@ var require_createForOfIteratorHelper = __commonJS({
           if (it)
             o = it;
           var i = 0;
-          var F2 = /* @__PURE__ */ __name(function F3() {
+          var F = /* @__PURE__ */ __name(function F2() {
           }, "F");
           return {
-            s: F2,
+            s: F,
             n: /* @__PURE__ */ __name(function n() {
               if (i >= o.length)
                 return {
@@ -6815,7 +6815,7 @@ var require_createForOfIteratorHelper = __commonJS({
             e: /* @__PURE__ */ __name(function e(_e) {
               throw _e;
             }, "e"),
-            f: F2
+            f: F
           };
         }
         throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
@@ -10089,15 +10089,15 @@ var require_parse = __commonJS({
       }
       var uniquePrioritySetters = setters.map(function(setter2) {
         return setter2.priority;
-      }).sort(function(a, b2) {
-        return b2 - a;
+      }).sort(function(a, b) {
+        return b - a;
       }).filter(function(priority, index, array) {
         return array.indexOf(priority) === index;
       }).map(function(priority) {
         return setters.filter(function(setter2) {
           return setter2.priority === priority;
-        }).sort(function(a, b2) {
-          return b2.subPriority - a.subPriority;
+        }).sort(function(a, b) {
+          return b.subPriority - a.subPriority;
         });
       }).map(function(setterArray) {
         return setterArray[0];
@@ -15412,7 +15412,7 @@ var require_lodash = __commonJS({
       }
       __name(unicodeWords, "unicodeWords");
       var runInContext = /* @__PURE__ */ __name(function runInContext2(context) {
-        context = context == null ? root : _2.defaults(root.Object(), context, _2.pick(root, contextProps));
+        context = context == null ? root : _.defaults(root.Object(), context, _.pick(root, contextProps));
         var Array2 = context.Array, Date2 = context.Date, Error2 = context.Error, Function2 = context.Function, Math2 = context.Math, Object2 = context.Object, RegExp2 = context.RegExp, String2 = context.String, TypeError2 = context.TypeError;
         var arrayProto = Array2.prototype, funcProto = Function2.prototype, objectProto = Object2.prototype;
         var coreJsData = context["__core-js_shared__"];
@@ -20623,17 +20623,17 @@ var require_lodash = __commonJS({
         }
         return lodash;
       }, "runInContext");
-      var _2 = runInContext();
+      var _ = runInContext();
       if (typeof define == "function" && typeof define.amd == "object" && define.amd) {
-        root._ = _2;
+        root._ = _;
         define(function() {
-          return _2;
+          return _;
         });
       } else if (freeModule) {
-        (freeModule.exports = _2)._ = _2;
-        freeExports._ = _2;
+        (freeModule.exports = _)._ = _;
+        freeExports._ = _;
       } else {
-        root._ = _2;
+        root._ = _;
       }
     }).call(exports2);
   }
@@ -20726,7 +20726,7 @@ var require_mailjet_node = __commonJS({
         e2.exports = i2(1609);
       }, 7970: (e2, a2, i2) => {
         "use strict";
-        var n = i2(4867), o = i2(6026), s = i2(4097), t = i2(5327), r = i2(3685), c = i2(5687), p = i2(938).http, l = i2(938).https, u = i2(7310), d2 = i2(9796), m2 = i2(7288).version, f = i2(7874), x = i2(2648), v2 = i2(644), h2 = /https:?/, b2 = ["http:", "https:", "file:"];
+        var n = i2(4867), o = i2(6026), s = i2(4097), t = i2(5327), r = i2(3685), c = i2(5687), p = i2(938).http, l = i2(938).https, u = i2(7310), d = i2(9796), m = i2(7288).version, f = i2(7874), x = i2(2648), v = i2(644), h = /https:?/, b = ["http:", "https:", "file:"];
         function g(e3, a3, i3) {
           if (e3.hostname = a3.host, e3.host = a3.host, e3.port = a3.port, e3.path = i3, a3.auth) {
             var n2 = Buffer.from(a3.auth.username + ":" + a3.auth.password, "utf8").toString("base64");
@@ -20740,153 +20740,153 @@ var require_mailjet_node = __commonJS({
         e2.exports = function(e3) {
           return new Promise(function(a3, i3) {
             var y;
-            function w2() {
+            function w() {
               e3.cancelToken && e3.cancelToken.unsubscribe(y), e3.signal && e3.signal.removeEventListener("abort", y);
             }
-            __name(w2, "w");
-            var k2 = /* @__PURE__ */ __name(function(e4) {
-              w2(), a3(e4);
-            }, "k"), j = false, _2 = /* @__PURE__ */ __name(function(e4) {
-              w2(), j = true, i3(e4);
-            }, "_"), C2 = e3.data, E2 = e3.headers, S = {};
-            if (Object.keys(E2).forEach(function(e4) {
+            __name(w, "w");
+            var k = /* @__PURE__ */ __name(function(e4) {
+              w(), a3(e4);
+            }, "k"), j = false, _ = /* @__PURE__ */ __name(function(e4) {
+              w(), j = true, i3(e4);
+            }, "_"), C = e3.data, E = e3.headers, S = {};
+            if (Object.keys(E).forEach(function(e4) {
               S[e4.toLowerCase()] = e4;
-            }), "user-agent" in S ? E2[S["user-agent"]] || delete E2[S["user-agent"]] : E2["User-Agent"] = "axios/" + m2, n.isFormData(C2) && n.isFunction(C2.getHeaders))
-              Object.assign(E2, C2.getHeaders());
-            else if (C2 && !n.isStream(C2)) {
-              if (Buffer.isBuffer(C2))
+            }), "user-agent" in S ? E[S["user-agent"]] || delete E[S["user-agent"]] : E["User-Agent"] = "axios/" + m, n.isFormData(C) && n.isFunction(C.getHeaders))
+              Object.assign(E, C.getHeaders());
+            else if (C && !n.isStream(C)) {
+              if (Buffer.isBuffer(C))
                 ;
-              else if (n.isArrayBuffer(C2))
-                C2 = Buffer.from(new Uint8Array(C2));
+              else if (n.isArrayBuffer(C))
+                C = Buffer.from(new Uint8Array(C));
               else {
-                if (!n.isString(C2))
-                  return _2(new x("Data after transformation must be a string, an ArrayBuffer, a Buffer, or a Stream", x.ERR_BAD_REQUEST, e3));
-                C2 = Buffer.from(C2, "utf-8");
+                if (!n.isString(C))
+                  return _(new x("Data after transformation must be a string, an ArrayBuffer, a Buffer, or a Stream", x.ERR_BAD_REQUEST, e3));
+                C = Buffer.from(C, "utf-8");
               }
-              if (e3.maxBodyLength > -1 && C2.length > e3.maxBodyLength)
-                return _2(new x("Request body larger than maxBodyLength limit", x.ERR_BAD_REQUEST, e3));
-              S["content-length"] || (E2["Content-Length"] = C2.length);
+              if (e3.maxBodyLength > -1 && C.length > e3.maxBodyLength)
+                return _(new x("Request body larger than maxBodyLength limit", x.ERR_BAD_REQUEST, e3));
+              S["content-length"] || (E["Content-Length"] = C.length);
             }
-            var O2 = void 0;
-            e3.auth && (O2 = (e3.auth.username || "") + ":" + (e3.auth.password || ""));
-            var A = s(e3.baseURL, e3.url), T2 = u.parse(A), R2 = T2.protocol || b2[0];
-            if (-1 === b2.indexOf(R2))
-              return _2(new x("Unsupported protocol " + R2, x.ERR_BAD_REQUEST, e3));
-            if (!O2 && T2.auth) {
-              var P = T2.auth.split(":");
-              O2 = (P[0] || "") + ":" + (P[1] || "");
+            var O = void 0;
+            e3.auth && (O = (e3.auth.username || "") + ":" + (e3.auth.password || ""));
+            var A = s(e3.baseURL, e3.url), T = u.parse(A), R = T.protocol || b[0];
+            if (-1 === b.indexOf(R))
+              return _(new x("Unsupported protocol " + R, x.ERR_BAD_REQUEST, e3));
+            if (!O && T.auth) {
+              var P = T.auth.split(":");
+              O = (P[0] || "") + ":" + (P[1] || "");
             }
-            O2 && S.authorization && delete E2[S.authorization];
-            var B2 = h2.test(R2), N2 = B2 ? e3.httpsAgent : e3.httpAgent;
+            O && S.authorization && delete E[S.authorization];
+            var B = h.test(R), N = B ? e3.httpsAgent : e3.httpAgent;
             try {
-              t(T2.path, e3.params, e3.paramsSerializer).replace(/^\?/, "");
+              t(T.path, e3.params, e3.paramsSerializer).replace(/^\?/, "");
             } catch (a4) {
               var z = new Error(a4.message);
-              z.config = e3, z.url = e3.url, z.exists = true, _2(z);
+              z.config = e3, z.url = e3.url, z.exists = true, _(z);
             }
-            var L2 = { path: t(T2.path, e3.params, e3.paramsSerializer).replace(/^\?/, ""), method: e3.method.toUpperCase(), headers: E2, agent: N2, agents: { http: e3.httpAgent, https: e3.httpsAgent }, auth: O2 };
-            e3.socketPath ? L2.socketPath = e3.socketPath : (L2.hostname = T2.hostname, L2.port = T2.port);
-            var D2, F2 = e3.proxy;
-            if (!F2 && false !== F2) {
-              var q = R2.slice(0, -1) + "_proxy", M = process.env[q] || process.env[q.toUpperCase()];
+            var L = { path: t(T.path, e3.params, e3.paramsSerializer).replace(/^\?/, ""), method: e3.method.toUpperCase(), headers: E, agent: N, agents: { http: e3.httpAgent, https: e3.httpsAgent }, auth: O };
+            e3.socketPath ? L.socketPath = e3.socketPath : (L.hostname = T.hostname, L.port = T.port);
+            var D, F = e3.proxy;
+            if (!F && false !== F) {
+              var q = R.slice(0, -1) + "_proxy", M = process.env[q] || process.env[q.toUpperCase()];
               if (M) {
-                var U2 = u.parse(M), I = process.env.no_proxy || process.env.NO_PROXY, H = true;
+                var U = u.parse(M), I = process.env.no_proxy || process.env.NO_PROXY, H = true;
                 if (I && (H = !I.split(",").map(function(e4) {
                   return e4.trim();
                 }).some(function(e4) {
-                  return !!e4 && ("*" === e4 || "." === e4[0] && T2.hostname.substr(T2.hostname.length - e4.length) === e4 || T2.hostname === e4);
-                })), H && (F2 = { host: U2.hostname, port: U2.port, protocol: U2.protocol }, U2.auth)) {
-                  var V2 = U2.auth.split(":");
-                  F2.auth = { username: V2[0], password: V2[1] };
+                  return !!e4 && ("*" === e4 || "." === e4[0] && T.hostname.substr(T.hostname.length - e4.length) === e4 || T.hostname === e4);
+                })), H && (F = { host: U.hostname, port: U.port, protocol: U.protocol }, U.auth)) {
+                  var V = U.auth.split(":");
+                  F.auth = { username: V[0], password: V[1] };
                 }
               }
             }
-            F2 && (L2.headers.host = T2.hostname + (T2.port ? ":" + T2.port : ""), g(L2, F2, R2 + "//" + T2.hostname + (T2.port ? ":" + T2.port : "") + L2.path));
-            var K2 = B2 && (!F2 || h2.test(F2.protocol));
-            e3.transport ? D2 = e3.transport : 0 === e3.maxRedirects ? D2 = K2 ? c : r : (e3.maxRedirects && (L2.maxRedirects = e3.maxRedirects), e3.beforeRedirect && (L2.beforeRedirect = e3.beforeRedirect), D2 = K2 ? l : p), e3.maxBodyLength > -1 && (L2.maxBodyLength = e3.maxBodyLength), e3.insecureHTTPParser && (L2.insecureHTTPParser = e3.insecureHTTPParser);
-            var G2 = D2.request(L2, function(a4) {
-              if (!G2.aborted) {
-                var i4 = a4, s2 = a4.req || G2;
+            F && (L.headers.host = T.hostname + (T.port ? ":" + T.port : ""), g(L, F, R + "//" + T.hostname + (T.port ? ":" + T.port : "") + L.path));
+            var K = B && (!F || h.test(F.protocol));
+            e3.transport ? D = e3.transport : 0 === e3.maxRedirects ? D = K ? c : r : (e3.maxRedirects && (L.maxRedirects = e3.maxRedirects), e3.beforeRedirect && (L.beforeRedirect = e3.beforeRedirect), D = K ? l : p), e3.maxBodyLength > -1 && (L.maxBodyLength = e3.maxBodyLength), e3.insecureHTTPParser && (L.insecureHTTPParser = e3.insecureHTTPParser);
+            var G = D.request(L, function(a4) {
+              if (!G.aborted) {
+                var i4 = a4, s2 = a4.req || G;
                 if (204 !== a4.statusCode && "HEAD" !== s2.method && false !== e3.decompress)
                   switch (a4.headers["content-encoding"]) {
                     case "gzip":
                     case "compress":
                     case "deflate":
-                      i4 = i4.pipe(d2.createUnzip()), delete a4.headers["content-encoding"];
+                      i4 = i4.pipe(d.createUnzip()), delete a4.headers["content-encoding"];
                   }
                 var t2 = { status: a4.statusCode, statusText: a4.statusMessage, headers: a4.headers, config: e3, request: s2 };
                 if ("stream" === e3.responseType)
-                  t2.data = i4, o(k2, _2, t2);
+                  t2.data = i4, o(k, _, t2);
                 else {
                   var r2 = [], c2 = 0;
                   i4.on("data", function(a5) {
-                    r2.push(a5), c2 += a5.length, e3.maxContentLength > -1 && c2 > e3.maxContentLength && (j = true, i4.destroy(), _2(new x("maxContentLength size of " + e3.maxContentLength + " exceeded", x.ERR_BAD_RESPONSE, e3, s2)));
+                    r2.push(a5), c2 += a5.length, e3.maxContentLength > -1 && c2 > e3.maxContentLength && (j = true, i4.destroy(), _(new x("maxContentLength size of " + e3.maxContentLength + " exceeded", x.ERR_BAD_RESPONSE, e3, s2)));
                   }), i4.on("aborted", function() {
-                    j || (i4.destroy(), _2(new x("maxContentLength size of " + e3.maxContentLength + " exceeded", x.ERR_BAD_RESPONSE, e3, s2)));
+                    j || (i4.destroy(), _(new x("maxContentLength size of " + e3.maxContentLength + " exceeded", x.ERR_BAD_RESPONSE, e3, s2)));
                   }), i4.on("error", function(a5) {
-                    G2.aborted || _2(x.from(a5, null, e3, s2));
+                    G.aborted || _(x.from(a5, null, e3, s2));
                   }), i4.on("end", function() {
                     try {
                       var a5 = 1 === r2.length ? r2[0] : Buffer.concat(r2);
                       "arraybuffer" !== e3.responseType && (a5 = a5.toString(e3.responseEncoding), e3.responseEncoding && "utf8" !== e3.responseEncoding || (a5 = n.stripBOM(a5))), t2.data = a5;
                     } catch (a6) {
-                      _2(x.from(a6, null, e3, t2.request, t2));
+                      _(x.from(a6, null, e3, t2.request, t2));
                     }
-                    o(k2, _2, t2);
+                    o(k, _, t2);
                   });
                 }
               }
             });
-            if (G2.on("error", function(a4) {
-              _2(x.from(a4, null, e3, G2));
-            }), G2.on("socket", function(e4) {
+            if (G.on("error", function(a4) {
+              _(x.from(a4, null, e3, G));
+            }), G.on("socket", function(e4) {
               e4.setKeepAlive(true, 6e4);
             }), e3.timeout) {
-              var $2 = parseInt(e3.timeout, 10);
-              if (isNaN($2))
-                return void _2(new x("error trying to parse `config.timeout` to int", x.ERR_BAD_OPTION_VALUE, e3, G2));
-              G2.setTimeout($2, function() {
-                G2.abort();
+              var $ = parseInt(e3.timeout, 10);
+              if (isNaN($))
+                return void _(new x("error trying to parse `config.timeout` to int", x.ERR_BAD_OPTION_VALUE, e3, G));
+              G.setTimeout($, function() {
+                G.abort();
                 var a4 = e3.transitional || f;
-                _2(new x("timeout of " + $2 + "ms exceeded", a4.clarifyTimeoutError ? x.ETIMEDOUT : x.ECONNABORTED, e3, G2));
+                _(new x("timeout of " + $ + "ms exceeded", a4.clarifyTimeoutError ? x.ETIMEDOUT : x.ECONNABORTED, e3, G));
               });
             }
             (e3.cancelToken || e3.signal) && (y = /* @__PURE__ */ __name(function(e4) {
-              G2.aborted || (G2.abort(), _2(!e4 || e4 && e4.type ? new v2() : e4));
-            }, "y"), e3.cancelToken && e3.cancelToken.subscribe(y), e3.signal && (e3.signal.aborted ? y() : e3.signal.addEventListener("abort", y))), n.isStream(C2) ? C2.on("error", function(a4) {
-              _2(x.from(a4, e3, null, G2));
-            }).pipe(G2) : G2.end(C2);
+              G.aborted || (G.abort(), _(!e4 || e4 && e4.type ? new v() : e4));
+            }, "y"), e3.cancelToken && e3.cancelToken.subscribe(y), e3.signal && (e3.signal.aborted ? y() : e3.signal.addEventListener("abort", y))), n.isStream(C) ? C.on("error", function(a4) {
+              _(x.from(a4, e3, null, G));
+            }).pipe(G) : G.end(C);
           });
         };
       }, 5448: (e2, a2, i2) => {
         "use strict";
-        var n = i2(4867), o = i2(6026), s = i2(4372), t = i2(5327), r = i2(4097), c = i2(4109), p = i2(7985), l = i2(7874), u = i2(2648), d2 = i2(644), m2 = i2(205);
+        var n = i2(4867), o = i2(6026), s = i2(4372), t = i2(5327), r = i2(4097), c = i2(4109), p = i2(7985), l = i2(7874), u = i2(2648), d = i2(644), m = i2(205);
         e2.exports = function(e3) {
           return new Promise(function(a3, i3) {
-            var f, x = e3.data, v2 = e3.headers, h2 = e3.responseType;
-            function b2() {
+            var f, x = e3.data, v = e3.headers, h = e3.responseType;
+            function b() {
               e3.cancelToken && e3.cancelToken.unsubscribe(f), e3.signal && e3.signal.removeEventListener("abort", f);
             }
-            __name(b2, "b");
-            n.isFormData(x) && n.isStandardBrowserEnv() && delete v2["Content-Type"];
+            __name(b, "b");
+            n.isFormData(x) && n.isStandardBrowserEnv() && delete v["Content-Type"];
             var g = new XMLHttpRequest();
             if (e3.auth) {
-              var y = e3.auth.username || "", w2 = e3.auth.password ? unescape(encodeURIComponent(e3.auth.password)) : "";
-              v2.Authorization = "Basic " + btoa(y + ":" + w2);
+              var y = e3.auth.username || "", w = e3.auth.password ? unescape(encodeURIComponent(e3.auth.password)) : "";
+              v.Authorization = "Basic " + btoa(y + ":" + w);
             }
-            var k2 = r(e3.baseURL, e3.url);
+            var k = r(e3.baseURL, e3.url);
             function j() {
               if (g) {
-                var n2 = "getAllResponseHeaders" in g ? c(g.getAllResponseHeaders()) : null, s2 = { data: h2 && "text" !== h2 && "json" !== h2 ? g.response : g.responseText, status: g.status, statusText: g.statusText, headers: n2, config: e3, request: g };
+                var n2 = "getAllResponseHeaders" in g ? c(g.getAllResponseHeaders()) : null, s2 = { data: h && "text" !== h && "json" !== h ? g.response : g.responseText, status: g.status, statusText: g.statusText, headers: n2, config: e3, request: g };
                 o(function(e4) {
-                  a3(e4), b2();
+                  a3(e4), b();
                 }, function(e4) {
-                  i3(e4), b2();
+                  i3(e4), b();
                 }, s2), g = null;
               }
             }
             __name(j, "j");
-            if (g.open(e3.method.toUpperCase(), t(k2, e3.params, e3.paramsSerializer), true), g.timeout = e3.timeout, "onloadend" in g ? g.onloadend = j : g.onreadystatechange = function() {
+            if (g.open(e3.method.toUpperCase(), t(k, e3.params, e3.paramsSerializer), true), g.timeout = e3.timeout, "onloadend" in g ? g.onloadend = j : g.onreadystatechange = function() {
               g && 4 === g.readyState && (0 !== g.status || g.responseURL && 0 === g.responseURL.indexOf("file:")) && setTimeout(j);
             }, g.onabort = function() {
               g && (i3(new u("Request aborted", u.ECONNABORTED, e3, g)), g = null);
@@ -20896,16 +20896,16 @@ var require_mailjet_node = __commonJS({
               var a4 = e3.timeout ? "timeout of " + e3.timeout + "ms exceeded" : "timeout exceeded", n2 = e3.transitional || l;
               e3.timeoutErrorMessage && (a4 = e3.timeoutErrorMessage), i3(new u(a4, n2.clarifyTimeoutError ? u.ETIMEDOUT : u.ECONNABORTED, e3, g)), g = null;
             }, n.isStandardBrowserEnv()) {
-              var _2 = (e3.withCredentials || p(k2)) && e3.xsrfCookieName ? s.read(e3.xsrfCookieName) : void 0;
-              _2 && (v2[e3.xsrfHeaderName] = _2);
+              var _ = (e3.withCredentials || p(k)) && e3.xsrfCookieName ? s.read(e3.xsrfCookieName) : void 0;
+              _ && (v[e3.xsrfHeaderName] = _);
             }
-            "setRequestHeader" in g && n.forEach(v2, function(e4, a4) {
-              void 0 === x && "content-type" === a4.toLowerCase() ? delete v2[a4] : g.setRequestHeader(a4, e4);
-            }), n.isUndefined(e3.withCredentials) || (g.withCredentials = !!e3.withCredentials), h2 && "json" !== h2 && (g.responseType = e3.responseType), "function" == typeof e3.onDownloadProgress && g.addEventListener("progress", e3.onDownloadProgress), "function" == typeof e3.onUploadProgress && g.upload && g.upload.addEventListener("progress", e3.onUploadProgress), (e3.cancelToken || e3.signal) && (f = /* @__PURE__ */ __name(function(e4) {
-              g && (i3(!e4 || e4 && e4.type ? new d2() : e4), g.abort(), g = null);
+            "setRequestHeader" in g && n.forEach(v, function(e4, a4) {
+              void 0 === x && "content-type" === a4.toLowerCase() ? delete v[a4] : g.setRequestHeader(a4, e4);
+            }), n.isUndefined(e3.withCredentials) || (g.withCredentials = !!e3.withCredentials), h && "json" !== h && (g.responseType = e3.responseType), "function" == typeof e3.onDownloadProgress && g.addEventListener("progress", e3.onDownloadProgress), "function" == typeof e3.onUploadProgress && g.upload && g.upload.addEventListener("progress", e3.onUploadProgress), (e3.cancelToken || e3.signal) && (f = /* @__PURE__ */ __name(function(e4) {
+              g && (i3(!e4 || e4 && e4.type ? new d() : e4), g.abort(), g = null);
             }, "f"), e3.cancelToken && e3.cancelToken.subscribe(f), e3.signal && (e3.signal.aborted ? f() : e3.signal.addEventListener("abort", f))), x || (x = null);
-            var C2 = m2(k2);
-            C2 && -1 === ["http", "https", "file"].indexOf(C2) ? i3(new u("Unsupported protocol " + C2 + ":", u.ERR_BAD_REQUEST, e3)) : g.send(x);
+            var C = m(k);
+            C && -1 === ["http", "https", "file"].indexOf(C) ? i3(new u("Unsupported protocol " + C + ":", u.ERR_BAD_REQUEST, e3)) : g.send(x);
           });
         };
       }, 1609: (e2, a2, i2) => {
@@ -21002,17 +21002,17 @@ var require_mailjet_node = __commonJS({
               s2 = s2.then(u2.shift(), u2.shift());
             return s2;
           }
-          for (var d2 = a3; n2.length; ) {
-            var m2 = n2.shift(), f = n2.shift();
+          for (var d = a3; n2.length; ) {
+            var m = n2.shift(), f = n2.shift();
             try {
-              d2 = m2(d2);
+              d = m(d);
             } catch (e4) {
               f(e4);
               break;
             }
           }
           try {
-            s2 = t(d2);
+            s2 = t(d);
           } catch (e4) {
             return Promise.reject(e4);
           }
@@ -21410,19 +21410,19 @@ var require_mailjet_node = __commonJS({
           return null !== e3 && "object" == typeof e3;
         }
         __name(u, "u");
-        function d2(e3) {
+        function d(e3) {
           if ("object" !== t(e3))
             return false;
           var a3 = Object.getPrototypeOf(e3);
           return null === a3 || a3 === Object.prototype;
         }
-        __name(d2, "d");
-        var m2 = r("Date"), f = r("File"), x = r("Blob"), v2 = r("FileList");
-        function h2(e3) {
+        __name(d, "d");
+        var m = r("Date"), f = r("File"), x = r("Blob"), v = r("FileList");
+        function h(e3) {
           return "[object Function]" === s.call(e3);
         }
-        __name(h2, "h");
-        var b2 = r("URLSearchParams");
+        __name(h, "h");
+        var b = r("URLSearchParams");
         function g(e3, a3) {
           if (null != e3)
             if ("object" != typeof e3 && (e3 = [e3]), c(e3))
@@ -21433,28 +21433,28 @@ var require_mailjet_node = __commonJS({
                 Object.prototype.hasOwnProperty.call(e3, o2) && a3.call(null, e3[o2], o2, e3);
         }
         __name(g, "g");
-        var y, w2 = (y = "undefined" != typeof Uint8Array && Object.getPrototypeOf(Uint8Array), function(e3) {
+        var y, w = (y = "undefined" != typeof Uint8Array && Object.getPrototypeOf(Uint8Array), function(e3) {
           return y && e3 instanceof y;
         });
         e2.exports = { isArray: c, isArrayBuffer: l, isBuffer: function(e3) {
           return null !== e3 && !p(e3) && null !== e3.constructor && !p(e3.constructor) && "function" == typeof e3.constructor.isBuffer && e3.constructor.isBuffer(e3);
         }, isFormData: function(e3) {
           var a3 = "[object FormData]";
-          return e3 && ("function" == typeof FormData && e3 instanceof FormData || s.call(e3) === a3 || h2(e3.toString) && e3.toString() === a3);
+          return e3 && ("function" == typeof FormData && e3 instanceof FormData || s.call(e3) === a3 || h(e3.toString) && e3.toString() === a3);
         }, isArrayBufferView: function(e3) {
           return "undefined" != typeof ArrayBuffer && ArrayBuffer.isView ? ArrayBuffer.isView(e3) : e3 && e3.buffer && l(e3.buffer);
         }, isString: function(e3) {
           return "string" == typeof e3;
         }, isNumber: function(e3) {
           return "number" == typeof e3;
-        }, isObject: u, isPlainObject: d2, isUndefined: p, isDate: m2, isFile: f, isBlob: x, isFunction: h2, isStream: function(e3) {
-          return u(e3) && h2(e3.pipe);
-        }, isURLSearchParams: b2, isStandardBrowserEnv: function() {
+        }, isObject: u, isPlainObject: d, isUndefined: p, isDate: m, isFile: f, isBlob: x, isFunction: h, isStream: function(e3) {
+          return u(e3) && h(e3.pipe);
+        }, isURLSearchParams: b, isStandardBrowserEnv: function() {
           return ("undefined" == typeof navigator || "ReactNative" !== navigator.product && "NativeScript" !== navigator.product && "NS" !== navigator.product) && "undefined" != typeof window && "undefined" != typeof document;
         }, forEach: g, merge: /* @__PURE__ */ __name(function e3() {
           var a3 = {};
           function i3(i4, n3) {
-            d2(a3[n3]) && d2(i4) ? a3[n3] = e3(a3[n3], i4) : d2(i4) ? a3[n3] = e3({}, i4) : c(i4) ? a3[n3] = i4.slice() : a3[n3] = i4;
+            d(a3[n3]) && d(i4) ? a3[n3] = e3(a3[n3], i4) : d(i4) ? a3[n3] = e3({}, i4) : c(i4) ? a3[n3] = i4.slice() : a3[n3] = i4;
           }
           __name(i3, "i");
           for (var n2 = 0, o2 = arguments.length; n2 < o2; n2++)
@@ -21492,7 +21492,7 @@ var require_mailjet_node = __commonJS({
           for (var i3 = new Array(a3); a3-- > 0; )
             i3[a3] = e3[a3];
           return i3;
-        }, isTypedArray: w2, isFileList: v2 };
+        }, isTypedArray: w, isFileList: v };
       }, 1076: function(e2, a2, i2) {
         "use strict";
         function n(e3) {
@@ -21761,9 +21761,9 @@ var require_mailjet_node = __commonJS({
           return e3 && e3.__esModule ? e3 : { default: e3 };
         };
         Object.defineProperty(a2, "__esModule", { value: true });
-        var u = l(i2(4078)), d2 = l(i2(4400)), m2 = r(i2(9669)), f = i2(9006), x = l(i2(9874)), v2 = l(i2(1076)), h2 = (0, d2.default)({ storeAsString: true }), b2 = function() {
+        var u = l(i2(4078)), d = l(i2(4400)), m = r(i2(9669)), f = i2(9006), x = l(i2(9874)), v = l(i2(1076)), h = (0, d.default)({ storeAsString: true }), b = function() {
           function e3(e4, a3, i3, n2) {
-            if (!(e4 instanceof v2.default))
+            if (!(e4 instanceof v.default))
               throw new Error('Argument "client" must be instance of Client');
             if (!Object.values(x.default).includes(a3))
               throw new Error('Argument "method" must be one of supported methods: get, post, put, delete');
@@ -21803,7 +21803,7 @@ var require_mailjet_node = __commonJS({
             var c2 = this.client.getConfig(), p2 = this.client.getOptions();
             p2.timeout && (t2.timeout = p2.timeout), p2.proxy && (t2.proxy = p2.proxy), p2.headers && Object.keys(p2.headers).length > 0 && (t2.headers = o(o({}, t2.headers), p2.headers));
             var l2 = null !== (s2 = this.config.output) && void 0 !== s2 ? s2 : c2.output;
-            return l2 && (t2.responseType = l2), p2.maxBodyLength && (t2.maxBodyLength = p2.maxBodyLength), p2.maxContentLength && (t2.maxContentLength = p2.maxContentLength), (0, m2.default)(t2);
+            return l2 && (t2.responseType = l2), p2.maxBodyLength && (t2.maxBodyLength = p2.maxBodyLength), p2.maxContentLength && (t2.maxContentLength = p2.maxContentLength), (0, m.default)(t2);
           }, e3.prototype.setBaseURL = function(e4) {
             return this.url = e4.toLowerCase(), this;
           }, e3.prototype.id = function(e4) {
@@ -21824,20 +21824,20 @@ var require_mailjet_node = __commonJS({
           }, e3.prototype.request = function(e4, a3, i3) {
             var n2, o2, s2, t2, r2;
             return void 0 === e4 && (e4 = {}), void 0 === a3 && (a3 = {}), void 0 === i3 && (i3 = true), c(this, void 0, void 0, function() {
-              var c2, l2, u2, d3, x2, v3, h3, b3, g, y;
+              var c2, l2, u2, d2, x2, v2, h2, b2, g, y;
               return p(this, function(p2) {
                 switch (p2.label) {
                   case 0:
                     if (c2 = this.buildFullUrl(), this.setBaseURL(this.resource), !i3)
-                      return [2, { body: b3 = this.getRequestBody(e4), params: a3, url: c2 }];
+                      return [2, { body: b2 = this.getRequestBody(e4), params: a3, url: c2 }];
                     p2.label = 1;
                   case 1:
                     return p2.trys.push([1, 3, , 4]), [4, this.makeRequest(c2, e4, a3)];
                   case 2:
                     return [2, { response: l2 = p2.sent(), body: l2.data }];
                   case 3:
-                    if ((u2 = p2.sent()) instanceof m2.AxiosError)
-                      throw (d3 = new Error()).code = u2.code, d3.config = u2.config, u2.response ? (x2 = u2.response, v3 = x2.status, h3 = x2.statusText, b3 = x2.data, d3.response = u2.response, d3.statusCode = v3, d3.statusText = h3, g = null !== (n2 = null == b3 ? void 0 : b3.ErrorMessage) && void 0 !== n2 ? n2 : u2.message, d3.originalMessage = g, d3.message = 'Unsuccessful: Status Code: "'.concat(d3.statusCode, '" Message: "').concat(g, '"'), b3 && ("string" == typeof (y = null === (r2 = null === (t2 = null === (s2 = null === (o2 = b3.Messages) || void 0 === o2 ? void 0 : o2[0]) || void 0 === s2 ? void 0 : s2.Errors) || void 0 === t2 ? void 0 : t2[0]) || void 0 === r2 ? void 0 : r2.ErrorMessage) && (d3.message += ";\n".concat(y)), (0, f.setValueIfNotNil)(d3, "ErrorMessage", b3.ErrorMessage), (0, f.setValueIfNotNil)(d3, "ErrorCode", b3.ErrorCode), (0, f.setValueIfNotNil)(d3, "ErrorIdentifier", b3.ErrorIdentifier), (0, f.setValueIfNotNil)(d3, "ErrorRelatedTo", b3.ErrorRelatedTo))) : (d3.response = null, d3.statusCode = null, d3.statusText = null, d3.originalMessage = u2.message, d3.message = 'Unsuccessful: Error Code: "'.concat(d3.code, '" Message: "').concat(u2.message, '"')), d3;
+                    if ((u2 = p2.sent()) instanceof m.AxiosError)
+                      throw (d2 = new Error()).code = u2.code, d2.config = u2.config, u2.response ? (x2 = u2.response, v2 = x2.status, h2 = x2.statusText, b2 = x2.data, d2.response = u2.response, d2.statusCode = v2, d2.statusText = h2, g = null !== (n2 = null == b2 ? void 0 : b2.ErrorMessage) && void 0 !== n2 ? n2 : u2.message, d2.originalMessage = g, d2.message = 'Unsuccessful: Status Code: "'.concat(d2.statusCode, '" Message: "').concat(g, '"'), b2 && ("string" == typeof (y = null === (r2 = null === (t2 = null === (s2 = null === (o2 = b2.Messages) || void 0 === o2 ? void 0 : o2[0]) || void 0 === s2 ? void 0 : s2.Errors) || void 0 === t2 ? void 0 : t2[0]) || void 0 === r2 ? void 0 : r2.ErrorMessage) && (d2.message += ";\n".concat(y)), (0, f.setValueIfNotNil)(d2, "ErrorMessage", b2.ErrorMessage), (0, f.setValueIfNotNil)(d2, "ErrorCode", b2.ErrorCode), (0, f.setValueIfNotNil)(d2, "ErrorIdentifier", b2.ErrorIdentifier), (0, f.setValueIfNotNil)(d2, "ErrorRelatedTo", b2.ErrorRelatedTo))) : (d2.response = null, d2.statusCode = null, d2.statusText = null, d2.originalMessage = u2.message, d2.message = 'Unsuccessful: Error Code: "'.concat(d2.code, '" Message: "').concat(u2.message, '"')), d2;
                     throw u2;
                   case 4:
                     return [2];
@@ -21849,7 +21849,7 @@ var require_mailjet_node = __commonJS({
               throw new Error('Argument "text" must be string');
             var a3;
             try {
-              a3 = h2.parse(e4);
+              a3 = h.parse(e4);
             } catch (e5) {
               a3 = {};
             }
@@ -21858,7 +21858,7 @@ var require_mailjet_node = __commonJS({
             return "object" === ("undefined" == typeof window ? "undefined" : n(window));
           }, e3.protocol = "https://", e3;
         }();
-        a2.default = b2;
+        a2.default = b;
       }, 5917: (e2, a2) => {
         "use strict";
         Object.defineProperty(a2, "__esModule", { value: true }), a2.SentCampaign = a2.DraftCampaign = void 0, function(e3) {
@@ -22051,15 +22051,15 @@ var require_mailjet_node = __commonJS({
         Object.defineProperty(a2, "Webhook", { enumerable: true, get: function() {
           return u.Webhook;
         } });
-        var d2 = i2(2256);
+        var d = i2(2256);
         Object.defineProperty(a2, "Sender", { enumerable: true, get: function() {
-          return d2.Sender;
+          return d.Sender;
         } }), Object.defineProperty(a2, "DNS", { enumerable: true, get: function() {
-          return d2.DNS;
+          return d.DNS;
         } });
-        var m2 = i2(5295);
+        var m = i2(5295);
         Object.defineProperty(a2, "APIKeyConfiguration", { enumerable: true, get: function() {
-          return m2.APIKeyConfiguration;
+          return m.APIKeyConfiguration;
         } });
       }, 9006: function(e2, a2, i2) {
         "use strict";
@@ -22136,15 +22136,15 @@ var require_mailjet_node = __commonJS({
         var n;
         !function(o) {
           "use strict";
-          var s, t = /^-?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i, r = Math.ceil, c = Math.floor, p = "[BigNumber Error] ", l = p + "Number primitive has more than 15 significant digits: ", u = 1e14, d2 = 14, m2 = 9007199254740991, f = [1, 10, 100, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11, 1e12, 1e13], x = 1e7, v2 = 1e9;
-          function h2(e3) {
+          var s, t = /^-?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i, r = Math.ceil, c = Math.floor, p = "[BigNumber Error] ", l = p + "Number primitive has more than 15 significant digits: ", u = 1e14, d = 14, m = 9007199254740991, f = [1, 10, 100, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11, 1e12, 1e13], x = 1e7, v = 1e9;
+          function h(e3) {
             var a3 = 0 | e3;
             return e3 > 0 || e3 === a3 ? a3 : a3 - 1;
           }
-          __name(h2, "h");
-          function b2(e3) {
+          __name(h, "h");
+          function b(e3) {
             for (var a3, i3, n2 = 1, o2 = e3.length, s2 = e3[0] + ""; n2 < o2; ) {
-              for (a3 = e3[n2++] + "", i3 = d2 - a3.length; i3--; a3 = "0" + a3)
+              for (a3 = e3[n2++] + "", i3 = d - a3.length; i3--; a3 = "0" + a3)
                 ;
               s2 += a3;
             }
@@ -22152,7 +22152,7 @@ var require_mailjet_node = __commonJS({
               ;
             return s2.slice(0, o2 + 1 || 1);
           }
-          __name(b2, "b");
+          __name(b, "b");
           function g(e3, a3) {
             var i3, n2, o2 = e3.c, s2 = a3.c, t2 = e3.s, r2 = a3.s, c2 = e3.e, p2 = a3.e;
             if (!t2 || !r2)
@@ -22176,15 +22176,15 @@ var require_mailjet_node = __commonJS({
               throw Error(p + (n2 || "Argument") + ("number" == typeof e3 ? e3 < a3 || e3 > i3 ? " out of range: " : " not an integer: " : " not a primitive number: ") + String(e3));
           }
           __name(y, "y");
-          function w2(e3) {
+          function w(e3) {
             var a3 = e3.c.length - 1;
-            return h2(e3.e / d2) == a3 && e3.c[a3] % 2 != 0;
+            return h(e3.e / d) == a3 && e3.c[a3] % 2 != 0;
           }
-          __name(w2, "w");
-          function k2(e3, a3) {
+          __name(w, "w");
+          function k(e3, a3) {
             return (e3.length > 1 ? e3.charAt(0) + "." + e3.slice(1) : e3) + (a3 < 0 ? "e" : "e+") + a3;
           }
-          __name(k2, "k");
+          __name(k, "k");
           function j(e3, a3, i3) {
             var n2, o2;
             if (a3 < 0) {
@@ -22201,88 +22201,88 @@ var require_mailjet_node = __commonJS({
           }
           __name(j, "j");
           s = (/* @__PURE__ */ __name(function e3(a3) {
-            var i3, n2, o2, s2, _2, C2, E2, S, O2, A, T2 = H.prototype = { constructor: H, toString: null, valueOf: null }, R2 = new H(1), P = 20, B2 = 4, N2 = -7, z = 21, L2 = -1e7, D2 = 1e7, F2 = false, q = 1, M = 0, U2 = { prefix: "", groupSize: 3, secondaryGroupSize: 0, groupSeparator: ",", decimalSeparator: ".", fractionGroupSize: 0, fractionGroupSeparator: "\xA0", suffix: "" }, I = "0123456789abcdefghijklmnopqrstuvwxyz";
+            var i3, n2, o2, s2, _, C, E, S, O, A, T = H.prototype = { constructor: H, toString: null, valueOf: null }, R = new H(1), P = 20, B = 4, N = -7, z = 21, L = -1e7, D = 1e7, F = false, q = 1, M = 0, U = { prefix: "", groupSize: 3, secondaryGroupSize: 0, groupSeparator: ",", decimalSeparator: ".", fractionGroupSize: 0, fractionGroupSeparator: "\xA0", suffix: "" }, I = "0123456789abcdefghijklmnopqrstuvwxyz";
             function H(e4, a4) {
-              var i4, s3, r2, p2, u2, f2, x2, v3, h3 = this;
-              if (!(h3 instanceof H))
+              var i4, s3, r2, p2, u2, f2, x2, v2, h2 = this;
+              if (!(h2 instanceof H))
                 return new H(e4, a4);
               if (null == a4) {
                 if (e4 && true === e4._isBigNumber)
-                  return h3.s = e4.s, void (!e4.c || e4.e > D2 ? h3.c = h3.e = null : e4.e < L2 ? h3.c = [h3.e = 0] : (h3.e = e4.e, h3.c = e4.c.slice()));
+                  return h2.s = e4.s, void (!e4.c || e4.e > D ? h2.c = h2.e = null : e4.e < L ? h2.c = [h2.e = 0] : (h2.e = e4.e, h2.c = e4.c.slice()));
                 if ((f2 = "number" == typeof e4) && 0 * e4 == 0) {
-                  if (h3.s = 1 / e4 < 0 ? (e4 = -e4, -1) : 1, e4 === ~~e4) {
+                  if (h2.s = 1 / e4 < 0 ? (e4 = -e4, -1) : 1, e4 === ~~e4) {
                     for (p2 = 0, u2 = e4; u2 >= 10; u2 /= 10, p2++)
                       ;
-                    return void (p2 > D2 ? h3.c = h3.e = null : (h3.e = p2, h3.c = [e4]));
+                    return void (p2 > D ? h2.c = h2.e = null : (h2.e = p2, h2.c = [e4]));
                   }
-                  v3 = String(e4);
+                  v2 = String(e4);
                 } else {
-                  if (!t.test(v3 = String(e4)))
-                    return o2(h3, v3, f2);
-                  h3.s = 45 == v3.charCodeAt(0) ? (v3 = v3.slice(1), -1) : 1;
+                  if (!t.test(v2 = String(e4)))
+                    return o2(h2, v2, f2);
+                  h2.s = 45 == v2.charCodeAt(0) ? (v2 = v2.slice(1), -1) : 1;
                 }
-                (p2 = v3.indexOf(".")) > -1 && (v3 = v3.replace(".", "")), (u2 = v3.search(/e/i)) > 0 ? (p2 < 0 && (p2 = u2), p2 += +v3.slice(u2 + 1), v3 = v3.substring(0, u2)) : p2 < 0 && (p2 = v3.length);
+                (p2 = v2.indexOf(".")) > -1 && (v2 = v2.replace(".", "")), (u2 = v2.search(/e/i)) > 0 ? (p2 < 0 && (p2 = u2), p2 += +v2.slice(u2 + 1), v2 = v2.substring(0, u2)) : p2 < 0 && (p2 = v2.length);
               } else {
                 if (y(a4, 2, I.length, "Base"), 10 == a4)
-                  return $2(h3 = new H(e4), P + h3.e + 1, B2);
-                if (v3 = String(e4), f2 = "number" == typeof e4) {
+                  return $(h2 = new H(e4), P + h2.e + 1, B);
+                if (v2 = String(e4), f2 = "number" == typeof e4) {
                   if (0 * e4 != 0)
-                    return o2(h3, v3, f2, a4);
-                  if (h3.s = 1 / e4 < 0 ? (v3 = v3.slice(1), -1) : 1, H.DEBUG && v3.replace(/^0\.0*|\./, "").length > 15)
+                    return o2(h2, v2, f2, a4);
+                  if (h2.s = 1 / e4 < 0 ? (v2 = v2.slice(1), -1) : 1, H.DEBUG && v2.replace(/^0\.0*|\./, "").length > 15)
                     throw Error(l + e4);
                 } else
-                  h3.s = 45 === v3.charCodeAt(0) ? (v3 = v3.slice(1), -1) : 1;
-                for (i4 = I.slice(0, a4), p2 = u2 = 0, x2 = v3.length; u2 < x2; u2++)
-                  if (i4.indexOf(s3 = v3.charAt(u2)) < 0) {
+                  h2.s = 45 === v2.charCodeAt(0) ? (v2 = v2.slice(1), -1) : 1;
+                for (i4 = I.slice(0, a4), p2 = u2 = 0, x2 = v2.length; u2 < x2; u2++)
+                  if (i4.indexOf(s3 = v2.charAt(u2)) < 0) {
                     if ("." == s3) {
                       if (u2 > p2) {
                         p2 = x2;
                         continue;
                       }
-                    } else if (!r2 && (v3 == v3.toUpperCase() && (v3 = v3.toLowerCase()) || v3 == v3.toLowerCase() && (v3 = v3.toUpperCase()))) {
+                    } else if (!r2 && (v2 == v2.toUpperCase() && (v2 = v2.toLowerCase()) || v2 == v2.toLowerCase() && (v2 = v2.toUpperCase()))) {
                       r2 = true, u2 = -1, p2 = 0;
                       continue;
                     }
-                    return o2(h3, String(e4), f2, a4);
+                    return o2(h2, String(e4), f2, a4);
                   }
-                f2 = false, (p2 = (v3 = n2(v3, a4, 10, h3.s)).indexOf(".")) > -1 ? v3 = v3.replace(".", "") : p2 = v3.length;
+                f2 = false, (p2 = (v2 = n2(v2, a4, 10, h2.s)).indexOf(".")) > -1 ? v2 = v2.replace(".", "") : p2 = v2.length;
               }
-              for (u2 = 0; 48 === v3.charCodeAt(u2); u2++)
+              for (u2 = 0; 48 === v2.charCodeAt(u2); u2++)
                 ;
-              for (x2 = v3.length; 48 === v3.charCodeAt(--x2); )
+              for (x2 = v2.length; 48 === v2.charCodeAt(--x2); )
                 ;
-              if (v3 = v3.slice(u2, ++x2)) {
-                if (x2 -= u2, f2 && H.DEBUG && x2 > 15 && (e4 > m2 || e4 !== c(e4)))
-                  throw Error(l + h3.s * e4);
-                if ((p2 = p2 - u2 - 1) > D2)
-                  h3.c = h3.e = null;
-                else if (p2 < L2)
-                  h3.c = [h3.e = 0];
+              if (v2 = v2.slice(u2, ++x2)) {
+                if (x2 -= u2, f2 && H.DEBUG && x2 > 15 && (e4 > m || e4 !== c(e4)))
+                  throw Error(l + h2.s * e4);
+                if ((p2 = p2 - u2 - 1) > D)
+                  h2.c = h2.e = null;
+                else if (p2 < L)
+                  h2.c = [h2.e = 0];
                 else {
-                  if (h3.e = p2, h3.c = [], u2 = (p2 + 1) % d2, p2 < 0 && (u2 += d2), u2 < x2) {
-                    for (u2 && h3.c.push(+v3.slice(0, u2)), x2 -= d2; u2 < x2; )
-                      h3.c.push(+v3.slice(u2, u2 += d2));
-                    u2 = d2 - (v3 = v3.slice(u2)).length;
+                  if (h2.e = p2, h2.c = [], u2 = (p2 + 1) % d, p2 < 0 && (u2 += d), u2 < x2) {
+                    for (u2 && h2.c.push(+v2.slice(0, u2)), x2 -= d; u2 < x2; )
+                      h2.c.push(+v2.slice(u2, u2 += d));
+                    u2 = d - (v2 = v2.slice(u2)).length;
                   } else
                     u2 -= x2;
-                  for (; u2--; v3 += "0")
+                  for (; u2--; v2 += "0")
                     ;
-                  h3.c.push(+v3);
+                  h2.c.push(+v2);
                 }
               } else
-                h3.c = [h3.e = 0];
+                h2.c = [h2.e = 0];
             }
             __name(H, "H");
-            function V2(e4, a4, i4, n3) {
+            function V(e4, a4, i4, n3) {
               var o3, s3, t2, r2, c2;
-              if (null == i4 ? i4 = B2 : y(i4, 0, 8), !e4.c)
+              if (null == i4 ? i4 = B : y(i4, 0, 8), !e4.c)
                 return e4.toString();
               if (o3 = e4.c[0], t2 = e4.e, null == a4)
-                c2 = b2(e4.c), c2 = 1 == n3 || 2 == n3 && (t2 <= N2 || t2 >= z) ? k2(c2, t2) : j(c2, t2, "0");
-              else if (s3 = (e4 = $2(new H(e4), a4, i4)).e, r2 = (c2 = b2(e4.c)).length, 1 == n3 || 2 == n3 && (a4 <= s3 || s3 <= N2)) {
+                c2 = b(e4.c), c2 = 1 == n3 || 2 == n3 && (t2 <= N || t2 >= z) ? k(c2, t2) : j(c2, t2, "0");
+              else if (s3 = (e4 = $(new H(e4), a4, i4)).e, r2 = (c2 = b(e4.c)).length, 1 == n3 || 2 == n3 && (a4 <= s3 || s3 <= N)) {
                 for (; r2 < a4; c2 += "0", r2++)
                   ;
-                c2 = k2(c2, s3);
+                c2 = k(c2, s3);
               } else if (a4 -= t2, c2 = j(c2, s3, "0"), s3 + 1 > r2) {
                 if (--a4 > 0)
                   for (c2 += "."; a4--; c2 += "0")
@@ -22292,8 +22292,8 @@ var require_mailjet_node = __commonJS({
                   ;
               return e4.s < 0 && o3 ? "-" + c2 : c2;
             }
-            __name(V2, "V");
-            function K2(e4, a4) {
+            __name(V, "V");
+            function K(e4, a4) {
               for (var i4, n3 = 1, o3 = new H(e4[0]); n3 < e4.length; n3++) {
                 if (!(i4 = new H(e4[n3])).s) {
                   o3 = i4;
@@ -22303,61 +22303,61 @@ var require_mailjet_node = __commonJS({
               }
               return o3;
             }
-            __name(K2, "K");
-            function G2(e4, a4, i4) {
+            __name(K, "K");
+            function G(e4, a4, i4) {
               for (var n3 = 1, o3 = a4.length; !a4[--o3]; a4.pop())
                 ;
               for (o3 = a4[0]; o3 >= 10; o3 /= 10, n3++)
                 ;
-              return (i4 = n3 + i4 * d2 - 1) > D2 ? e4.c = e4.e = null : i4 < L2 ? e4.c = [e4.e = 0] : (e4.e = i4, e4.c = a4), e4;
+              return (i4 = n3 + i4 * d - 1) > D ? e4.c = e4.e = null : i4 < L ? e4.c = [e4.e = 0] : (e4.e = i4, e4.c = a4), e4;
             }
-            __name(G2, "G");
-            function $2(e4, a4, i4, n3) {
-              var o3, s3, t2, p2, l2, m3, x2, v3 = e4.c, h3 = f;
-              if (v3) {
+            __name(G, "G");
+            function $(e4, a4, i4, n3) {
+              var o3, s3, t2, p2, l2, m2, x2, v2 = e4.c, h2 = f;
+              if (v2) {
                 e: {
-                  for (o3 = 1, p2 = v3[0]; p2 >= 10; p2 /= 10, o3++)
+                  for (o3 = 1, p2 = v2[0]; p2 >= 10; p2 /= 10, o3++)
                     ;
                   if ((s3 = a4 - o3) < 0)
-                    s3 += d2, t2 = a4, x2 = (l2 = v3[m3 = 0]) / h3[o3 - t2 - 1] % 10 | 0;
-                  else if ((m3 = r((s3 + 1) / d2)) >= v3.length) {
+                    s3 += d, t2 = a4, x2 = (l2 = v2[m2 = 0]) / h2[o3 - t2 - 1] % 10 | 0;
+                  else if ((m2 = r((s3 + 1) / d)) >= v2.length) {
                     if (!n3)
                       break e;
-                    for (; v3.length <= m3; v3.push(0))
+                    for (; v2.length <= m2; v2.push(0))
                       ;
-                    l2 = x2 = 0, o3 = 1, t2 = (s3 %= d2) - d2 + 1;
+                    l2 = x2 = 0, o3 = 1, t2 = (s3 %= d) - d + 1;
                   } else {
-                    for (l2 = p2 = v3[m3], o3 = 1; p2 >= 10; p2 /= 10, o3++)
+                    for (l2 = p2 = v2[m2], o3 = 1; p2 >= 10; p2 /= 10, o3++)
                       ;
-                    x2 = (t2 = (s3 %= d2) - d2 + o3) < 0 ? 0 : l2 / h3[o3 - t2 - 1] % 10 | 0;
+                    x2 = (t2 = (s3 %= d) - d + o3) < 0 ? 0 : l2 / h2[o3 - t2 - 1] % 10 | 0;
                   }
-                  if (n3 = n3 || a4 < 0 || null != v3[m3 + 1] || (t2 < 0 ? l2 : l2 % h3[o3 - t2 - 1]), n3 = i4 < 4 ? (x2 || n3) && (0 == i4 || i4 == (e4.s < 0 ? 3 : 2)) : x2 > 5 || 5 == x2 && (4 == i4 || n3 || 6 == i4 && (s3 > 0 ? t2 > 0 ? l2 / h3[o3 - t2] : 0 : v3[m3 - 1]) % 10 & 1 || i4 == (e4.s < 0 ? 8 : 7)), a4 < 1 || !v3[0])
-                    return v3.length = 0, n3 ? (a4 -= e4.e + 1, v3[0] = h3[(d2 - a4 % d2) % d2], e4.e = -a4 || 0) : v3[0] = e4.e = 0, e4;
-                  if (0 == s3 ? (v3.length = m3, p2 = 1, m3--) : (v3.length = m3 + 1, p2 = h3[d2 - s3], v3[m3] = t2 > 0 ? c(l2 / h3[o3 - t2] % h3[t2]) * p2 : 0), n3)
+                  if (n3 = n3 || a4 < 0 || null != v2[m2 + 1] || (t2 < 0 ? l2 : l2 % h2[o3 - t2 - 1]), n3 = i4 < 4 ? (x2 || n3) && (0 == i4 || i4 == (e4.s < 0 ? 3 : 2)) : x2 > 5 || 5 == x2 && (4 == i4 || n3 || 6 == i4 && (s3 > 0 ? t2 > 0 ? l2 / h2[o3 - t2] : 0 : v2[m2 - 1]) % 10 & 1 || i4 == (e4.s < 0 ? 8 : 7)), a4 < 1 || !v2[0])
+                    return v2.length = 0, n3 ? (a4 -= e4.e + 1, v2[0] = h2[(d - a4 % d) % d], e4.e = -a4 || 0) : v2[0] = e4.e = 0, e4;
+                  if (0 == s3 ? (v2.length = m2, p2 = 1, m2--) : (v2.length = m2 + 1, p2 = h2[d - s3], v2[m2] = t2 > 0 ? c(l2 / h2[o3 - t2] % h2[t2]) * p2 : 0), n3)
                     for (; ; ) {
-                      if (0 == m3) {
-                        for (s3 = 1, t2 = v3[0]; t2 >= 10; t2 /= 10, s3++)
+                      if (0 == m2) {
+                        for (s3 = 1, t2 = v2[0]; t2 >= 10; t2 /= 10, s3++)
                           ;
-                        for (t2 = v3[0] += p2, p2 = 1; t2 >= 10; t2 /= 10, p2++)
+                        for (t2 = v2[0] += p2, p2 = 1; t2 >= 10; t2 /= 10, p2++)
                           ;
-                        s3 != p2 && (e4.e++, v3[0] == u && (v3[0] = 1));
+                        s3 != p2 && (e4.e++, v2[0] == u && (v2[0] = 1));
                         break;
                       }
-                      if (v3[m3] += p2, v3[m3] != u)
+                      if (v2[m2] += p2, v2[m2] != u)
                         break;
-                      v3[m3--] = 0, p2 = 1;
+                      v2[m2--] = 0, p2 = 1;
                     }
-                  for (s3 = v3.length; 0 === v3[--s3]; v3.pop())
+                  for (s3 = v2.length; 0 === v2[--s3]; v2.pop())
                     ;
                 }
-                e4.e > D2 ? e4.c = e4.e = null : e4.e < L2 && (e4.c = [e4.e = 0]);
+                e4.e > D ? e4.c = e4.e = null : e4.e < L && (e4.c = [e4.e = 0]);
               }
               return e4;
             }
-            __name($2, "$");
+            __name($, "$");
             function J(e4) {
               var a4, i4 = e4.e;
-              return null === i4 ? e4.toString() : (a4 = b2(e4.c), a4 = i4 <= N2 || i4 >= z ? k2(a4, i4) : j(a4, i4, "0"), e4.s < 0 ? "-" + a4 : a4);
+              return null === i4 ? e4.toString() : (a4 = b(e4.c), a4 = i4 <= N || i4 >= z ? k(a4, i4) : j(a4, i4, "0"), e4.s < 0 ? "-" + a4 : a4);
             }
             __name(J, "J");
             return H.clone = e3, H.ROUND_UP = 0, H.ROUND_DOWN = 1, H.ROUND_CEIL = 2, H.ROUND_FLOOR = 3, H.ROUND_HALF_UP = 4, H.ROUND_HALF_DOWN = 5, H.ROUND_HALF_EVEN = 6, H.ROUND_HALF_CEIL = 7, H.ROUND_HALF_FLOOR = 8, H.EUCLID = 9, H.config = H.set = function(e4) {
@@ -22365,28 +22365,28 @@ var require_mailjet_node = __commonJS({
               if (null != e4) {
                 if ("object" != typeof e4)
                   throw Error(p + "Object expected: " + e4);
-                if (e4.hasOwnProperty(a4 = "DECIMAL_PLACES") && (y(i4 = e4[a4], 0, v2, a4), P = i4), e4.hasOwnProperty(a4 = "ROUNDING_MODE") && (y(i4 = e4[a4], 0, 8, a4), B2 = i4), e4.hasOwnProperty(a4 = "EXPONENTIAL_AT") && ((i4 = e4[a4]) && i4.pop ? (y(i4[0], -v2, 0, a4), y(i4[1], 0, v2, a4), N2 = i4[0], z = i4[1]) : (y(i4, -v2, v2, a4), N2 = -(z = i4 < 0 ? -i4 : i4))), e4.hasOwnProperty(a4 = "RANGE"))
+                if (e4.hasOwnProperty(a4 = "DECIMAL_PLACES") && (y(i4 = e4[a4], 0, v, a4), P = i4), e4.hasOwnProperty(a4 = "ROUNDING_MODE") && (y(i4 = e4[a4], 0, 8, a4), B = i4), e4.hasOwnProperty(a4 = "EXPONENTIAL_AT") && ((i4 = e4[a4]) && i4.pop ? (y(i4[0], -v, 0, a4), y(i4[1], 0, v, a4), N = i4[0], z = i4[1]) : (y(i4, -v, v, a4), N = -(z = i4 < 0 ? -i4 : i4))), e4.hasOwnProperty(a4 = "RANGE"))
                   if ((i4 = e4[a4]) && i4.pop)
-                    y(i4[0], -v2, -1, a4), y(i4[1], 1, v2, a4), L2 = i4[0], D2 = i4[1];
+                    y(i4[0], -v, -1, a4), y(i4[1], 1, v, a4), L = i4[0], D = i4[1];
                   else {
-                    if (y(i4, -v2, v2, a4), !i4)
+                    if (y(i4, -v, v, a4), !i4)
                       throw Error(p + a4 + " cannot be zero: " + i4);
-                    L2 = -(D2 = i4 < 0 ? -i4 : i4);
+                    L = -(D = i4 < 0 ? -i4 : i4);
                   }
                 if (e4.hasOwnProperty(a4 = "CRYPTO")) {
                   if ((i4 = e4[a4]) !== !!i4)
                     throw Error(p + a4 + " not true or false: " + i4);
                   if (i4) {
                     if ("undefined" == typeof crypto || !crypto || !crypto.getRandomValues && !crypto.randomBytes)
-                      throw F2 = !i4, Error(p + "crypto unavailable");
-                    F2 = i4;
+                      throw F = !i4, Error(p + "crypto unavailable");
+                    F = i4;
                   } else
-                    F2 = i4;
+                    F = i4;
                 }
-                if (e4.hasOwnProperty(a4 = "MODULO_MODE") && (y(i4 = e4[a4], 0, 9, a4), q = i4), e4.hasOwnProperty(a4 = "POW_PRECISION") && (y(i4 = e4[a4], 0, v2, a4), M = i4), e4.hasOwnProperty(a4 = "FORMAT")) {
+                if (e4.hasOwnProperty(a4 = "MODULO_MODE") && (y(i4 = e4[a4], 0, 9, a4), q = i4), e4.hasOwnProperty(a4 = "POW_PRECISION") && (y(i4 = e4[a4], 0, v, a4), M = i4), e4.hasOwnProperty(a4 = "FORMAT")) {
                   if ("object" != typeof (i4 = e4[a4]))
                     throw Error(p + a4 + " not an object: " + i4);
-                  U2 = i4;
+                  U = i4;
                 }
                 if (e4.hasOwnProperty(a4 = "ALPHABET")) {
                   if ("string" != typeof (i4 = e4[a4]) || /^.?$|[+\-.\s]|(.).*\1/.test(i4))
@@ -22394,7 +22394,7 @@ var require_mailjet_node = __commonJS({
                   I = i4;
                 }
               }
-              return { DECIMAL_PLACES: P, ROUNDING_MODE: B2, EXPONENTIAL_AT: [N2, z], RANGE: [L2, D2], CRYPTO: F2, MODULO_MODE: q, POW_PRECISION: M, FORMAT: U2, ALPHABET: I };
+              return { DECIMAL_PLACES: P, ROUNDING_MODE: B, EXPONENTIAL_AT: [N, z], RANGE: [L, D], CRYPTO: F, MODULO_MODE: q, POW_PRECISION: M, FORMAT: U, ALPHABET: I };
             }, H.isBigNumber = function(e4) {
               if (!e4 || true !== e4._isBigNumber)
                 return false;
@@ -22403,13 +22403,13 @@ var require_mailjet_node = __commonJS({
               var a4, i4, n3 = e4.c, o3 = e4.e, s3 = e4.s;
               e:
                 if ("[object Array]" == {}.toString.call(n3)) {
-                  if ((1 === s3 || -1 === s3) && o3 >= -v2 && o3 <= v2 && o3 === c(o3)) {
+                  if ((1 === s3 || -1 === s3) && o3 >= -v && o3 <= v && o3 === c(o3)) {
                     if (0 === n3[0]) {
                       if (0 === o3 && 1 === n3.length)
                         return true;
                       break e;
                     }
-                    if ((a4 = (o3 + 1) % d2) < 1 && (a4 += d2), String(n3[0]).length == a4) {
+                    if ((a4 = (o3 + 1) % d) < 1 && (a4 += d), String(n3[0]).length == a4) {
                       for (a4 = 0; a4 < n3.length; a4++)
                         if ((i4 = n3[a4]) < 0 || i4 >= u || i4 !== c(i4))
                           break e;
@@ -22421,40 +22421,40 @@ var require_mailjet_node = __commonJS({
                   return true;
               throw Error(p + "Invalid BigNumber: " + e4);
             }, H.maximum = H.max = function() {
-              return K2(arguments, T2.lt);
+              return K(arguments, T.lt);
             }, H.minimum = H.min = function() {
-              return K2(arguments, T2.gt);
-            }, H.random = (s2 = 9007199254740992, _2 = Math.random() * s2 & 2097151 ? function() {
+              return K(arguments, T.gt);
+            }, H.random = (s2 = 9007199254740992, _ = Math.random() * s2 & 2097151 ? function() {
               return c(Math.random() * s2);
             } : function() {
               return 8388608 * (1073741824 * Math.random() | 0) + (8388608 * Math.random() | 0);
             }, function(e4) {
-              var a4, i4, n3, o3, s3, t2 = 0, l2 = [], u2 = new H(R2);
-              if (null == e4 ? e4 = P : y(e4, 0, v2), o3 = r(e4 / d2), F2)
+              var a4, i4, n3, o3, s3, t2 = 0, l2 = [], u2 = new H(R);
+              if (null == e4 ? e4 = P : y(e4, 0, v), o3 = r(e4 / d), F)
                 if (crypto.getRandomValues) {
                   for (a4 = crypto.getRandomValues(new Uint32Array(o3 *= 2)); t2 < o3; )
                     (s3 = 131072 * a4[t2] + (a4[t2 + 1] >>> 11)) >= 9e15 ? (i4 = crypto.getRandomValues(new Uint32Array(2)), a4[t2] = i4[0], a4[t2 + 1] = i4[1]) : (l2.push(s3 % 1e14), t2 += 2);
                   t2 = o3 / 2;
                 } else {
                   if (!crypto.randomBytes)
-                    throw F2 = false, Error(p + "crypto unavailable");
+                    throw F = false, Error(p + "crypto unavailable");
                   for (a4 = crypto.randomBytes(o3 *= 7); t2 < o3; )
                     (s3 = 281474976710656 * (31 & a4[t2]) + 1099511627776 * a4[t2 + 1] + 4294967296 * a4[t2 + 2] + 16777216 * a4[t2 + 3] + (a4[t2 + 4] << 16) + (a4[t2 + 5] << 8) + a4[t2 + 6]) >= 9e15 ? crypto.randomBytes(7).copy(a4, t2) : (l2.push(s3 % 1e14), t2 += 7);
                   t2 = o3 / 7;
                 }
-              if (!F2)
+              if (!F)
                 for (; t2 < o3; )
-                  (s3 = _2()) < 9e15 && (l2[t2++] = s3 % 1e14);
-              for (o3 = l2[--t2], e4 %= d2, o3 && e4 && (s3 = f[d2 - e4], l2[t2] = c(o3 / s3) * s3); 0 === l2[t2]; l2.pop(), t2--)
+                  (s3 = _()) < 9e15 && (l2[t2++] = s3 % 1e14);
+              for (o3 = l2[--t2], e4 %= d, o3 && e4 && (s3 = f[d - e4], l2[t2] = c(o3 / s3) * s3); 0 === l2[t2]; l2.pop(), t2--)
                 ;
               if (t2 < 0)
                 l2 = [n3 = 0];
               else {
-                for (n3 = -1; 0 === l2[0]; l2.splice(0, 1), n3 -= d2)
+                for (n3 = -1; 0 === l2[0]; l2.splice(0, 1), n3 -= d)
                   ;
                 for (t2 = 1, s3 = l2[0]; s3 >= 10; s3 /= 10, t2++)
                   ;
-                t2 < d2 && (n3 -= d2 - t2);
+                t2 < d && (n3 -= d - t2);
               }
               return u2.e = n3, u2.c = l2, u2;
             }), H.sum = function() {
@@ -22474,20 +22474,20 @@ var require_mailjet_node = __commonJS({
               }
               __name(a4, "a");
               return function(n3, o3, s3, t2, r2) {
-                var c2, p2, l2, u2, d3, m3, f2, x2, v3 = n3.indexOf("."), h3 = P, g2 = B2;
-                for (v3 >= 0 && (u2 = M, M = 0, n3 = n3.replace(".", ""), m3 = (x2 = new H(o3)).pow(n3.length - v3), M = u2, x2.c = a4(j(b2(m3.c), m3.e, "0"), 10, s3, e4), x2.e = x2.c.length), l2 = u2 = (f2 = a4(n3, o3, s3, r2 ? (c2 = I, e4) : (c2 = e4, I))).length; 0 == f2[--u2]; f2.pop())
+                var c2, p2, l2, u2, d2, m2, f2, x2, v2 = n3.indexOf("."), h2 = P, g2 = B;
+                for (v2 >= 0 && (u2 = M, M = 0, n3 = n3.replace(".", ""), m2 = (x2 = new H(o3)).pow(n3.length - v2), M = u2, x2.c = a4(j(b(m2.c), m2.e, "0"), 10, s3, e4), x2.e = x2.c.length), l2 = u2 = (f2 = a4(n3, o3, s3, r2 ? (c2 = I, e4) : (c2 = e4, I))).length; 0 == f2[--u2]; f2.pop())
                   ;
                 if (!f2[0])
                   return c2.charAt(0);
-                if (v3 < 0 ? --l2 : (m3.c = f2, m3.e = l2, m3.s = t2, f2 = (m3 = i3(m3, x2, h3, g2, s3)).c, d3 = m3.r, l2 = m3.e), v3 = f2[p2 = l2 + h3 + 1], u2 = s3 / 2, d3 = d3 || p2 < 0 || null != f2[p2 + 1], d3 = g2 < 4 ? (null != v3 || d3) && (0 == g2 || g2 == (m3.s < 0 ? 3 : 2)) : v3 > u2 || v3 == u2 && (4 == g2 || d3 || 6 == g2 && 1 & f2[p2 - 1] || g2 == (m3.s < 0 ? 8 : 7)), p2 < 1 || !f2[0])
-                  n3 = d3 ? j(c2.charAt(1), -h3, c2.charAt(0)) : c2.charAt(0);
+                if (v2 < 0 ? --l2 : (m2.c = f2, m2.e = l2, m2.s = t2, f2 = (m2 = i3(m2, x2, h2, g2, s3)).c, d2 = m2.r, l2 = m2.e), v2 = f2[p2 = l2 + h2 + 1], u2 = s3 / 2, d2 = d2 || p2 < 0 || null != f2[p2 + 1], d2 = g2 < 4 ? (null != v2 || d2) && (0 == g2 || g2 == (m2.s < 0 ? 3 : 2)) : v2 > u2 || v2 == u2 && (4 == g2 || d2 || 6 == g2 && 1 & f2[p2 - 1] || g2 == (m2.s < 0 ? 8 : 7)), p2 < 1 || !f2[0])
+                  n3 = d2 ? j(c2.charAt(1), -h2, c2.charAt(0)) : c2.charAt(0);
                 else {
-                  if (f2.length = p2, d3)
+                  if (f2.length = p2, d2)
                     for (--s3; ++f2[--p2] > s3; )
                       f2[p2] = 0, p2 || (++l2, f2 = [1].concat(f2));
                   for (u2 = f2.length; !f2[--u2]; )
                     ;
-                  for (v3 = 0, n3 = ""; v3 <= u2; n3 += c2.charAt(f2[v3++]))
+                  for (v2 = 0, n3 = ""; v2 <= u2; n3 += c2.charAt(f2[v2++]))
                     ;
                   n3 = j(n3, l2, c2.charAt(0));
                 }
@@ -22522,101 +22522,101 @@ var require_mailjet_node = __commonJS({
               }
               __name(i4, "i");
               return function(n3, o3, s3, t2, r2) {
-                var p2, l2, m3, f2, x2, v3, b3, g2, y2, w3, k3, j2, _3, C3, E3, S2, O3, A2 = n3.s == o3.s ? 1 : -1, T3 = n3.c, R3 = o3.c;
-                if (!(T3 && T3[0] && R3 && R3[0]))
-                  return new H(n3.s && o3.s && (T3 ? !R3 || T3[0] != R3[0] : R3) ? T3 && 0 == T3[0] || !R3 ? 0 * A2 : A2 / 0 : NaN);
-                for (y2 = (g2 = new H(A2)).c = [], A2 = s3 + (l2 = n3.e - o3.e) + 1, r2 || (r2 = u, l2 = h2(n3.e / d2) - h2(o3.e / d2), A2 = A2 / d2 | 0), m3 = 0; R3[m3] == (T3[m3] || 0); m3++)
+                var p2, l2, m2, f2, x2, v2, b2, g2, y2, w2, k2, j2, _2, C2, E2, S2, O2, A2 = n3.s == o3.s ? 1 : -1, T2 = n3.c, R2 = o3.c;
+                if (!(T2 && T2[0] && R2 && R2[0]))
+                  return new H(n3.s && o3.s && (T2 ? !R2 || T2[0] != R2[0] : R2) ? T2 && 0 == T2[0] || !R2 ? 0 * A2 : A2 / 0 : NaN);
+                for (y2 = (g2 = new H(A2)).c = [], A2 = s3 + (l2 = n3.e - o3.e) + 1, r2 || (r2 = u, l2 = h(n3.e / d) - h(o3.e / d), A2 = A2 / d | 0), m2 = 0; R2[m2] == (T2[m2] || 0); m2++)
                   ;
-                if (R3[m3] > (T3[m3] || 0) && l2--, A2 < 0)
+                if (R2[m2] > (T2[m2] || 0) && l2--, A2 < 0)
                   y2.push(1), f2 = true;
                 else {
-                  for (C3 = T3.length, S2 = R3.length, m3 = 0, A2 += 2, (x2 = c(r2 / (R3[0] + 1))) > 1 && (R3 = e4(R3, x2, r2), T3 = e4(T3, x2, r2), S2 = R3.length, C3 = T3.length), _3 = S2, k3 = (w3 = T3.slice(0, S2)).length; k3 < S2; w3[k3++] = 0)
+                  for (C2 = T2.length, S2 = R2.length, m2 = 0, A2 += 2, (x2 = c(r2 / (R2[0] + 1))) > 1 && (R2 = e4(R2, x2, r2), T2 = e4(T2, x2, r2), S2 = R2.length, C2 = T2.length), _2 = S2, k2 = (w2 = T2.slice(0, S2)).length; k2 < S2; w2[k2++] = 0)
                     ;
-                  O3 = R3.slice(), O3 = [0].concat(O3), E3 = R3[0], R3[1] >= r2 / 2 && E3++;
+                  O2 = R2.slice(), O2 = [0].concat(O2), E2 = R2[0], R2[1] >= r2 / 2 && E2++;
                   do {
-                    if (x2 = 0, (p2 = a4(R3, w3, S2, k3)) < 0) {
-                      if (j2 = w3[0], S2 != k3 && (j2 = j2 * r2 + (w3[1] || 0)), (x2 = c(j2 / E3)) > 1)
-                        for (x2 >= r2 && (x2 = r2 - 1), b3 = (v3 = e4(R3, x2, r2)).length, k3 = w3.length; 1 == a4(v3, w3, b3, k3); )
-                          x2--, i4(v3, S2 < b3 ? O3 : R3, b3, r2), b3 = v3.length, p2 = 1;
+                    if (x2 = 0, (p2 = a4(R2, w2, S2, k2)) < 0) {
+                      if (j2 = w2[0], S2 != k2 && (j2 = j2 * r2 + (w2[1] || 0)), (x2 = c(j2 / E2)) > 1)
+                        for (x2 >= r2 && (x2 = r2 - 1), b2 = (v2 = e4(R2, x2, r2)).length, k2 = w2.length; 1 == a4(v2, w2, b2, k2); )
+                          x2--, i4(v2, S2 < b2 ? O2 : R2, b2, r2), b2 = v2.length, p2 = 1;
                       else
-                        0 == x2 && (p2 = x2 = 1), b3 = (v3 = R3.slice()).length;
-                      if (b3 < k3 && (v3 = [0].concat(v3)), i4(w3, v3, k3, r2), k3 = w3.length, -1 == p2)
-                        for (; a4(R3, w3, S2, k3) < 1; )
-                          x2++, i4(w3, S2 < k3 ? O3 : R3, k3, r2), k3 = w3.length;
+                        0 == x2 && (p2 = x2 = 1), b2 = (v2 = R2.slice()).length;
+                      if (b2 < k2 && (v2 = [0].concat(v2)), i4(w2, v2, k2, r2), k2 = w2.length, -1 == p2)
+                        for (; a4(R2, w2, S2, k2) < 1; )
+                          x2++, i4(w2, S2 < k2 ? O2 : R2, k2, r2), k2 = w2.length;
                     } else
-                      0 === p2 && (x2++, w3 = [0]);
-                    y2[m3++] = x2, w3[0] ? w3[k3++] = T3[_3] || 0 : (w3 = [T3[_3]], k3 = 1);
-                  } while ((_3++ < C3 || null != w3[0]) && A2--);
-                  f2 = null != w3[0], y2[0] || y2.splice(0, 1);
+                      0 === p2 && (x2++, w2 = [0]);
+                    y2[m2++] = x2, w2[0] ? w2[k2++] = T2[_2] || 0 : (w2 = [T2[_2]], k2 = 1);
+                  } while ((_2++ < C2 || null != w2[0]) && A2--);
+                  f2 = null != w2[0], y2[0] || y2.splice(0, 1);
                 }
                 if (r2 == u) {
-                  for (m3 = 1, A2 = y2[0]; A2 >= 10; A2 /= 10, m3++)
+                  for (m2 = 1, A2 = y2[0]; A2 >= 10; A2 /= 10, m2++)
                     ;
-                  $2(g2, s3 + (g2.e = m3 + l2 * d2 - 1) + 1, t2, f2);
+                  $(g2, s3 + (g2.e = m2 + l2 * d - 1) + 1, t2, f2);
                 } else
                   g2.e = l2, g2.r = +f2;
                 return g2;
               };
-            }(), C2 = /^(-?)0([xbo])(?=\w[\w.]*$)/i, E2 = /^([^.]+)\.$/, S = /^\.([^.]+)$/, O2 = /^-?(Infinity|NaN)$/, A = /^\s*\+(?=[\w.])|^\s+|\s+$/g, o2 = /* @__PURE__ */ __name(function(e4, a4, i4, n3) {
+            }(), C = /^(-?)0([xbo])(?=\w[\w.]*$)/i, E = /^([^.]+)\.$/, S = /^\.([^.]+)$/, O = /^-?(Infinity|NaN)$/, A = /^\s*\+(?=[\w.])|^\s+|\s+$/g, o2 = /* @__PURE__ */ __name(function(e4, a4, i4, n3) {
               var o3, s3 = i4 ? a4 : a4.replace(A, "");
-              if (O2.test(s3))
+              if (O.test(s3))
                 e4.s = isNaN(s3) ? null : s3 < 0 ? -1 : 1;
               else {
-                if (!i4 && (s3 = s3.replace(C2, function(e5, a5, i5) {
+                if (!i4 && (s3 = s3.replace(C, function(e5, a5, i5) {
                   return o3 = "x" == (i5 = i5.toLowerCase()) ? 16 : "b" == i5 ? 2 : 8, n3 && n3 != o3 ? e5 : a5;
-                }), n3 && (o3 = n3, s3 = s3.replace(E2, "$1").replace(S, "0.$1")), a4 != s3))
+                }), n3 && (o3 = n3, s3 = s3.replace(E, "$1").replace(S, "0.$1")), a4 != s3))
                   return new H(s3, o3);
                 if (H.DEBUG)
                   throw Error(p + "Not a" + (n3 ? " base " + n3 : "") + " number: " + a4);
                 e4.s = null;
               }
               e4.c = e4.e = null;
-            }, "o"), T2.absoluteValue = T2.abs = function() {
+            }, "o"), T.absoluteValue = T.abs = function() {
               var e4 = new H(this);
               return e4.s < 0 && (e4.s = 1), e4;
-            }, T2.comparedTo = function(e4, a4) {
+            }, T.comparedTo = function(e4, a4) {
               return g(this, new H(e4, a4));
-            }, T2.decimalPlaces = T2.dp = function(e4, a4) {
+            }, T.decimalPlaces = T.dp = function(e4, a4) {
               var i4, n3, o3, s3 = this;
               if (null != e4)
-                return y(e4, 0, v2), null == a4 ? a4 = B2 : y(a4, 0, 8), $2(new H(s3), e4 + s3.e + 1, a4);
+                return y(e4, 0, v), null == a4 ? a4 = B : y(a4, 0, 8), $(new H(s3), e4 + s3.e + 1, a4);
               if (!(i4 = s3.c))
                 return null;
-              if (n3 = ((o3 = i4.length - 1) - h2(this.e / d2)) * d2, o3 = i4[o3])
+              if (n3 = ((o3 = i4.length - 1) - h(this.e / d)) * d, o3 = i4[o3])
                 for (; o3 % 10 == 0; o3 /= 10, n3--)
                   ;
               return n3 < 0 && (n3 = 0), n3;
-            }, T2.dividedBy = T2.div = function(e4, a4) {
-              return i3(this, new H(e4, a4), P, B2);
-            }, T2.dividedToIntegerBy = T2.idiv = function(e4, a4) {
+            }, T.dividedBy = T.div = function(e4, a4) {
+              return i3(this, new H(e4, a4), P, B);
+            }, T.dividedToIntegerBy = T.idiv = function(e4, a4) {
               return i3(this, new H(e4, a4), 0, 1);
-            }, T2.exponentiatedBy = T2.pow = function(e4, a4) {
-              var i4, n3, o3, s3, t2, l2, u2, m3, f2 = this;
+            }, T.exponentiatedBy = T.pow = function(e4, a4) {
+              var i4, n3, o3, s3, t2, l2, u2, m2, f2 = this;
               if ((e4 = new H(e4)).c && !e4.isInteger())
                 throw Error(p + "Exponent not an integer: " + J(e4));
               if (null != a4 && (a4 = new H(a4)), t2 = e4.e > 14, !f2.c || !f2.c[0] || 1 == f2.c[0] && !f2.e && 1 == f2.c.length || !e4.c || !e4.c[0])
-                return m3 = new H(Math.pow(+J(f2), t2 ? 2 - w2(e4) : +J(e4))), a4 ? m3.mod(a4) : m3;
+                return m2 = new H(Math.pow(+J(f2), t2 ? 2 - w(e4) : +J(e4))), a4 ? m2.mod(a4) : m2;
               if (l2 = e4.s < 0, a4) {
                 if (a4.c ? !a4.c[0] : !a4.s)
                   return new H(NaN);
                 (n3 = !l2 && f2.isInteger() && a4.isInteger()) && (f2 = f2.mod(a4));
               } else {
                 if (e4.e > 9 && (f2.e > 0 || f2.e < -1 || (0 == f2.e ? f2.c[0] > 1 || t2 && f2.c[1] >= 24e7 : f2.c[0] < 8e13 || t2 && f2.c[0] <= 9999975e7)))
-                  return s3 = f2.s < 0 && w2(e4) ? -0 : 0, f2.e > -1 && (s3 = 1 / s3), new H(l2 ? 1 / s3 : s3);
-                M && (s3 = r(M / d2 + 2));
+                  return s3 = f2.s < 0 && w(e4) ? -0 : 0, f2.e > -1 && (s3 = 1 / s3), new H(l2 ? 1 / s3 : s3);
+                M && (s3 = r(M / d + 2));
               }
-              for (t2 ? (i4 = new H(0.5), l2 && (e4.s = 1), u2 = w2(e4)) : u2 = (o3 = Math.abs(+J(e4))) % 2, m3 = new H(R2); ; ) {
+              for (t2 ? (i4 = new H(0.5), l2 && (e4.s = 1), u2 = w(e4)) : u2 = (o3 = Math.abs(+J(e4))) % 2, m2 = new H(R); ; ) {
                 if (u2) {
-                  if (!(m3 = m3.times(f2)).c)
+                  if (!(m2 = m2.times(f2)).c)
                     break;
-                  s3 ? m3.c.length > s3 && (m3.c.length = s3) : n3 && (m3 = m3.mod(a4));
+                  s3 ? m2.c.length > s3 && (m2.c.length = s3) : n3 && (m2 = m2.mod(a4));
                 }
                 if (o3) {
                   if (0 === (o3 = c(o3 / 2)))
                     break;
                   u2 = o3 % 2;
-                } else if ($2(e4 = e4.times(i4), e4.e + 1, 1), e4.e > 14)
-                  u2 = w2(e4);
+                } else if ($(e4 = e4.times(i4), e4.e + 1, 1), e4.e > 14)
+                  u2 = w(e4);
                 else {
                   if (0 == (o3 = +J(e4)))
                     break;
@@ -22624,181 +22624,181 @@ var require_mailjet_node = __commonJS({
                 }
                 f2 = f2.times(f2), s3 ? f2.c && f2.c.length > s3 && (f2.c.length = s3) : n3 && (f2 = f2.mod(a4));
               }
-              return n3 ? m3 : (l2 && (m3 = R2.div(m3)), a4 ? m3.mod(a4) : s3 ? $2(m3, M, B2, void 0) : m3);
-            }, T2.integerValue = function(e4) {
+              return n3 ? m2 : (l2 && (m2 = R.div(m2)), a4 ? m2.mod(a4) : s3 ? $(m2, M, B, void 0) : m2);
+            }, T.integerValue = function(e4) {
               var a4 = new H(this);
-              return null == e4 ? e4 = B2 : y(e4, 0, 8), $2(a4, a4.e + 1, e4);
-            }, T2.isEqualTo = T2.eq = function(e4, a4) {
+              return null == e4 ? e4 = B : y(e4, 0, 8), $(a4, a4.e + 1, e4);
+            }, T.isEqualTo = T.eq = function(e4, a4) {
               return 0 === g(this, new H(e4, a4));
-            }, T2.isFinite = function() {
+            }, T.isFinite = function() {
               return !!this.c;
-            }, T2.isGreaterThan = T2.gt = function(e4, a4) {
+            }, T.isGreaterThan = T.gt = function(e4, a4) {
               return g(this, new H(e4, a4)) > 0;
-            }, T2.isGreaterThanOrEqualTo = T2.gte = function(e4, a4) {
+            }, T.isGreaterThanOrEqualTo = T.gte = function(e4, a4) {
               return 1 === (a4 = g(this, new H(e4, a4))) || 0 === a4;
-            }, T2.isInteger = function() {
-              return !!this.c && h2(this.e / d2) > this.c.length - 2;
-            }, T2.isLessThan = T2.lt = function(e4, a4) {
+            }, T.isInteger = function() {
+              return !!this.c && h(this.e / d) > this.c.length - 2;
+            }, T.isLessThan = T.lt = function(e4, a4) {
               return g(this, new H(e4, a4)) < 0;
-            }, T2.isLessThanOrEqualTo = T2.lte = function(e4, a4) {
+            }, T.isLessThanOrEqualTo = T.lte = function(e4, a4) {
               return -1 === (a4 = g(this, new H(e4, a4))) || 0 === a4;
-            }, T2.isNaN = function() {
+            }, T.isNaN = function() {
               return !this.s;
-            }, T2.isNegative = function() {
+            }, T.isNegative = function() {
               return this.s < 0;
-            }, T2.isPositive = function() {
+            }, T.isPositive = function() {
               return this.s > 0;
-            }, T2.isZero = function() {
+            }, T.isZero = function() {
               return !!this.c && 0 == this.c[0];
-            }, T2.minus = function(e4, a4) {
+            }, T.minus = function(e4, a4) {
               var i4, n3, o3, s3, t2 = this, r2 = t2.s;
               if (a4 = (e4 = new H(e4, a4)).s, !r2 || !a4)
                 return new H(NaN);
               if (r2 != a4)
                 return e4.s = -a4, t2.plus(e4);
-              var c2 = t2.e / d2, p2 = e4.e / d2, l2 = t2.c, m3 = e4.c;
+              var c2 = t2.e / d, p2 = e4.e / d, l2 = t2.c, m2 = e4.c;
               if (!c2 || !p2) {
-                if (!l2 || !m3)
-                  return l2 ? (e4.s = -a4, e4) : new H(m3 ? t2 : NaN);
-                if (!l2[0] || !m3[0])
-                  return m3[0] ? (e4.s = -a4, e4) : new H(l2[0] ? t2 : 3 == B2 ? -0 : 0);
+                if (!l2 || !m2)
+                  return l2 ? (e4.s = -a4, e4) : new H(m2 ? t2 : NaN);
+                if (!l2[0] || !m2[0])
+                  return m2[0] ? (e4.s = -a4, e4) : new H(l2[0] ? t2 : 3 == B ? -0 : 0);
               }
-              if (c2 = h2(c2), p2 = h2(p2), l2 = l2.slice(), r2 = c2 - p2) {
-                for ((s3 = r2 < 0) ? (r2 = -r2, o3 = l2) : (p2 = c2, o3 = m3), o3.reverse(), a4 = r2; a4--; o3.push(0))
+              if (c2 = h(c2), p2 = h(p2), l2 = l2.slice(), r2 = c2 - p2) {
+                for ((s3 = r2 < 0) ? (r2 = -r2, o3 = l2) : (p2 = c2, o3 = m2), o3.reverse(), a4 = r2; a4--; o3.push(0))
                   ;
                 o3.reverse();
               } else
-                for (n3 = (s3 = (r2 = l2.length) < (a4 = m3.length)) ? r2 : a4, r2 = a4 = 0; a4 < n3; a4++)
-                  if (l2[a4] != m3[a4]) {
-                    s3 = l2[a4] < m3[a4];
+                for (n3 = (s3 = (r2 = l2.length) < (a4 = m2.length)) ? r2 : a4, r2 = a4 = 0; a4 < n3; a4++)
+                  if (l2[a4] != m2[a4]) {
+                    s3 = l2[a4] < m2[a4];
                     break;
                   }
-              if (s3 && (o3 = l2, l2 = m3, m3 = o3, e4.s = -e4.s), (a4 = (n3 = m3.length) - (i4 = l2.length)) > 0)
+              if (s3 && (o3 = l2, l2 = m2, m2 = o3, e4.s = -e4.s), (a4 = (n3 = m2.length) - (i4 = l2.length)) > 0)
                 for (; a4--; l2[i4++] = 0)
                   ;
               for (a4 = u - 1; n3 > r2; ) {
-                if (l2[--n3] < m3[n3]) {
+                if (l2[--n3] < m2[n3]) {
                   for (i4 = n3; i4 && !l2[--i4]; l2[i4] = a4)
                     ;
                   --l2[i4], l2[n3] += u;
                 }
-                l2[n3] -= m3[n3];
+                l2[n3] -= m2[n3];
               }
               for (; 0 == l2[0]; l2.splice(0, 1), --p2)
                 ;
-              return l2[0] ? G2(e4, l2, p2) : (e4.s = 3 == B2 ? -1 : 1, e4.c = [e4.e = 0], e4);
-            }, T2.modulo = T2.mod = function(e4, a4) {
+              return l2[0] ? G(e4, l2, p2) : (e4.s = 3 == B ? -1 : 1, e4.c = [e4.e = 0], e4);
+            }, T.modulo = T.mod = function(e4, a4) {
               var n3, o3, s3 = this;
               return e4 = new H(e4, a4), !s3.c || !e4.s || e4.c && !e4.c[0] ? new H(NaN) : !e4.c || s3.c && !s3.c[0] ? new H(s3) : (9 == q ? (o3 = e4.s, e4.s = 1, n3 = i3(s3, e4, 0, 3), e4.s = o3, n3.s *= o3) : n3 = i3(s3, e4, 0, q), (e4 = s3.minus(n3.times(e4))).c[0] || 1 != q || (e4.s = s3.s), e4);
-            }, T2.multipliedBy = T2.times = function(e4, a4) {
-              var i4, n3, o3, s3, t2, r2, c2, p2, l2, m3, f2, v3, b3, g2, y2, w3 = this, k3 = w3.c, j2 = (e4 = new H(e4, a4)).c;
-              if (!(k3 && j2 && k3[0] && j2[0]))
-                return !w3.s || !e4.s || k3 && !k3[0] && !j2 || j2 && !j2[0] && !k3 ? e4.c = e4.e = e4.s = null : (e4.s *= w3.s, k3 && j2 ? (e4.c = [0], e4.e = 0) : e4.c = e4.e = null), e4;
-              for (n3 = h2(w3.e / d2) + h2(e4.e / d2), e4.s *= w3.s, (c2 = k3.length) < (m3 = j2.length) && (b3 = k3, k3 = j2, j2 = b3, o3 = c2, c2 = m3, m3 = o3), o3 = c2 + m3, b3 = []; o3--; b3.push(0))
+            }, T.multipliedBy = T.times = function(e4, a4) {
+              var i4, n3, o3, s3, t2, r2, c2, p2, l2, m2, f2, v2, b2, g2, y2, w2 = this, k2 = w2.c, j2 = (e4 = new H(e4, a4)).c;
+              if (!(k2 && j2 && k2[0] && j2[0]))
+                return !w2.s || !e4.s || k2 && !k2[0] && !j2 || j2 && !j2[0] && !k2 ? e4.c = e4.e = e4.s = null : (e4.s *= w2.s, k2 && j2 ? (e4.c = [0], e4.e = 0) : e4.c = e4.e = null), e4;
+              for (n3 = h(w2.e / d) + h(e4.e / d), e4.s *= w2.s, (c2 = k2.length) < (m2 = j2.length) && (b2 = k2, k2 = j2, j2 = b2, o3 = c2, c2 = m2, m2 = o3), o3 = c2 + m2, b2 = []; o3--; b2.push(0))
                 ;
-              for (g2 = u, y2 = x, o3 = m3; --o3 >= 0; ) {
-                for (i4 = 0, f2 = j2[o3] % y2, v3 = j2[o3] / y2 | 0, s3 = o3 + (t2 = c2); s3 > o3; )
-                  i4 = ((p2 = f2 * (p2 = k3[--t2] % y2) + (r2 = v3 * p2 + (l2 = k3[t2] / y2 | 0) * f2) % y2 * y2 + b3[s3] + i4) / g2 | 0) + (r2 / y2 | 0) + v3 * l2, b3[s3--] = p2 % g2;
-                b3[s3] = i4;
+              for (g2 = u, y2 = x, o3 = m2; --o3 >= 0; ) {
+                for (i4 = 0, f2 = j2[o3] % y2, v2 = j2[o3] / y2 | 0, s3 = o3 + (t2 = c2); s3 > o3; )
+                  i4 = ((p2 = f2 * (p2 = k2[--t2] % y2) + (r2 = v2 * p2 + (l2 = k2[t2] / y2 | 0) * f2) % y2 * y2 + b2[s3] + i4) / g2 | 0) + (r2 / y2 | 0) + v2 * l2, b2[s3--] = p2 % g2;
+                b2[s3] = i4;
               }
-              return i4 ? ++n3 : b3.splice(0, 1), G2(e4, b3, n3);
-            }, T2.negated = function() {
+              return i4 ? ++n3 : b2.splice(0, 1), G(e4, b2, n3);
+            }, T.negated = function() {
               var e4 = new H(this);
               return e4.s = -e4.s || null, e4;
-            }, T2.plus = function(e4, a4) {
+            }, T.plus = function(e4, a4) {
               var i4, n3 = this, o3 = n3.s;
               if (a4 = (e4 = new H(e4, a4)).s, !o3 || !a4)
                 return new H(NaN);
               if (o3 != a4)
                 return e4.s = -a4, n3.minus(e4);
-              var s3 = n3.e / d2, t2 = e4.e / d2, r2 = n3.c, c2 = e4.c;
+              var s3 = n3.e / d, t2 = e4.e / d, r2 = n3.c, c2 = e4.c;
               if (!s3 || !t2) {
                 if (!r2 || !c2)
                   return new H(o3 / 0);
                 if (!r2[0] || !c2[0])
                   return c2[0] ? e4 : new H(r2[0] ? n3 : 0 * o3);
               }
-              if (s3 = h2(s3), t2 = h2(t2), r2 = r2.slice(), o3 = s3 - t2) {
+              if (s3 = h(s3), t2 = h(t2), r2 = r2.slice(), o3 = s3 - t2) {
                 for (o3 > 0 ? (t2 = s3, i4 = c2) : (o3 = -o3, i4 = r2), i4.reverse(); o3--; i4.push(0))
                   ;
                 i4.reverse();
               }
               for ((o3 = r2.length) - (a4 = c2.length) < 0 && (i4 = c2, c2 = r2, r2 = i4, a4 = o3), o3 = 0; a4; )
                 o3 = (r2[--a4] = r2[a4] + c2[a4] + o3) / u | 0, r2[a4] = u === r2[a4] ? 0 : r2[a4] % u;
-              return o3 && (r2 = [o3].concat(r2), ++t2), G2(e4, r2, t2);
-            }, T2.precision = T2.sd = function(e4, a4) {
+              return o3 && (r2 = [o3].concat(r2), ++t2), G(e4, r2, t2);
+            }, T.precision = T.sd = function(e4, a4) {
               var i4, n3, o3, s3 = this;
               if (null != e4 && e4 !== !!e4)
-                return y(e4, 1, v2), null == a4 ? a4 = B2 : y(a4, 0, 8), $2(new H(s3), e4, a4);
+                return y(e4, 1, v), null == a4 ? a4 = B : y(a4, 0, 8), $(new H(s3), e4, a4);
               if (!(i4 = s3.c))
                 return null;
-              if (n3 = (o3 = i4.length - 1) * d2 + 1, o3 = i4[o3]) {
+              if (n3 = (o3 = i4.length - 1) * d + 1, o3 = i4[o3]) {
                 for (; o3 % 10 == 0; o3 /= 10, n3--)
                   ;
                 for (o3 = i4[0]; o3 >= 10; o3 /= 10, n3++)
                   ;
               }
               return e4 && s3.e + 1 > n3 && (n3 = s3.e + 1), n3;
-            }, T2.shiftedBy = function(e4) {
-              return y(e4, -9007199254740991, m2), this.times("1e" + e4);
-            }, T2.squareRoot = T2.sqrt = function() {
+            }, T.shiftedBy = function(e4) {
+              return y(e4, -9007199254740991, m), this.times("1e" + e4);
+            }, T.squareRoot = T.sqrt = function() {
               var e4, a4, n3, o3, s3, t2 = this, r2 = t2.c, c2 = t2.s, p2 = t2.e, l2 = P + 4, u2 = new H("0.5");
               if (1 !== c2 || !r2 || !r2[0])
                 return new H(!c2 || c2 < 0 && (!r2 || r2[0]) ? NaN : r2 ? t2 : 1 / 0);
-              if (0 == (c2 = Math.sqrt(+J(t2))) || c2 == 1 / 0 ? (((a4 = b2(r2)).length + p2) % 2 == 0 && (a4 += "0"), c2 = Math.sqrt(+a4), p2 = h2((p2 + 1) / 2) - (p2 < 0 || p2 % 2), n3 = new H(a4 = c2 == 1 / 0 ? "5e" + p2 : (a4 = c2.toExponential()).slice(0, a4.indexOf("e") + 1) + p2)) : n3 = new H(c2 + ""), n3.c[0]) {
+              if (0 == (c2 = Math.sqrt(+J(t2))) || c2 == 1 / 0 ? (((a4 = b(r2)).length + p2) % 2 == 0 && (a4 += "0"), c2 = Math.sqrt(+a4), p2 = h((p2 + 1) / 2) - (p2 < 0 || p2 % 2), n3 = new H(a4 = c2 == 1 / 0 ? "5e" + p2 : (a4 = c2.toExponential()).slice(0, a4.indexOf("e") + 1) + p2)) : n3 = new H(c2 + ""), n3.c[0]) {
                 for ((c2 = (p2 = n3.e) + l2) < 3 && (c2 = 0); ; )
-                  if (s3 = n3, n3 = u2.times(s3.plus(i3(t2, s3, l2, 1))), b2(s3.c).slice(0, c2) === (a4 = b2(n3.c)).slice(0, c2)) {
+                  if (s3 = n3, n3 = u2.times(s3.plus(i3(t2, s3, l2, 1))), b(s3.c).slice(0, c2) === (a4 = b(n3.c)).slice(0, c2)) {
                     if (n3.e < p2 && --c2, "9999" != (a4 = a4.slice(c2 - 3, c2 + 1)) && (o3 || "4999" != a4)) {
-                      +a4 && (+a4.slice(1) || "5" != a4.charAt(0)) || ($2(n3, n3.e + P + 2, 1), e4 = !n3.times(n3).eq(t2));
+                      +a4 && (+a4.slice(1) || "5" != a4.charAt(0)) || ($(n3, n3.e + P + 2, 1), e4 = !n3.times(n3).eq(t2));
                       break;
                     }
-                    if (!o3 && ($2(s3, s3.e + P + 2, 0), s3.times(s3).eq(t2))) {
+                    if (!o3 && ($(s3, s3.e + P + 2, 0), s3.times(s3).eq(t2))) {
                       n3 = s3;
                       break;
                     }
                     l2 += 4, c2 += 4, o3 = 1;
                   }
               }
-              return $2(n3, n3.e + P + 1, B2, e4);
-            }, T2.toExponential = function(e4, a4) {
-              return null != e4 && (y(e4, 0, v2), e4++), V2(this, e4, a4, 1);
-            }, T2.toFixed = function(e4, a4) {
-              return null != e4 && (y(e4, 0, v2), e4 = e4 + this.e + 1), V2(this, e4, a4);
-            }, T2.toFormat = function(e4, a4, i4) {
+              return $(n3, n3.e + P + 1, B, e4);
+            }, T.toExponential = function(e4, a4) {
+              return null != e4 && (y(e4, 0, v), e4++), V(this, e4, a4, 1);
+            }, T.toFixed = function(e4, a4) {
+              return null != e4 && (y(e4, 0, v), e4 = e4 + this.e + 1), V(this, e4, a4);
+            }, T.toFormat = function(e4, a4, i4) {
               var n3, o3 = this;
               if (null == i4)
-                null != e4 && a4 && "object" == typeof a4 ? (i4 = a4, a4 = null) : e4 && "object" == typeof e4 ? (i4 = e4, e4 = a4 = null) : i4 = U2;
+                null != e4 && a4 && "object" == typeof a4 ? (i4 = a4, a4 = null) : e4 && "object" == typeof e4 ? (i4 = e4, e4 = a4 = null) : i4 = U;
               else if ("object" != typeof i4)
                 throw Error(p + "Argument not an object: " + i4);
               if (n3 = o3.toFixed(e4, a4), o3.c) {
-                var s3, t2 = n3.split("."), r2 = +i4.groupSize, c2 = +i4.secondaryGroupSize, l2 = i4.groupSeparator || "", u2 = t2[0], d3 = t2[1], m3 = o3.s < 0, f2 = m3 ? u2.slice(1) : u2, x2 = f2.length;
+                var s3, t2 = n3.split("."), r2 = +i4.groupSize, c2 = +i4.secondaryGroupSize, l2 = i4.groupSeparator || "", u2 = t2[0], d2 = t2[1], m2 = o3.s < 0, f2 = m2 ? u2.slice(1) : u2, x2 = f2.length;
                 if (c2 && (s3 = r2, r2 = c2, c2 = s3, x2 -= s3), r2 > 0 && x2 > 0) {
                   for (s3 = x2 % r2 || r2, u2 = f2.substr(0, s3); s3 < x2; s3 += r2)
                     u2 += l2 + f2.substr(s3, r2);
-                  c2 > 0 && (u2 += l2 + f2.slice(s3)), m3 && (u2 = "-" + u2);
+                  c2 > 0 && (u2 += l2 + f2.slice(s3)), m2 && (u2 = "-" + u2);
                 }
-                n3 = d3 ? u2 + (i4.decimalSeparator || "") + ((c2 = +i4.fractionGroupSize) ? d3.replace(new RegExp("\\d{" + c2 + "}\\B", "g"), "$&" + (i4.fractionGroupSeparator || "")) : d3) : u2;
+                n3 = d2 ? u2 + (i4.decimalSeparator || "") + ((c2 = +i4.fractionGroupSize) ? d2.replace(new RegExp("\\d{" + c2 + "}\\B", "g"), "$&" + (i4.fractionGroupSeparator || "")) : d2) : u2;
               }
               return (i4.prefix || "") + n3 + (i4.suffix || "");
-            }, T2.toFraction = function(e4) {
-              var a4, n3, o3, s3, t2, r2, c2, l2, u2, m3, x2, v3, h3 = this, g2 = h3.c;
-              if (null != e4 && (!(c2 = new H(e4)).isInteger() && (c2.c || 1 !== c2.s) || c2.lt(R2)))
+            }, T.toFraction = function(e4) {
+              var a4, n3, o3, s3, t2, r2, c2, l2, u2, m2, x2, v2, h2 = this, g2 = h2.c;
+              if (null != e4 && (!(c2 = new H(e4)).isInteger() && (c2.c || 1 !== c2.s) || c2.lt(R)))
                 throw Error(p + "Argument " + (c2.isInteger() ? "out of range: " : "not an integer: ") + J(c2));
               if (!g2)
-                return new H(h3);
-              for (a4 = new H(R2), u2 = n3 = new H(R2), o3 = l2 = new H(R2), v3 = b2(g2), t2 = a4.e = v3.length - h3.e - 1, a4.c[0] = f[(r2 = t2 % d2) < 0 ? d2 + r2 : r2], e4 = !e4 || c2.comparedTo(a4) > 0 ? t2 > 0 ? a4 : u2 : c2, r2 = D2, D2 = 1 / 0, c2 = new H(v3), l2.c[0] = 0; m3 = i3(c2, a4, 0, 1), 1 != (s3 = n3.plus(m3.times(o3))).comparedTo(e4); )
-                n3 = o3, o3 = s3, u2 = l2.plus(m3.times(s3 = u2)), l2 = s3, a4 = c2.minus(m3.times(s3 = a4)), c2 = s3;
-              return s3 = i3(e4.minus(n3), o3, 0, 1), l2 = l2.plus(s3.times(u2)), n3 = n3.plus(s3.times(o3)), l2.s = u2.s = h3.s, x2 = i3(u2, o3, t2 *= 2, B2).minus(h3).abs().comparedTo(i3(l2, n3, t2, B2).minus(h3).abs()) < 1 ? [u2, o3] : [l2, n3], D2 = r2, x2;
-            }, T2.toNumber = function() {
+                return new H(h2);
+              for (a4 = new H(R), u2 = n3 = new H(R), o3 = l2 = new H(R), v2 = b(g2), t2 = a4.e = v2.length - h2.e - 1, a4.c[0] = f[(r2 = t2 % d) < 0 ? d + r2 : r2], e4 = !e4 || c2.comparedTo(a4) > 0 ? t2 > 0 ? a4 : u2 : c2, r2 = D, D = 1 / 0, c2 = new H(v2), l2.c[0] = 0; m2 = i3(c2, a4, 0, 1), 1 != (s3 = n3.plus(m2.times(o3))).comparedTo(e4); )
+                n3 = o3, o3 = s3, u2 = l2.plus(m2.times(s3 = u2)), l2 = s3, a4 = c2.minus(m2.times(s3 = a4)), c2 = s3;
+              return s3 = i3(e4.minus(n3), o3, 0, 1), l2 = l2.plus(s3.times(u2)), n3 = n3.plus(s3.times(o3)), l2.s = u2.s = h2.s, x2 = i3(u2, o3, t2 *= 2, B).minus(h2).abs().comparedTo(i3(l2, n3, t2, B).minus(h2).abs()) < 1 ? [u2, o3] : [l2, n3], D = r2, x2;
+            }, T.toNumber = function() {
               return +J(this);
-            }, T2.toPrecision = function(e4, a4) {
-              return null != e4 && y(e4, 1, v2), V2(this, e4, a4, 2);
-            }, T2.toString = function(e4) {
+            }, T.toPrecision = function(e4, a4) {
+              return null != e4 && y(e4, 1, v), V(this, e4, a4, 2);
+            }, T.toString = function(e4) {
               var a4, i4 = this, o3 = i4.s, s3 = i4.e;
-              return null === s3 ? o3 ? (a4 = "Infinity", o3 < 0 && (a4 = "-" + a4)) : a4 = "NaN" : (null == e4 ? a4 = s3 <= N2 || s3 >= z ? k2(b2(i4.c), s3) : j(b2(i4.c), s3, "0") : 10 === e4 ? a4 = j(b2((i4 = $2(new H(i4), P + s3 + 1, B2)).c), i4.e, "0") : (y(e4, 2, I.length, "Base"), a4 = n2(j(b2(i4.c), s3, "0"), 10, e4, o3, true)), o3 < 0 && i4.c[0] && (a4 = "-" + a4)), a4;
-            }, T2.valueOf = T2.toJSON = function() {
+              return null === s3 ? o3 ? (a4 = "Infinity", o3 < 0 && (a4 = "-" + a4)) : a4 = "NaN" : (null == e4 ? a4 = s3 <= N || s3 >= z ? k(b(i4.c), s3) : j(b(i4.c), s3, "0") : 10 === e4 ? a4 = j(b((i4 = $(new H(i4), P + s3 + 1, B)).c), i4.e, "0") : (y(e4, 2, I.length, "Base"), a4 = n2(j(b(i4.c), s3, "0"), 10, e4, o3, true)), o3 < 0 && i4.c[0] && (a4 = "-" + a4)), a4;
+            }, T.valueOf = T.toJSON = function() {
               return J(this);
-            }, T2._isBigNumber = true, null != a3 && H.set(a3), H;
+            }, T._isBigNumber = true, null != a3 && H.set(a3), H;
           }, "e"))(), s.default = s.BigNumber = s, void 0 === (n = function() {
             return s;
           }.call(a2, i2, a2, e2)) || (e2.exports = n);
@@ -23165,16 +23165,16 @@ var require_mailjet_node = __commonJS({
             this._redirectable.emit(e3, a3, i3, n2);
           };
         });
-        var d2 = w2("ERR_FR_REDIRECTION_FAILURE", "Redirected request failed"), m2 = w2("ERR_FR_TOO_MANY_REDIRECTS", "Maximum number of redirects exceeded"), f = w2("ERR_FR_MAX_BODY_LENGTH_EXCEEDED", "Request body larger than maxBodyLength limit"), x = w2("ERR_STREAM_WRITE_AFTER_END", "write after end");
-        function v2(e3, a3) {
+        var d = w("ERR_FR_REDIRECTION_FAILURE", "Redirected request failed"), m = w("ERR_FR_TOO_MANY_REDIRECTS", "Maximum number of redirects exceeded"), f = w("ERR_FR_MAX_BODY_LENGTH_EXCEEDED", "Request body larger than maxBodyLength limit"), x = w("ERR_STREAM_WRITE_AFTER_END", "write after end");
+        function v(e3, a3) {
           r.call(this), this._sanitizeOptions(e3), this._options = e3, this._ended = false, this._ending = false, this._redirectCount = 0, this._redirects = [], this._requestBodyLength = 0, this._requestBodyBuffers = [], a3 && this.on("response", a3);
           var i3 = this;
           this._onNativeResponse = function(e4) {
             i3._processResponse(e4);
           }, this._performRequest();
         }
-        __name(v2, "v");
-        function h2(e3) {
+        __name(v, "v");
+        function h(e3) {
           var a3 = { maxRedirects: 21, maxBodyLength: 10485760 }, i3 = {};
           return Object.keys(e3).forEach(function(s2) {
             var t2 = s2 + ":", r2 = i3[t2] = e3[s2], l2 = a3[s2] = Object.create(r2);
@@ -23188,17 +23188,17 @@ var require_mailjet_node = __commonJS({
                 }
               } else
                 o && e4 instanceof o ? e4 = g(e4) : (r3 = s3, s3 = e4, e4 = { protocol: t2 });
-              return "function" == typeof s3 && (r3 = s3, s3 = null), (s3 = Object.assign({ maxRedirects: a3.maxRedirects, maxBodyLength: a3.maxBodyLength }, e4, s3)).nativeProtocols = i3, c.equal(s3.protocol, t2, "protocol mismatch"), p("options", s3), new v2(s3, r3);
+              return "function" == typeof s3 && (r3 = s3, s3 = null), (s3 = Object.assign({ maxRedirects: a3.maxRedirects, maxBodyLength: a3.maxBodyLength }, e4, s3)).nativeProtocols = i3, c.equal(s3.protocol, t2, "protocol mismatch"), p("options", s3), new v(s3, r3);
             }, configurable: true, enumerable: true, writable: true }, get: { value: function(e4, a4, i4) {
               var n2 = l2.request(e4, a4, i4);
               return n2.end(), n2;
             }, configurable: true, enumerable: true, writable: true } });
           }), a3;
         }
-        __name(h2, "h");
-        function b2() {
+        __name(h, "h");
+        function b() {
         }
-        __name(b2, "b");
+        __name(b, "b");
         function g(e3) {
           var a3 = { protocol: e3.protocol, hostname: e3.hostname.startsWith("[") ? e3.hostname.slice(1, -1) : e3.hostname, hash: e3.hash, search: e3.search, pathname: e3.pathname, path: e3.pathname + e3.search, href: e3.href };
           return "" !== e3.port && (a3.port = Number(e3.port)), a3;
@@ -23211,29 +23211,29 @@ var require_mailjet_node = __commonJS({
           return null == i3 ? void 0 : String(i3).trim();
         }
         __name(y, "y");
-        function w2(e3, a3) {
+        function w(e3, a3) {
           function i3(e4) {
             Error.captureStackTrace(this, this.constructor), e4 ? (this.message = a3 + ": " + e4.message, this.cause = e4) : this.message = a3;
           }
           __name(i3, "i");
           return i3.prototype = new Error(), i3.prototype.constructor = i3, i3.prototype.name = "Error [" + e3 + "]", i3.prototype.code = e3, i3;
         }
-        __name(w2, "w");
-        function k2(e3) {
+        __name(w, "w");
+        function k(e3) {
           for (var a3 of l)
             e3.removeListener(a3, u[a3]);
-          e3.on("error", b2), e3.abort();
+          e3.on("error", b), e3.abort();
         }
-        __name(k2, "k");
-        v2.prototype = Object.create(r.prototype), v2.prototype.abort = function() {
-          k2(this._currentRequest), this.emit("abort");
-        }, v2.prototype.write = function(e3, a3, i3) {
+        __name(k, "k");
+        v.prototype = Object.create(r.prototype), v.prototype.abort = function() {
+          k(this._currentRequest), this.emit("abort");
+        }, v.prototype.write = function(e3, a3, i3) {
           if (this._ending)
             throw new x();
           if (!("string" == typeof e3 || "object" == typeof e3 && "length" in e3))
             throw new TypeError("data should be a string, Buffer or Uint8Array");
           "function" == typeof a3 && (i3 = a3, a3 = null), 0 !== e3.length ? this._requestBodyLength + e3.length <= this._options.maxBodyLength ? (this._requestBodyLength += e3.length, this._requestBodyBuffers.push({ data: e3, encoding: a3 }), this._currentRequest.write(e3, a3, i3)) : (this.emit("error", new f()), this.abort()) : i3 && i3();
-        }, v2.prototype.end = function(e3, a3, i3) {
+        }, v.prototype.end = function(e3, a3, i3) {
           if ("function" == typeof e3 ? (i3 = e3, e3 = a3 = null) : "function" == typeof a3 && (i3 = a3, a3 = null), e3) {
             var n2 = this, o2 = this._currentRequest;
             this.write(e3, a3, function() {
@@ -23241,11 +23241,11 @@ var require_mailjet_node = __commonJS({
             }), this._ending = true;
           } else
             this._ended = this._ending = true, this._currentRequest.end(null, null, i3);
-        }, v2.prototype.setHeader = function(e3, a3) {
+        }, v.prototype.setHeader = function(e3, a3) {
           this._options.headers[e3] = a3, this._currentRequest.setHeader(e3, a3);
-        }, v2.prototype.removeHeader = function(e3) {
+        }, v.prototype.removeHeader = function(e3) {
           delete this._options.headers[e3], this._currentRequest.removeHeader(e3);
-        }, v2.prototype.setTimeout = function(e3, a3) {
+        }, v.prototype.setTimeout = function(e3, a3) {
           var i3 = this;
           function n2(a4) {
             a4.setTimeout(e3), a4.removeListener("timeout", a4.destroy), a4.addListener("timeout", a4.destroy);
@@ -23263,19 +23263,19 @@ var require_mailjet_node = __commonJS({
           __name(s2, "s");
           return a3 && this.on("timeout", a3), this.socket ? o2(this.socket) : this._currentRequest.once("socket", o2), this.on("socket", n2), this.on("abort", s2), this.on("error", s2), this.on("response", s2), this;
         }, ["flushHeaders", "getHeader", "setNoDelay", "setSocketKeepAlive"].forEach(function(e3) {
-          v2.prototype[e3] = function(a3, i3) {
+          v.prototype[e3] = function(a3, i3) {
             return this._currentRequest[e3](a3, i3);
           };
         }), ["aborted", "connection", "socket"].forEach(function(e3) {
-          Object.defineProperty(v2.prototype, e3, { get: function() {
+          Object.defineProperty(v.prototype, e3, { get: function() {
             return this._currentRequest[e3];
           } });
-        }), v2.prototype._sanitizeOptions = function(e3) {
+        }), v.prototype._sanitizeOptions = function(e3) {
           if (e3.headers || (e3.headers = {}), e3.host && (e3.hostname || (e3.hostname = e3.host), delete e3.host), !e3.pathname && e3.path) {
             var a3 = e3.path.indexOf("?");
             a3 < 0 ? e3.pathname = e3.path : (e3.pathname = e3.path.substring(0, a3), e3.search = e3.path.substring(a3));
           }
-        }, v2.prototype._performRequest = function() {
+        }, v.prototype._performRequest = function() {
           var e3 = this._options.protocol, a3 = this._options.nativeProtocols[e3];
           if (a3) {
             if (this._options.agents) {
@@ -23300,14 +23300,14 @@ var require_mailjet_node = __commonJS({
             }
           } else
             this.emit("error", new TypeError("Unsupported protocol " + e3));
-        }, v2.prototype._processResponse = function(e3) {
+        }, v.prototype._processResponse = function(e3) {
           var a3 = e3.statusCode;
           this._options.trackRedirects && this._redirects.push({ url: this._currentUrl, headers: e3.headers, statusCode: a3 });
           var i3 = e3.headers.location;
           if (!i3 || false === this._options.followRedirects || a3 < 300 || a3 >= 400)
             return e3.responseUrl = this._currentUrl, e3.redirects = this._redirects, this.emit("response", e3), void (this._requestBodyBuffers = []);
-          if (k2(this._currentRequest), e3.destroy(), ++this._redirectCount > this._options.maxRedirects)
-            this.emit("error", new m2());
+          if (k(this._currentRequest), e3.destroy(), ++this._redirectCount > this._options.maxRedirects)
+            this.emit("error", new m());
           else {
             var o2, s2 = this._options.beforeRedirect;
             s2 && (o2 = Object.assign({ Host: e3.req.getHeader("host") }, this._options.headers));
@@ -23317,7 +23317,7 @@ var require_mailjet_node = __commonJS({
             try {
               r2 = n.resolve(f2, i3);
             } catch (e4) {
-              return void this.emit("error", new d2(e4));
+              return void this.emit("error", new d(e4));
             }
             p("redirecting to", r2), this._isRedirect = true;
             var x2 = n.parse(r2);
@@ -23325,9 +23325,9 @@ var require_mailjet_node = __commonJS({
               const i4 = e4.length - a4.length - 1;
               return i4 > 0 && "." === e4[i4] && e4.endsWith(a4);
             }(x2.host, u2)) && y(/^(?:authorization|cookie)$/i, this._options.headers), "function" == typeof s2) {
-              var v3 = { headers: e3.headers, statusCode: a3 }, h3 = { url: f2, method: t2, headers: o2 };
+              var v2 = { headers: e3.headers, statusCode: a3 }, h2 = { url: f2, method: t2, headers: o2 };
               try {
-                s2(this._options, v3, h3);
+                s2(this._options, v2, h2);
               } catch (e4) {
                 return void this.emit("error", e4);
               }
@@ -23336,12 +23336,12 @@ var require_mailjet_node = __commonJS({
             try {
               this._performRequest();
             } catch (e4) {
-              this.emit("error", new d2(e4));
+              this.emit("error", new d(e4));
             }
           }
-        }, e2.exports = h2({ http: s, https: t }), e2.exports.wrap = h2;
+        }, e2.exports = h({ http: s, https: t }), e2.exports.wrap = h;
       }, 6882: (e2, a2, i2) => {
-        var n = i2(9779), o = i2(3837), s = i2(1017), t = i2(3685), r = i2(5687), c = i2(7310).parse, p = i2(7147), l = i2(2781).Stream, u = i2(983), d2 = i2(9118), m2 = i2(2275);
+        var n = i2(9779), o = i2(3837), s = i2(1017), t = i2(3685), r = i2(5687), c = i2(7310).parse, p = i2(7147), l = i2(2781).Stream, u = i2(983), d = i2(9118), m = i2(2275);
         function f(e3) {
           if (!(this instanceof f))
             return new f(e3);
@@ -23372,7 +23372,7 @@ var require_mailjet_node = __commonJS({
           if ("string" == typeof i3.header)
             return i3.header;
           var n2, o2 = this._getContentDisposition(a3, i3), s2 = this._getContentType(a3, i3), t2 = "", r2 = { "Content-Disposition": ["form-data", 'name="' + e3 + '"'].concat(o2 || []), "Content-Type": [].concat(s2 || []) };
-          for (var c2 in "object" == typeof i3.header && m2(r2, i3.header), r2)
+          for (var c2 in "object" == typeof i3.header && m(r2, i3.header), r2)
             r2.hasOwnProperty(c2) && null != (n2 = r2[c2]) && (Array.isArray(n2) || (n2 = [n2]), n2.length && (t2 += c2 + ": " + n2.join("; ") + f.LINE_BREAK));
           return "--" + this.getBoundary() + f.LINE_BREAK + t2 + f.LINE_BREAK;
         }, f.prototype._getContentDisposition = function(e3, a3) {
@@ -23413,14 +23413,14 @@ var require_mailjet_node = __commonJS({
           return this._valuesToMeasure.length && (e3 = false), e3;
         }, f.prototype.getLength = function(e3) {
           var a3 = this._overheadLength + this._valueLength;
-          this._streams.length && (a3 += this._lastBoundary().length), this._valuesToMeasure.length ? d2.parallel(this._valuesToMeasure, this._lengthRetriever, function(i3, n2) {
+          this._streams.length && (a3 += this._lastBoundary().length), this._valuesToMeasure.length ? d.parallel(this._valuesToMeasure, this._lengthRetriever, function(i3, n2) {
             i3 ? e3(i3) : (n2.forEach(function(e4) {
               a3 += e4;
             }), e3(null, a3));
           }) : process.nextTick(e3.bind(this, null, a3));
         }, f.prototype.submit = function(e3, a3) {
           var i3, n2, o2 = { method: "post" };
-          return "string" == typeof e3 ? (e3 = c(e3), n2 = m2({ port: e3.port, path: e3.pathname, host: e3.hostname, protocol: e3.protocol }, o2)) : (n2 = m2(e3, o2)).port || (n2.port = "https:" == n2.protocol ? 443 : 80), n2.headers = this.getHeaders(e3.headers), i3 = "https:" == n2.protocol ? r.request(n2) : t.request(n2), this.getLength(function(e4, n3) {
+          return "string" == typeof e3 ? (e3 = c(e3), n2 = m({ port: e3.port, path: e3.pathname, host: e3.hostname, protocol: e3.protocol }, o2)) : (n2 = m(e3, o2)).port || (n2.port = "https:" == n2.protocol ? 443 : 80), n2.headers = this.getHeaders(e3.headers), i3 = "https:" == n2.protocol ? r.request(n2) : t.request(n2), this.getLength(function(e4, n3) {
             if (e4 && "Unknown stream" !== e4)
               this._error(e4);
             else if (n3 && i3.setHeader("Content-Length", n3), this.pipe(i3), a3) {
@@ -23473,30 +23473,30 @@ var require_mailjet_node = __commonJS({
           }
           var t, r, c, p, l = { '"': '"', "\\": "\\", "/": "/", b: "\b", f: "\f", n: "\n", r: "\r", t: "	" }, u = /* @__PURE__ */ __name(function(e4) {
             throw { name: "SyntaxError", message: e4, at: t, text: c };
-          }, "u"), d2 = /* @__PURE__ */ __name(function(e4) {
+          }, "u"), d = /* @__PURE__ */ __name(function(e4) {
             return e4 && e4 !== r && u("Expected '" + e4 + "' instead of '" + r + "'"), r = c.charAt(t), t += 1, r;
-          }, "d"), m2 = /* @__PURE__ */ __name(function() {
+          }, "d"), m = /* @__PURE__ */ __name(function() {
             var e4, o2 = "";
-            for ("-" === r && (o2 = "-", d2("-")); r >= "0" && r <= "9"; )
-              o2 += r, d2();
+            for ("-" === r && (o2 = "-", d("-")); r >= "0" && r <= "9"; )
+              o2 += r, d();
             if ("." === r)
-              for (o2 += "."; d2() && r >= "0" && r <= "9"; )
+              for (o2 += "."; d() && r >= "0" && r <= "9"; )
                 o2 += r;
             if ("e" === r || "E" === r)
-              for (o2 += r, d2(), "-" !== r && "+" !== r || (o2 += r, d2()); r >= "0" && r <= "9"; )
-                o2 += r, d2();
+              for (o2 += r, d(), "-" !== r && "+" !== r || (o2 += r, d()); r >= "0" && r <= "9"; )
+                o2 += r, d();
             if (e4 = +o2, isFinite(e4))
               return null == n && (n = i2(4431)), o2.length > 15 ? a3.storeAsString ? o2 : a3.useNativeBigInt ? BigInt(o2) : new n(o2) : a3.alwaysParseAsBig ? a3.useNativeBigInt ? BigInt(e4) : new n(e4) : e4;
             u("Bad number");
           }, "m"), f = /* @__PURE__ */ __name(function() {
             var e4, a4, i3, n2 = "";
             if ('"' === r)
-              for (var o2 = t; d2(); ) {
+              for (var o2 = t; d(); ) {
                 if ('"' === r)
-                  return t - 1 > o2 && (n2 += c.substring(o2, t - 1)), d2(), n2;
+                  return t - 1 > o2 && (n2 += c.substring(o2, t - 1)), d(), n2;
                 if ("\\" === r) {
-                  if (t - 1 > o2 && (n2 += c.substring(o2, t - 1)), d2(), "u" === r) {
-                    for (i3 = 0, a4 = 0; a4 < 4 && (e4 = parseInt(d2(), 16), isFinite(e4)); a4 += 1)
+                  if (t - 1 > o2 && (n2 += c.substring(o2, t - 1)), d(), "u" === r) {
+                    for (i3 = 0, a4 = 0; a4 < 4 && (e4 = parseInt(d(), 16), isFinite(e4)); a4 += 1)
                       i3 = 16 * i3 + e4;
                     n2 += String.fromCharCode(i3);
                   } else {
@@ -23510,7 +23510,7 @@ var require_mailjet_node = __commonJS({
             u("Bad string");
           }, "f"), x = /* @__PURE__ */ __name(function() {
             for (; r && r <= " "; )
-              d2();
+              d();
           }, "x");
           return p = /* @__PURE__ */ __name(function() {
             switch (x(), r) {
@@ -23518,12 +23518,12 @@ var require_mailjet_node = __commonJS({
                 return function() {
                   var e4, i3 = /* @__PURE__ */ Object.create(null);
                   if ("{" === r) {
-                    if (d2("{"), x(), "}" === r)
-                      return d2("}"), i3;
+                    if (d("{"), x(), "}" === r)
+                      return d("}"), i3;
                     for (; r; ) {
-                      if (e4 = f(), x(), d2(":"), true === a3.strict && Object.hasOwnProperty.call(i3, e4) && u('Duplicate key "' + e4 + '"'), true === o.test(e4) ? "error" === a3.protoAction ? u("Object contains forbidden prototype property") : "ignore" === a3.protoAction ? p() : i3[e4] = p() : true === s.test(e4) ? "error" === a3.constructorAction ? u("Object contains forbidden constructor property") : "ignore" === a3.constructorAction ? p() : i3[e4] = p() : i3[e4] = p(), x(), "}" === r)
-                        return d2("}"), i3;
-                      d2(","), x();
+                      if (e4 = f(), x(), d(":"), true === a3.strict && Object.hasOwnProperty.call(i3, e4) && u('Duplicate key "' + e4 + '"'), true === o.test(e4) ? "error" === a3.protoAction ? u("Object contains forbidden prototype property") : "ignore" === a3.protoAction ? p() : i3[e4] = p() : true === s.test(e4) ? "error" === a3.constructorAction ? u("Object contains forbidden constructor property") : "ignore" === a3.constructorAction ? p() : i3[e4] = p() : i3[e4] = p(), x(), "}" === r)
+                        return d("}"), i3;
+                      d(","), x();
                     }
                   }
                   u("Bad object");
@@ -23532,12 +23532,12 @@ var require_mailjet_node = __commonJS({
                 return function() {
                   var e4 = [];
                   if ("[" === r) {
-                    if (d2("["), x(), "]" === r)
-                      return d2("]"), e4;
+                    if (d("["), x(), "]" === r)
+                      return d("]"), e4;
                     for (; r; ) {
                       if (e4.push(p()), x(), "]" === r)
-                        return d2("]"), e4;
-                      d2(","), x();
+                        return d("]"), e4;
+                      d(","), x();
                     }
                   }
                   u("Bad array");
@@ -23545,16 +23545,16 @@ var require_mailjet_node = __commonJS({
               case '"':
                 return f();
               case "-":
-                return m2();
+                return m();
               default:
-                return r >= "0" && r <= "9" ? m2() : function() {
+                return r >= "0" && r <= "9" ? m() : function() {
                   switch (r) {
                     case "t":
-                      return d2("t"), d2("r"), d2("u"), d2("e"), true;
+                      return d("t"), d("r"), d("u"), d("e"), true;
                     case "f":
-                      return d2("f"), d2("a"), d2("l"), d2("s"), d2("e"), false;
+                      return d("f"), d("a"), d("l"), d("s"), d("e"), false;
                     case "n":
-                      return d2("n"), d2("u"), d2("l"), d2("l"), null;
+                      return d("n"), d("u"), d("l"), d("l"), null;
                   }
                   u("Unexpected '" + r + "'");
                 }();
@@ -23582,7 +23582,7 @@ var require_mailjet_node = __commonJS({
           }
           __name(r, "r");
           function c(o2, s2) {
-            var t2, p, l, u, d2, m2 = e3, f = s2[o2], x = null != f && (f instanceof n || n.isBigNumber(f));
+            var t2, p, l, u, d, m = e3, f = s2[o2], x = null != f && (f instanceof n || n.isBigNumber(f));
             switch (f && "object" == typeof f && "function" == typeof f.toJSON && (f = f.toJSON(o2)), "function" == typeof i3 && (f = i3.call(s2, o2, f)), typeof f) {
               case "string":
                 return x ? f : r(f);
@@ -23595,20 +23595,20 @@ var require_mailjet_node = __commonJS({
               case "object":
                 if (!f)
                   return "null";
-                if (e3 += a3, d2 = [], "[object Array]" === Object.prototype.toString.apply(f)) {
+                if (e3 += a3, d = [], "[object Array]" === Object.prototype.toString.apply(f)) {
                   for (u = f.length, t2 = 0; t2 < u; t2 += 1)
-                    d2[t2] = c(t2, f) || "null";
-                  return l = 0 === d2.length ? "[]" : e3 ? "[\n" + e3 + d2.join(",\n" + e3) + "\n" + m2 + "]" : "[" + d2.join(",") + "]", e3 = m2, l;
+                    d[t2] = c(t2, f) || "null";
+                  return l = 0 === d.length ? "[]" : e3 ? "[\n" + e3 + d.join(",\n" + e3) + "\n" + m + "]" : "[" + d.join(",") + "]", e3 = m, l;
                 }
                 if (i3 && "object" == typeof i3)
                   for (u = i3.length, t2 = 0; t2 < u; t2 += 1)
-                    "string" == typeof i3[t2] && (l = c(p = i3[t2], f)) && d2.push(r(p) + (e3 ? ": " : ":") + l);
+                    "string" == typeof i3[t2] && (l = c(p = i3[t2], f)) && d.push(r(p) + (e3 ? ": " : ":") + l);
                 else
                   Object.keys(f).forEach(function(a4) {
                     var i4 = c(a4, f);
-                    i4 && d2.push(r(a4) + (e3 ? ": " : ":") + i4);
+                    i4 && d.push(r(a4) + (e3 ? ": " : ":") + i4);
                   });
-                return l = 0 === d2.length ? "{}" : e3 ? "{\n" + e3 + d2.join(",\n" + e3) + "\n" + m2 + "}" : "{" + d2.join(",") + "}", e3 = m2, l;
+                return l = 0 === d.length ? "{}" : e3 ? "{\n" + e3 + d.join(",\n" + e3) + "\n" + m + "}" : "{" + d.join(",") + "}", e3 = m, l;
             }
           }
           __name(c, "c");
@@ -24015,24 +24015,49 @@ var topLevelOrder = Object.values(TOP_LEVEL);
 // src/configuration/configuration.service.ts
 var import_date_fns2 = __toESM(require_date_fns());
 var ConfigurationService = class {
-  constructor(_loggingService, _fileSystemHelper, commandConfiguration, googleCredentialsLoader, _firebaseAdmin) {
+  constructor(_loggingService, _fileSystemHelper, commandConfiguration, _googleCredentialsLoader, _firebaseAdmin, seasonsApi) {
     this._loggingService = _loggingService;
     this._fileSystemHelper = _fileSystemHelper;
     this.commandConfiguration = commandConfiguration;
-    this.googleCredentialsLoader = googleCredentialsLoader;
+    this._googleCredentialsLoader = _googleCredentialsLoader;
     this._firebaseAdmin = _firebaseAdmin;
+    this.seasonsApi = seasonsApi;
   }
   static {
     __name(this, "ConfigurationService");
   }
   _configuration;
+  _currentSeason = null;
   dateStart = /* @__PURE__ */ new Date();
   async init() {
     this._loggingService.info(this._loggingService.getLayerInfo("CONFIGURATION"));
     await this.commandConfiguration.init();
     await this.loadConfigFromFirestore();
+    await this.loadCurrentSeason();
     await this.logConfigAsync();
     await this.initFileSystemAsync();
+  }
+  async loadCurrentSeason() {
+    try {
+      if (this.seasonsApi) {
+        const axiosInstance = this.seasonsApi.axios;
+        if (axiosInstance && axiosInstance.defaults.baseURL !== this.bepingUrl) {
+          axiosInstance.defaults.baseURL = this.bepingUrl;
+        }
+        const { data: currentSeason } = await this.seasonsApi.findCurrentSeason();
+        this._currentSeason = currentSeason.season;
+        this._loggingService.info(`Current season loaded: ${this._currentSeason}`);
+      } else {
+        this._currentSeason = 26;
+        this._loggingService.warn("SeasonsApi not available, using fallback season: 26");
+      }
+    } catch (error) {
+      this._loggingService.warn(`Failed to load current season: ${error instanceof Error ? error.message : "Unknown error"}. Using fallback: 26`);
+      this._currentSeason = 26;
+    }
+  }
+  get currentSeason() {
+    return this._currentSeason || 26;
   }
   async logConfigAsync() {
     this._loggingService.debug(`RUNTIME CONFIGURATION`);
@@ -24151,7 +24176,7 @@ var ConfigurationService = class {
     this._loggingService.debug(`Beping API URL: ${beping_api.data()?.url}`);
     this._configuration = {
       facebook: facebook.data(),
-      beping_url: beping_api.data()?.url || "https://api.beping.be",
+      beping_url: beping_api.data()?.url || "https://api-v2.beping.be",
       top6: {
         levels_definition: levels_definition.data(),
         regions_definition: regions_definition.data(),
@@ -24176,147 +24201,6 @@ var ConfigurationService = class {
   }
 };
 
-// node_modules/type-flag/dist/index.mjs
-var V = "known-flag";
-var k = "unknown-flag";
-var C = "argument";
-var { stringify: h } = JSON;
-var O = /\B([A-Z])/g;
-var v = /* @__PURE__ */ __name((t) => t.replace(O, "-$1").toLowerCase(), "v");
-var { hasOwnProperty: D } = Object.prototype;
-var w = /* @__PURE__ */ __name((t, n) => D.call(t, n), "w");
-var L = /* @__PURE__ */ __name((t) => Array.isArray(t), "L");
-var b = /* @__PURE__ */ __name((t) => typeof t == "function" ? [t, false] : L(t) ? [t[0], true] : b(t.type), "b");
-var d = /* @__PURE__ */ __name((t, n) => t === Boolean ? n !== "false" : n, "d");
-var m = /* @__PURE__ */ __name((t, n) => typeof n == "boolean" ? n : t === Number && n === "" ? Number.NaN : t(n), "m");
-var R = /[\s.:=]/;
-var B = /* @__PURE__ */ __name((t) => {
-  const n = `Flag name ${h(t)}`;
-  if (t.length === 0)
-    throw new Error(`${n} cannot be empty`);
-  if (t.length === 1)
-    throw new Error(`${n} must be longer than a character`);
-  const r = t.match(R);
-  if (r)
-    throw new Error(`${n} cannot contain ${h(r?.[0])}`);
-}, "B");
-var K = /* @__PURE__ */ __name((t) => {
-  const n = {}, r = /* @__PURE__ */ __name((e, o) => {
-    if (w(n, e))
-      throw new Error(`Duplicate flags named ${h(e)}`);
-    n[e] = o;
-  }, "r");
-  for (const e in t) {
-    if (!w(t, e))
-      continue;
-    B(e);
-    const o = t[e], s = [[], ...b(o), o];
-    r(e, s);
-    const i = v(e);
-    if (e !== i && r(i, s), "alias" in o && typeof o.alias == "string") {
-      const { alias: a } = o, l = `Flag alias ${h(a)} for flag ${h(e)}`;
-      if (a.length === 0)
-        throw new Error(`${l} cannot be empty`);
-      if (a.length > 1)
-        throw new Error(`${l} must be a single character`);
-      r(a, s);
-    }
-  }
-  return n;
-}, "K");
-var _ = /* @__PURE__ */ __name((t, n) => {
-  const r = {};
-  for (const e in t) {
-    if (!w(t, e))
-      continue;
-    const [o, , s, i] = n[e];
-    if (o.length === 0 && "default" in i) {
-      let { default: a } = i;
-      typeof a == "function" && (a = a()), r[e] = a;
-    } else
-      r[e] = s ? o : o.pop();
-  }
-  return r;
-}, "_");
-var F = "--";
-var G = /[.:=]/;
-var T = /^-{1,2}\w/;
-var N = /* @__PURE__ */ __name((t) => {
-  if (!T.test(t))
-    return;
-  const n = !t.startsWith(F);
-  let r = t.slice(n ? 1 : 2), e;
-  const o = r.match(G);
-  if (o) {
-    const { index: s } = o;
-    e = r.slice(s + 1), r = r.slice(0, s);
-  }
-  return [r, e, n];
-}, "N");
-var $ = /* @__PURE__ */ __name((t, { onFlag: n, onArgument: r }) => {
-  let e;
-  const o = /* @__PURE__ */ __name((s, i) => {
-    if (typeof e != "function")
-      return true;
-    e(s, i), e = void 0;
-  }, "o");
-  for (let s = 0; s < t.length; s += 1) {
-    const i = t[s];
-    if (i === F) {
-      o();
-      const l = t.slice(s + 1);
-      r?.(l, [s], true);
-      break;
-    }
-    const a = N(i);
-    if (a) {
-      if (o(), !n)
-        continue;
-      const [l, f, g] = a;
-      if (g)
-        for (let c = 0; c < l.length; c += 1) {
-          o();
-          const u = c === l.length - 1;
-          e = n(l[c], u ? f : void 0, [s, c + 1, u]);
-        }
-      else
-        e = n(l, f, [s]);
-    } else
-      o(i, [s]) && r?.([i], [s]);
-  }
-  o();
-}, "$");
-var E = /* @__PURE__ */ __name((t, n) => {
-  for (const [r, e, o] of n.reverse()) {
-    if (e) {
-      const s = t[r];
-      let i = s.slice(0, e);
-      if (o || (i += s.slice(e + 1)), i !== "-") {
-        t[r] = i;
-        continue;
-      }
-    }
-    t.splice(r, 1);
-  }
-}, "E");
-var U = /* @__PURE__ */ __name((t, n = process.argv.slice(2), { ignore: r } = {}) => {
-  const e = [], o = K(t), s = {}, i = [];
-  return i[F] = [], $(n, { onFlag(a, l, f) {
-    const g = w(o, a);
-    if (!r?.(g ? V : k, a, l)) {
-      if (g) {
-        const [c, u] = o[a], y = d(u, l), p = /* @__PURE__ */ __name((P, A) => {
-          e.push(f), A && e.push(A), c.push(m(u, P || ""));
-        }, "p");
-        return y === void 0 ? p : p(y);
-      }
-      w(s, a) || (s[a] = []), s[a].push(l === void 0 ? true : l), e.push(f);
-    }
-  }, onArgument(a, l, f) {
-    r?.(C, n[l[0]]) || (i.push(...a), f ? (i[F] = a, n.splice(l[0])) : e.push(l));
-  } }), E(n, e), { flags: _(t, o), unknownFlags: s, _: i };
-}, "U");
-
 // src/configuration/runtime-configuration.service.ts
 var RuntimeConfigurationService = class {
   static {
@@ -24324,44 +24208,17 @@ var RuntimeConfigurationService = class {
   }
   parsed;
   init() {
-    this.parsed = U({
-      weeklySummary: {
-        type: Boolean,
-        default: false
-      },
-      playersInTop: {
-        type: Number,
-        default: 24
-      },
-      emails: {
-        type: [String],
-        default: () => []
-      },
-      weekName: {
-        type: Number,
-        default: 22
-      },
-      sendViaEmail: {
-        type: Boolean,
-        default: false
-      },
-      uploadToFirebase: {
-        type: Boolean,
-        default: false
-      },
-      postToFacebook: {
-        type: Boolean,
-        default: false
-      },
-      writeFullDebug: {
-        type: Boolean,
-        default: true
-      },
-      googleJSONCredentialsPath: {
-        type: String,
-        default: process.env.GOOGLE_SERVICE_ACCOUNT_JSON_CREDENTIALS || ""
-      }
-    }).flags;
+    this.parsed = {
+      weeklySummary: process.env.WEEKLY_SUMMARY === "true",
+      playersInTop: parseInt(process.env.PLAYERS_IN_TOP || "24", 10),
+      emails: process.env.EMAILS ? process.env.EMAILS.split(",").map((email) => email.trim()) : [],
+      weekName: parseInt(process.env.WEEK_NAME || "22", 10),
+      sendViaEmail: process.env.SEND_VIA_EMAIL === "true",
+      uploadToFirebase: process.env.UPLOAD_TO_FIREBASE === "true",
+      postToFacebook: process.env.POST_TO_FACEBOOK === "true",
+      writeFullDebug: process.env.WRITE_FULL_DEBUG !== "false",
+      googleJSONCredentialsPath: process.env.GOOGLE_SERVICE_ACCOUNT_JSON_CREDENTIALS || ""
+    };
   }
   override(config2) {
     this.parsed = { ...this.parsed, ...config2 };
@@ -24478,7 +24335,14 @@ var ClubsIngestionService = class {
     this.logging.info("Fetching clubs info");
     const clubs = await this.clubsApi.findAllClubs();
     this._model = {
-      clubs: clubs.data.filter((club) => this.config.allClubsUniqueIndex.includes(club.UniqueIndex))
+      clubs: clubs.data.filter((club) => {
+        const uniqueIndex = club.uniqueIndex;
+        if (!uniqueIndex) {
+          this.logging.warn(`Club found without uniqueIndex: ${JSON.stringify(club)}`);
+          return false;
+        }
+        return this.config.allClubsUniqueIndex.includes(uniqueIndex);
+      })
     };
     this.logging.trace("\u2705  done");
   }
@@ -24486,7 +24350,7 @@ var ClubsIngestionService = class {
     return this._model;
   }
   getClubWithUniqueIndex(uniqueIndex) {
-    return this._model.clubs.find((c) => c.UniqueIndex === uniqueIndex);
+    return this._model.clubs.find((c) => c.uniqueIndex === uniqueIndex);
   }
 };
 
@@ -24502,7 +24366,7 @@ var DivisionsIngestionService = class {
   _model;
   async ingest() {
     this.logging.info("Fetching divisions info");
-    const { data: divisions } = await this.divisionsApi.findAllDivisions({
+    const { data: divisions } = await this.divisionsApi.findAllDivisionsV1({
       showDivisionName: "short"
     });
     this._model = {
@@ -24514,165 +24378,7 @@ var DivisionsIngestionService = class {
     return this._model;
   }
   getDivision(divId) {
-    return this.model.divisions.find((d2) => d2.DivisionId === divId);
-  }
-};
-
-// src/ingestion/divisions-matches/divisions-matches-ingestion-service.ts
-var DivisionsMatchesIngestionService = class {
-  constructor(config2, logging, matchesApi) {
-    this.config = config2;
-    this.logging = logging;
-    this.matchesApi = matchesApi;
-  }
-  static {
-    __name(this, "DivisionsMatchesIngestionService");
-  }
-  _model;
-  async ingest() {
-    this.logging.info("Fetching matches for all divisions");
-    let total = 0;
-    this._model = { matches: [] };
-    for (const divisionId of this.config.allDivisions) {
-      const { data: matches } = await this.matchesApi.findAllMatches({
-        divisionId,
-        xTabtSeason: "25",
-        withDetails: true
-      });
-      this._model.matches.push(...matches);
-      total += matches.length;
-      this.logging.trace(`${matches.length > 0 ? "\u2705 " : "\u26D4\uFE0F"} ${divisionId} - ${matches.length} matches`);
-    }
-    this.logging.trace(`---`);
-    this.logging.trace(`Ingested ${total} matches`);
-  }
-  get model() {
-    return this._model;
-  }
-};
-
-// src/ingestion/weekly-matches-summary/weekly-matches-summary-ingestion-service.ts
-var import_date_fns3 = __toESM(require_date_fns());
-var import_lodash = __toESM(require_lodash());
-var WeeklyMatchesSummaryIngestionService = class {
-  constructor(config2, logging, matchesApi, randomIp) {
-    this.config = config2;
-    this.logging = logging;
-    this.matchesApi = matchesApi;
-    this.randomIp = randomIp;
-  }
-  static {
-    __name(this, "WeeklyMatchesSummaryIngestionService");
-  }
-  _model;
-  async ingest() {
-    this._model = {
-      from: (0, import_date_fns3.sub)(/* @__PURE__ */ new Date(), { weeks: 1 }),
-      to: /* @__PURE__ */ new Date(),
-      matches: {}
-    };
-    this.logging.info(`Fetching matches for all divisions for weekly summary (${(0, import_date_fns3.format)(this._model.from, "dd/MM")} - ${(0, import_date_fns3.format)(this._model.to, "dd/MM")})`);
-    const regions = this.config.allRegions;
-    let total = 0;
-    for (const region of regions) {
-      this.logging.info(`Fetching for ${region}`);
-      const clubs = this.config.getAllClubsForRegion(region);
-      for (const club of clubs) {
-        const { data: matches } = await this.matchesApi.findAllMatches({
-          club,
-          withDetails: true,
-          yearDateFrom: (0, import_date_fns3.format)(this._model.from, "yyyy-MM-dd"),
-          yearDateTo: (0, import_date_fns3.format)(this._model.to, "yyyy-MM-dd"),
-          showDivisionName: "yes"
-        }, {
-          headers: {
-            "x-forwarded-for": this.randomIp()
-          }
-        });
-        if (matches.length) {
-          const nonByeMatches = matches.filter((match) => !(match.HomeTeam.includes("Bye") || match.AwayTeam.includes("Bye")));
-          this._model.matches[region] = (0, import_lodash.uniqBy)([
-            ...this._model.matches[region] ?? [],
-            ...nonByeMatches
-          ], "MatchId");
-          total += nonByeMatches.length;
-        }
-        this.logging.trace(`${matches.length > 0 ? "\u2705 " : "\u26D4\uFE0F"} ${club} - ${matches.length} matches`);
-      }
-    }
-    this.logging.trace(`---`);
-    this.logging.trace(`Ingested ${total} matches`);
-  }
-  get model() {
-    return this._model;
-  }
-};
-
-// src/processing/processing-service.ts
-var ProcessingService = class {
-  constructor(logging, weeklyMatchesSummaryProcessingService, topProcessingService, errorProcessingService, configurationService) {
-    this.logging = logging;
-    this.weeklyMatchesSummaryProcessingService = weeklyMatchesSummaryProcessingService;
-    this.topProcessingService = topProcessingService;
-    this.errorProcessingService = errorProcessingService;
-    this.configurationService = configurationService;
-  }
-  static {
-    __name(this, "ProcessingService");
-  }
-  async process() {
-    this.logging.info(this.logging.getLayerInfo("\u{1F9EE} PROCESSING"));
-    await this.errorProcessingService.process();
-    await this.topProcessingService.process(this.configurationService.runtimeConfiguration.weekName);
-    if (this.configurationService.runtimeConfiguration.weeklySummary) {
-      await this.weeklyMatchesSummaryProcessingService.process();
-    }
-  }
-};
-
-// src/digestion/digesting-service.ts
-var DigestingService = class {
-  constructor(logging, weeklyMatchesSummaryDigestionService, debugDigestionService, configurationService, emailSenderService, excelOutput, excelDebugOutputService, facebookPostingService, firestoreDigestionService, firebaseMessagingService, aiSummaryService) {
-    this.logging = logging;
-    this.weeklyMatchesSummaryDigestionService = weeklyMatchesSummaryDigestionService;
-    this.debugDigestionService = debugDigestionService;
-    this.configurationService = configurationService;
-    this.emailSenderService = emailSenderService;
-    this.excelOutput = excelOutput;
-    this.excelDebugOutputService = excelDebugOutputService;
-    this.facebookPostingService = facebookPostingService;
-    this.firestoreDigestionService = firestoreDigestionService;
-    this.firebaseMessagingService = firebaseMessagingService;
-    this.aiSummaryService = aiSummaryService;
-  }
-  static {
-    __name(this, "DigestingService");
-  }
-  async digest() {
-    this.logging.info(this.logging.getLayerInfo("\u{1F5A8} DIGESTING"));
-    if (this.configurationService.runtimeConfiguration.weeklySummary) {
-      await this.weeklyMatchesSummaryDigestionService.digest();
-    }
-    await this.excelOutput.digest();
-    if (this.configurationService.runtimeConfiguration.sendViaEmail) {
-      await this.emailSenderService.digest();
-    }
-    if (this.configurationService.runtimeConfiguration.postToFacebook) {
-      await this.facebookPostingService.digest();
-    }
-    if (this.configurationService.runtimeConfiguration.uploadToFirebase) {
-      if (this.aiSummaryService.isEnabled()) {
-        this.logging.info("AI summaries enabled - will be included in Firestore digestion");
-      } else {
-        this.logging.info("AI summaries disabled - continuing without AI analysis");
-      }
-      await this.firestoreDigestionService.digest();
-      await this.firebaseMessagingService.digest();
-    }
-    if (this.configurationService.runtimeConfiguration.writeFullDebug) {
-      await this.excelDebugOutputService.digestTops();
-      await this.debugDigestionService.digest();
-    }
+    return this.model.divisions.find((d) => d.DivisionId === divId);
   }
 };
 
@@ -24681,7 +24387,7 @@ var import_axios2 = __toESM(require("axios"));
 
 // src/common/tabt-client/base.ts
 var import_axios = __toESM(require("axios"));
-var BASE_PATH = "http://api.beping.be".replace(/\/+$/, "");
+var BASE_PATH = "http://localhost:3004".replace(/\/+$/, "");
 var BaseAPI = class {
   constructor(configuration, basePath = BASE_PATH, axios2 = import_axios.default) {
     this.basePath = basePath;
@@ -24750,7 +24456,7 @@ var ClubsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration) {
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14} [clubCategory] 
+     * @param {'VLAAMS_BRABANT_BR' | 'BRUSSELS_BRABANT_WALLON' | 'ANTWERP' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'LIMBURG' | 'HAINAUT' | 'LUXEMBOURG' | 'LIEGE' | 'NAMUR' | 'VTTL' | 'AFTT' | 'FRBTT'} [clubCategory] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -24843,17 +24549,17 @@ var ClubsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration) {
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {1 | 2 | 3 | 4 | 5 | 37 | 38 | 41} [playerCategory] 
      * @param {number} [uniqueIndex] 
      * @param {string} [nameSearch] 
      * @param {boolean} [extendedInformation] 
      * @param {boolean} [rankingPointsInformation] 
      * @param {boolean} [withResults] 
      * @param {boolean} [withOpponentRankingEvaluation] 
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W' | 'VET_M' | 'VET_W' | 'BEN_M' | 'BEN_W' | 'PRE_M' | 'PRE_W' | 'MIN_M' | 'MIN_W' | 'CAD_M' | 'CAD_W' | 'JUN_M' | 'JUN_W' | 'J19_M' | 'J19_W' | 'V40_M' | 'V40_W' | 'V50_M' | 'V50_W' | 'V60_M' | 'V60_W' | 'V65_M' | 'V65_W' | 'V70_M' | 'V70_W' | 'V75_M' | 'V75_W' | 'V80_M' | 'V80_W' | 'V85_M' | 'V85_W'} [playerCategory] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findClubMembers: async (clubIndex, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, playerCategory, uniqueIndex, nameSearch, extendedInformation, rankingPointsInformation, withResults, withOpponentRankingEvaluation, options = {}) => {
+    findClubMembers: async (clubIndex, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, uniqueIndex, nameSearch, extendedInformation, rankingPointsInformation, withResults, withOpponentRankingEvaluation, playerCategory, options = {}) => {
       assertParamExists("findClubMembers", "clubIndex", clubIndex);
       const localVarPath = `/v1/clubs/{clubIndex}/members`.replace(`{${"clubIndex"}}`, encodeURIComponent(String(clubIndex)));
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -24864,9 +24570,6 @@ var ClubsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration) {
       const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
       const localVarHeaderParameter = {};
       const localVarQueryParameter = {};
-      if (playerCategory !== void 0) {
-        localVarQueryParameter["playerCategory"] = playerCategory;
-      }
       if (uniqueIndex !== void 0) {
         localVarQueryParameter["uniqueIndex"] = uniqueIndex;
       }
@@ -24884,6 +24587,9 @@ var ClubsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration) {
       }
       if (withOpponentRankingEvaluation !== void 0) {
         localVarQueryParameter["withOpponentRankingEvaluation"] = withOpponentRankingEvaluation;
+      }
+      if (playerCategory !== void 0) {
+        localVarQueryParameter["playerCategory"] = playerCategory;
       }
       if (xTabtAccount !== void 0 && xTabtAccount !== null) {
         localVarHeaderParameter["X-Tabt-Account"] = String(xTabtAccount);
@@ -25069,7 +24775,7 @@ var ClubsApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14} [clubCategory] 
+     * @param {'VLAAMS_BRABANT_BR' | 'BRUSSELS_BRABANT_WALLON' | 'ANTWERP' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'LIMBURG' | 'HAINAUT' | 'LUXEMBOURG' | 'LIEGE' | 'NAMUR' | 'VTTL' | 'AFTT' | 'FRBTT'} [clubCategory] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -25100,18 +24806,18 @@ var ClubsApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {1 | 2 | 3 | 4 | 5 | 37 | 38 | 41} [playerCategory] 
      * @param {number} [uniqueIndex] 
      * @param {string} [nameSearch] 
      * @param {boolean} [extendedInformation] 
      * @param {boolean} [rankingPointsInformation] 
      * @param {boolean} [withResults] 
      * @param {boolean} [withOpponentRankingEvaluation] 
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W' | 'VET_M' | 'VET_W' | 'BEN_M' | 'BEN_W' | 'PRE_M' | 'PRE_W' | 'MIN_M' | 'MIN_W' | 'CAD_M' | 'CAD_W' | 'JUN_M' | 'JUN_W' | 'J19_M' | 'J19_W' | 'V40_M' | 'V40_W' | 'V50_M' | 'V50_W' | 'V60_M' | 'V60_W' | 'V65_M' | 'V65_W' | 'V70_M' | 'V70_W' | 'V75_M' | 'V75_W' | 'V80_M' | 'V80_W' | 'V85_M' | 'V85_W'} [playerCategory] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async findClubMembers(clubIndex, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, playerCategory, uniqueIndex, nameSearch, extendedInformation, rankingPointsInformation, withResults, withOpponentRankingEvaluation, options) {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.findClubMembers(clubIndex, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, playerCategory, uniqueIndex, nameSearch, extendedInformation, rankingPointsInformation, withResults, withOpponentRankingEvaluation, options);
+    async findClubMembers(clubIndex, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, uniqueIndex, nameSearch, extendedInformation, rankingPointsInformation, withResults, withOpponentRankingEvaluation, playerCategory, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findClubMembers(clubIndex, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, uniqueIndex, nameSearch, extendedInformation, rankingPointsInformation, withResults, withOpponentRankingEvaluation, playerCategory, options);
       return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
     },
     /**
@@ -25197,7 +24903,7 @@ var ClubsApi = class extends BaseAPI {
    * @memberof ClubsApi
    */
   findClubMembers(requestParameters, options) {
-    return ClubsApiFp(this.configuration).findClubMembers(requestParameters.clubIndex, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.playerCategory, requestParameters.uniqueIndex, requestParameters.nameSearch, requestParameters.extendedInformation, requestParameters.rankingPointsInformation, requestParameters.withResults, requestParameters.withOpponentRankingEvaluation, options).then((request) => request(this.axios, this.basePath));
+    return ClubsApiFp(this.configuration).findClubMembers(requestParameters.clubIndex, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.uniqueIndex, requestParameters.nameSearch, requestParameters.extendedInformation, requestParameters.rankingPointsInformation, requestParameters.withResults, requestParameters.withOpponentRankingEvaluation, requestParameters.playerCategory, options).then((request) => request(this.axios, this.basePath));
   }
   /**
    * 
@@ -25234,17 +24940,19 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
   return {
     /**
      * 
+     * @summary List of divisions for a specific season with enum string values.
      * @param {string} [xTabtAccount] Account to do a request
      * @param {string} [xTabtPassword] Password of the account
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {string} [level] 
-     * @param {'no' | 'yes' | 'short'} [showDivisionName] 
+     * @param {'no' | 'yes' | 'short'} [showDivisionName] How to show division names
+     * @param {'SUPER_DIVISION' | 'NATIONAL' | 'REGION_VTTL' | 'ANTWERP' | 'LIMBURG' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'VLAAMS_BRABANT_BR' | 'HAINAUT' | 'LIEGE' | 'LUXEMBOURG' | 'NAMUR' | 'BRUSSELS_BRABANT_WALLON' | 'BRUSSELS' | 'IWB'} [level] Filter divisions by level category
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W'} [divisionCategory] Filter divisions by division category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findAllDivisions: async (xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, level, showDivisionName, options = {}) => {
+    findAllDivisionsV1: async (xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, showDivisionName, level, divisionCategory, options = {}) => {
       const localVarPath = `/v1/divisions`;
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -25254,11 +24962,14 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
       const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
       const localVarHeaderParameter = {};
       const localVarQueryParameter = {};
+      if (showDivisionName !== void 0) {
+        localVarQueryParameter["showDivisionName"] = showDivisionName;
+      }
       if (level !== void 0) {
         localVarQueryParameter["level"] = level;
       }
-      if (showDivisionName !== void 0) {
-        localVarQueryParameter["showDivisionName"] = showDivisionName;
+      if (divisionCategory !== void 0) {
+        localVarQueryParameter["divisionCategory"] = divisionCategory;
       }
       if (xTabtAccount !== void 0 && xTabtAccount !== null) {
         localVarHeaderParameter["X-Tabt-Account"] = String(xTabtAccount);
@@ -25291,13 +25002,11 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {string} [level] 
-     * @param {'no' | 'yes' | 'short'} [showDivisionName] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findDivisionById: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, level, showDivisionName, options = {}) => {
-      assertParamExists("findDivisionById", "divisionId", divisionId);
+    findDivisionByIdV1: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options = {}) => {
+      assertParamExists("findDivisionByIdV1", "divisionId", divisionId);
       const localVarPath = `/v1/divisions/{divisionId}`.replace(`{${"divisionId"}}`, encodeURIComponent(String(divisionId)));
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -25307,12 +25016,6 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
       const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
       const localVarHeaderParameter = {};
       const localVarQueryParameter = {};
-      if (level !== void 0) {
-        localVarQueryParameter["level"] = level;
-      }
-      if (showDivisionName !== void 0) {
-        localVarQueryParameter["showDivisionName"] = showDivisionName;
-      }
       if (xTabtAccount !== void 0 && xTabtAccount !== null) {
         localVarHeaderParameter["X-Tabt-Account"] = String(xTabtAccount);
       }
@@ -25344,15 +25047,15 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {number} [weekName] 
-     * @param {string} [yearDateFrom] YYYY-MM-DD
-     * @param {string} [yearDateTo] YYYY-MM-DD
+     * @param {string} [weekName] 
+     * @param {string} [yearDateFrom] 
+     * @param {string} [yearDateTo] 
      * @param {boolean} [withDetails] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findDivisionMatches: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, yearDateFrom, yearDateTo, withDetails, options = {}) => {
-      assertParamExists("findDivisionMatches", "divisionId", divisionId);
+    findDivisionMatchesV1: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, yearDateFrom, yearDateTo, withDetails, options = {}) => {
+      assertParamExists("findDivisionMatchesV1", "divisionId", divisionId);
       const localVarPath = `/v1/divisions/{divisionId}/matches`.replace(`{${"divisionId"}}`, encodeURIComponent(String(divisionId)));
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -25408,8 +25111,8 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findDivisionMembers: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options = {}) => {
-      assertParamExists("findDivisionMembers", "divisionId", divisionId);
+    findDivisionMembersV1: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options = {}) => {
+      assertParamExists("findDivisionMembersV1", "divisionId", divisionId);
       const localVarPath = `/v1/divisions/{divisionId}/members/ranking`.replace(`{${"divisionId"}}`, encodeURIComponent(String(divisionId)));
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -25450,13 +25153,13 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {number} [weekName] 
      * @param {number} [rankingSystem] 
+     * @param {string} [weekName] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    findDivisionRanking: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, rankingSystem, options = {}) => {
-      assertParamExists("findDivisionRanking", "divisionId", divisionId);
+    findDivisionRankingV1: async (divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, rankingSystem, weekName, options = {}) => {
+      assertParamExists("findDivisionRankingV1", "divisionId", divisionId);
       const localVarPath = `/v1/divisions/{divisionId}/ranking`.replace(`{${"divisionId"}}`, encodeURIComponent(String(divisionId)));
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -25466,11 +25169,11 @@ var DivisionsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuratio
       const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
       const localVarHeaderParameter = {};
       const localVarQueryParameter = {};
-      if (weekName !== void 0) {
-        localVarQueryParameter["weekName"] = weekName;
-      }
       if (rankingSystem !== void 0) {
         localVarQueryParameter["rankingSystem"] = rankingSystem;
+      }
+      if (weekName !== void 0) {
+        localVarQueryParameter["weekName"] = weekName;
       }
       if (xTabtAccount !== void 0 && xTabtAccount !== null) {
         localVarHeaderParameter["X-Tabt-Account"] = String(xTabtAccount);
@@ -25502,18 +25205,20 @@ var DivisionsApiFp = /* @__PURE__ */ __name(function(configuration) {
   return {
     /**
      * 
+     * @summary List of divisions for a specific season with enum string values.
      * @param {string} [xTabtAccount] Account to do a request
      * @param {string} [xTabtPassword] Password of the account
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {string} [level] 
-     * @param {'no' | 'yes' | 'short'} [showDivisionName] 
+     * @param {'no' | 'yes' | 'short'} [showDivisionName] How to show division names
+     * @param {'SUPER_DIVISION' | 'NATIONAL' | 'REGION_VTTL' | 'ANTWERP' | 'LIMBURG' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'VLAAMS_BRABANT_BR' | 'HAINAUT' | 'LIEGE' | 'LUXEMBOURG' | 'NAMUR' | 'BRUSSELS_BRABANT_WALLON' | 'BRUSSELS' | 'IWB'} [level] Filter divisions by level category
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W'} [divisionCategory] Filter divisions by division category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async findAllDivisions(xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, level, showDivisionName, options) {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.findAllDivisions(xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, level, showDivisionName, options);
+    async findAllDivisionsV1(xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, showDivisionName, level, divisionCategory, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findAllDivisionsV1(xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, showDivisionName, level, divisionCategory, options);
       return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
     },
     /**
@@ -25524,13 +25229,11 @@ var DivisionsApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {string} [level] 
-     * @param {'no' | 'yes' | 'short'} [showDivisionName] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async findDivisionById(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, level, showDivisionName, options) {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionById(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, level, showDivisionName, options);
+    async findDivisionByIdV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionByIdV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options);
       return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
     },
     /**
@@ -25541,15 +25244,15 @@ var DivisionsApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {number} [weekName] 
-     * @param {string} [yearDateFrom] YYYY-MM-DD
-     * @param {string} [yearDateTo] YYYY-MM-DD
+     * @param {string} [weekName] 
+     * @param {string} [yearDateFrom] 
+     * @param {string} [yearDateTo] 
      * @param {boolean} [withDetails] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async findDivisionMatches(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, yearDateFrom, yearDateTo, withDetails, options) {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionMatches(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, yearDateFrom, yearDateTo, withDetails, options);
+    async findDivisionMatchesV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, yearDateFrom, yearDateTo, withDetails, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionMatchesV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, yearDateFrom, yearDateTo, withDetails, options);
       return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
     },
     /**
@@ -25563,8 +25266,8 @@ var DivisionsApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async findDivisionMembers(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options) {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionMembers(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options);
+    async findDivisionMembersV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionMembersV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options);
       return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
     },
     /**
@@ -25575,13 +25278,13 @@ var DivisionsApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {string} [xTabtOnBehalfOf] On Behalf of
      * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
      * @param {string} [xTabtSeason] Season name to query
-     * @param {number} [weekName] 
      * @param {number} [rankingSystem] 
+     * @param {string} [weekName] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async findDivisionRanking(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, rankingSystem, options) {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionRanking(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, weekName, rankingSystem, options);
+    async findDivisionRankingV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, rankingSystem, weekName, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findDivisionRankingV1(divisionId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, rankingSystem, weekName, options);
       return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
     }
   };
@@ -25592,53 +25295,54 @@ var DivisionsApi = class extends BaseAPI {
   }
   /**
    * 
-   * @param {DivisionsApiFindAllDivisionsRequest} requestParameters Request parameters.
+   * @summary List of divisions for a specific season with enum string values.
+   * @param {DivisionsApiFindAllDivisionsV1Request} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DivisionsApi
    */
-  findAllDivisions(requestParameters = {}, options) {
-    return DivisionsApiFp(this.configuration).findAllDivisions(requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.level, requestParameters.showDivisionName, options).then((request) => request(this.axios, this.basePath));
+  findAllDivisionsV1(requestParameters = {}, options) {
+    return DivisionsApiFp(this.configuration).findAllDivisionsV1(requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.showDivisionName, requestParameters.level, requestParameters.divisionCategory, options).then((request) => request(this.axios, this.basePath));
   }
   /**
    * 
-   * @param {DivisionsApiFindDivisionByIdRequest} requestParameters Request parameters.
+   * @param {DivisionsApiFindDivisionByIdV1Request} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DivisionsApi
    */
-  findDivisionById(requestParameters, options) {
-    return DivisionsApiFp(this.configuration).findDivisionById(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.level, requestParameters.showDivisionName, options).then((request) => request(this.axios, this.basePath));
+  findDivisionByIdV1(requestParameters, options) {
+    return DivisionsApiFp(this.configuration).findDivisionByIdV1(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, options).then((request) => request(this.axios, this.basePath));
   }
   /**
    * 
-   * @param {DivisionsApiFindDivisionMatchesRequest} requestParameters Request parameters.
+   * @param {DivisionsApiFindDivisionMatchesV1Request} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DivisionsApi
    */
-  findDivisionMatches(requestParameters, options) {
-    return DivisionsApiFp(this.configuration).findDivisionMatches(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.weekName, requestParameters.yearDateFrom, requestParameters.yearDateTo, requestParameters.withDetails, options).then((request) => request(this.axios, this.basePath));
+  findDivisionMatchesV1(requestParameters, options) {
+    return DivisionsApiFp(this.configuration).findDivisionMatchesV1(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.weekName, requestParameters.yearDateFrom, requestParameters.yearDateTo, requestParameters.withDetails, options).then((request) => request(this.axios, this.basePath));
   }
   /**
    * 
-   * @param {DivisionsApiFindDivisionMembersRequest} requestParameters Request parameters.
+   * @param {DivisionsApiFindDivisionMembersV1Request} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DivisionsApi
    */
-  findDivisionMembers(requestParameters, options) {
-    return DivisionsApiFp(this.configuration).findDivisionMembers(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, options).then((request) => request(this.axios, this.basePath));
+  findDivisionMembersV1(requestParameters, options) {
+    return DivisionsApiFp(this.configuration).findDivisionMembersV1(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, options).then((request) => request(this.axios, this.basePath));
   }
   /**
    * 
-   * @param {DivisionsApiFindDivisionRankingRequest} requestParameters Request parameters.
+   * @param {DivisionsApiFindDivisionRankingV1Request} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DivisionsApi
    */
-  findDivisionRanking(requestParameters, options) {
-    return DivisionsApiFp(this.configuration).findDivisionRanking(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.weekName, requestParameters.rankingSystem, options).then((request) => request(this.axios, this.basePath));
+  findDivisionRankingV1(requestParameters, options) {
+    return DivisionsApiFp(this.configuration).findDivisionRankingV1(requestParameters.divisionId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, requestParameters.rankingSystem, requestParameters.weekName, options).then((request) => request(this.axios, this.basePath));
   }
 };
 var MatchesApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration) {
@@ -25696,15 +25400,15 @@ var MatchesApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration)
      * @param {number} [divisionId] 
      * @param {string} [club] 
      * @param {string} [team] 
-     * @param {1 | 2 | 3 | 4 | 5 | 37 | 38 | 41} [divisionCategory] 
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W'} [divisionCategory] 
      * @param {number} [weekName] 
-     * @param {1 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16} [level] 
+     * @param {'SUPER_DIVISION' | 'NATIONAL' | 'REGION_VTTL' | 'ANTWERP' | 'LIMBURG' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'VLAAMS_BRABANT_BR' | 'HAINAUT' | 'LIEGE' | 'LUXEMBOURG' | 'NAMUR' | 'BRUSSELS_BRABANT_WALLON' | 'BRUSSELS' | 'IWB'} [level] 
      * @param {string} [showDivisionName] 
      * @param {string} [yearDateFrom] YYYY-MM-DD
      * @param {string} [yearDateTo] YYYY-MM-DD
      * @param {boolean} [withDetails] 
      * @param {string} [matchId] 
-     * @param {string} [matchUniqueId] 
+     * @param {number} [matchUniqueId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -25788,9 +25492,9 @@ var MatchesApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration)
      * @param {number} [divisionId] 
      * @param {string} [club] 
      * @param {string} [team] 
-     * @param {1 | 2 | 3 | 4 | 5 | 37 | 38 | 41} [divisionCategory] 
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W'} [divisionCategory] 
      * @param {number} [weekName] 
-     * @param {1 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16} [level] 
+     * @param {'SUPER_DIVISION' | 'NATIONAL' | 'REGION_VTTL' | 'ANTWERP' | 'LIMBURG' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'VLAAMS_BRABANT_BR' | 'HAINAUT' | 'LIEGE' | 'LUXEMBOURG' | 'NAMUR' | 'BRUSSELS_BRABANT_WALLON' | 'BRUSSELS' | 'IWB'} [level] 
      * @param {string} [showDivisionName] 
      * @param {string} [yearDateFrom] YYYY-MM-DD
      * @param {string} [yearDateTo] YYYY-MM-DD
@@ -25910,6 +25614,56 @@ var MatchesApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration)
         url: toPathString(localVarUrlObj),
         options: localVarRequestOptions
       };
+    },
+    /**
+     * Get weekly performance metrics for a player including load score, fatigue resistance, and recovery score
+     * @param {number} playerUniqueIndex 
+     * @param {string} weekName 
+     * @param {string} [xTabtAccount] Account to do a request
+     * @param {string} [xTabtPassword] Password of the account
+     * @param {string} [xTabtOnBehalfOf] On Behalf of
+     * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
+     * @param {string} [xTabtSeason] Season name to query
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getWeeklyPerformanceMetrics: async (playerUniqueIndex, weekName, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options = {}) => {
+      assertParamExists("getWeeklyPerformanceMetrics", "playerUniqueIndex", playerUniqueIndex);
+      assertParamExists("getWeeklyPerformanceMetrics", "weekName", weekName);
+      const localVarPath = `/v1/matches/player/{playerUniqueIndex}/performance`.replace(`{${"playerUniqueIndex"}}`, encodeURIComponent(String(playerUniqueIndex)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      if (weekName !== void 0) {
+        localVarQueryParameter["weekName"] = weekName;
+      }
+      if (xTabtAccount !== void 0 && xTabtAccount !== null) {
+        localVarHeaderParameter["X-Tabt-Account"] = String(xTabtAccount);
+      }
+      if (xTabtPassword !== void 0 && xTabtPassword !== null) {
+        localVarHeaderParameter["X-Tabt-Password"] = String(xTabtPassword);
+      }
+      if (xTabtOnBehalfOf !== void 0 && xTabtOnBehalfOf !== null) {
+        localVarHeaderParameter["X-Tabt-OnBehalfOf"] = String(xTabtOnBehalfOf);
+      }
+      if (xTabtDatabase !== void 0 && xTabtDatabase !== null) {
+        localVarHeaderParameter["X-Tabt-Database"] = String(xTabtDatabase);
+      }
+      if (xTabtSeason !== void 0 && xTabtSeason !== null) {
+        localVarHeaderParameter["X-Tabt-Season"] = String(xTabtSeason);
+      }
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
     }
   };
 }, "MatchesApiAxiosParamCreator");
@@ -25940,15 +25694,15 @@ var MatchesApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {number} [divisionId] 
      * @param {string} [club] 
      * @param {string} [team] 
-     * @param {1 | 2 | 3 | 4 | 5 | 37 | 38 | 41} [divisionCategory] 
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W'} [divisionCategory] 
      * @param {number} [weekName] 
-     * @param {1 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16} [level] 
+     * @param {'SUPER_DIVISION' | 'NATIONAL' | 'REGION_VTTL' | 'ANTWERP' | 'LIMBURG' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'VLAAMS_BRABANT_BR' | 'HAINAUT' | 'LIEGE' | 'LUXEMBOURG' | 'NAMUR' | 'BRUSSELS_BRABANT_WALLON' | 'BRUSSELS' | 'IWB'} [level] 
      * @param {string} [showDivisionName] 
      * @param {string} [yearDateFrom] YYYY-MM-DD
      * @param {string} [yearDateTo] YYYY-MM-DD
      * @param {boolean} [withDetails] 
      * @param {string} [matchId] 
-     * @param {string} [matchUniqueId] 
+     * @param {number} [matchUniqueId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -25967,9 +25721,9 @@ var MatchesApiFp = /* @__PURE__ */ __name(function(configuration) {
      * @param {number} [divisionId] 
      * @param {string} [club] 
      * @param {string} [team] 
-     * @param {1 | 2 | 3 | 4 | 5 | 37 | 38 | 41} [divisionCategory] 
+     * @param {'SEN_M' | 'SEN_W' | 'YOU_M' | 'YOU_W'} [divisionCategory] 
      * @param {number} [weekName] 
-     * @param {1 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16} [level] 
+     * @param {'SUPER_DIVISION' | 'NATIONAL' | 'REGION_VTTL' | 'ANTWERP' | 'LIMBURG' | 'OOST_VLANDEREN' | 'WEST_VLAANDEREN' | 'VLAAMS_BRABANT_BR' | 'HAINAUT' | 'LIEGE' | 'LUXEMBOURG' | 'NAMUR' | 'BRUSSELS_BRABANT_WALLON' | 'BRUSSELS' | 'IWB'} [level] 
      * @param {string} [showDivisionName] 
      * @param {string} [yearDateFrom] YYYY-MM-DD
      * @param {string} [yearDateTo] YYYY-MM-DD
@@ -25995,6 +25749,22 @@ var MatchesApiFp = /* @__PURE__ */ __name(function(configuration) {
      */
     async findMatchSystemById(matchSystemId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options) {
       const localVarAxiosArgs = await localVarAxiosParamCreator.findMatchSystemById(matchSystemId, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options);
+      return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
+    },
+    /**
+     * Get weekly performance metrics for a player including load score, fatigue resistance, and recovery score
+     * @param {number} playerUniqueIndex 
+     * @param {string} weekName 
+     * @param {string} [xTabtAccount] Account to do a request
+     * @param {string} [xTabtPassword] Password of the account
+     * @param {string} [xTabtOnBehalfOf] On Behalf of
+     * @param {'aftt' | 'vttl'} [xTabtDatabase] Database to query
+     * @param {string} [xTabtSeason] Season name to query
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getWeeklyPerformanceMetrics(playerUniqueIndex, weekName, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getWeeklyPerformanceMetrics(playerUniqueIndex, weekName, xTabtAccount, xTabtPassword, xTabtOnBehalfOf, xTabtDatabase, xTabtSeason, options);
       return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
     }
   };
@@ -26042,6 +25812,157 @@ var MatchesApi = class extends BaseAPI {
    */
   findMatchSystemById(requestParameters, options) {
     return MatchesApiFp(this.configuration).findMatchSystemById(requestParameters.matchSystemId, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, options).then((request) => request(this.axios, this.basePath));
+  }
+  /**
+   * Get weekly performance metrics for a player including load score, fatigue resistance, and recovery score
+   * @param {MatchesApiGetWeeklyPerformanceMetricsRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof MatchesApi
+   */
+  getWeeklyPerformanceMetrics(requestParameters, options) {
+    return MatchesApiFp(this.configuration).getWeeklyPerformanceMetrics(requestParameters.playerUniqueIndex, requestParameters.weekName, requestParameters.xTabtAccount, requestParameters.xTabtPassword, requestParameters.xTabtOnBehalfOf, requestParameters.xTabtDatabase, requestParameters.xTabtSeason, options).then((request) => request(this.axios, this.basePath));
+  }
+};
+var SeasonsApiAxiosParamCreator = /* @__PURE__ */ __name(function(configuration) {
+  return {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    findAllSeason: async (options = {}) => {
+      const localVarPath = `/v1/seasons`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    findCurrentSeason: async (options = {}) => {
+      const localVarPath = `/v1/seasons/current`;
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * 
+     * @param {number} seasonId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    findSeasonById: async (seasonId, options = {}) => {
+      assertParamExists("findSeasonById", "seasonId", seasonId);
+      const localVarPath = `/v1/seasons/{seasonId}`.replace(`{${"seasonId"}}`, encodeURIComponent(String(seasonId)));
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+      const localVarRequestOptions = { method: "GET", ...baseOptions, ...options };
+      const localVarHeaderParameter = {};
+      const localVarQueryParameter = {};
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = { ...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers };
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    }
+  };
+}, "SeasonsApiAxiosParamCreator");
+var SeasonsApiFp = /* @__PURE__ */ __name(function(configuration) {
+  const localVarAxiosParamCreator = SeasonsApiAxiosParamCreator(configuration);
+  return {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async findAllSeason(options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findAllSeason(options);
+      return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
+    },
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async findCurrentSeason(options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findCurrentSeason(options);
+      return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
+    },
+    /**
+     * 
+     * @param {number} seasonId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async findSeasonById(seasonId, options) {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.findSeasonById(seasonId, options);
+      return createRequestFunction(localVarAxiosArgs, import_axios2.default, BASE_PATH, configuration);
+    }
+  };
+}, "SeasonsApiFp");
+var SeasonsApi = class extends BaseAPI {
+  static {
+    __name(this, "SeasonsApi");
+  }
+  /**
+   * 
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeasonsApi
+   */
+  findAllSeason(options) {
+    return SeasonsApiFp(this.configuration).findAllSeason(options).then((request) => request(this.axios, this.basePath));
+  }
+  /**
+   * 
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeasonsApi
+   */
+  findCurrentSeason(options) {
+    return SeasonsApiFp(this.configuration).findCurrentSeason(options).then((request) => request(this.axios, this.basePath));
+  }
+  /**
+   * 
+   * @param {SeasonsApiFindSeasonByIdRequest} requestParameters Request parameters.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof SeasonsApi
+   */
+  findSeasonById(requestParameters, options) {
+    return SeasonsApiFp(this.configuration).findSeasonById(requestParameters.seasonId, options).then((request) => request(this.axios, this.basePath));
   }
 };
 
@@ -26124,6 +26045,230 @@ var Configuration2 = class {
   }
 };
 
+// src/common/error-utils.ts
+function isErrorWithResponse(error) {
+  return error !== null && typeof error === "object";
+}
+__name(isErrorWithResponse, "isErrorWithResponse");
+function extractErrorMessage(error) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+  if (isErrorWithResponse(error)) {
+    if (error.response?.data?.message) {
+      return error.response.data.message;
+    }
+    if (error.message) {
+      return error.message;
+    }
+  }
+  return "Unknown error";
+}
+__name(extractErrorMessage, "extractErrorMessage");
+function extractErrorStatus(error) {
+  if (isErrorWithResponse(error)) {
+    if (error.response?.status) {
+      return error.response.status;
+    }
+  }
+  return "N/A";
+}
+__name(extractErrorStatus, "extractErrorStatus");
+function extractErrorData(error) {
+  if (isErrorWithResponse(error)) {
+    return error.response?.data;
+  }
+  return null;
+}
+__name(extractErrorData, "extractErrorData");
+
+// src/ingestion/divisions-matches/divisions-matches-ingestion-service.ts
+var DivisionsMatchesIngestionService = class {
+  constructor(config2, logging, matchesApi) {
+    this.config = config2;
+    this.logging = logging;
+    this.matchesApi = matchesApi;
+  }
+  static {
+    __name(this, "DivisionsMatchesIngestionService");
+  }
+  _model;
+  async ingest() {
+    const totalDivisions = this.config.allDivisions.length;
+    this.logging.info(`Fetching matches for ${totalDivisions} divisions...`);
+    let total = 0;
+    let processed = 0;
+    this._model = { matches: [] };
+    for (const divisionId of this.config.allDivisions) {
+      processed++;
+      this.logging.info(`\u{1F4E5} Processing division ${processed}/${totalDivisions}: ${divisionId}`);
+      try {
+        const requestParams = {
+          divisionId,
+          xTabtSeason: this.config.currentSeason.toString(),
+          withDetails: true
+        };
+        this.logging.trace(`API Request for division ${divisionId}: ${JSON.stringify(requestParams)}`);
+        const { data: matches } = await this.matchesApi.findAllMatches(requestParams);
+        this.logging.trace(`API Response for division ${divisionId}: ${matches.length} matches returned`);
+        this._model.matches.push(...matches);
+        total += matches.length;
+        this.logging.info(`${matches.length > 0 ? "\u2705 " : "\u26D4\uFE0F"} Division ${divisionId} - ${matches.length} matches (Total: ${total})`);
+      } catch (error) {
+        const errorMessage = extractErrorMessage(error);
+        const errorStatus = extractErrorStatus(error);
+        const errorData = extractErrorData(error);
+        this.logging.warn(`\u26A0\uFE0F Failed to fetch matches for division ${divisionId}: [${errorStatus}] ${errorMessage}`);
+        if (errorData) {
+          this.logging.trace(`Full error response: ${JSON.stringify(errorData)}`);
+        }
+      }
+    }
+    this.logging.info(`\u{1F389} Completed ingestion: ${total} matches from ${totalDivisions} divisions`);
+  }
+  get model() {
+    if (!this._model) {
+      return { matches: [] };
+    }
+    return this._model;
+  }
+};
+
+// src/ingestion/weekly-matches-summary/weekly-matches-summary-ingestion-service.ts
+var import_date_fns3 = __toESM(require_date_fns());
+var import_lodash = __toESM(require_lodash());
+var WeeklyMatchesSummaryIngestionService = class {
+  constructor(config2, logging, matchesApi, randomIp) {
+    this.config = config2;
+    this.logging = logging;
+    this.matchesApi = matchesApi;
+    this.randomIp = randomIp;
+  }
+  static {
+    __name(this, "WeeklyMatchesSummaryIngestionService");
+  }
+  _model;
+  async ingest() {
+    this._model = {
+      from: (0, import_date_fns3.sub)(/* @__PURE__ */ new Date(), { weeks: 1 }),
+      to: /* @__PURE__ */ new Date(),
+      matches: {}
+    };
+    this.logging.info(`Fetching matches for all divisions for weekly summary (${(0, import_date_fns3.format)(this._model.from, "dd/MM")} - ${(0, import_date_fns3.format)(this._model.to, "dd/MM")})`);
+    const regions = this.config.allRegions;
+    let total = 0;
+    let processedRegions = 0;
+    for (const region of regions) {
+      processedRegions++;
+      const clubs = this.config.getAllClubsForRegion(region);
+      this.logging.info(`\u{1F4CD} Processing region ${processedRegions}/${regions.length}: ${region} (${clubs.length} clubs)`);
+      let processedClubs = 0;
+      for (const club of clubs) {
+        processedClubs++;
+        try {
+          const { data: matches } = await this.matchesApi.findAllMatches({
+            club,
+            withDetails: true,
+            yearDateFrom: (0, import_date_fns3.format)(this._model.from, "yyyy-MM-dd"),
+            yearDateTo: (0, import_date_fns3.format)(this._model.to, "yyyy-MM-dd"),
+            showDivisionName: "yes"
+          }, {
+            headers: {
+              "x-forwarded-for": this.randomIp()
+            }
+          });
+          if (matches.length) {
+            const nonByeMatches = matches.filter((match) => !(match.homeTeam.includes("Bye") || match.awayTeam.includes("Bye")));
+            this._model.matches[region] = (0, import_lodash.uniqBy)([
+              ...this._model.matches[region] ?? [],
+              ...nonByeMatches
+            ], "matchId");
+            total += nonByeMatches.length;
+          }
+          if (processedClubs % 10 === 0 || processedClubs === clubs.length) {
+            this.logging.info(`  Progress: ${processedClubs}/${clubs.length} clubs processed for ${region}`);
+          }
+        } catch (error) {
+          this.logging.warn(`\u26A0\uFE0F Failed to fetch matches for club ${club}: ${error.message}`);
+        }
+      }
+      this.logging.info(`\u2705 Completed region ${region}: ${total} total matches so far`);
+    }
+    this.logging.info(`\u{1F389} Weekly summary ingestion completed: ${total} matches from ${regions.length} regions`);
+  }
+  get model() {
+    return this._model;
+  }
+};
+
+// src/processing/processing-service.ts
+var ProcessingService = class {
+  constructor(logging, weeklyMatchesSummaryProcessingService, topProcessingService, errorProcessingService, configurationService) {
+    this.logging = logging;
+    this.weeklyMatchesSummaryProcessingService = weeklyMatchesSummaryProcessingService;
+    this.topProcessingService = topProcessingService;
+    this.errorProcessingService = errorProcessingService;
+    this.configurationService = configurationService;
+  }
+  static {
+    __name(this, "ProcessingService");
+  }
+  async process() {
+    this.logging.info(this.logging.getLayerInfo("\u{1F9EE} PROCESSING"));
+    await this.errorProcessingService.process();
+    await this.topProcessingService.process(this.configurationService.runtimeConfiguration.weekName);
+    if (this.configurationService.runtimeConfiguration.weeklySummary) {
+      await this.weeklyMatchesSummaryProcessingService.process();
+    }
+  }
+};
+
+// src/digestion/digesting-service.ts
+var DigestingService = class {
+  constructor(logging, weeklyMatchesSummaryDigestionService, debugDigestionService, configurationService, emailSenderService, excelOutput, excelDebugOutputService, facebookPostingService, firestoreDigestionService, firebaseMessagingService, aiSummaryService) {
+    this.logging = logging;
+    this.weeklyMatchesSummaryDigestionService = weeklyMatchesSummaryDigestionService;
+    this.debugDigestionService = debugDigestionService;
+    this.configurationService = configurationService;
+    this.emailSenderService = emailSenderService;
+    this.excelOutput = excelOutput;
+    this.excelDebugOutputService = excelDebugOutputService;
+    this.facebookPostingService = facebookPostingService;
+    this.firestoreDigestionService = firestoreDigestionService;
+    this.firebaseMessagingService = firebaseMessagingService;
+    this.aiSummaryService = aiSummaryService;
+  }
+  static {
+    __name(this, "DigestingService");
+  }
+  async digest() {
+    this.logging.info(this.logging.getLayerInfo("\u{1F5A8} DIGESTING"));
+    if (this.configurationService.runtimeConfiguration.weeklySummary) {
+      await this.weeklyMatchesSummaryDigestionService.digest();
+    }
+    await this.excelOutput.digest();
+    if (this.configurationService.runtimeConfiguration.sendViaEmail) {
+      await this.emailSenderService.digest();
+    }
+    if (this.configurationService.runtimeConfiguration.postToFacebook) {
+      await this.facebookPostingService.digest();
+    }
+    if (this.configurationService.runtimeConfiguration.uploadToFirebase) {
+      if (this.aiSummaryService.isEnabled()) {
+        this.logging.info("AI summaries enabled - will be included in Firestore digestion");
+      } else {
+        this.logging.info("AI summaries disabled - continuing without AI analysis");
+      }
+      await this.firestoreDigestionService.digest();
+      await this.firebaseMessagingService.digest();
+    }
+    if (this.configurationService.runtimeConfiguration.writeFullDebug) {
+      await this.excelDebugOutputService.digestTops();
+      await this.debugDigestionService.digest();
+    }
+  }
+};
+
 // src/common/tabt-client-config-factory.ts
 var TabtClientConfigFactory = class {
   static {
@@ -26140,6 +26285,10 @@ var TabtClientConfigFactory = class {
 var ErrorProcessingService = class {
   constructor(loggingService) {
     this.loggingService = loggingService;
+    this._model = {
+      errors: [],
+      warnings: []
+    };
   }
   static {
     __name(this, "ErrorProcessingService");
@@ -26188,8 +26337,12 @@ var WeeklyMatchesSummaryProcessingService = class _WeeklyMatchesSummaryProcessin
     for (const [region, matches] of Object.entries(matchesPerRegions)) {
       this.logging.trace(`Processing ${region} matches`);
       for (const match of matches) {
-        const division = this.divisionsIngestionService.getDivision(match.DivisionId);
-        const divisionName = division.DivisionName.length === 1 ? `${division.DivisionName}A` : division.DivisionName;
+        const division = this.divisionsIngestionService.getDivision(match.divisionId);
+        if (!division) {
+          this.logging.warn(`Division ${match.divisionId} not found`);
+          continue;
+        }
+        const divisionName = division.DivisionName && division.DivisionName.length === 1 ? `${division.DivisionName}A` : division.DivisionName;
         this.createDivisionInModelIfRequired(region, divisionName, division.DivisionCategory, division.Level);
         this._model.matches[region][division.Level][divisionName][division.DivisionCategory].push(_WeeklyMatchesSummaryProcessingService.mapTeamMatchEntry(match));
       }
@@ -26208,18 +26361,18 @@ var WeeklyMatchesSummaryProcessingService = class _WeeklyMatchesSummaryProcessin
   }
   static mapTeamMatchEntry(match) {
     return {
-      homeTeam: match.HomeTeam,
-      awayTeam: match.AwayTeam,
-      homeClub: match.HomeClub,
-      awayClub: match.AwayClub,
-      score: match.Score,
-      homePlayers: match.MatchDetails?.HomePlayers?.Players?.map((player) => ({
-        name: `${player.FirstName[0]}. ${player.LastName}`,
-        individualScore: player.VictoryCount
+      homeTeam: match.homeTeam,
+      awayTeam: match.awayTeam,
+      homeClub: match.homeClub,
+      awayClub: match.awayClub,
+      score: match.score,
+      homePlayers: match.matchDetails?.homePlayers?.players?.map((player) => ({
+        name: `${player.firstName[0]}. ${player.lastName}`,
+        individualScore: player.victoryCount ?? 0
       })),
-      awayPlayers: match.MatchDetails?.AwayPlayers?.Players?.map((player) => ({
-        name: `${player.FirstName[0]}. ${player.LastName}`,
-        individualScore: player.VictoryCount
+      awayPlayers: match.matchDetails?.awayPlayers?.players?.map((player) => ({
+        name: `${player.firstName[0]}. ${player.lastName}`,
+        individualScore: player.victoryCount ?? 0
       }))
     };
   }
@@ -26266,12 +26419,13 @@ var WoHelpers = class {
     __name(this, "WoHelpers");
   }
   static checkIfAllIndividualMatchesAreWO(teamMatch) {
-    return teamMatch.MatchDetails?.IndividualMatchResults?.every(
-      (individualMatchResult) => individualMatchResult.IsAwayForfeited && individualMatchResult.IsHomeForfeited || !Object.hasOwn(individualMatchResult, "IsAwayForfeited") && !Object.hasOwn(individualMatchResult, "IsHomeForfeited") && !Object.hasOwn(individualMatchResult, "HomeSetCount") && !Object.hasOwn(individualMatchResult, "AwaySetCount")
+    return teamMatch.matchDetails?.individualMatchResults?.every(
+      (individualMatchResult) => individualMatchResult.isAwayForfeited && individualMatchResult.isHomeForfeited || !Object.hasOwn(individualMatchResult, "isAwayForfeited") && !Object.hasOwn(individualMatchResult, "isHomeForfeited") && !Object.hasOwn(individualMatchResult, "homeSetCount") && !Object.hasOwn(individualMatchResult, "awaySetCount")
     ) ?? false;
   }
   static checkIfAllPlayersAreWO(teamMatch, team) {
-    return teamMatch.MatchDetails?.[team + "Player"]?.Players?.every((player) => player.IsForfeited) ?? false;
+    const teamKey = team === "Away" ? "awayPlayers" : "homePlayers";
+    return teamMatch.matchDetails?.[teamKey]?.players?.every((player) => player.isForfeited) ?? false;
   }
 };
 
@@ -26281,20 +26435,20 @@ var PointsHelper = class _PointsHelper {
     __name(this, "PointsHelper");
   }
   static countForfeitForPlayer(playerUniqueIndex, individualMatches, oppositePlayer, position) {
-    const oppositePropertyToCheck = position === "Home" ? "IsAwayForfeited" : "IsHomeForfeited";
-    const playerPropertyToCheck = position === "Home" ? "IsHomeForfeited" : "IsAwayForfeited";
+    const oppositePropertyToCheck = position === "Home" ? "isAwayForfeited" : "isHomeForfeited";
+    const playerPropertyToCheck = position === "Home" ? "isHomeForfeited" : "isAwayForfeited";
     const individualMatchesFF = _PointsHelper.getIndividualMatchesForPlayer(playerUniqueIndex, individualMatches, position).filter(
       (matchResult) => matchResult[oppositePropertyToCheck] === true && !matchResult[playerPropertyToCheck]
     ).length;
-    const playersFF = oppositePlayer.filter((p) => p.IsForfeited).length;
+    const playersFF = oppositePlayer.filter((p) => p.isForfeited).length;
     return Math.max(individualMatchesFF, playersFF);
   }
   static countVictoriesForPlayer(playerUniqueIndex, individualMatches, position) {
-    const scoreToCheck = position === "Home" ? "HomeSetCount" : "AwaySetCount";
+    const scoreToCheck = position === "Home" ? "homeSetCount" : "awaySetCount";
     return _PointsHelper.getIndividualMatchesForPlayer(playerUniqueIndex, individualMatches, position).filter((matchResult) => matchResult[scoreToCheck] === 3).length;
   }
   static getIndividualMatchesForPlayer(playerUniqueIndex, individualMatches, currentTeam) {
-    const playerPropertyArrayToCheck = currentTeam === "Home" ? `HomePlayerUniqueIndex` : `AwayPlayerUniqueIndex`;
+    const playerPropertyArrayToCheck = currentTeam === "Home" ? "homePlayerUniqueIndex" : "awayPlayerUniqueIndex";
     return individualMatches.filter((matchResult) => matchResult[playerPropertyArrayToCheck]?.includes(playerUniqueIndex));
   }
   static calculatePoints(victories, forfeits) {
@@ -26321,30 +26475,43 @@ var PlayersPointsProcessingService = class {
   async process() {
     this.loggingService.info(`Processing all matches for players points...`);
     this._model = {};
-    const matches = this.divisionsMatchesIngestionService.model.matches;
+    const ingestionModel = this.divisionsMatchesIngestionService.model;
+    if (!ingestionModel) {
+      this.loggingService.error("Divisions matches ingestion model is undefined. Cannot process player points.");
+      return;
+    }
+    const matches = ingestionModel.matches;
+    if (!matches) {
+      this.loggingService.error("Matches array is undefined in ingestion model. Cannot process player points.");
+      return;
+    }
+    this.loggingService.info(`Processing ${matches.length} matches for player points...`);
     const clubs = this.configurationService.allClubsUniqueIndex;
     for (const match of matches) {
       if (this.teamMatchEntryHelpers.isBye(match)) {
         this.handleByeMatch(match);
         continue;
       }
-      if (!match.Score) {
+      if (!match.score) {
         continue;
       }
       const teamToCheck = [];
-      if (clubs.includes(match.HomeClub)) {
+      if (clubs.includes(match.homeClub)) {
         teamToCheck.push("Home");
       }
-      if (clubs.includes(match.AwayClub)) {
+      if (clubs.includes(match.awayClub)) {
         teamToCheck.push("Away");
       }
       for (const currentTeam of teamToCheck) {
         const oppositeTeam = currentTeam === "Home" ? "Away" : "Home";
-        if (match.Score.includes("sm")) {
+        if (match.score.includes("sm")) {
           this.handleSmMatch(match, currentTeam);
           continue;
         }
-        if (match[`Is${oppositeTeam}Forfeited`] && (!match[`Is${currentTeam}Withdrawn`] || match[`Is${currentTeam}Withdrawn`] && match[`Is${oppositeTeam}Withdrawn`]) && (WoHelpers.checkIfAllIndividualMatchesAreWO(match) || WoHelpers.checkIfAllPlayersAreWO(match, oppositeTeam))) {
+        const isOppositeForfeited = oppositeTeam === "Home" ? match.isHomeForfeited : match.isAwayForfeited;
+        const isCurrentWithdrawn = currentTeam === "Home" ? match.isHomeWithdrawn : match.isAwayWithdrawn;
+        const isOppositeWithdrawn = oppositeTeam === "Home" ? match.isHomeWithdrawn : match.isAwayWithdrawn;
+        if (isOppositeForfeited && (!isCurrentWithdrawn || isCurrentWithdrawn && isOppositeWithdrawn) && (WoHelpers.checkIfAllIndividualMatchesAreWO(match) || WoHelpers.checkIfAllPlayersAreWO(match, oppositeTeam))) {
           this.handleForfeitedMatch(match, currentTeam);
           continue;
         }
@@ -26354,11 +26521,11 @@ var PlayersPointsProcessingService = class {
     this.applyPointsOverrides();
   }
   handleByeMatch(match) {
-    const players = match.HomeClub === "-" && match.HomeTeam.indexOf("Bye") > -1 ? match.MatchDetails?.AwayPlayers?.Players ?? [] : match.MatchDetails?.HomePlayers?.Players ?? [];
-    const club = match.HomeClub === "-" && match.HomeTeam.indexOf("Bye") > -1 ? match.AwayClub : match.HomeClub;
+    const players = match.homeClub === "-" && match.homeTeam.indexOf("Bye") > -1 ? match.matchDetails?.awayPlayers?.players ?? [] : match.matchDetails?.homePlayers?.players ?? [];
+    const club = match.homeClub === "-" && match.homeTeam.indexOf("Bye") > -1 ? match.awayClub : match.homeClub;
     for (const player of players) {
-      const name = `${player.LastName} ${player.FirstName}`;
-      this.addMatchToPlayer(player.UniqueIndex, name, club, match.DivisionId, Number(match.WeekName), match.MatchId, match.MatchUniqueId, 4, 0);
+      const name = `${player.lastName} ${player.firstName}`;
+      this.addMatchToPlayer(player.uniqueIndex, name, club, match.divisionId, Number(match.weekName), match.matchId, match.matchUniqueId, 4, 0);
     }
   }
   addMatchToPlayer(uniqueIndex, playerName, club, divisionId, weekName, matchId, matchUniqueId, victoryCount = 0, forfeit = 0, override = false) {
@@ -26411,44 +26578,49 @@ var PlayersPointsProcessingService = class {
     this._model[uniqueIndex].points.push(newPlayerPoint);
   }
   handleForfeitedMatch(match, currentTeam) {
-    const players = match.MatchDetails?.[currentTeam + "Players"]?.Players ?? [];
+    const teamKey = currentTeam === "Home" ? "homePlayers" : "awayPlayers";
+    const clubKey = currentTeam === "Home" ? "homeClub" : "awayClub";
+    const players = match.matchDetails?.[teamKey]?.players ?? [];
     for (const player of players) {
       this.addMatchToPlayer(
-        player.UniqueIndex,
-        player.LastName + " " + player.FirstName,
-        match[currentTeam + "Club"],
-        match.DivisionId,
-        Number(match.WeekName),
-        match.MatchId,
-        match.MatchUniqueId,
+        player.uniqueIndex,
+        player.lastName + " " + player.firstName,
+        match[clubKey],
+        match.divisionId,
+        Number(match.weekName),
+        match.matchId,
+        match.matchUniqueId,
         0,
         4
       );
     }
   }
   handleMatch(match, currentTeam) {
-    const players = match.MatchDetails?.[currentTeam + "Players"]?.Players ?? [];
+    const teamKey = currentTeam === "Home" ? "homePlayers" : "awayPlayers";
+    const clubKey = currentTeam === "Home" ? "homeClub" : "awayClub";
     const opposite = currentTeam === "Home" ? "Away" : "Home";
+    const oppositeTeamKey = opposite === "Home" ? "homePlayers" : "awayPlayers";
+    const players = match.matchDetails?.[teamKey]?.players ?? [];
     for (const player of players) {
-      if (this.configurationService.isPlayerExcluded(player.UniqueIndex)) {
-        this.loggingService.info(`Player ${player.LastName} ${player.FirstName} is excluded from points calculation`);
+      if (this.configurationService.isPlayerExcluded(player.uniqueIndex)) {
+        this.loggingService.info(`Player ${player.lastName} ${player.firstName} is excluded from points calculation`);
         continue;
       }
-      const victories = PointsHelper.countVictoriesForPlayer(player.UniqueIndex, match.MatchDetails?.IndividualMatchResults ?? [], currentTeam);
+      const victories = PointsHelper.countVictoriesForPlayer(player.uniqueIndex, match.matchDetails?.individualMatchResults ?? [], currentTeam);
       const forfeit = PointsHelper.countForfeitForPlayer(
-        player.UniqueIndex,
-        match.MatchDetails?.IndividualMatchResults ?? [],
-        match.MatchDetails[`${opposite}Players`].Players ?? [],
+        player.uniqueIndex,
+        match.matchDetails?.individualMatchResults ?? [],
+        match.matchDetails?.[oppositeTeamKey]?.players ?? [],
         currentTeam
       );
       this.addMatchToPlayer(
-        player.UniqueIndex,
-        player.LastName + " " + player.FirstName,
-        match[currentTeam + "Club"],
-        match.DivisionId,
-        Number(match.WeekName),
-        match.MatchId,
-        match.MatchUniqueId,
+        player.uniqueIndex,
+        player.lastName + " " + player.firstName,
+        match[clubKey],
+        match.divisionId,
+        Number(match.weekName),
+        match.matchId,
+        match.matchUniqueId,
         victories,
         forfeit
       );
@@ -26463,21 +26635,24 @@ var PlayersPointsProcessingService = class {
     };
   }
   handleSmMatch(match, currentTeam) {
-    const scores = match.Score.match(/^([0-9]{1,2})-([0-9]{1,2})/);
+    const scores = match.score?.match(/^([0-9]{1,2})-([0-9]{1,2})/);
+    if (!scores)
+      return;
     const positionScore = Number(currentTeam === "Home" ? scores[1] : scores[2]);
     const oppositeScore = Number(currentTeam === "Home" ? scores[2] : scores[1]);
-    const players = match.MatchDetails?.[currentTeam + "Players"]?.Players ?? [];
+    const teamKey = currentTeam === "Home" ? "homePlayers" : "awayPlayers";
+    const clubKey = currentTeam === "Home" ? "homeClub" : "awayClub";
+    const players = match.matchDetails?.[teamKey]?.players ?? [];
     if (positionScore === positionScore + oppositeScore) {
       for (const player of players) {
-        player.VictoryCount = 0;
         this.addMatchToPlayer(
-          player.UniqueIndex,
-          player.LastName + " " + player.FirstName,
-          match[currentTeam + "Club"],
-          match.DivisionId,
-          Number(match.WeekName),
-          match.MatchId,
-          match.MatchUniqueId,
+          player.uniqueIndex,
+          player.lastName + " " + player.firstName,
+          match[clubKey],
+          match.divisionId,
+          Number(match.weekName),
+          match.matchId,
+          match.matchUniqueId,
           0,
           4
         );
@@ -26485,7 +26660,7 @@ var PlayersPointsProcessingService = class {
       return;
     } else {
       if (positionScore !== 0) {
-        this.loggingService.warn(`Le match ${match.MatchId} a un score modifi\xE9, mais le score n'est pas le score maximum de d\xE9faite. Aucune d\xE9cision prise pour le top6.`);
+        this.loggingService.warn(`Le match ${match.matchId} a un score modifi\xE9, mais le score n'est pas le score maximum de d\xE9faite. Aucune d\xE9cision prise pour le top6.`);
       }
     }
   }
@@ -26534,7 +26709,15 @@ var LevelAttributionService = class {
         const pointsForWeekname = playerPoints.points.filter((playerPoint) => playerPoint.weekName <= weekName);
         const pointsPerLevels = Object.entries((0, import_lodash2.groupBy)(pointsForWeekname, "level"));
         const mainLevel = pointsPerLevels.sort(
-          ([levelA, pointsA], [levelB, pointsB]) => (pointsB.length - pointsA.length) * 10 + (topLevelOrder.indexOf(levelB) - topLevelOrder.indexOf(levelA))
+          ([, pointsA], [, pointsB]) => {
+            const countDiff = pointsB.length - pointsA.length;
+            if (countDiff !== 0) {
+              return countDiff;
+            }
+            const firstWeekA = Math.min(...pointsA.map((p) => p.weekName));
+            const firstWeekB = Math.min(...pointsB.map((p) => p.weekName));
+            return firstWeekA - firstWeekB;
+          }
         );
         this._model[weekName][uniqueIndex] = mainLevel?.[0]?.[0] ?? "N/A" /* NA */;
       }
@@ -26624,16 +26807,21 @@ var ConsolidateTopService = class {
           for (const uniqueIndex of playersForRegionInLevel) {
             const countedPlayerPoints = this.sumPointsService.getPlayerPoints(uniqueIndex, weekName);
             const playerPoints = this.playersPointsProcessingService.getPlayerResultsUntilWeekName(uniqueIndex, weekName);
+            const club = this.clubIngestion.getClubWithUniqueIndex(playerPoints.club);
+            if (!club) {
+              this.loggingService.warn(`Club with uniqueIndex ${playerPoints.club} not found for player ${playerPoints.name}`);
+              continue;
+            }
             top.push({
               uniqueIndex,
               clubIndex: playerPoints.club,
-              clubName: this.clubIngestion.getClubWithUniqueIndex(playerPoints.club).LongName,
+              clubName: club.longName,
               name: playerPoints.name,
               points: countedPlayerPoints
             });
           }
           top.sort(
-            (a, b2) => (b2.points.total - a.points.total) * 1e5 + (b2.points.count5Pts - a.points.count5Pts) * 1e4 + (b2.points.count3Pts - a.points.count3Pts) * 1e3 + (b2.points.count2Pts - a.points.count2Pts) * 100 + (b2.points.count1Pts - a.points.count1Pts) * 10 + a.name.localeCompare(b2.name)
+            (a, b) => (b.points.total - a.points.total) * 1e5 + (b.points.count5Pts - a.points.count5Pts) * 1e4 + (b.points.count3Pts - a.points.count3Pts) * 1e3 + (b.points.count2Pts - a.points.count2Pts) * 100 + (b.points.count1Pts - a.points.count1Pts) * 10 + a.name.localeCompare(b.name)
           );
           this._model[weekName][region][level] = top;
         }
@@ -26651,7 +26839,7 @@ var TeamMatchEntryHelpers = class {
     __name(this, "TeamMatchEntryHelpers");
   }
   isBye(match) {
-    return match.HomeClub === "-" && match.HomeTeam.indexOf("Bye") > -1 || match.AwayClub === "-" && match.AwayTeam.indexOf("Bye") > -1;
+    return match.homeClub === "-" && match.homeTeam.indexOf("Bye") > -1 || match.awayClub === "-" && match.awayTeam.indexOf("Bye") > -1;
   }
 };
 
@@ -26852,6 +27040,11 @@ var FacebookPostingService = class {
   }
   async digest() {
     this.loggingService.info("Posting on Facebook for all regions...");
+    const facebookPostUrl = process.env.FACEBOOK_POST_URL;
+    if (!facebookPostUrl) {
+      this.loggingService.error("Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.");
+      throw new Error("Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.");
+    }
     if (!this.aiSummaryService.isEnabled()) {
       this.loggingService.warn("AI summary service is not enabled. Falling back to basic text generation.");
       await this.postBasicText();
@@ -26902,19 +27095,50 @@ var FacebookPostingService = class {
   }
   async postRegionContent(region, facebookPost) {
     const currentWeek = this.configurationService.runtimeConfiguration.weekName;
+    const facebookPostUrl = process.env.FACEBOOK_POST_URL;
+    if (!facebookPostUrl) {
+      this.loggingService.error("Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.");
+      throw new Error("Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.");
+    }
+    const publicationUrl = this.getBepingPublicationUrl();
+    const content = `${facebookPost}
+
+Consultez le classement complet sur BePing : ${publicationUrl}`;
     console.log(`
 === FACEBOOK POST FOR ${region} - WEEK ${currentWeek} ===`);
-    console.log(facebookPost);
+    console.log(content);
     console.log("=".repeat(50));
+    if (region != "VERVIERS") {
+      return;
+    }
     try {
+      const payload = {
+        content,
+        region,
+        week: currentWeek,
+        publicationUrl
+      };
+      const response = await this.axios.post(
+        facebookPostUrl,
+        payload
+      );
+      this.loggingService.trace(`Response from make for ${region}:`, response.data);
       this.loggingService.info(`\u2705 Posted AI-generated Facebook content for ${region}`);
     } catch (e) {
       this.loggingService.error(`Failed to post for ${region}:`, e.message);
     }
   }
   async postBasicText() {
+    const facebookPostUrl = process.env.FACEBOOK_POST_URL;
+    if (!facebookPostUrl) {
+      this.loggingService.error("Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.");
+      throw new Error("Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.");
+    }
     this.loggingService.info("Posting basic text content...");
-    const content = this.generateBasicText();
+    const publicationUrl = this.getBepingPublicationUrl();
+    const content = `${this.generateBasicText()}
+
+Consultez le classement complet sur BePing : ${publicationUrl}`;
     console.log("\n=== FACEBOOK POST (BASIC TEXT) ===");
     console.log(content);
     console.log("=".repeat(50));
@@ -26923,10 +27147,11 @@ var FacebookPostingService = class {
         content,
         region: "VERVIERS",
         week: this.configurationService.runtimeConfiguration.weekName,
-        type: "basic"
+        type: "basic",
+        publicationUrl
       };
       const response = await this.axios.post(
-        "https://hook.eu2.make.com/n8urup72oejw7uljo0iuo919etdfca9e",
+        facebookPostUrl,
         payload
       );
       this.loggingService.trace("Response from make (basic text):", response.data);
@@ -26934,6 +27159,9 @@ var FacebookPostingService = class {
     } catch (e) {
       this.loggingService.error("Failed to post basic text:", e.message);
     }
+  }
+  getBepingPublicationUrl() {
+    return process.env.CHALLENGE_PUBLICATION_URL ?? "https://challenges.beping.be";
   }
   getNextThursday() {
     const today = /* @__PURE__ */ new Date();
@@ -27314,7 +27542,7 @@ var FirestoreDigestionService = class {
       const timestamp = /* @__PURE__ */ new Date();
       for (const uniqueIndex of chunk) {
         const playerPoints = this.playersPointsProcessingService.getPlayerResultsUntilWeekName(uniqueIndex, this.configurationService.runtimeConfiguration.weekName);
-        playerPoints.points.sort((a, b2) => b2.weekName - a.weekName);
+        playerPoints.points.sort((a, b) => b.weekName - a.weekName);
         const level = this.levelAttributionService.getLevelForUniqueIndex(uniqueIndex, this.configurationService.runtimeConfiguration.weekName);
         const playerPointsHistory = await this.getPlayerHistory(uniqueIndex);
         const documentRef = playerPointsCollectionRef.doc(uniqueIndex);
@@ -27504,7 +27732,7 @@ var FirestoreDigestionService = class {
           }
         });
       }
-      biggestPointGains.sort((a, b2) => b2.pointGain - a.pointGain);
+      biggestPointGains.sort((a, b) => b.pointGain - a.pointGain);
       const clubPerformanceChanges = [];
       const clubs = this.configurationService.getAllClubsForRegion(region);
       clubs.forEach((clubIndex) => {
@@ -27545,7 +27773,7 @@ var FirestoreDigestionService = class {
   }
   getClubName(clubIndex) {
     try {
-      return this.consolidateTopService["clubIngestion"].getClubWithUniqueIndex(clubIndex)?.LongName || clubIndex;
+      return this.consolidateTopService.clubIngestion.getClubWithUniqueIndex(clubIndex)?.longName || clubIndex;
     } catch {
       return clubIndex;
     }
@@ -28084,9 +28312,9 @@ var FallbackEncoder = /* @__PURE__ */ __name(({ headers, body }) => {
 
 // node_modules/openai/internal/qs/formats.mjs
 var default_format = "RFC3986";
-var default_formatter = /* @__PURE__ */ __name((v2) => String(v2), "default_formatter");
+var default_formatter = /* @__PURE__ */ __name((v) => String(v), "default_formatter");
 var formatters = {
-  RFC1738: (v2) => String(v2).replace(/%20/g, "+"),
+  RFC1738: (v) => String(v).replace(/%20/g, "+"),
   RFC3986: default_formatter
 };
 var RFC1738 = "RFC1738";
@@ -28211,8 +28439,8 @@ var defaults = {
   skipNulls: false,
   strictNullHandling: false
 };
-function is_non_nullish_primitive(v2) {
-  return typeof v2 === "string" || typeof v2 === "number" || typeof v2 === "boolean" || typeof v2 === "symbol" || typeof v2 === "bigint";
+function is_non_nullish_primitive(v) {
+  return typeof v === "string" || typeof v === "number" || typeof v === "boolean" || typeof v === "symbol" || typeof v === "bigint";
 }
 __name(is_non_nullish_primitive, "is_non_nullish_primitive");
 var sentinel = {};
@@ -28889,7 +29117,7 @@ var SSEDecoder = class {
     if (line.startsWith(":")) {
       return null;
     }
-    let [fieldname, _2, value] = partition(line, ":");
+    let [fieldname, _, value] = partition(line, ":");
     if (value.startsWith(" ")) {
       value = value.substring(1);
     }
@@ -29315,7 +29543,7 @@ var createPathTagFunction = /* @__PURE__ */ __name((pathEncoder = encodeURIPath)
       error: `Value "${match[0]}" can't be safely passed as a path parameter`
     });
   }
-  invalidSegments.sort((a, b2) => a.start - b2.start);
+  invalidSegments.sort((a, b) => a.start - b.start);
   if (invalidSegments.length > 0) {
     let lastEnd = 0;
     const underline = invalidSegments.reduce((acc, segment) => {
@@ -34258,12 +34486,23 @@ OpenAI.Containers = Containers;
 var AiSummaryService = class {
   constructor(loggingService) {
     this.loggingService = loggingService;
+    this.config = {
+      model: process.env.AI_MODEL || "gpt-4o-mini",
+      temperature: parseFloat(process.env.AI_TEMPERATURE || "0.7"),
+      maxCompletionTokens: parseInt(process.env.AI_MAX_TOKENS || "2500", 10),
+      // Increased default timeout to 90 seconds for large completions (2500 tokens can take time)
+      requestTimeout: parseInt(process.env.AI_REQUEST_TIMEOUT || "90000", 10),
+      retryAttempts: parseInt(process.env.AI_RETRY_ATTEMPTS || "3", 10),
+      rateLimitDelay: parseInt(process.env.AI_RATE_LIMIT_DELAY || "1000", 10)
+    };
     this.initializeOpenAI();
   }
   static {
     __name(this, "AiSummaryService");
   }
   openai = null;
+  tokenUsage = [];
+  config;
   initializeOpenAI() {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
@@ -34273,14 +34512,125 @@ var AiSummaryService = class {
     }
     try {
       this.openai = new OpenAI({
-        apiKey
+        apiKey,
+        timeout: this.config.requestTimeout,
+        maxRetries: 0
+        // We handle retries ourselves with exponential backoff
       });
-      this.loggingService.info("\u2705 Client OpenAI initialis\xE9 avec succ\xE8s");
-      this.loggingService.trace(`\u{1F511} Utilisation de la cl\xE9 API OpenAI : ${apiKey.substring(0, 7)}...${apiKey.substring(apiKey.length - 4)}`);
+      this.loggingService.info(`\u2705 Client OpenAI initialis\xE9 avec succ\xE8s (timeout: ${this.config.requestTimeout}ms)`);
     } catch (error) {
       this.loggingService.error("\u274C \xC9chec de l'initialisation du client OpenAI :", error);
       this.loggingService.error("\u{1F4A1} Veuillez v\xE9rifier votre OPENAI_API_KEY dans le fichier .env");
     }
+  }
+  validateAnalytics(analytics) {
+    if (!analytics.region || typeof analytics.region !== "string") {
+      throw new Error("Invalid analytics: region is required and must be a string");
+    }
+    if (!analytics.weekName || typeof analytics.weekName !== "number" || analytics.weekName < 1) {
+      throw new Error("Invalid analytics: weekName must be a positive number");
+    }
+    if (typeof analytics.totalPlayers !== "number" || analytics.totalPlayers < 0) {
+      throw new Error("Invalid analytics: totalPlayers must be a non-negative number");
+    }
+    if (!Array.isArray(analytics.clubs)) {
+      throw new Error("Invalid analytics: clubs must be an array");
+    }
+    if (!analytics.playersByLevel || typeof analytics.playersByLevel !== "object") {
+      throw new Error("Invalid analytics: playersByLevel must be an object");
+    }
+    if (!analytics.topPlayersByLevel || typeof analytics.topPlayersByLevel !== "object") {
+      throw new Error("Invalid analytics: topPlayersByLevel must be an object");
+    }
+  }
+  sanitizeForPrompt(text) {
+    return text.replace(/[{}]/g, "").replace(/\n{3,}/g, "\n\n").trim();
+  }
+  validateAIResponse(response) {
+    if (!response.summary || typeof response.summary !== "string") {
+      throw new Error("Invalid AI response: missing or invalid summary field");
+    }
+    return {
+      summary: response.summary,
+      keyHighlights: Array.isArray(response.keyHighlights) ? response.keyHighlights.filter((h) => typeof h === "string") : [],
+      topPerformers: Array.isArray(response.topPerformers) ? response.topPerformers.filter((p) => p !== null && typeof p === "object").map((p) => ({
+        name: typeof p.name === "string" ? p.name : "Unknown",
+        club: typeof p.club === "string" ? p.club : "Unknown",
+        level: typeof p.level === "string" ? p.level : "Unknown",
+        achievement: typeof p.achievement === "string" ? p.achievement : ""
+      })) : [],
+      trends: {
+        risingPlayers: Array.isArray(response.trends?.risingPlayers) ? response.trends.risingPlayers.filter((p) => typeof p === "string") : [],
+        dominantClubs: Array.isArray(response.trends?.dominantClubs) ? response.trends.dominantClubs.filter((c) => typeof c === "string") : [],
+        competitiveLevel: typeof response.trends?.competitiveLevel === "string" ? response.trends.competitiveLevel : "Mod\xE9r\xE9",
+        weeklyInsight: typeof response.trends?.weeklyInsight === "string" ? response.trends.weeklyInsight : "La comp\xE9tition reste active"
+      }
+    };
+  }
+  async retryWithBackoff(fn, context, maxRetries) {
+    const retries = maxRetries ?? this.config.retryAttempts;
+    let lastError = null;
+    for (let attempt = 0; attempt < retries; attempt++) {
+      try {
+        return await fn();
+      } catch (error) {
+        lastError = error instanceof Error ? error : new Error(String(error));
+        const errorWithStatus = error;
+        const isRetryable = errorWithStatus?.status === 429 || errorWithStatus?.status !== void 0 && errorWithStatus.status >= 500 && errorWithStatus.status < 600;
+        if (!isRetryable || attempt === retries - 1) {
+          throw lastError;
+        }
+        const delay = this.config.rateLimitDelay * Math.pow(2, attempt);
+        this.loggingService.warn(`${context} - Tentative ${attempt + 1}/${retries} \xE9chou\xE9e. Nouvelle tentative dans ${delay}ms...`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
+    }
+    throw lastError || new Error("Max retries exceeded");
+  }
+  async makeAPIRequestWithTimeout(requestFn, timeout = this.config.requestTimeout) {
+    let timeoutId;
+    const timeoutPromise = new Promise((_, reject) => {
+      timeoutId = setTimeout(() => {
+        reject(new Error(`Request timeout after ${timeout}ms`));
+      }, timeout);
+    });
+    try {
+      const result = await Promise.race([
+        requestFn(),
+        timeoutPromise
+      ]);
+      clearTimeout(timeoutId);
+      return result;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      throw error;
+    }
+  }
+  trackTokenUsage(response) {
+    if (response?.usage) {
+      const usage = {
+        promptTokens: response.usage.prompt_tokens || 0,
+        completionTokens: response.usage.completion_tokens || 0,
+        totalTokens: response.usage.total_tokens || 0
+      };
+      this.tokenUsage.push(usage);
+      this.loggingService.trace(
+        `Token usage: ${usage.totalTokens} (prompt: ${usage.promptTokens}, completion: ${usage.completionTokens})`
+      );
+    }
+  }
+  getTokenUsage() {
+    return [...this.tokenUsage];
+  }
+  getTotalTokenUsage() {
+    return this.tokenUsage.reduce(
+      (acc, usage) => ({
+        promptTokens: acc.promptTokens + usage.promptTokens,
+        completionTokens: acc.completionTokens + usage.completionTokens,
+        totalTokens: acc.totalTokens + usage.totalTokens
+      }),
+      { promptTokens: 0, completionTokens: 0, totalTokens: 0 }
+    );
   }
   async generateRegionSummary(analytics) {
     if (!this.openai) {
@@ -34288,46 +34638,62 @@ var AiSummaryService = class {
       return null;
     }
     try {
+      this.validateAnalytics(analytics);
       this.loggingService.info(`G\xE9n\xE9ration du r\xE9sum\xE9 IA pour la r\xE9gion ${analytics.region}, semaine ${analytics.weekName}`);
+      const startTime = Date.now();
       const prompt = this.buildAnalysisPrompt(analytics);
-      const response = await this.openai.chat.completions.create({
-        model: "gpt-5-nano",
-        messages: [
-          {
-            role: "system",
-            content: this.getSystemPrompt()
-          },
-          {
-            role: "user",
-            content: prompt
-          }
-        ],
-        max_completion_tokens: 2500,
-        response_format: { type: "json_object" }
-      });
+      this.loggingService.trace(`Prompt length: ${prompt.length} characters`);
+      const response = await this.retryWithBackoff(
+        () => this.makeAPIRequestWithTimeout(
+          () => this.openai.chat.completions.create({
+            model: this.config.model,
+            temperature: this.config.temperature,
+            messages: [
+              {
+                role: "system",
+                content: this.getSystemPrompt()
+              },
+              {
+                role: "user",
+                content: prompt
+              }
+            ],
+            max_completion_tokens: this.config.maxCompletionTokens,
+            response_format: { type: "json_object" }
+          })
+        ),
+        `R\xE9sum\xE9 IA pour ${analytics.region}`
+      );
+      this.trackTokenUsage(response);
+      const duration = Date.now() - startTime;
+      this.loggingService.trace(`API request completed in ${duration}ms`);
       const content = response.choices[0]?.message?.content;
       if (!content) {
         throw new Error("Aucun contenu re\xE7u d'OpenAI");
       }
-      const aiAnalysis = JSON.parse(content);
+      let aiAnalysis;
+      try {
+        aiAnalysis = JSON.parse(content);
+      } catch (parseError) {
+        throw new Error(`Invalid JSON response from AI: ${parseError instanceof Error ? parseError.message : "Unknown error"}`);
+      }
+      const validatedSummary = this.validateAIResponse(aiAnalysis);
       const summary = {
+        ...validatedSummary,
         region: analytics.region,
         weekName: analytics.weekName,
-        summary: aiAnalysis.summary,
-        keyHighlights: aiAnalysis.keyHighlights || [],
-        topPerformers: aiAnalysis.topPerformers || [],
-        trends: {
-          risingPlayers: aiAnalysis.trends?.risingPlayers || [],
-          dominantClubs: aiAnalysis.trends?.dominantClubs || [],
-          competitiveLevel: aiAnalysis.trends?.competitiveLevel || "Mod\xE9r\xE9",
-          weeklyInsight: aiAnalysis.trends?.weeklyInsight || "La comp\xE9tition reste active"
-        },
         generatedAt: /* @__PURE__ */ new Date()
       };
       this.loggingService.trace(`\u2705 R\xE9sum\xE9 IA g\xE9n\xE9r\xE9 pour ${analytics.region}`);
       return summary;
     } catch (error) {
       this.loggingService.error(`\xC9chec de g\xE9n\xE9ration du r\xE9sum\xE9 IA pour ${analytics.region} :`, error);
+      if (error instanceof Error) {
+        this.loggingService.error(`Message d'erreur : ${error.message}`);
+        if (process.env.NODE_ENV === "development") {
+          this.loggingService.error(`Stack trace : ${error.stack}`);
+        }
+      }
       return null;
     }
   }
@@ -34364,12 +34730,13 @@ Utilise un langage engageant mais professionnel. Concentre-toi sur les aspects c
   }
   buildAnalysisPrompt(analytics) {
     const { region, weekName, totalPlayers, playersByLevel, topPlayersByLevel, clubs } = analytics;
-    let prompt = `Analyse les donn\xE9es du championnat de tennis de table pour la r\xE9gion ${region}, semaine ${weekName} :
+    const sanitizedRegion = this.sanitizeForPrompt(region);
+    let prompt = `Analyse les donn\xE9es du championnat de tennis de table pour la r\xE9gion ${sanitizedRegion}, semaine ${weekName} :
 
 APER\xC7U DE LA R\xC9GION :
 - Total de joueurs actifs : ${totalPlayers}
 - Nombre de clubs : ${clubs.length}
-- Clubs participants : ${clubs.join(", ")}
+- Clubs participants : ${clubs.map((c) => this.sanitizeForPrompt(c)).join(", ")}
 
 R\xC9PARTITION DES JOUEURS PAR NIVEAU :`;
     Object.entries(playersByLevel).forEach(([level, count]) => {
@@ -34440,11 +34807,12 @@ Fournis une analyse engageante centr\xE9e sur la dynamique comp\xE9titive, les p
       const summary = await this.generateRegionSummary(analytics);
       summaries.push(summary);
       if (summaries.length < analyticsArray.length) {
-        await new Promise((resolve) => setTimeout(resolve, 1e3));
+        await new Promise((resolve) => setTimeout(resolve, this.config.rateLimitDelay));
       }
     }
     const successCount = summaries.filter((s) => s !== null).length;
-    this.loggingService.info(`\u2705 G\xE9n\xE9r\xE9 ${successCount}/${analyticsArray.length} r\xE9sum\xE9s IA`);
+    const totalUsage = this.getTotalTokenUsage();
+    this.loggingService.info(`\u2705 G\xE9n\xE9r\xE9 ${successCount}/${analyticsArray.length} r\xE9sum\xE9s IA (Total tokens: ${totalUsage.totalTokens})`);
     return summaries;
   }
   async generateFacebookPost(analytics) {
@@ -34453,23 +34821,35 @@ Fournis une analyse engageante centr\xE9e sur la dynamique comp\xE9titive, les p
       return null;
     }
     try {
+      this.validateAnalytics(analytics);
       this.loggingService.info(`G\xE9n\xE9ration du post Facebook pour la r\xE9gion ${analytics.region}, semaine ${analytics.weekName}`);
+      const startTime = Date.now();
       const prompt = this.buildFacebookPostPrompt(analytics);
-      const response = await this.openai.chat.completions.create({
-        model: "gpt-5-nano",
-        messages: [
-          {
-            role: "system",
-            content: this.getFacebookPostSystemPrompt()
-          },
-          {
-            role: "user",
-            content: prompt
-          }
-        ],
-        max_completion_tokens: 2500,
-        response_format: { type: "text" }
-      });
+      this.loggingService.trace(`Prompt length: ${prompt.length} characters`);
+      const response = await this.retryWithBackoff(
+        () => this.makeAPIRequestWithTimeout(
+          () => this.openai.chat.completions.create({
+            model: this.config.model,
+            temperature: this.config.temperature,
+            messages: [
+              {
+                role: "system",
+                content: this.getFacebookPostSystemPrompt()
+              },
+              {
+                role: "user",
+                content: prompt
+              }
+            ],
+            max_completion_tokens: this.config.maxCompletionTokens,
+            response_format: { type: "text" }
+          })
+        ),
+        `Post Facebook pour ${analytics.region}`
+      );
+      this.trackTokenUsage(response);
+      const duration = Date.now() - startTime;
+      this.loggingService.trace(`API request completed in ${duration}ms`);
       const content = response.choices[0]?.message?.content;
       if (!content) {
         throw new Error("Aucun contenu re\xE7u d'OpenAI pour le post Facebook");
@@ -34478,6 +34858,12 @@ Fournis une analyse engageante centr\xE9e sur la dynamique comp\xE9titive, les p
       return content;
     } catch (error) {
       this.loggingService.error(`\xC9chec de g\xE9n\xE9ration du post Facebook pour ${analytics.region} :`, error);
+      if (error instanceof Error) {
+        this.loggingService.error(`Message d'erreur : ${error.message}`);
+        if (process.env.NODE_ENV === "development") {
+          this.loggingService.error(`Stack trace : ${error.stack}`);
+        }
+      }
       return null;
     }
   }
@@ -34492,11 +34878,12 @@ Fournis une analyse engageante centr\xE9e sur la dynamique comp\xE9titive, les p
       const post = await this.generateFacebookPost(analytics);
       posts.push(post);
       if (posts.length < analyticsArray.length) {
-        await new Promise((resolve) => setTimeout(resolve, 1e3));
+        await new Promise((resolve) => setTimeout(resolve, this.config.rateLimitDelay));
       }
     }
     const successCount = posts.filter((p) => p !== null).length;
-    this.loggingService.info(`\u2705 G\xE9n\xE9r\xE9 ${successCount}/${analyticsArray.length} posts Facebook`);
+    const totalUsage = this.getTotalTokenUsage();
+    this.loggingService.info(`\u2705 G\xE9n\xE9r\xE9 ${successCount}/${analyticsArray.length} posts Facebook (Total tokens: ${totalUsage.totalTokens})`);
     return posts;
   }
   getFacebookPostSystemPrompt() {
@@ -34511,14 +34898,14 @@ Ta mission est de cr\xE9er des posts Facebook captivants qui :
 
 OBLIGATOIRE - Structure du post :
 1. ANALYSE DE LA SEMAINE (2-3 phrases) : Aper\xE7u g\xE9n\xE9ral des d\xE9veloppements et tendances
-2. CLASSEMENT PAR NIVEAU : Inclus syst\xE9matiquement les TOP 6 joueurs de chaque niveau
+2. CLASSEMENT PAR DIVISION (appel\xE9 niveau dans le code) : Inclus syst\xE9matiquement les TOP 6 joueurs de chaque niveau
 3. Points forts et performances remarquables
 4. Hashtags pertinents
 
 CLASSEMENT PAR NIVEAU - OBLIGATOIRE \xC0 INCLURE :
 - Inclus syst\xE9matiquement les TOP 6 joueurs de chaque niveau
-- Pr\xE9sente les r\xE9sultats par cat\xE9gorie (Provincial 1, Provincial 2, etc.)
-- Montre les points et performances de chaque joueur
+- Pr\xE9sente les r\xE9sultats par cat\xE9gorie (Provincial 1, Provincial 2, etc.). 
+- NAT_WB = National WB
 - Organise clairement l'information par niveau
 
 COH\xC9RENCE DU CONTENU - OBLIGATOIRE :
@@ -34531,10 +34918,10 @@ COH\xC9RENCE DU CONTENU - OBLIGATOIRE :
 
 FORMAT DU POST :
 - Commence par un titre accrocheur avec emoji
+- Inclus des points cl\xE9s avec des puces
 - Inclus OBLIGATOIREMENT l'analyse de la semaine au d\xE9but
 - Inclus OBLIGATOIREMENT le classement complet par niveau (top 6)
 - Utilise des paragraphes courts et lisibles
-- Inclus des points cl\xE9s avec des puces
 - Termine par des hashtags pertinents
 - Longueur optimale : 400-600 mots
 
@@ -34548,12 +34935,13 @@ TON ET STYLE :
   }
   buildFacebookPostPrompt(analytics) {
     const { region, weekName, totalPlayers, playersByLevel, topPlayersByLevel, clubs } = analytics;
-    let prompt = `Cr\xE9e un post Facebook engageant pour le championnat de tennis de table de la r\xE9gion ${region}, semaine ${weekName}.
+    const sanitizedRegion = this.sanitizeForPrompt(region);
+    let prompt = `Cr\xE9e un post Facebook engageant pour le championnat de tennis de table de la r\xE9gion ${sanitizedRegion}, semaine ${weekName}.
 
 CONTEXTE DE LA R\xC9GION :
 - Total de joueurs actifs : ${totalPlayers}
 - Nombre de clubs participants : ${clubs.length}
-- Clubs : ${clubs.join(", ")}
+- Clubs : ${clubs.map((c) => this.sanitizeForPrompt(c)).join(", ")}
 
 R\xC9PARTITION DES JOUEURS PAR NIVEAU :`;
     Object.entries(playersByLevel).forEach(([level, count]) => {
@@ -34760,6 +35148,8 @@ var CATEGORY_MAPPING = /* @__PURE__ */ ((CATEGORY_MAPPING2) => {
   CATEGORY_MAPPING2["MEN_POST_23"] = "MEN";
   CATEGORY_MAPPING2["WOMEN"] = "WOMEN";
   CATEGORY_MAPPING2["WOMEN_POST_23"] = "WOMEN";
+  CATEGORY_MAPPING2["SEN_M"] = "MEN";
+  CATEGORY_MAPPING2["SEN_W"] = "WOMEN";
   return CATEGORY_MAPPING2;
 })(CATEGORY_MAPPING || {});
 var WeeklyMatchesSummaryDigestionService = class {
@@ -34782,7 +35172,7 @@ var WeeklyMatchesSummaryDigestionService = class {
       for (const [level, divisions] of (0, import_lodash3.sortBy)(Object.entries(levels), "0").reverse()) {
         for (const [division, categories] of (0, import_lodash3.sortBy)(Object.entries(divisions), "0")) {
           for (const [category, matches2] of Object.entries(categories)) {
-            texts += `## ${level} ${division} ${CATEGORY_MAPPING[category]} 
+            texts += `## ${level} ${division} ${category ? CATEGORY_MAPPING[category] : ""} 
 `;
             for (const match of matches2) {
               texts += `	${match.homeTeam} - ${match.awayTeam} : ${match.score ?? ""}	`;
@@ -34812,6 +35202,19 @@ var ServiceFactory = class {
   static {
     __name(this, "ServiceFactory");
   }
+  // Generic singleton helper method
+  static getSingleton(serviceId, factory) {
+    try {
+      const existingService = container.get(serviceId);
+      if (existingService) {
+        return existingService;
+      }
+    } catch (error) {
+    }
+    const service = factory();
+    container.set(serviceId, service);
+    return service;
+  }
   static createLoggingService() {
     return new LoggingService();
   }
@@ -34833,13 +35236,16 @@ var ServiceFactory = class {
     const runtimeConfigService = this.createRuntimeConfigurationService();
     const googleCredentialsService = this.createGoogleCredentialsLoaderService();
     const firebaseAdmin = container.get("firebase.admin");
-    return new ConfigurationService(
+    const seasonsApi = this.createSeasonsApi("https://api-v2.beping.be");
+    const configService = new ConfigurationService(
       loggingService,
       fileSystemHelper,
       runtimeConfigService,
       googleCredentialsService,
-      firebaseAdmin
+      firebaseAdmin,
+      seasonsApi
     );
+    return configService;
   }
   static createClubsApi() {
     const configService = container.get("ConfigurationService");
@@ -34861,6 +35267,24 @@ var ServiceFactory = class {
       axiosInstance
     );
   }
+  static createSeasonsApi(baseUrl) {
+    const axiosInstance = container.get("axios");
+    let url = baseUrl;
+    if (!url) {
+      try {
+        const configService = container.get("ConfigurationService");
+        url = configService.bepingUrl;
+      } catch {
+        url = "https://api-v2.beping.be";
+      }
+    }
+    axiosInstance.defaults.baseURL = url;
+    return new SeasonsApi(
+      TabtClientConfigFactory.createConfiguration(url),
+      null,
+      axiosInstance
+    );
+  }
   static createDivisionsApi() {
     const configService = container.get("ConfigurationService");
     const axiosInstance = container.get("axios");
@@ -34872,44 +35296,52 @@ var ServiceFactory = class {
     );
   }
   static createClubsIngestionService() {
-    const configService = container.get("ConfigurationService");
-    const loggingService = this.createLoggingService();
-    const clubsApi = this.createClubsApi();
-    return new ClubsIngestionService(
-      configService,
-      loggingService,
-      clubsApi
-    );
+    return this.getSingleton("ClubsIngestionService", () => {
+      const configService = container.get("ConfigurationService");
+      const loggingService = this.createLoggingService();
+      const clubsApi = this.createClubsApi();
+      return new ClubsIngestionService(
+        configService,
+        loggingService,
+        clubsApi
+      );
+    });
   }
   static createDivisionsIngestionService() {
-    const loggingService = this.createLoggingService();
-    const divisionsApi = this.createDivisionsApi();
-    return new DivisionsIngestionService(
-      loggingService,
-      divisionsApi
-    );
+    return this.getSingleton("DivisionsIngestionService", () => {
+      const loggingService = this.createLoggingService();
+      const divisionsApi = this.createDivisionsApi();
+      return new DivisionsIngestionService(
+        loggingService,
+        divisionsApi
+      );
+    });
   }
   static createDivisionsMatchesIngestionService() {
-    const configService = container.get("ConfigurationService");
-    const loggingService = this.createLoggingService();
-    const matchesApi = this.createMatchesApi();
-    return new DivisionsMatchesIngestionService(
-      configService,
-      loggingService,
-      matchesApi
-    );
+    return this.getSingleton("DivisionsMatchesIngestionService", () => {
+      const configService = container.get("ConfigurationService");
+      const loggingService = this.createLoggingService();
+      const matchesApi = this.createMatchesApi();
+      return new DivisionsMatchesIngestionService(
+        configService,
+        loggingService,
+        matchesApi
+      );
+    });
   }
   static createWeeklyMatchesSummaryIngestionService() {
-    const configService = container.get("ConfigurationService");
-    const loggingService = this.createLoggingService();
-    const matchesApi = this.createMatchesApi();
-    const randomIp = container.get("randomip");
-    return new WeeklyMatchesSummaryIngestionService(
-      configService,
-      loggingService,
-      matchesApi,
-      randomIp
-    );
+    return this.getSingleton("WeeklyMatchesSummaryIngestionService", () => {
+      const configService = container.get("ConfigurationService");
+      const loggingService = this.createLoggingService();
+      const matchesApi = this.createMatchesApi();
+      const randomIp = container.get("randomip");
+      return new WeeklyMatchesSummaryIngestionService(
+        configService,
+        loggingService,
+        matchesApi,
+        randomIp
+      );
+    });
   }
   static createIngestionService() {
     const clubsIngestionService = this.createClubsIngestionService();
@@ -34928,69 +35360,81 @@ var ServiceFactory = class {
     );
   }
   static createErrorProcessingService() {
-    const loggingService = this.createLoggingService();
-    return new ErrorProcessingService(loggingService);
+    return this.getSingleton("ErrorProcessingService", () => {
+      const loggingService = this.createLoggingService();
+      return new ErrorProcessingService(loggingService);
+    });
   }
   static createWeeklyMatchesSummaryProcessingService() {
-    const loggingService = this.createLoggingService();
-    const weeklyMatchesSummaryIngestionService = this.createWeeklyMatchesSummaryIngestionService();
-    const divisionsIngestionService = this.createDivisionsIngestionService();
-    return new WeeklyMatchesSummaryProcessingService(loggingService, weeklyMatchesSummaryIngestionService, divisionsIngestionService);
+    return this.getSingleton("WeeklyMatchesSummaryProcessingService", () => {
+      const loggingService = this.createLoggingService();
+      const weeklyMatchesSummaryIngestionService = this.createWeeklyMatchesSummaryIngestionService();
+      const divisionsIngestionService = this.createDivisionsIngestionService();
+      return new WeeklyMatchesSummaryProcessingService(loggingService, weeklyMatchesSummaryIngestionService, divisionsIngestionService);
+    });
   }
   static createTeamMatchEntryHelpers() {
     return new TeamMatchEntryHelpers();
   }
   static createPlayersPointsProcessingService() {
-    const divisionsMatchesIngestionService = this.createDivisionsMatchesIngestionService();
-    const loggingService = this.createLoggingService();
-    const errorProcessingService = this.createErrorProcessingService();
-    const configService = container.get("ConfigurationService");
-    const teamMatchEntryHelpers = this.createTeamMatchEntryHelpers();
-    return new PlayersPointsProcessingService(
-      divisionsMatchesIngestionService,
-      loggingService,
-      errorProcessingService,
-      configService,
-      teamMatchEntryHelpers
-    );
+    return this.getSingleton("PlayersPointsProcessingService", () => {
+      const divisionsMatchesIngestionService = this.createDivisionsMatchesIngestionService();
+      const loggingService = this.createLoggingService();
+      const errorProcessingService = this.createErrorProcessingService();
+      const configService = container.get("ConfigurationService");
+      const teamMatchEntryHelpers = this.createTeamMatchEntryHelpers();
+      return new PlayersPointsProcessingService(
+        divisionsMatchesIngestionService,
+        loggingService,
+        errorProcessingService,
+        configService,
+        teamMatchEntryHelpers
+      );
+    });
   }
   static createLevelAttributionService() {
-    const loggingService = this.createLoggingService();
-    const playersPointsProcessingService = this.createPlayersPointsProcessingService();
-    const configService = container.get("ConfigurationService");
-    return new LevelAttributionService(
-      loggingService,
-      playersPointsProcessingService,
-      configService
-    );
+    return this.getSingleton("LevelAttributionService", () => {
+      const loggingService = this.createLoggingService();
+      const playersPointsProcessingService = this.createPlayersPointsProcessingService();
+      const configService = container.get("ConfigurationService");
+      return new LevelAttributionService(
+        loggingService,
+        playersPointsProcessingService,
+        configService
+      );
+    });
   }
   static createSumPointsService() {
-    const loggingService = this.createLoggingService();
-    const playersPointsProcessingService = this.createPlayersPointsProcessingService();
-    const levelAttributionService = this.createLevelAttributionService();
-    const configService = container.get("ConfigurationService");
-    return new SumPointsService(
-      loggingService,
-      playersPointsProcessingService,
-      levelAttributionService,
-      configService
-    );
+    return this.getSingleton("SumPointsService", () => {
+      const loggingService = this.createLoggingService();
+      const playersPointsProcessingService = this.createPlayersPointsProcessingService();
+      const levelAttributionService = this.createLevelAttributionService();
+      const configService = container.get("ConfigurationService");
+      return new SumPointsService(
+        loggingService,
+        playersPointsProcessingService,
+        levelAttributionService,
+        configService
+      );
+    });
   }
   static createConsolidateTopService() {
-    const loggingService = this.createLoggingService();
-    const configService = container.get("ConfigurationService");
-    const playersPointsProcessingService = this.createPlayersPointsProcessingService();
-    const sumPointsService = this.createSumPointsService();
-    const levelAttributionService = this.createLevelAttributionService();
-    const clubIngestion = this.createClubsIngestionService();
-    return new ConsolidateTopService(
-      loggingService,
-      configService,
-      playersPointsProcessingService,
-      sumPointsService,
-      levelAttributionService,
-      clubIngestion
-    );
+    return this.getSingleton("ConsolidateTopService", () => {
+      const loggingService = this.createLoggingService();
+      const configService = container.get("ConfigurationService");
+      const playersPointsProcessingService = this.createPlayersPointsProcessingService();
+      const sumPointsService = this.createSumPointsService();
+      const levelAttributionService = this.createLevelAttributionService();
+      const clubIngestion = this.createClubsIngestionService();
+      return new ConsolidateTopService(
+        loggingService,
+        configService,
+        playersPointsProcessingService,
+        sumPointsService,
+        levelAttributionService,
+        clubIngestion
+      );
+    });
   }
   static createTopProcessingService() {
     const loggingService = this.createLoggingService();
@@ -35037,10 +35481,12 @@ var ServiceFactory = class {
     );
   }
   static createTopExcelOutputService() {
-    const configService = container.get("ConfigurationService");
-    const loggingService = this.createLoggingService();
-    const consolidateTopService = this.createConsolidateTopService();
-    return new TopExcelOutputService(configService, loggingService, consolidateTopService);
+    return this.getSingleton("TopExcelOutputService", () => {
+      const configService = container.get("ConfigurationService");
+      const loggingService = this.createLoggingService();
+      const consolidateTopService = this.createConsolidateTopService();
+      return new TopExcelOutputService(configService, loggingService, consolidateTopService);
+    });
   }
   static createEmailSenderService() {
     const loggingService = this.createLoggingService();
@@ -35382,6 +35828,7 @@ dotenv.config();
 console.log("\u{1F527} Environment variables loaded:");
 console.log(`   - GOOGLE_SERVICE_ACCOUNT_JSON_CREDENTIALS: ${process.env.GOOGLE_SERVICE_ACCOUNT_JSON_CREDENTIALS ? "SET" : "NOT SET"}`);
 console.log(`   - OPENAI_API_KEY: ${process.env.OPENAI_API_KEY ? "SET" : "NOT SET"}`);
+console.log(`   - MAKE_FACEBOOK_POST_URL: ${process.env.MAKE_FACEBOOK_POST_URL ? "SET" : "NOT SET"}`);
 console.log(`   - NODE_ENV: ${process.env.NODE_ENV || "NOT SET"}`);
 function configureGlobalAxios() {
   axiosRetry(import_axios3.default, {

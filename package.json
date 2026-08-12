@@ -42,7 +42,8 @@
     "docker:compose:scheduled:up": "docker-compose -f docker-compose.scheduled.yml up -d",
     "docker:compose:scheduled:down": "docker-compose -f docker-compose.scheduled.yml down",
     "docker:compose:scheduled:logs": "docker-compose -f docker-compose.scheduled.yml logs -f",
-    "docker:compose:scheduled:restart": "docker-compose -f docker-compose.scheduled.yml restart"
+    "docker:compose:scheduled:restart": "docker-compose -f docker-compose.scheduled.yml restart",
+    "generate:crontab": "node scripts/generate-crontab.js"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "2.21.4",

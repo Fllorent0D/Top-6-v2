@@ -94,26 +94,36 @@ export class FacebookPostingService implements DigestingServiceContract {
 
   private async postRegionContent(region: string, facebookPost: string): Promise<void> {
     const currentWeek = this.configurationService.runtimeConfiguration.weekName;
-    
+    const facebookPostUrl = process.env.FACEBOOK_POST_URL;
+
+    if (!facebookPostUrl) {
+      this.loggingService.error('Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.');
+      throw new Error('Facebook post URL is not set. Please set the FACEBOOK_POST_URL environment variable.');
+    }
+
+    const publicationUrl = this.getBepingPublicationUrl();
+    const content = `${facebookPost}\n\nConsultez le classement complet sur BePing : ${publicationUrl}`;
+
     // Log the post content to console
     console.log(`\n=== FACEBOOK POST FOR ${region} - WEEK ${currentWeek} ===`);
-    console.log(facebookPost);
+    console.log(content);
     console.log('='.repeat(50));
-    
+
     if (region != 'VERVIERS') {
       return;
     }
 
     try {
-      
+
       const payload = {
-        content: facebookPost,
+        content,
         region: region,
-        week: currentWeek
+        week: currentWeek,
+        publicationUrl,
       };
 
       const response = await this.axios.post(
-        '', 
+        facebookPostUrl,
         payload
       );
       
@@ -137,7 +147,8 @@ export class FacebookPostingService implements DigestingServiceContract {
     this.loggingService.info('Posting basic text content...');
     
     // Fallback to original basic text generation for VERVIERS only
-    const content = this.generateBasicText();
+    const publicationUrl = this.getBepingPublicationUrl();
+    const content = `${this.generateBasicText()}\n\nConsultez le classement complet sur BePing : ${publicationUrl}`;
     
     // Log the post content to console
     console.log('\n=== FACEBOOK POST (BASIC TEXT) ===');
@@ -149,7 +160,8 @@ export class FacebookPostingService implements DigestingServiceContract {
         content: content,
         region: 'VERVIERS',
         week: this.configurationService.runtimeConfiguration.weekName,
-        type: 'basic'
+        type: 'basic',
+        publicationUrl,
       };
 
       const response = await this.axios.post(
@@ -163,6 +175,10 @@ export class FacebookPostingService implements DigestingServiceContract {
     } catch (e) {
       this.loggingService.error('Failed to post basic text:', e.message);
     }
+  }
+
+  private getBepingPublicationUrl(): string {
+    return process.env.CHALLENGE_PUBLICATION_URL ?? 'https://challenges.beping.be';
   }
 
   getNextThursday(): Date {

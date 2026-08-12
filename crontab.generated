@@ -1,0 +1,77 @@
+# BEGIN TOP-6 CRONTAB
+# Generated 2026-01-22T15:03:51.168Z
+# Season 26 - AFTT Season 2025-2026 Calendar - Source: https://resultats.aftt.be/calendriers
+#
+# Format: minute hour day month dayOfWeek command
+#
+# Sunday runs: Preview mode (email only, no Facebook/Firebase)
+# Thursday runs: Production mode (full run with Facebook + Firebase)
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+PROJECT_DIR=/opt/top-6
+LOG_DIR=/var/log/top-6
+
+# ============================================
+# SUNDAY RUNS (Preview Mode)
+# ============================================
+
+# Week 14 - 2026-01-25
+0 18 25 1 * cd $PROJECT_DIR && WEEK_NAME=14 ./run.sh sunday >> $LOG_DIR/week14-sunday.log 2>&1
+
+# Week 15 - 2026-02-08
+0 18 8 2 * cd $PROJECT_DIR && WEEK_NAME=15 ./run.sh sunday >> $LOG_DIR/week15-sunday.log 2>&1
+
+# Week 16 - 2026-02-15
+0 18 15 2 * cd $PROJECT_DIR && WEEK_NAME=16 ./run.sh sunday >> $LOG_DIR/week16-sunday.log 2>&1
+
+# Week 17 - 2026-03-08
+0 18 8 3 * cd $PROJECT_DIR && WEEK_NAME=17 ./run.sh sunday >> $LOG_DIR/week17-sunday.log 2>&1
+
+# Week 18 - 2026-03-15
+0 18 15 3 * cd $PROJECT_DIR && WEEK_NAME=18 ./run.sh sunday >> $LOG_DIR/week18-sunday.log 2>&1
+
+# Week 19 - 2026-03-29
+0 18 29 3 * cd $PROJECT_DIR && WEEK_NAME=19 ./run.sh sunday >> $LOG_DIR/week19-sunday.log 2>&1
+
+# Week 20 - 2026-04-05
+0 18 5 4 * cd $PROJECT_DIR && WEEK_NAME=20 ./run.sh sunday >> $LOG_DIR/week20-sunday.log 2>&1
+
+# Week 21 - 2026-04-19
+0 18 19 4 * cd $PROJECT_DIR && WEEK_NAME=21 ./run.sh sunday >> $LOG_DIR/week21-sunday.log 2>&1
+
+# Week 22 - 2026-04-26
+0 18 26 4 * cd $PROJECT_DIR && WEEK_NAME=22 ./run.sh sunday >> $LOG_DIR/week22-sunday.log 2>&1
+
+# ============================================
+# THURSDAY RUNS (Production Mode)
+# ============================================
+
+# Week 14 - 2026-01-29
+0 8 29 1 * cd $PROJECT_DIR && WEEK_NAME=14 ./run.sh thursday >> $LOG_DIR/week14-thursday.log 2>&1
+
+# Week 15 - 2026-02-12
+0 8 12 2 * cd $PROJECT_DIR && WEEK_NAME=15 ./run.sh thursday >> $LOG_DIR/week15-thursday.log 2>&1
+
+# Week 16 - 2026-02-19
+0 8 19 2 * cd $PROJECT_DIR && WEEK_NAME=16 ./run.sh thursday >> $LOG_DIR/week16-thursday.log 2>&1
+
+# Week 17 - 2026-03-12
+0 8 12 3 * cd $PROJECT_DIR && WEEK_NAME=17 ./run.sh thursday >> $LOG_DIR/week17-thursday.log 2>&1
+
+# Week 18 - 2026-03-19
+0 8 19 3 * cd $PROJECT_DIR && WEEK_NAME=18 ./run.sh thursday >> $LOG_DIR/week18-thursday.log 2>&1
+
+# Week 19 - 2026-04-02
+0 8 2 4 * cd $PROJECT_DIR && WEEK_NAME=19 ./run.sh thursday >> $LOG_DIR/week19-thursday.log 2>&1
+
+# Week 20 - 2026-04-09
+0 8 9 4 * cd $PROJECT_DIR && WEEK_NAME=20 ./run.sh thursday >> $LOG_DIR/week20-thursday.log 2>&1
+
+# Week 21 - 2026-04-23
+0 8 23 4 * cd $PROJECT_DIR && WEEK_NAME=21 ./run.sh thursday >> $LOG_DIR/week21-thursday.log 2>&1
+
+# Week 22 - 2026-04-30
+0 8 30 4 * cd $PROJECT_DIR && WEEK_NAME=22 ./run.sh thursday >> $LOG_DIR/week22-thursday.log 2>&1
+
+# END TOP-6 CRONTAB
