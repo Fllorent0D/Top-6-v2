@@ -1,11 +1,12 @@
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { networkInterfaces } from 'node:os';
 
 const port = Number(process.env.PORT || 8765);
 const rootDir = fileURLToPath(new URL('.', import.meta.url));
+const tournamentStatePath = join(rootDir, 'tournament-state.json');
 const publishedSpreadsheetId = '2PACX-1vTX2csVgYL_ZdHNx2wyx2aIAAq2klSg0uMRaxKKbikDIdsNYc7adkAmvCFezgmWNUmDR1QULJcZ-DkA';
 
 const contentTypes = {
@@ -31,11 +32,34 @@ function send(response, status, body, headers = {}) {
     response.end(body);
 }
 
+async function readTournamentState() {
+    try {
+        return JSON.parse(await readFile(tournamentStatePath, 'utf8'));
+    } catch {
+        return { results: {}, presence: {}, updatedAt: null };
+    }
+}
+
+async function writeTournamentState(state) {
+    const nextState = { ...state, updatedAt: new Date().toISOString() };
+    await writeFile(tournamentStatePath, `${JSON.stringify(nextState, null, 2)}\n`, 'utf8');
+    return nextState;
+}
+
 // --- Relais temps réel (contrôle à distance entre appareils du réseau) ---
 // Chaque client (écran ou télécommande) ouvre un flux SSE sur /events et publie
 // ses messages via POST /publish. Le serveur rediffuse à tous les autres clients
 // du même "channel". Remplace BroadcastChannel qui ne marche qu'en local navigateur.
 const channels = new Map(); // channelName -> Set<{ clientId, response }>
+
+function broadcast(channelName, payload, senderId = '') {
+    const subscribers = channels.get(channelName);
+    if (!subscribers) return;
+    const frame = `data: ${JSON.stringify(payload).replace(/\n/g, ' ')}\n\n`;
+    for (const subscriber of subscribers) {
+        if (subscriber.clientId !== senderId) subscriber.response.write(frame);
+    }
+}
 
 function subscribe(requestUrl, response) {
     const channelName = requestUrl.searchParams.get('channel') || 'default';
@@ -93,6 +117,52 @@ async function publish(request, requestUrl, response) {
     send(response, 204, '');
 }
 
+async function handleTournamentState(request, response) {
+    if (request.method === 'GET') {
+        send(response, 200, JSON.stringify(await readTournamentState()), {
+            'Cache-Control': 'no-store',
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        return;
+    }
+
+    if (request.method !== 'POST') {
+        send(response, 405, 'Method not allowed', { 'Content-Type': 'text/plain; charset=utf-8' });
+        return;
+    }
+
+    const chunks = [];
+    for await (const chunk of request) chunks.push(chunk);
+    let update;
+    try {
+        update = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+    } catch {
+        send(response, 400, 'Invalid JSON', { 'Content-Type': 'text/plain; charset=utf-8' });
+        return;
+    }
+
+    const state = await readTournamentState();
+    if (update.type === 'result' && /^\d+$/.test(String(update.matchId)) && update.result) {
+        state.results[String(update.matchId)] = update.result;
+    } else if (update.type === 'clear-result' && /^\d+$/.test(String(update.matchId))) {
+        delete state.results[String(update.matchId)];
+    } else if (update.type === 'presence' && typeof update.player === 'string') {
+        state.presence[update.player] = Boolean(update.present);
+    } else if (update.type === 'presence-all' && update.presence && typeof update.presence === 'object') {
+        state.presence = { ...state.presence, ...update.presence };
+    } else {
+        send(response, 400, 'Unsupported update', { 'Content-Type': 'text/plain; charset=utf-8' });
+        return;
+    }
+
+    const saved = await writeTournamentState(state);
+    broadcast('tournament', { type: 'state-updated', update: update.type, matchId: update.matchId || null });
+    send(response, 200, JSON.stringify(saved), {
+        'Cache-Control': 'no-store',
+        'Content-Type': 'application/json; charset=utf-8'
+    });
+}
+
 async function proxySheet(requestUrl, response) {
     const gid = requestUrl.searchParams.get('gid');
 
@@ -119,8 +189,14 @@ async function proxySheet(requestUrl, response) {
 
 async function serveStatic(requestUrl, response) {
     const routeAliases = new Map([
-        ['/', '/index3.html'],
-        ['/index.html', '/index3.html'],
+        ['/', '/organizer.html'],
+        ['/index.html', '/organizer.html'],
+        ['/organizer', '/organizer.html'],
+        ['/table', '/table.html'],
+        ['/scores', '/scores.html'],
+        ['/qr', '/qr-codes.html'],
+        ['/ecran', '/live-screen.html'],
+        ['/presentation', '/index3.html'],
         ['/joueurs', '/joueurs.html'],
         ['/remise-prix', '/remise-prix.html']
     ]);
@@ -164,6 +240,11 @@ createServer(async (request, response) => {
 
         if (requestUrl.pathname === '/sheet') {
             await proxySheet(requestUrl, response);
+            return;
+        }
+
+        if (requestUrl.pathname === '/api/state') {
+            await handleTournamentState(request, response);
             return;
         }
 

@@ -1,0 +1,692 @@
+/*
+ * Identite visuelle Super Top 6 — Province de Liege
+ * Palette extraite du logo fourni. Cette feuille est volontairement chargee
+ * apres les styles historiques afin de garder le comportement des ecrans.
+ */
+
+:root {
+    --brand-red: #df2942;
+    --brand-red-dark: #b51f35;
+    --brand-gold: #d2a04b;
+    --brand-gold-dark: #9a6e29;
+    --brand-peach: #dfa083;
+    --brand-blue: #c8d4da;
+    --brand-cream: #f8f3e9;
+    --brand-paper: #fffdf9;
+    --brand-ink: #302329;
+    --brand-muted: #786b70;
+    --brand-line: rgba(154, 110, 41, 0.28);
+    --brand-shadow: 0 18px 46px rgba(81, 51, 38, 0.14);
+    --brand-shadow-soft: 0 10px 28px rgba(81, 51, 38, 0.1);
+    --brand-radius: 24px;
+    --brand-font: "Avenir Next", Avenir, "Trebuchet MS", system-ui, sans-serif;
+}
+
+html,
+body {
+    font-family: var(--brand-font);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Ecrans de classement                                                        */
+/* -------------------------------------------------------------------------- */
+
+body.arena-screen {
+    color: var(--brand-ink);
+    background:
+        radial-gradient(circle at 8% 16%, rgba(223, 41, 66, 0.16) 0 9vw, transparent 9.2vw),
+        radial-gradient(circle at 91% 12%, rgba(200, 212, 218, 0.75) 0 7vw, transparent 7.2vw),
+        radial-gradient(circle at 87% 91%, rgba(223, 160, 131, 0.24) 0 16vw, transparent 16.2vw),
+        linear-gradient(135deg, var(--brand-paper), var(--brand-cream));
+    background-size: 100% 100%;
+    animation: none;
+}
+
+body.arena-screen::before,
+body.player-page::before,
+body.awards-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    background-image: radial-gradient(circle, var(--brand-gold) 1.5px, transparent 1.7px);
+    background-size: 30px 30px;
+    mask-image: linear-gradient(115deg, #000, transparent 28%, transparent 72%, #000);
+}
+
+.arena-screen .slideshow-container {
+    position: relative;
+}
+
+.arena-screen .slide {
+    padding: clamp(22px, 3vh, 36px) clamp(28px, 4.5vw, 86px);
+}
+
+.arena-screen .slide::before {
+    opacity: 0;
+}
+
+.arena-screen .challenge-header,
+.arena-screen .victories,
+.arena-screen .sponsor-content,
+.arena-screen .club-ranking {
+    position: relative;
+    z-index: 2;
+}
+
+.arena-screen .challenge-title {
+    width: clamp(150px, 14vw, 230px);
+    min-height: clamp(130px, 17vh, 190px);
+    border-radius: 50%;
+    background-image: url("super-top6-logo.png");
+    background-color: #fff;
+    background-position: center;
+    background-size: 92%;
+    box-shadow: var(--brand-shadow-soft);
+}
+
+.arena-screen .division-indicator,
+.arena-screen .division-box,
+.arena-screen .challenge-box {
+    transform: none;
+}
+
+.arena-screen .division-indicator {
+    min-width: clamp(340px, 34vw, 540px);
+    padding: clamp(12px, 1.4vh, 18px) clamp(24px, 2vw, 38px);
+    border: 2px solid rgba(255, 255, 255, 0.82);
+    border-radius: 999px;
+    background: var(--brand-red);
+    box-shadow: 0 12px 28px rgba(181, 31, 53, 0.22);
+}
+
+.arena-screen .division-indicator span {
+    transform: none;
+    color: #fff;
+    font-size: clamp(2.35rem, 3.1vw, 3.7rem);
+    letter-spacing: 0.015em;
+}
+
+.arena-screen .scoreboard {
+    gap: clamp(9px, 1.15vh, 14px);
+}
+
+.arena-screen .player-row,
+.arena-screen .starting-soon,
+.arena-screen .match-row,
+.arena-screen .match-empty {
+    border: 1px solid rgba(154, 110, 41, 0.16);
+    border-left: 9px solid var(--brand-red);
+    border-radius: 18px;
+    background: rgba(255, 253, 249, 0.92);
+    box-shadow: var(--brand-shadow-soft);
+    backdrop-filter: blur(10px);
+}
+
+.arena-screen .player-row:nth-child(even) {
+    border-left-color: var(--brand-gold);
+    background: rgba(248, 243, 233, 0.94);
+}
+
+.arena-screen .player-rank,
+.arena-screen .player-score,
+.arena-screen .starting-soon-subtitle,
+.arena-screen .match-time,
+.arena-screen .match-result {
+    color: var(--brand-red);
+    text-shadow: none;
+}
+
+.arena-screen .player-row:nth-child(even) .player-rank,
+.arena-screen .player-row:nth-child(even) .player-score {
+    color: var(--brand-gold-dark);
+}
+
+.arena-screen .player-name,
+.arena-screen .starting-soon-title,
+.arena-screen .match-player,
+.arena-screen .match-empty {
+    color: var(--brand-ink);
+    text-shadow: none;
+}
+
+.arena-screen .starting-soon {
+    border-left-color: var(--brand-gold);
+}
+
+.arena-screen.match-detail-page .starting-soon {
+    align-content: center;
+    min-width: 0;
+    padding: clamp(22px, 2.8vh, 34px) clamp(22px, 2.2vw, 36px);
+    overflow: hidden;
+}
+
+.arena-screen.match-detail-page .starting-soon-title {
+    max-width: 100%;
+    font-size: clamp(3rem, 4.6vw, 5.6rem);
+    line-height: 0.88;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.arena-screen.match-detail-page .starting-soon-subtitle {
+    max-width: 100%;
+    font-size: clamp(1.75rem, 2.35vw, 3rem);
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+}
+
+.arena-screen.match-detail-page .victories > .scoreboard::before,
+.arena-screen.match-detail-page .victories > .match-details::before {
+    border: 0;
+    border-radius: 999px;
+    background: var(--brand-red);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(181, 31, 53, 0.18);
+}
+
+.arena-screen.match-detail-page .victories > .match-details::before {
+    background: var(--brand-gold);
+    color: var(--brand-ink);
+}
+
+.arena-screen .match-row.is-upcoming,
+.arena-screen .match-empty {
+    border-left-color: var(--brand-blue);
+}
+
+.arena-screen .match-sets {
+    color: var(--brand-muted);
+}
+
+.arena-screen .scoreboard-row.score-changed,
+.arena-screen .match-row.is-live {
+    border-left-color: var(--brand-peach);
+}
+
+.arena-screen .player-score.score-bump {
+    color: var(--brand-red);
+}
+
+.arena-screen .slide-progress {
+    height: 7px;
+    background: rgba(154, 110, 41, 0.12);
+}
+
+.arena-screen .slide-progress-bar {
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-red), var(--brand-peach));
+    box-shadow: 0 0 16px rgba(223, 41, 66, 0.28);
+}
+
+.arena-screen .fade-overlay {
+    background: rgba(255, 253, 249, 0.2);
+}
+
+.arena-screen .fade-overlay::before {
+    background: linear-gradient(
+        90deg,
+        var(--brand-red) 0 41%,
+        var(--brand-gold) 41% 49%,
+        var(--brand-paper) 49% 55%,
+        var(--brand-blue) 55% 100%
+    );
+    box-shadow: 0 0 44px rgba(210, 160, 75, 0.3);
+}
+
+.arena-screen .logo-container {
+    overflow: visible;
+}
+
+.arena-screen .logo-content {
+    position: relative;
+}
+
+.arena-screen .logo-content::before,
+.arena-screen .logo-content::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.arena-screen .logo-content::before {
+    width: min(66vh, 50vw);
+    aspect-ratio: 1;
+    border: 3px solid rgba(210, 160, 75, 0.34);
+    box-shadow: 0 0 0 22px rgba(210, 160, 75, 0.06);
+}
+
+.arena-screen .logo-content::after {
+    width: min(12vh, 9vw);
+    aspect-ratio: 1;
+    right: 18%;
+    top: 18%;
+    background: var(--brand-blue);
+}
+
+.arena-screen .tournament-logo {
+    width: min(78vh, 64vw);
+    height: min(78vh, 64vw);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--brand-shadow);
+    animation: brandLogoPulse 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes brandLogoPulse {
+    from {
+        transform: scale(0.985);
+        filter: none;
+    }
+    to {
+        transform: scale(1.015);
+        filter: none;
+    }
+}
+
+.arena-screen .sponsor-slide {
+    background: transparent;
+}
+
+.arena-screen .sponsor-header h1 {
+    color: var(--brand-red);
+}
+
+.arena-screen .sponsor-header h2 {
+    color: var(--brand-ink);
+}
+
+.arena-screen .sponsor-slot {
+    border: 1px solid var(--brand-line);
+    border-radius: var(--brand-radius);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--brand-shadow-soft);
+    transform: none;
+}
+
+.arena-screen .sponsor-slot img {
+    transform: none;
+}
+
+.arena-screen .sponsor-slot:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: var(--brand-shadow);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Presentation des joueurs                                                    */
+/* -------------------------------------------------------------------------- */
+
+body.player-page {
+    color: var(--brand-ink);
+    background:
+        radial-gradient(circle at 7% 84%, rgba(210, 160, 75, 0.2) 0 15vw, transparent 15.2vw),
+        radial-gradient(circle at 91% 14%, rgba(200, 212, 218, 0.72) 0 9vw, transparent 9.2vw),
+        linear-gradient(135deg, var(--brand-paper), var(--brand-cream));
+    animation: none;
+}
+
+.player-page .shell::before,
+.player-page .waiting-slide::before {
+    background-image: radial-gradient(circle, var(--brand-gold) 1.5px, transparent 1.7px);
+    background-size: 30px 30px;
+    opacity: 0.22;
+}
+
+.player-page .brand img,
+.player-page .waiting-logo {
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: var(--brand-shadow-soft);
+    filter: none;
+}
+
+.player-page .brand img {
+    width: clamp(145px, 14vw, 220px);
+}
+
+.player-page .division-badge,
+.player-page .division-short {
+    transform: none;
+    border: 0;
+    border-radius: 999px;
+    background: var(--brand-red);
+    color: #fff;
+    box-shadow: 0 12px 26px rgba(181, 31, 53, 0.2);
+}
+
+.player-page .division-badge span,
+.player-page .division-short span {
+    transform: none;
+}
+
+.player-page .player-card {
+    position: relative;
+    padding: clamp(28px, 4vw, 64px);
+    border: 1px solid var(--brand-line);
+    border-radius: 36px;
+    background: rgba(255, 253, 249, 0.88);
+    box-shadow: var(--brand-shadow);
+}
+
+.player-page .player-card::before {
+    content: "";
+    position: absolute;
+    width: clamp(90px, 10vw, 170px);
+    aspect-ratio: 1;
+    right: 6%;
+    top: 10%;
+    border-radius: 50%;
+    background: var(--brand-blue);
+    opacity: 0.7;
+}
+
+.player-page .player-name {
+    position: relative;
+    color: var(--brand-red);
+    text-shadow: none;
+}
+
+.player-page .club-name {
+    position: relative;
+    color: var(--brand-gold-dark);
+    text-shadow: none;
+}
+
+.player-page .division-dot {
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(210, 160, 75, 0.22);
+    transform: none;
+}
+
+.player-page .division-dot.is-active {
+    background: var(--brand-red);
+}
+
+.player-page .counter {
+    color: var(--brand-muted);
+}
+
+.player-page .status {
+    background: var(--brand-paper);
+    color: var(--brand-red);
+}
+
+.player-page .waiting-slide {
+    background:
+        radial-gradient(circle at 14% 18%, rgba(223, 41, 66, 0.15) 0 10vw, transparent 10.2vw),
+        radial-gradient(circle at 87% 80%, rgba(223, 160, 131, 0.24) 0 15vw, transparent 15.2vw),
+        linear-gradient(135deg, var(--brand-paper), var(--brand-cream));
+}
+
+.player-page .waiting-logo {
+    width: min(55vh, 42vw);
+}
+
+.player-page .waiting-kicker {
+    color: var(--brand-gold-dark);
+}
+
+.player-page .waiting-title {
+    color: var(--brand-red);
+    text-shadow: none;
+}
+
+.player-page .waiting-mark {
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--brand-gold), var(--brand-red));
+    box-shadow: none;
+    transform: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Remise des prix                                                             */
+/* -------------------------------------------------------------------------- */
+
+body.awards-page {
+    color: var(--brand-ink);
+    background:
+        radial-gradient(circle at 8% 18%, rgba(223, 41, 66, 0.14) 0 9vw, transparent 9.2vw),
+        radial-gradient(circle at 91% 12%, rgba(200, 212, 218, 0.78) 0 7vw, transparent 7.2vw),
+        linear-gradient(135deg, var(--brand-paper), var(--brand-cream));
+}
+
+.awards-page .screen::before {
+    background-image: radial-gradient(circle, var(--brand-gold) 1.5px, transparent 1.7px);
+    background-size: 30px 30px;
+    opacity: 0.22;
+}
+
+.awards-page .screen::after {
+    background:
+        linear-gradient(95deg, rgba(223, 41, 66, 0.17), transparent 34%),
+        linear-gradient(265deg, rgba(223, 160, 131, 0.24), transparent 32%);
+}
+
+.awards-page .brand {
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: var(--brand-shadow-soft);
+    filter: none;
+}
+
+.awards-page .event-kicker,
+.awards-page .division-badge {
+    border-radius: 999px;
+    background: var(--brand-red);
+    color: #fff;
+    box-shadow: 0 12px 26px rgba(181, 31, 53, 0.2);
+    transform: none;
+}
+
+.awards-page .event-kicker span,
+.awards-page .division-badge span {
+    transform: none;
+}
+
+.awards-page h1 {
+    color: var(--brand-red);
+    text-shadow: none;
+}
+
+.awards-page .award-card {
+    border: 1px solid var(--brand-line);
+    border-top: clamp(8px, 0.8vw, 14px) solid var(--accent);
+    border-left: 1px solid var(--brand-line);
+    border-radius: 28px;
+    background: rgba(255, 253, 249, 0.94);
+    box-shadow: var(--brand-shadow);
+}
+
+.awards-page .award-card.rank-1 {
+    --accent: var(--brand-gold);
+    --accent-soft: rgba(210, 160, 75, 0.18);
+    --accent-glow: rgba(210, 160, 75, 0.22);
+}
+
+.awards-page .award-card.rank-2 {
+    --accent: #97aab4;
+    --accent-soft: rgba(200, 212, 218, 0.34);
+    --accent-glow: rgba(200, 212, 218, 0.36);
+}
+
+.awards-page .award-card.rank-3 {
+    --accent: var(--brand-red);
+    --accent-soft: rgba(223, 41, 66, 0.13);
+    --accent-glow: rgba(223, 41, 66, 0.18);
+}
+
+.awards-page .rank-number,
+.awards-page .winner-name {
+    text-shadow: none;
+}
+
+.awards-page .winner-name {
+    color: var(--brand-ink);
+}
+
+.awards-page .rank-label,
+.awards-page .score-label {
+    color: var(--brand-muted);
+}
+
+.awards-page .nav-button,
+.awards-page .division-tab {
+    border: 1px solid var(--brand-line);
+    border-radius: 999px;
+    background: rgba(255, 253, 249, 0.88);
+    color: var(--brand-ink);
+}
+
+.awards-page .nav-button:hover,
+.awards-page .nav-button:focus-visible {
+    border-color: var(--brand-red);
+    color: var(--brand-red);
+}
+
+.awards-page .division-tab.is-active {
+    border-color: var(--brand-red);
+    background: var(--brand-red);
+    color: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Telecommande                                                                */
+/* -------------------------------------------------------------------------- */
+
+body.control-page {
+    color: var(--brand-ink);
+    background:
+        radial-gradient(circle at 92% 4%, rgba(200, 212, 218, 0.72) 0 11rem, transparent 11.2rem),
+        radial-gradient(circle at 4% 96%, rgba(223, 160, 131, 0.22) 0 14rem, transparent 14.2rem),
+        var(--brand-cream);
+}
+
+.control-page .shell {
+    width: min(1180px, calc(100vw - 28px));
+}
+
+.control-page .control-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.control-page .control-brand img {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: var(--brand-shadow-soft);
+}
+
+.control-page h1 {
+    color: var(--brand-red);
+}
+
+.control-page h2 {
+    color: var(--brand-gold-dark);
+}
+
+.control-page .statusbar,
+.control-page .field label {
+    color: var(--brand-muted);
+}
+
+.control-page .status-pill {
+    border-color: var(--brand-line);
+    background: rgba(255, 253, 249, 0.82);
+    color: var(--brand-muted);
+}
+
+.control-page .status-pill.is-live {
+    border-color: #4e9b70;
+    color: #286342;
+    background: #eef8f1;
+}
+
+.control-page button,
+.control-page .transport button,
+.control-page .row button {
+    border-color: var(--brand-line);
+    border-radius: 14px;
+    background: var(--brand-paper);
+    color: var(--brand-ink);
+}
+
+.control-page button:hover {
+    border-color: var(--brand-red);
+}
+
+.control-page .display-link,
+.control-page .transport .primary {
+    border-color: var(--brand-red);
+    border-radius: 14px;
+    background: var(--brand-red);
+    color: #fff;
+    box-shadow: 0 9px 20px rgba(181, 31, 53, 0.17);
+}
+
+.control-page .panel {
+    border-color: var(--brand-line);
+    border-radius: 20px;
+    background: rgba(255, 253, 249, 0.92);
+    box-shadow: var(--brand-shadow-soft);
+}
+
+.control-page .row {
+    border-color: rgba(154, 110, 41, 0.18);
+    border-radius: 14px;
+    background: var(--brand-cream);
+}
+
+.control-page .row.is-active {
+    border-color: var(--brand-red);
+    box-shadow: inset 4px 0 0 var(--brand-red);
+}
+
+.control-page .row-meta {
+    color: var(--brand-muted);
+}
+
+.control-page input[type="number"] {
+    border-color: var(--brand-line);
+    border-radius: 14px;
+    background: #fff;
+    color: var(--brand-ink);
+}
+
+.control-page input[type="checkbox"] {
+    accent-color: var(--brand-red);
+}
+
+.control-page .danger {
+    border-color: #9f2534;
+    background: #fff1f2;
+    color: #9f2534;
+}
+
+.control-page .notice {
+    border-color: var(--brand-gold);
+    border-radius: 14px;
+    background: #fff7e8;
+    color: #76501e;
+}
+
+@media (max-width: 840px) {
+    .control-page .control-brand img {
+        width: 58px;
+        height: 58px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arena-screen .tournament-logo {
+        animation: none;
+    }
+}

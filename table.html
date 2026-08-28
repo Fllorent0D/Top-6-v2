@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr-BE">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#10211f" />
+    <title>Marquoir · Super TOP 6</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="table.css" />
+    <script src="tournament-client.js" defer></script>
+    <script src="table.js" defer></script>
+</head>
+<body>
+    <main class="score-app">
+        <header class="score-header">
+            <a href="/" class="mini-brand"><img src="super-top6-logo.png" alt="" /><span>SUPER TOP 6</span></a>
+            <div class="table-identity"><span>MARQUOIR</span><strong id="tableTitle">TABLE —</strong></div>
+            <span class="network-pill" id="networkPill"><i></i> Connexion</span>
+        </header>
+
+        <section class="table-picker" id="tablePicker" hidden>
+            <p>Choisissez votre table</p>
+            <div id="tableButtons"></div>
+        </section>
+
+        <section class="score-loading" id="scoreLoading">Chargement du programme…</section>
+
+        <section class="scoreboard" id="scoreboard" hidden>
+            <div class="match-toolbar">
+                <button id="previousMatch" aria-label="Match précédent">←</button>
+                <label><span>RENCONTRE</span><select id="matchSelect"></select></label>
+                <button id="nextMatch" aria-label="Match suivant">→</button>
+            </div>
+
+            <div class="match-context">
+                <span id="matchDivision">P1</span>
+                <strong id="matchTime">14h00</strong>
+                <span id="matchReferee">Arbitre · —</span>
+            </div>
+
+            <div class="sets-strip" id="setsStrip"></div>
+
+            <div class="players-score">
+                <button class="player-side player-a" data-score-side="a">
+                    <span class="tap-hint">TOUCHER POUR AJOUTER UN POINT</span>
+                    <small id="clubA"></small>
+                    <strong id="playerA"></strong>
+                    <b id="pointsA">0</b>
+                    <span class="set-count">SETS <i id="setsA">0</i></span>
+                </button>
+                <div class="score-divider"><span>SET <b id="setNumber">1</b></span><i></i><span>PREMIER À 11</span></div>
+                <button class="player-side player-b" data-score-side="b">
+                    <span class="tap-hint">TOUCHER POUR AJOUTER UN POINT</span>
+                    <small id="clubB"></small>
+                    <strong id="playerB"></strong>
+                    <b id="pointsB">0</b>
+                    <span class="set-count">SETS <i id="setsB">0</i></span>
+                </button>
+            </div>
+
+            <div class="score-actions">
+                <button class="secondary" id="undoButton">↶ Annuler le dernier point</button>
+                <p id="scoreInstruction">Touchez le côté du joueur qui marque.</p>
+                <button class="primary" id="validateSetButton" disabled>Valider le set →</button>
+            </div>
+        </section>
+
+        <section class="winner-screen" id="winnerScreen" hidden>
+            <span class="trophy">◆</span>
+            <p>MATCH TERMINÉ</p>
+            <h1 id="winnerName"></h1>
+            <strong id="winnerScore"></strong>
+            <button id="nextAfterWin">Rencontre suivante →</button>
+        </section>
+    </main>
+    <div class="score-toast" id="scoreToast"></div>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr-BE">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#f4f1e9" />
+        <title>Super TOP 6 — Direction de tournoi</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="organizer.css" />
+        <script src="organizer.js" defer></script>
+    </head>
+    <body>
+        <div class="app-shell">
+            <aside class="sidebar">
+                <a class="brand" href="#overview" aria-label="Accueil Super TOP 6">
+                    <img src="super-top6-logo.png" alt="Super TOP 6" />
+                    <span>
+                        <strong>Super TOP 6</strong>
+                        <small>Direction de tournoi</small>
+                    </span>
+                </a>
+
+                <nav class="main-nav" aria-label="Navigation principale">
+                    <button class="nav-item is-active" data-view="overview">
+                        <span class="nav-icon">⌂</span><span>Vue d’ensemble</span>
+                    </button>
+                    <button class="nav-item" data-view="matches">
+                        <span class="nav-icon">↔</span><span>Rencontres</span>
+                        <span class="nav-count" id="navMatchCount">105</span>
+                    </button>
+                    <button class="nav-item" data-view="players">
+                        <span class="nav-icon">♙</span><span>Joueurs</span>
+                        <span class="nav-count" id="navPlayerCount">42</span>
+                    </button>
+                    <button class="nav-item" data-view="standings">
+                        <span class="nav-icon">≡</span><span>Classements</span>
+                    </button>
+                </nav>
+
+                <div class="sidebar-bottom">
+                    <p class="eyebrow">Affichage salle</p>
+                    <a class="side-link" href="/ecran" target="_blank">Écran principal <span>↗</span></a>
+                    <a class="side-link" href="/scores" target="_blank">Scores publics <span>↗</span></a>
+                    <a class="side-link" href="/qr" target="_blank">QR codes des tables <span>↗</span></a>
+                    <a class="side-link" href="/control.html" target="_blank">Télécommande <span>↗</span></a>
+                    <div class="sync-card">
+                        <span class="sync-dot" id="syncDot"></span>
+                        <div>
+                            <strong id="syncTitle">Connexion…</strong>
+                            <small id="syncDetail">Lecture du planning</small>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="workspace">
+                <header class="topbar">
+                    <div>
+                        <p class="kicker" id="pageKicker">SUPER TOP 6 · ÉDITION 2026</p>
+                        <h1 id="pageTitle">Bonjour, Florent.</h1>
+                        <p class="page-subtitle" id="pageSubtitle">Tout est prêt pour lancer la compétition.</p>
+                    </div>
+                    <div class="topbar-actions">
+                        <button class="icon-button" id="refreshButton" title="Actualiser depuis Google Sheets" aria-label="Actualiser">↻</button>
+                        <button class="button button-secondary" id="exportButton">Exporter</button>
+                        <button class="button button-primary" id="quickScoreButton"><span>＋</span> Encoder un résultat</button>
+                    </div>
+                </header>
+
+                <div id="loadingState" class="loading-state">
+                    <div class="loader-mark"></div>
+                    <p>Préparation du tournoi…</p>
+                </div>
+
+                <div id="errorState" class="error-state" hidden>
+                    <span>!</span>
+                    <div>
+                        <strong>Impossible de charger le planning</strong>
+                        <p id="errorMessage">Vérifiez la connexion puis réessayez.</p>
+                    </div>
+                    <button class="button button-secondary" id="retryButton">Réessayer</button>
+                </div>
+
+                <section class="view is-active" id="view-overview" aria-labelledby="pageTitle">
+                    <div class="metric-grid">
+                        <article class="metric-card metric-progress">
+                            <div class="metric-top">
+                                <span class="metric-icon coral">✓</span>
+                                <span class="trend" id="progressTrend">0 terminé</span>
+                            </div>
+                            <strong id="completedMetric">0 <small>/ 105</small></strong>
+                            <span>Rencontres jouées</span>
+                            <div class="progress-track"><i id="progressBar"></i></div>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span class="metric-icon teal">♙</span>
+                                <span class="trend neutral" id="presenceTrend">Pointage</span>
+                            </div>
+                            <strong id="presenceMetric">0 <small>/ 42</small></strong>
+                            <span>Joueurs présents</span>
+                        </article>
+                        <article class="metric-card">
+                            <div class="metric-top">
+                                <span class="metric-icon gold">▦</span>
+                                <span class="trend neutral">12 disponibles</span>
+                            </div>
+                            <strong id="tablesMetric">0 <small>/ 12</small></strong>
+                            <span>Tables occupées</span>
+                        </article>
+                        <article class="metric-card dark-card">
+                            <div class="metric-top">
+                                <span class="metric-icon dark">◷</span>
+                                <span class="live-pill">EN DIRECT</span>
+                            </div>
+                            <strong id="slotMetric">14:00</strong>
+                            <span id="slotMetricDetail">Créneau 1 sur 9</span>
+                        </article>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <section class="panel live-panel">
+                            <div class="panel-heading">
+                                <div>
+                                    <p class="eyebrow coral-text">CRÉNEAU EN COURS</p>
+                                    <h2 id="slotHeading">14:00 <span>· 12 rencontres</span></h2>
+                                </div>
+                                <div class="slot-controls">
+                                    <button class="icon-button small" id="previousSlot" aria-label="Créneau précédent">←</button>
+                                    <button class="icon-button small" id="nextSlot" aria-label="Créneau suivant">→</button>
+                                </div>
+                            </div>
+                            <div class="table-board" id="slotMatches"></div>
+                        </section>
+
+                        <aside class="right-rail">
+                            <section class="panel next-panel">
+                                <div class="panel-heading compact">
+                                    <div>
+                                        <p class="eyebrow">À SURVEILLER</p>
+                                        <h2>Prochaines actions</h2>
+                                    </div>
+                                </div>
+                                <div class="action-list" id="actionList"></div>
+                            </section>
+
+                            <section class="panel divisions-panel">
+                                <div class="panel-heading compact">
+                                    <div>
+                                        <p class="eyebrow">PROGRESSION</p>
+                                        <h2>Par série</h2>
+                                    </div>
+                                    <button class="text-button" data-go-view="standings">Classements →</button>
+                                </div>
+                                <div class="division-progress" id="divisionProgress"></div>
+                            </section>
+                        </aside>
+                    </div>
+                </section>
+
+                <section class="view" id="view-matches">
+                    <div class="content-toolbar">
+                        <label class="search-field">
+                            <span>⌕</span>
+                            <input id="matchSearch" type="search" placeholder="Chercher un joueur, une table…" />
+                        </label>
+                        <select id="divisionFilter" aria-label="Filtrer par série">
+                            <option value="all">Toutes les séries</option>
+                        </select>
+                        <select id="statusFilter" aria-label="Filtrer par statut">
+                            <option value="all">Tous les statuts</option>
+                            <option value="upcoming">À venir</option>
+                            <option value="live">En cours</option>
+                            <option value="completed">Terminé</option>
+                        </select>
+                    </div>
+                    <section class="panel matches-panel">
+                        <div class="matches-table" id="matchesTable"></div>
+                    </section>
+                </section>
+
+                <section class="view" id="view-players">
+                    <div class="content-toolbar">
+                        <label class="search-field">
+                            <span>⌕</span>
+                            <input id="playerSearch" type="search" placeholder="Chercher un joueur ou un club…" />
+                        </label>
+                        <div class="segmented" id="presenceFilter">
+                            <button class="is-active" data-presence="all">Tous</button>
+                            <button data-presence="present">Présents</button>
+                            <button data-presence="absent">À pointer</button>
+                        </div>
+                    </div>
+                    <section class="panel players-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">LISTE DES JOUEURS</p>
+                                <h2 id="playersHeading">42 inscrits</h2>
+                            </div>
+                            <button class="button button-secondary" id="markAllPresent">Tout pointer présent</button>
+                        </div>
+                        <div class="player-grid" id="playerGrid"></div>
+                    </section>
+                </section>
+
+                <section class="view" id="view-standings">
+                    <div class="standings-tabs" id="standingsTabs"></div>
+                    <section class="panel standings-panel">
+                        <div class="panel-heading standings-heading">
+                            <div>
+                                <p class="eyebrow coral-text">CLASSEMENT PROVISOIRE</p>
+                                <h2 id="standingsTitle">Nationale & WB</h2>
+                            </div>
+                            <div class="legend"><span>MJ</span> joués · <span>V</span> victoires · <span>ΔS</span> sets</div>
+                        </div>
+                        <div class="standings-table" id="standingsTable"></div>
+                    </section>
+                </section>
+            </main>
+        </div>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <dialog class="score-dialog" id="scoreDialog">
+            <form method="dialog" id="scoreForm">
+                <button class="dialog-close" value="cancel" aria-label="Fermer">×</button>
+                <p class="eyebrow coral-text">ENCODAGE DU RÉSULTAT</p>
+                <h2 id="scoreDialogTitle">Match #1</h2>
+                <p class="dialog-meta" id="scoreDialogMeta"></p>
+
+                <div class="score-players">
+                    <div><span id="scorePlayerAClub"></span><strong id="scorePlayerA"></strong></div>
+                    <span class="versus">VS</span>
+                    <div class="align-right"><span id="scorePlayerBClub"></span><strong id="scorePlayerB"></strong></div>
+                </div>
+
+                <div class="set-editor">
+                    <div class="set-header"><span>Set</span><span id="shortPlayerA">Joueur A</span><span id="shortPlayerB">Joueur B</span></div>
+                    <div id="setRows"></div>
+                </div>
+                <p class="form-error" id="scoreError" hidden></p>
+
+                <div class="dialog-actions">
+                    <button class="button button-ghost danger" type="button" id="clearResultButton">Effacer</button>
+                    <span></span>
+                    <button class="button button-secondary" value="cancel">Annuler</button>
+                    <button class="button button-primary" type="submit">Valider le résultat</button>
+                </div>
+            </form>
+        </dialog>
+    </body>
+</html>
