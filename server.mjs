@@ -189,8 +189,8 @@ async function proxySheet(requestUrl, response) {
 
 async function serveStatic(requestUrl, response) {
     const routeAliases = new Map([
-        ['/', '/organizer.html'],
-        ['/index.html', '/organizer.html'],
+        ['/', '/index3.html'],
+        ['/index.html', '/index3.html'],
         ['/organizer', '/organizer.html'],
         ['/table', '/table.html'],
         ['/scores', '/scores.html'],
