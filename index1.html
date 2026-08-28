@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Table Tennis Tournament Scores</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="realtime-channel.js"></script>
+    </head>
+    <body>
+        <div class="slideshow-container">
+            <!-- Fade overlay for transitions -->
+            <div class="fade-overlay" id="fadeOverlay"></div>
+            <div class="slide-progress" id="slideProgress" aria-hidden="true">
+                <div class="slide-progress-bar" id="slideProgressBar"></div>
+            </div>
+
+            <!-- Logo Slide -->
+            <div class="slide active" id="slide0">
+                <div class="logo-container">
+                    <div class="logo-content">
+                        <img
+                            src="top-6-verviers.png"
+                            alt="Top 6 Verviers Logo"
+                            class="tournament-logo"
+                        />
+                        <div class="collaboration-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 1: National Division -->
+            <div class="slide active" id="slide1">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>TOP 6</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>VERVIERS</h2>
+                        </div>
+                    </div>
+                    <div class="division-indicator">
+                        <span>NATIONALE & WB</span>
+                    </div>
+                </div>
+                <div class="victories">
+                    <div class="scoreboard" id="scoreTable1"></div>
+                </div>
+            </div>
+
+            <!-- Slide 2: P1 Division -->
+            <div class="slide" id="slide2">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>TOP 6</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>VERVIERS</h2>
+                        </div>
+                    </div>
+                    <div class="division-indicator">
+                        <span>PROVINCIALE 1</span>
+                    </div>
+                </div>
+                <div class="victories">
+                    <div class="scoreboard" id="scoreTable2"></div>
+                </div>
+                <svg
+                    class="player-illustration"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <use href="#player-gradient" />
+                    <path
+                        d="M30,80 Q40,60 50,80 Q60,60 70,80"
+                        fill="none"
+                        stroke="url(#player-gradient)"
+                        stroke-width="3"
+                    />
+                    <circle
+                        cx="50"
+                        cy="40"
+                        r="15"
+                        fill="url(#player-gradient)"
+                    />
+                </svg>
+            </div>
+
+            <!-- Slide 3: P2 Division -->
+            <div class="slide" id="slide3">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>TOP 6</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>VERVIERS</h2>
+                        </div>
+                    </div>
+                    <div class="division-indicator">
+                        <span>PROVINCIALE 2</span>
+                    </div>
+                </div>
+                <div class="victories">
+                    <div class="scoreboard" id="scoreTable3"></div>
+                </div>
+                <svg
+                    class="player-illustration"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <use href="#player-gradient" />
+                    <path
+                        d="M30,80 Q40,60 50,80 Q60,60 70,80"
+                        fill="none"
+                        stroke="url(#player-gradient)"
+                        stroke-width="3"
+                    />
+                    <circle
+                        cx="50"
+                        cy="40"
+                        r="15"
+                        fill="url(#player-gradient)"
+                    />
+                </svg>
+            </div>
+
+            <!-- Slide 4: P3 Division -->
+            <div class="slide" id="slide4">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>TOP 6</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>VERVIERS</h2>
+                        </div>
+                    </div>
+                    <div class="division-indicator">
+                        <span>PROVINCIALE 3</span>
+                    </div>
+                </div>
+                <div class="victories">
+                    <div class="scoreboard" id="scoreTable4"></div>
+                </div>
+                <svg
+                    class="player-illustration"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <use href="#player-gradient" />
+                    <path
+                        d="M30,80 Q40,60 50,80 Q60,60 70,80"
+                        fill="none"
+                        stroke="url(#player-gradient)"
+                        stroke-width="3"
+                    />
+                    <circle
+                        cx="50"
+                        cy="40"
+                        r="15"
+                        fill="url(#player-gradient)"
+                    />
+                </svg>
+            </div>
+
+            <!-- Slide 5: P4 Division -->
+            <div class="slide" id="slide5">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>TOP 6</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>VERVIERS</h2>
+                        </div>
+                    </div>
+                    <div class="division-indicator">
+                        <span>PROVINCIALE 4</span>
+                    </div>
+                </div>
+                <div class="victories">
+                    <div class="scoreboard" id="scoreTable5"></div>
+                </div>
+                <svg
+                    class="player-illustration"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <use href="#player-gradient" />
+                    <path
+                        d="M30,80 Q40,60 50,80 Q60,60 70,80"
+                        fill="none"
+                        stroke="url(#player-gradient)"
+                        stroke-width="3"
+                    />
+                    <circle
+                        cx="50"
+                        cy="40"
+                        r="15"
+                        fill="url(#player-gradient)"
+                    />
+                </svg>
+            </div>
+
+            <!-- Slide 6: P5 Division -->
+            <div class="slide" id="slide6">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>TOP 6</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>VERVIERS</h2>
+                        </div>
+                    </div>
+                    <div class="division-indicator">
+                        <span>PROVINCIALE 5</span>
+                    </div>
+                </div>
+                <div class="victories">
+                    <div class="scoreboard" id="scoreTable6"></div>
+                </div>
+                <svg
+                    class="player-illustration"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <use href="#player-gradient" />
+                    <path
+                        d="M30,80 Q40,60 50,80 Q60,60 70,80"
+                        fill="none"
+                        stroke="url(#player-gradient)"
+                        stroke-width="3"
+                    />
+                    <circle
+                        cx="50"
+                        cy="40"
+                        r="15"
+                        fill="url(#player-gradient)"
+                    />
+                </svg>
+            </div>
+
+            <!-- Slide 7: P6 Division -->
+            <div class="slide" id="slide7">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>TOP 6</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>VERVIERS</h2>
+                        </div>
+                    </div>
+                    <div class="division-indicator">
+                        <span>PROVINCIALE 6</span>
+                    </div>
+                </div>
+                <div class="victories">
+                    <div class="scoreboard" id="scoreTable7"></div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Club Ranking (Hidden) -->
+            <div class="slide" id="slide9" style="display: none">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>CLASSEMENT</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>CLUBS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="club-ranking">
+                    <div class="scoreboard" id="clubRankingTable"></div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Sponsors Page 1 -->
+            <div class="slide" id="slide10">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>SPONSORS</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>MERCI À EUX</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="sponsor-content">
+                    <div class="sponsor-grid">
+                        <div class="sponsor-slot">
+                            <img src="sponsor1.png" alt="Sponsor 1" />
+                        </div>
+                        <div class="sponsor-slot">
+                            <img src="sponsor2.jpg" alt="Sponsor 2" />
+                        </div>
+                        <div class="sponsor-slot">
+                            <img src="sponsor3.jpg" alt="Sponsor 3" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Sponsors Page 2 -->
+            <div class="slide" id="slide11">
+                <div class="challenge-header">
+                    <div class="challenge-title">
+                        <div class="challenge-box">
+                            <h1>SPONSORS</h1>
+                        </div>
+                        <div class="division-box">
+                            <h2>MERCI À EUX</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="sponsor-content">
+                    <div class="sponsor-grid">
+                        <div class="sponsor-slot">
+                            <img src="sponsor4.png" alt="Sponsor 4" />
+                        </div>
+                        <div class="sponsor-slot">
+                            <img src="sponsor5.png" alt="Sponsor 5" />
+                        </div>
+                        <div class="sponsor-slot">
+                            <img src="sponsor6.png" alt="Sponsor 6" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const sheetProxyBaseUrl = window.location.protocol === 'file:' ? 'http://127.0.0.1:8765' : '';
+            const publishedSheetGids = {
+                'Classements': '1397749265',
+                'Classement Clubs': '1047108966',
+                'NAT': '1312760054',
+                'PROV-1': '490688118',
+                'PROV-2': '897982353',
+                'PROV-3': '1506993435',
+                'PROV-4': '677604225',
+                'PROV-5': '1829480529',
+                'PROV-6': '1356197496'
+            };
+
+            const controlStorageKey = 'top6-display-settings-v1';
+            const runtimeStorageKey = 'top6-display-runtime-v1';
+            const commandStorageKey = 'top6-display-command-v1';
+            const controlChannelName = 'top6-display-control';
+            const controlClientId = `display-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
+            const defaultSlideVisibility = {
+                slide0: true,   // Logo Slide
+                slide1: true,   // National Division
+                slide2: true,   // P1 Division
+                slide3: true,   // P2 Division
+                slide4: true,   // P3 Division
+                slide5: true,   // P4 Division
+                slide6: true,   // P5 Division
+                slide7: true,   // P6 Division
+                slide9: false,  // Club Ranking
+                slide10: false, // Sponsors Page 1
+                slide11: false  // Sponsors Page 2
+            };
+
+            const defaultDivisionStatus = {
+                national: { isFinished: false },
+                p1: { isFinished: false },
+                p2: { isFinished: false },
+                p3: { isFinished: false },
+                p4: { isFinished: false },
+                p5: { isFinished: false },
+                p6: { isFinished: false }
+            };
+
+            const defaultDisplaySettings = {
+                slideVisibility: defaultSlideVisibility,
+                divisionStatus: defaultDivisionStatus,
+                rotationDurationMs: 15000,
+                refreshIntervalMs: 30000,
+                isPaused: false
+            };
+
+            // Slideshow state
+            let currentSlide = 0;
+            const allSlides = document.querySelectorAll('.slide');
+            let slides = [];
+            let slideshowInterval;
+            let refreshInterval;
+            let runtimeHeartbeatInterval;
+            let isTransitioning = false;
+            let fadeOverlay;
+            let slideProgressBar;
+            let controlChannel = null;
+
+            function safeReadJson(key) {
+                try {
+                    const rawValue = window.localStorage.getItem(key);
+                    return rawValue ? JSON.parse(rawValue) : null;
+                } catch (error) {
+                    console.warn(`Unable to read ${key}:`, error);
+                    return null;
+                }
+            }
+
+            function safeWriteJson(key, value) {
+                try {
+                    window.localStorage.setItem(key, JSON.stringify(value));
+                } catch (error) {
+                    console.warn(`Unable to write ${key}:`, error);
+                }
+            }
+
+            function normalizeDuration(value, fallback, min, max) {
+                const numberValue = Number(value);
+                if (!Number.isFinite(numberValue)) {
+                    return fallback;
+                }
+
+                return Math.min(Math.max(numberValue, min), max);
+            }
+
+            function normalizeDivisionStatus(status) {
+                const normalized = {};
+
+                Object.entries(defaultDivisionStatus).forEach(([key, defaultStatus]) => {
+                    normalized[key] = {
+                        isFinished: defaultStatus.isFinished
+                    };
+                });
+
+                return normalized;
+            }
+
+            function normalizeDisplaySettings(settings) {
+                const source = settings && typeof settings === 'object' ? settings : {};
+                const sourceVisibility = source.slideVisibility || {};
+                const normalizedSlideVisibility = {};
+
+                Object.entries(defaultSlideVisibility).forEach(([key, isVisible]) => {
+                    normalizedSlideVisibility[key] = Boolean(sourceVisibility[key] ?? isVisible);
+                });
+
+                if (!Object.values(normalizedSlideVisibility).some(Boolean)) {
+                    normalizedSlideVisibility.slide0 = true;
+                }
+
+                return {
+                    slideVisibility: normalizedSlideVisibility,
+                    divisionStatus: normalizeDivisionStatus(source.divisionStatus),
+                    rotationDurationMs: normalizeDuration(
+                        source.rotationDurationMs,
+                        defaultDisplaySettings.rotationDurationMs,
+                        5000,
+                        300000
+                    ),
+                    refreshIntervalMs: normalizeDuration(
+                        source.refreshIntervalMs,
+                        defaultDisplaySettings.refreshIntervalMs,
+                        10000,
+                        600000
+                    ),
+                    isPaused: Boolean(source.isPaused ?? defaultDisplaySettings.isPaused)
+                };
+            }
+
+            let storedSettings = normalizeDisplaySettings(safeReadJson(controlStorageKey));
+            let slideVisibility = { ...storedSettings.slideVisibility };
+            let divisionStatus = normalizeDivisionStatus(storedSettings.divisionStatus);
+            let rotationDurationMs = defaultDisplaySettings.rotationDurationMs;
+            let refreshIntervalMs = storedSettings.refreshIntervalMs;
+            let isPaused = storedSettings.isPaused;
+
+            function getDisplaySettings() {
+                return {
+                    slideVisibility: { ...slideVisibility },
+                    divisionStatus: normalizeDivisionStatus(divisionStatus),
+                    rotationDurationMs,
+                    refreshIntervalMs,
+                    isPaused
+                };
+            }
+
+            function postControlMessage(message) {
+                if (!controlChannel) {
+                    return;
+                }
+
+                controlChannel.postMessage({
+                    ...message,
+                    clientId: controlClientId,
+                    sentAt: Date.now()
+                });
+            }
+
+            function publishDisplaySettings(reason = 'settings') {
+                const settings = getDisplaySettings();
+                safeWriteJson(controlStorageKey, settings);
+                postControlMessage({ type: 'settings', reason, settings });
+            }
+
+            function publishRuntimeState() {
+                const activeSlide = slides[currentSlide] || null;
+                const runtimeState = {
+                    currentSlideId: activeSlide?.id || null,
+                    currentSlideIndex: currentSlide,
+                    totalSlides: slides.length,
+                    isPaused,
+                    updatedAt: Date.now()
+                };
+
+                safeWriteJson(runtimeStorageKey, runtimeState);
+                postControlMessage({ type: 'runtime', runtime: runtimeState });
+            }
+
+            function resetSlideProgress() {
+                if (!slideProgressBar) {
+                    return;
+                }
+
+                slideProgressBar.classList.remove('is-running');
+                slideProgressBar.style.animationDuration = `${rotationDurationMs}ms`;
+                void slideProgressBar.offsetWidth;
+                slideProgressBar.classList.add('is-running');
+            }
+
+            function applyDisplaySettings(settings, options = {}) {
+                const normalized = normalizeDisplaySettings(settings);
+                const divisionChanged = JSON.stringify(divisionStatus) !== JSON.stringify(normalized.divisionStatus);
+                const timingChanged = rotationDurationMs !== normalized.rotationDurationMs
+                    || refreshIntervalMs !== normalized.refreshIntervalMs;
+
+                slideVisibility = { ...normalized.slideVisibility };
+                divisionStatus = normalizeDivisionStatus(normalized.divisionStatus);
+                rotationDurationMs = normalized.rotationDurationMs;
+                refreshIntervalMs = normalized.refreshIntervalMs;
+                isPaused = normalized.isPaused;
+
+                document.body.classList.toggle('paused', isPaused);
+
+                if (allSlides.length > 0) {
+                    updateSlideVisibility();
+                    const activeSlide = Array.from(allSlides).find(slide => slide.classList.contains('active'));
+
+                    if (slides.length > 0 && (!activeSlide || !slideVisibility[activeSlide.id])) {
+                        currentSlide = 0;
+                        showSlide(0);
+                    } else if (activeSlide) {
+                        const activeIndex = slides.findIndex(slide => slide.id === activeSlide.id);
+                        currentSlide = activeIndex >= 0 ? activeIndex : 0;
+                    }
+                }
+
+                if (timingChanged && slideshowInterval) {
+                    startSlideshow();
+                }
+
+                if (timingChanged) {
+                    resetSlideProgress();
+                }
+
+                if (timingChanged && refreshInterval) {
+                    startDataRefresh();
+                }
+
+                if (divisionChanged && options.refreshScores !== false) {
+                    loadScores();
+                }
+
+                if (options.persist) {
+                    safeWriteJson(controlStorageKey, getDisplaySettings());
+                }
+
+                if (options.broadcast) {
+                    postControlMessage({
+                        type: 'settings',
+                        reason: options.reason || 'settings',
+                        settings: getDisplaySettings()
+                    });
+                }
+
+                publishRuntimeState();
+            }
+
+            function setPaused(paused, options = {}) {
+                isPaused = Boolean(paused);
+                document.body.classList.toggle('paused', isPaused);
+
+                if (options.persist !== false) {
+                    publishDisplaySettings('pause');
+                }
+
+                publishRuntimeState();
+                console.log('Slideshow paused:', isPaused);
+            }
+
+            function handleRemoteCommand(command, payload = {}) {
+                switch (command) {
+                    case 'previous':
+                        showSlide(currentSlide - 1);
+                        break;
+                    case 'next':
+                        showSlide(currentSlide + 1);
+                        break;
+                    case 'goToSlide': {
+                        const targetIndex = slides.findIndex(slide => slide.id === payload.slideId);
+                        if (targetIndex >= 0) {
+                            showSlide(targetIndex);
+                        }
+                        break;
+                    }
+                    case 'setPaused':
+                        setPaused(payload.paused);
+                        break;
+                    case 'refreshData':
+                        sheetCache.clear();
+                        loadScores();
+                        publishRuntimeState();
+                        break;
+                    case 'resetSettings':
+                        applyDisplaySettings(defaultDisplaySettings, {
+                            persist: true,
+                            broadcast: true,
+                            reason: 'reset'
+                        });
+                        loadScores();
+                        break;
+                }
+            }
+
+            function handleRemoteMessage(message) {
+                if (!message || message.clientId === controlClientId) {
+                    return;
+                }
+
+                if (message.type === 'settings') {
+                    applyDisplaySettings(message.settings, { refreshScores: true });
+                }
+
+                if (message.type === 'command') {
+                    handleRemoteCommand(message.command, message.payload || {});
+                }
+
+                if (message.type === 'request-state') {
+                    publishDisplaySettings('state-request');
+                    publishRuntimeState();
+                }
+            }
+
+            function setupRemoteControl() {
+                if (window.RealtimeChannel || 'BroadcastChannel' in window) {
+                    controlChannel = window.RealtimeChannel
+                        ? new RealtimeChannel(controlChannelName)
+                        : new BroadcastChannel(controlChannelName);
+                    controlChannel.onmessage = event => handleRemoteMessage(event.data);
+                }
+
+                window.addEventListener('storage', event => {
+                    if (event.key === controlStorageKey && event.newValue) {
+                        try {
+                            applyDisplaySettings(JSON.parse(event.newValue), { refreshScores: true });
+                        } catch (error) {
+                            console.warn('Unable to apply remote settings:', error);
+                        }
+                    }
+
+                    if (event.key === commandStorageKey && event.newValue) {
+                        try {
+                            const message = JSON.parse(event.newValue);
+                            if (message.clientId !== controlClientId) {
+                                handleRemoteCommand(message.command, message.payload || {});
+                            }
+                        } catch (error) {
+                            console.warn('Unable to apply remote command:', error);
+                        }
+                    }
+                });
+
+                publishDisplaySettings('display-ready');
+                publishRuntimeState();
+
+                if (runtimeHeartbeatInterval) {
+                    clearInterval(runtimeHeartbeatInterval);
+                }
+                runtimeHeartbeatInterval = setInterval(publishRuntimeState, 5000);
+            }
+
+            // Function to update slide visibility and refresh slides array
+            function updateSlideVisibility() {
+                allSlides.forEach(slide => {
+                    const slideId = slide.id;
+                    const isVisible = slideVisibility[slideId];
+                    const isActive = slide.classList.contains('active');
+                    slide.style.display = isVisible ? 'flex' : 'none';
+                    slide.style.opacity = isVisible && isActive ? '1' : '0';
+                });
+
+                // Update slides array to only include visible slides
+                slides = Array.from(allSlides).filter(slide => slideVisibility[slide.id]);
+                console.log('Updated slides array:', slides.map(s => s.id));
+            }
+
+            // Function to toggle slide visibility
+            function toggleSlideVisibility(slideId) {
+                if (slideVisibility.hasOwnProperty(slideId)) {
+                    slideVisibility[slideId] = !slideVisibility[slideId];
+                    updateSlideVisibility();
+
+                    if (!Object.values(slideVisibility).some(Boolean)) {
+                        slideVisibility[slideId] = true;
+                        updateSlideVisibility();
+                    }
+
+                    // If current slide is now hidden, go to next visible slide
+                    if (!slideVisibility[slides[currentSlide]?.id]) {
+                        currentSlide = 0;
+                        showSlide(currentSlide);
+                    }
+
+                    publishDisplaySettings('slide-visibility');
+                    publishRuntimeState();
+                    console.log(`Toggled ${slideId} visibility:`, slideVisibility[slideId]);
+                }
+            }
+
+            // Function to show a specific slide with fade-to-black transition
+            function showSlide(index) {
+                if (isTransitioning || slides.length === 0) return; // Prevent overlapping transitions
+
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+
+                const targetSlide = slides[index];
+                if (!targetSlide) return;
+
+                if (!fadeOverlay) {
+                    allSlides.forEach(slide => {
+                        slide.classList.remove('active');
+                        slide.style.opacity = '0';
+                    });
+
+                    targetSlide.classList.add('active');
+                    targetSlide.style.display = 'flex';
+                    targetSlide.style.opacity = '1';
+                    currentSlide = index;
+                    resetSlideProgress();
+                    publishRuntimeState();
+                    return;
+                }
+
+                isTransitioning = true;
+
+                fadeOverlay.classList.remove('is-wiping');
+                void fadeOverlay.offsetWidth;
+                fadeOverlay.classList.add('is-wiping');
+
+                setTimeout(() => {
+                    if (!slideVisibility[targetSlide.id]) {
+                        isTransitioning = false;
+                        showSlide(0);
+                        return;
+                    }
+
+                    // Remove active class from all slides (including hidden ones)
+                    allSlides.forEach(slide => {
+                        slide.classList.remove('active');
+                        slide.style.opacity = '0';
+                    });
+
+                    // Add active class and set opacity for the current visible slide
+                    targetSlide.classList.add('active');
+                    targetSlide.style.display = 'flex';
+                    targetSlide.style.opacity = '1';
+                    currentSlide = slides.findIndex(slide => slide.id === targetSlide.id);
+                    if (currentSlide < 0) {
+                        currentSlide = 0;
+                    }
+                    resetSlideProgress();
+
+                    setTimeout(() => {
+                        isTransitioning = false;
+                        fadeOverlay.classList.remove('is-wiping');
+                    }, 520);
+
+                    publishRuntimeState();
+                    console.log('Showing slide:', currentSlide, 'Slide ID:', targetSlide.id);
+                }, 430);
+            }
+
+            // Function to start the slideshow
+            function startSlideshow() {
+                if (slideshowInterval) clearInterval(slideshowInterval);
+                slideshowInterval = setInterval(() => {
+                    if (!isPaused && slides.length > 0) {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        console.log('Auto-advancing to slide:', currentSlide, 'Slide ID:', slides[currentSlide]?.id);
+                        showSlide(currentSlide);
+                    }
+                }, rotationDurationMs);
+            }
+
+            // Function to start data refresh
+            function startDataRefresh() {
+                if (refreshInterval) clearInterval(refreshInterval);
+                refreshInterval = setInterval(() => {
+                    console.log('Refreshing data...');
+                    loadScores();
+                }, refreshIntervalMs);
+            }
+
+            // Function to toggle pause
+            function togglePause() {
+                setPaused(!isPaused);
+            }
+
+            // Keyboard controls
+            document.addEventListener('keydown', (event) => {
+                switch(event.key) {
+                    case 'ArrowLeft':
+                        showSlide(currentSlide - 1);
+                        break;
+                    case 'ArrowRight':
+                        showSlide(currentSlide + 1);
+                        break;
+                    case ' ':
+                        togglePause();
+                        break;
+                }
+            });
+
+            // Initial setup
+            window.onload = function() {
+                console.log('Page loaded, initializing...');
+                fadeOverlay = document.getElementById('fadeOverlay');
+                slideProgressBar = document.getElementById('slideProgressBar');
+                document.body.classList.toggle('paused', isPaused);
+                updateSlideVisibility(); // Initialize slide visibility
+
+                console.log('Slides available:', slides.length);
+                console.log('isPaused:', isPaused);
+
+                // Set initial slide opacity without transition
+                if (slides.length > 0) {
+                    allSlides.forEach(slide => {
+                        slide.classList.remove('active');
+                        slide.style.opacity = '0';
+                    });
+                    slides[0].style.opacity = '1';
+                    slides[0].classList.add('active');
+                    resetSlideProgress();
+                    console.log('Initial slide set:', slides[0].id);
+                }
+
+                loadScores();
+                startSlideshow();
+                startDataRefresh();
+                setupRemoteControl();
+                console.log('Slideshow started, interval:', slideshowInterval);
+                console.log('Data refresh started, interval:', refreshInterval);
+            };
+
+            // Define the ranges for each table
+            const ranges = {
+                national: 'NAT!D39:O45',
+                p1: 'PROV-1!D39:O45',
+                p2: 'PROV-2!D39:O45',
+                p3: 'PROV-3!D39:O45',
+                p4: 'PROV-4!D39:O45',
+                p5: 'PROV-5!D39:O45',
+                p6: 'PROV-6!D39:O45',
+                clubs: 'Classement Clubs!C5:D22'
+            };
+
+            const sheetCache = new Map();
+
+            function parseCsv(csvText) {
+                const rows = [];
+                let row = [];
+                let value = '';
+                let inQuotes = false;
+
+                for (let i = 0; i < csvText.length; i++) {
+                    const char = csvText[i];
+                    const nextChar = csvText[i + 1];
+
+                    if (char === '"' && inQuotes && nextChar === '"') {
+                        value += '"';
+                        i++;
+                    } else if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        row.push(value);
+                        value = '';
+                    } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                        if (char === '\r' && nextChar === '\n') {
+                            i++;
+                        }
+                        row.push(value);
+                        rows.push(row);
+                        row = [];
+                        value = '';
+                    } else {
+                        value += char;
+                    }
+                }
+
+                if (value || row.length > 0) {
+                    row.push(value);
+                    rows.push(row);
+                }
+
+                return rows;
+            }
+
+            function columnToIndex(columnName) {
+                return columnName.split('').reduce((index, letter) => {
+                    return index * 26 + letter.charCodeAt(0) - 64;
+                }, 0) - 1;
+            }
+
+            function parseRange(range) {
+                const match = range.match(/^(.+)!([A-Z]+)(\d+):([A-Z]+)(\d+)$/);
+                if (!match) {
+                    throw new Error(`Unsupported range format: ${range}`);
+                }
+
+                return {
+                    sheetName: match[1],
+                    startCol: columnToIndex(match[2]),
+                    startRow: Number(match[3]) - 1,
+                    endCol: columnToIndex(match[4]),
+                    endRow: Number(match[5]) - 1
+                };
+            }
+
+            function isUnavailable(value) {
+                return !value || value === '#N/A' || value === 'N/A';
+            }
+
+            async function fetchPublishedSheet(sheetName) {
+                const gid = publishedSheetGids[sheetName];
+
+                if (!gid) {
+                    throw new Error(`Unknown published sheet: ${sheetName}`);
+                }
+
+                const now = Date.now();
+                const cached = sheetCache.get(sheetName);
+
+                if (cached && now - cached.fetchedAt < 25000) {
+                    if (cached.promise) {
+                        return cached.promise;
+                    }
+
+                    return cached.rows;
+                }
+
+                const url = `${sheetProxyBaseUrl}/sheet?gid=${gid}&_=${now}`;
+                const request = fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        return response.text();
+                    })
+                    .then(csvText => {
+                        const rows = parseCsv(csvText);
+                        sheetCache.set(sheetName, { rows, fetchedAt: Date.now() });
+                        return rows;
+                    })
+                    .catch(error => {
+                        sheetCache.delete(sheetName);
+                        throw error;
+                    });
+
+                sheetCache.set(sheetName, { promise: request, fetchedAt: now });
+                return request;
+            }
+
+            async function fetchRangeValues(range) {
+                const parsedRange = parseRange(range);
+                const rows = await fetchPublishedSheet(parsedRange.sheetName);
+
+                return rows
+                    .slice(parsedRange.startRow, parsedRange.endRow + 1)
+                    .map(row => row.slice(parsedRange.startCol, parsedRange.endCol + 1));
+            }
+
+            function mapRankingRows(rows) {
+                return rows
+                    .map((row, index) => {
+                        if (row[0] === 'Classement' || row[1] === 'Nom') {
+                            return null;
+                        }
+
+                        if (row.length >= 6 && !isUnavailable(row[0]) && !isUnavailable(row[1]) && !isUnavailable(row[5])) {
+                            return {
+                                rank: row[0],
+                                name: row[1],
+                                score: row[5]
+                            };
+                        }
+
+                        if (row.length >= 2 && !isUnavailable(row[0]) && !isUnavailable(row[1])) {
+                            return {
+                                rank: String(index + 1),
+                                name: row[0],
+                                score: row[1]
+                            };
+                        }
+
+                        return null;
+                    })
+                    .filter(Boolean);
+            }
+
+            function scoreAsNumber(score) {
+                const value = Number(String(score).replace(',', '.').trim());
+                return Number.isFinite(value) ? value : 0;
+            }
+
+            function renderStartingSoon(scoreboardDiv) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'starting-soon';
+
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'starting-soon-title';
+                titleDiv.textContent = 'Ça va commencer';
+
+                const subtitleDiv = document.createElement('div');
+                subtitleDiv.className = 'starting-soon-subtitle';
+                subtitleDiv.textContent = 'Les joueurs sont prêts, les premiers résultats arrivent bientôt.';
+
+                messageDiv.appendChild(titleDiv);
+                messageDiv.appendChild(subtitleDiv);
+                scoreboardDiv.appendChild(messageDiv);
+            }
+
+            // Function to fetch data for a specific range
+            async function fetchScores(range, tableId) {
+                try {
+                    console.log(`Fetching scores for ${tableId} with range ${range}`);
+                    const rows = await fetchRangeValues(range);
+                    console.log(`Data received for ${tableId}:`, rows);
+
+                    if (rows && rows.length > 0) {
+                        const scoreboardDiv = document.getElementById(tableId);
+
+                        if (!scoreboardDiv) {
+                            console.error(`Scoreboard element not found: ${tableId}`);
+                            return;
+                        }
+
+                        scoreboardDiv.innerHTML = "";
+
+                        const rankingRows = mapRankingRows(rows);
+
+                        if (rankingRows.length > 0 && rankingRows.every(row => scoreAsNumber(row.score) === 0)) {
+                            renderStartingSoon(scoreboardDiv);
+                            return;
+                        }
+
+                        rankingRows.forEach((row, index) => {
+                            const playerRow = document.createElement('div');
+                            playerRow.className = 'player-row scoreboard-row';
+
+                            const rankDiv = document.createElement('div');
+                            rankDiv.className = 'player-rank';
+                            rankDiv.textContent = row.rank + '.';
+
+                            const nameDiv = document.createElement('div');
+                            nameDiv.className = 'player-name';
+                            nameDiv.textContent = row.name;
+
+                            const scoreDiv = document.createElement('div');
+                            scoreDiv.className = 'player-score';
+                            scoreDiv.textContent = row.score;
+
+                            playerRow.appendChild(rankDiv);
+                            playerRow.appendChild(nameDiv);
+                            playerRow.appendChild(scoreDiv);
+                            scoreboardDiv.appendChild(playerRow);
+                        });
+
+                    } else {
+                        console.error(`No values found for range: ${range}`);
+                        document.getElementById(tableId).innerHTML = '<div class="error-message">No data available</div>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching scores:', error);
+                    document.getElementById(tableId).innerHTML = '<div class="error-message">Failed to load scores</div>';
+                }
+            }
+
+            // Add keyboard shortcuts to toggle slide visibility
+            document.addEventListener('keydown', (event) => {
+                const slideKeyMap = {
+                    '0': 'slide0',
+                    '1': 'slide1',
+                    '2': 'slide2',
+                    '3': 'slide3',
+                    '4': 'slide4',
+                    '5': 'slide5',
+                    '6': 'slide6',
+                    '7': 'slide7',
+                    '9': 'slide9',
+                    'a': 'slide10',  // 'a' for slide 10
+                    'b': 'slide11'   // 'b' for slide 11
+                };
+
+                if (event.altKey && slideKeyMap[event.key]) {
+                    event.preventDefault();
+                    toggleSlideVisibility(slideKeyMap[event.key]);
+                }
+            });
+
+            // Function to fetch club ranking
+            async function fetchClubRanking() {
+                try {
+                    console.log('Fetching club ranking...');
+                    const rows = await fetchRangeValues(ranges.clubs);
+                    console.log('Club ranking data received:', rows);
+
+                    if (rows && rows.length > 0) {
+                        const rankingDiv = document.getElementById('clubRankingTable');
+
+                        if (!rankingDiv) {
+                            console.error('Club ranking element not found');
+                            return;
+                        }
+
+                        rankingDiv.innerHTML = "";
+
+                        rows.forEach((row, index) => {
+                            if (row.length >= 2 && !isUnavailable(row[1])) {
+                                const rank = parseInt(row[0]);
+                                // Only show ranks 1-5 and 28-32
+                                if ((rank >= 1 && rank <= 5) || (rank >= 28 && rank <= 32)) {
+                                    const clubRow = document.createElement('div');
+                                    clubRow.className = 'player-row scoreboard-row club-row';
+
+                                    const rankDiv = document.createElement('div');
+                                    rankDiv.className = 'player-rank';
+                                    rankDiv.textContent = row[0] + '.';
+
+                                    const nameDiv = document.createElement('div');
+                                    nameDiv.className = 'player-name';
+                                    nameDiv.textContent = row[1];
+
+                                    clubRow.appendChild(rankDiv);
+                                    clubRow.appendChild(nameDiv);
+                                    rankingDiv.appendChild(clubRow);
+                                }
+                            }
+                        });
+                    } else {
+                        console.error('No values found for club ranking');
+                        document.getElementById('clubRankingTable').innerHTML = '<div class="error-message">No data available</div>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching club ranking:', error);
+                    document.getElementById('clubRankingTable').innerHTML = '<div class="error-message">Failed to load club ranking</div>';
+                }
+            }
+
+            // Function to load all scores
+            async function loadScores() {
+                console.log('Starting to load scores...');
+                try {
+                    await Promise.all([
+                        fetchScores(ranges.national, 'scoreTable1'),
+                        fetchScores(ranges.p1, 'scoreTable2'),
+                        fetchScores(ranges.p2, 'scoreTable3'),
+                        fetchScores(ranges.p3, 'scoreTable4'),
+                        fetchScores(ranges.p4, 'scoreTable5'),
+                        fetchScores(ranges.p5, 'scoreTable6'),
+                        fetchScores(ranges.p6, 'scoreTable7'),
+                        fetchClubRanking()
+                    ]);
+                    console.log('All scores loaded successfully');
+                } catch (error) {
+                    console.error('Error loading scores:', error);
+                }
+            }
+        </script>
+    </body>
+</html>

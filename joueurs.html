@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Presentation joueurs TOP 6</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+
+            body {
+                overflow: hidden;
+                font-family: "Roboto Condensed", Impact, sans-serif;
+                color: #fff;
+                background:
+                    linear-gradient(135deg, rgba(255, 65, 54, 0.2), transparent 30%),
+                    linear-gradient(315deg, rgba(53, 126, 221, 0.32), transparent 36%),
+                    linear-gradient(-45deg, #151515, #292929, #171717, #242424);
+                background-size: 100% 100%, 100% 100%, 400% 400%;
+                animation: backgroundShift 15s ease infinite;
+            }
+
+            .shell {
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+                padding: clamp(24px, 3vw, 56px);
+                display: grid;
+                grid-template-rows: auto 1fr auto;
+                overflow: hidden;
+            }
+
+            .shell::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image:
+                    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+                background-size: 72px 72px;
+                mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+                pointer-events: none;
+            }
+
+            .topbar,
+            .player-stage,
+            .footer {
+                position: relative;
+                z-index: 1;
+            }
+
+            .topbar {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 24px;
+            }
+
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 22px;
+            }
+
+            .brand img {
+                width: clamp(180px, 18vw, 330px);
+                height: auto;
+                object-fit: contain;
+                filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+            }
+
+            .division-badge {
+                background: #ffd700;
+                color: #171717;
+                transform: skew(-15deg);
+                padding: 16px 30px;
+                min-width: min(40vw, 520px);
+                text-align: center;
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+            }
+
+            .division-badge span {
+                display: block;
+                transform: skew(15deg);
+                font-size: 4.4rem;
+                line-height: 1;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+            .player-stage {
+                display: grid;
+                place-items: center;
+                min-height: 0;
+                padding: 4vh 2vw 2vh;
+                text-align: center;
+            }
+
+            .player-card {
+                width: min(1440px, 100%);
+                display: grid;
+                gap: clamp(18px, 2.4vw, 34px);
+                align-items: center;
+                justify-items: center;
+            }
+
+            .division-short {
+                min-width: 170px;
+                padding: 8px 22px;
+                border: 3px solid #ffd700;
+                color: #ffd700;
+                font-size: 3.2rem;
+                line-height: 1;
+                text-transform: uppercase;
+                transform: skew(-15deg);
+            }
+
+            .division-short span {
+                display: block;
+                transform: skew(15deg);
+            }
+
+            .player-name {
+                max-width: 100%;
+                margin: 0;
+                color: #fff;
+                font-size: 10.8rem;
+                line-height: 0.9;
+                text-transform: uppercase;
+                text-wrap: balance;
+                text-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+            }
+
+            .club-name {
+                max-width: min(1100px, 92vw);
+                margin: 0;
+                color: #ffd700;
+                font-size: 4.7rem;
+                line-height: 1;
+                text-transform: uppercase;
+                text-wrap: balance;
+                text-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            }
+
+            .footer {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: end;
+                gap: 24px;
+            }
+
+            .division-strip {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                min-width: 0;
+            }
+
+            .division-dot {
+                min-width: 58px;
+                height: 10px;
+                background: rgba(255, 255, 255, 0.28);
+                transform: skew(-15deg);
+            }
+
+            .division-dot.is-active {
+                background: #ffd700;
+            }
+
+            .counter {
+                color: rgba(255, 255, 255, 0.82);
+                font-size: 2rem;
+                line-height: 1;
+                white-space: nowrap;
+            }
+
+            .status {
+                position: absolute;
+                inset: 0;
+                z-index: 4;
+                display: grid;
+                place-items: center;
+                padding: 32px;
+                background: #161616;
+                color: #ffd700;
+                font-size: clamp(2rem, 5vw, 5rem);
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .status.is-hidden {
+                display: none;
+            }
+
+            .waiting-slide {
+                position: absolute;
+                inset: 0;
+                z-index: 3;
+                display: grid;
+                place-items: center;
+                padding: clamp(28px, 5vw, 78px);
+                text-align: center;
+                background:
+                    radial-gradient(circle at 15% 20%, rgba(255, 65, 54, 0.28), transparent 32%),
+                    radial-gradient(circle at 85% 80%, rgba(53, 126, 221, 0.34), transparent 36%),
+                    linear-gradient(135deg, #151515, #202020 58%, #111827);
+            }
+
+            .waiting-slide::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image:
+                    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+                background-size: 72px 72px;
+                mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+                pointer-events: none;
+            }
+
+            .waiting-slide.is-hidden {
+                display: none;
+            }
+
+            .waiting-content {
+                position: relative;
+                z-index: 1;
+                display: grid;
+                justify-items: center;
+                gap: 32px;
+                width: min(1280px, 100%);
+            }
+
+            .waiting-logo {
+                width: min(760px, 68vw);
+                height: auto;
+                object-fit: contain;
+                filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.48));
+            }
+
+            .waiting-kicker {
+                margin: 0;
+                color: #ffd700;
+                font-size: 3.4rem;
+                line-height: 1;
+                text-transform: uppercase;
+            }
+
+            .waiting-title {
+                margin: 0;
+                color: #fff;
+                font-size: 9rem;
+                line-height: 0.92;
+                text-transform: uppercase;
+                text-wrap: balance;
+                text-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+            }
+
+            .waiting-mark {
+                width: min(520px, 46vw);
+                height: 12px;
+                background: #ffd700;
+                transform: skew(-15deg);
+                box-shadow: 0 0 26px rgba(255, 215, 0, 0.36);
+            }
+
+            .is-changing .division-short,
+            .is-changing .player-name,
+            .is-changing .club-name {
+                animation: playerIn 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+            }
+
+            .is-changing .player-name {
+                animation-delay: 90ms;
+            }
+
+            .is-changing .club-name {
+                animation-delay: 180ms;
+            }
+
+            @keyframes playerIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(34px) scale(0.98);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            @keyframes backgroundShift {
+                0% {
+                    background-position: 0 0, 0 0, 0% 50%;
+                }
+
+                50% {
+                    background-position: 0 0, 0 0, 100% 50%;
+                }
+
+                100% {
+                    background-position: 0 0, 0 0, 0% 50%;
+                }
+            }
+
+            @media (max-width: 1400px) {
+                .division-badge span {
+                    font-size: 3.5rem;
+                }
+
+                .division-short {
+                    font-size: 2.7rem;
+                }
+
+                .player-name {
+                    font-size: 8.5rem;
+                }
+
+                .club-name {
+                    font-size: 3.7rem;
+                }
+
+                .waiting-kicker {
+                    font-size: 2.7rem;
+                }
+
+                .waiting-title {
+                    font-size: 7rem;
+                }
+            }
+
+            @media (max-width: 900px) {
+                .shell {
+                    padding: 22px;
+                }
+
+                .topbar {
+                    align-items: stretch;
+                    flex-direction: column;
+                }
+
+                .brand img {
+                    width: min(260px, 46vw);
+                }
+
+                .division-badge {
+                    min-width: 0;
+                    width: 100%;
+                }
+
+                .player-stage {
+                    padding: 3vh 0 2vh;
+                }
+
+                .division-badge span {
+                    font-size: 2.3rem;
+                }
+
+                .division-short {
+                    min-width: 120px;
+                    font-size: 2rem;
+                }
+
+                .player-name {
+                    font-size: 5rem;
+                }
+
+                .club-name {
+                    font-size: 2.6rem;
+                }
+
+                .footer {
+                    grid-template-columns: 1fr;
+                }
+
+                .counter {
+                    font-size: 1.35rem;
+                }
+
+                .waiting-logo {
+                    width: min(500px, 82vw);
+                }
+
+                .waiting-kicker {
+                    font-size: 1.8rem;
+                }
+
+                .waiting-title {
+                    font-size: 4.5rem;
+                }
+
+                .waiting-mark {
+                    width: min(360px, 70vw);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="shell" id="shell">
+            <div class="status" id="status">Chargement</div>
+            <section class="waiting-slide" id="waitingSlide">
+                <div class="waiting-content">
+                    <img class="waiting-logo" src="top-6-verviers.png" alt="TOP 6 Verviers" />
+                    <p class="waiting-kicker">Présentation des joueurs</p>
+                    <h1 class="waiting-title">Début imminent</h1>
+                    <div class="waiting-mark" aria-hidden="true"></div>
+                </div>
+            </section>
+
+            <header class="topbar">
+                <div class="brand">
+                    <img src="top-6-verviers.png" alt="TOP 6 Verviers" />
+                </div>
+
+                <div class="division-badge">
+                    <span id="divisionLabel">P6</span>
+                </div>
+            </header>
+
+            <main class="player-stage">
+                <section class="player-card" id="playerCard">
+                    <div class="division-short"><span id="divisionShort">P6</span></div>
+                    <h1 class="player-name" id="playerName"></h1>
+                    <p class="club-name" id="clubName"></p>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <div class="division-strip" id="divisionStrip" aria-hidden="true"></div>
+                <div class="counter" id="counter">00 / 00</div>
+            </footer>
+        </div>
+
+        <script>
+            const sheetProxyBaseUrl = window.location.protocol === "file:" ? "http://127.0.0.1:8765" : "";
+            const publishedSheetGids = {
+                "Liste Joueurs": "311422638"
+            };
+
+            const playersRange = "Liste Joueurs!B2:D43";
+            const divisionOrder = ["P6", "P5", "P4", "P3", "P2", "P1", "NAT"];
+            const divisionLabels = {
+                P6: "PROVINCIALE 6",
+                P5: "PROVINCIALE 5",
+                P4: "PROVINCIALE 4",
+                P3: "PROVINCIALE 3",
+                P2: "PROVINCIALE 2",
+                P1: "PROVINCIALE 1",
+                NAT: "NATIONALE & WB"
+            };
+
+            const fallbackPlayers = [
+                { name: "BUSCICCHIO Emma", club: "TTC Wolves Xhendelesse", division: "P6" },
+                { name: "BUSCICCHIO Franco", club: "TTC Wolves Xhendelesse", division: "P6" },
+                { name: "WATHELET Kylian", club: "TTC Wolves Xhendelesse", division: "P6" },
+                { name: "GUSTIN Didier", club: "TTC Wolves Xhendelesse", division: "P6" },
+                { name: "PIRARD Nicolas", club: "CTT Minerois", division: "P6" },
+                { name: "DA COSTA GARCIA Quentin", club: "TTC Wolves Xhendelesse", division: "P6" },
+                { name: "DERWALL Roland", club: "TTC Raeren", division: "P5" },
+                { name: "STULENS Gilles", club: "TT Stavelot", division: "P5" },
+                { name: "HAVET Mathieu", club: "TT Stavelot", division: "P5" },
+                { name: "RITZEN Cedric", club: "TT Eupen", division: "P5" },
+                { name: "STEVENS Johnny", club: "TTC Aubel", division: "P5" },
+                { name: "SEGHEZZI Enzo", club: "TT Theux", division: "P5" },
+                { name: "HARDY Benoit", club: "Royal TT Plein Vent", division: "P4" },
+                { name: "HARDY Rene", club: "TT Daltons Membach", division: "P4" },
+                { name: "KOHN Eric", club: "TT Eupen", division: "P4" },
+                { name: "BOURS Olivier", club: "CTT Tiège", division: "P4" },
+                { name: "FRANCOIS Cédric", club: "TT Daltons Membach", division: "P4" },
+                { name: "GONCALVES NEVES Joaquim Manuel", club: "Amicale Dolhain TTC", division: "P4" },
+                { name: "WERNERUS Niels", club: "TTC Raeren", division: "P3" },
+                { name: "MERSCH Ludovic", club: "CTT Spa", division: "P3" },
+                { name: "KESSELER Thomas", club: "KTTC Recht Saint Vith", division: "P3" },
+                { name: "ETIENNE Cedric", club: "CTT Smash Roberville", division: "P3" },
+                { name: "MARAITE Francis", club: "TTC Elsenborn", division: "P3" },
+                { name: "GALLE Cedric", club: "TT Stavelot", division: "P3" },
+                { name: "MARLET Kevin", club: "TT Montzen Jeunes", division: "P2" },
+                { name: "JOSEPH Jeremy", club: "CTT Spa", division: "P2" },
+                { name: "DIEDEREN Damien", club: "CTT Minerois", division: "P2" },
+                { name: "MAURAGE Didier", club: "TT Montzen Jeunes", division: "P2" },
+                { name: "WEBER Nicola", club: "TTC Elsenborn", division: "P2" },
+                { name: "JUNGBLUT Regis", club: "CTT Welkenraedt", division: "P2" },
+                { name: "KAIRIS Mathis", club: "TT Astoria-La Calamine", division: "P1" },
+                { name: "LENAERTS Tom", club: "TT Astoria-La Calamine", division: "P1" },
+                { name: "DIEDEREN Matheo", club: "CTT Minerois", division: "P1" },
+                { name: "HARDY Kevin", club: "TT Daltons Membach", division: "P1" },
+                { name: "HAZARD Nicolas", club: "TT Stavelot", division: "P1" },
+                { name: "DEBLON Patrick", club: "TT Daltons Membach", division: "P1" },
+                { name: "MAKA Maxence", club: "CTT Minerois", division: "NAT" },
+                { name: "DOUIN Mathis", club: "CTT Minerois", division: "NAT" },
+                { name: "JUNIUS Jonathan", club: "CTT Tiège", division: "NAT" },
+                { name: "JENCHENNE Pierre", club: "CTT Smash Roberville", division: "NAT" },
+                { name: "NOEL Xavier", club: "CTT Tiège", division: "NAT" },
+                { name: "LERHO Guillaume", club: "CTT Smash Roberville", division: "NAT" }
+            ];
+
+            const state = {
+                players: [],
+                index: 0,
+                hasStarted: false
+            };
+
+            const elements = {
+                shell: document.getElementById("shell"),
+                status: document.getElementById("status"),
+                waitingSlide: document.getElementById("waitingSlide"),
+                playerCard: document.getElementById("playerCard"),
+                divisionLabel: document.getElementById("divisionLabel"),
+                divisionShort: document.getElementById("divisionShort"),
+                playerName: document.getElementById("playerName"),
+                clubName: document.getElementById("clubName"),
+                divisionStrip: document.getElementById("divisionStrip"),
+                counter: document.getElementById("counter")
+            };
+
+            function parseCsv(csvText) {
+                const rows = [];
+                let row = [];
+                let value = "";
+                let inQuotes = false;
+
+                for (let i = 0; i < csvText.length; i++) {
+                    const char = csvText[i];
+                    const nextChar = csvText[i + 1];
+
+                    if (char === "\"" && inQuotes && nextChar === "\"") {
+                        value += "\"";
+                        i++;
+                    } else if (char === "\"") {
+                        inQuotes = !inQuotes;
+                    } else if (char === "," && !inQuotes) {
+                        row.push(value);
+                        value = "";
+                    } else if ((char === "\n" || char === "\r") && !inQuotes) {
+                        if (char === "\r" && nextChar === "\n") {
+                            i++;
+                        }
+                        row.push(value);
+                        rows.push(row);
+                        row = [];
+                        value = "";
+                    } else {
+                        value += char;
+                    }
+                }
+
+                if (value || row.length > 0) {
+                    row.push(value);
+                    rows.push(row);
+                }
+
+                return rows;
+            }
+
+            function columnToIndex(columnName) {
+                return columnName.split("").reduce((index, letter) => {
+                    return index * 26 + letter.charCodeAt(0) - 64;
+                }, 0) - 1;
+            }
+
+            function parseRange(range) {
+                const match = range.match(/^(.+)!([A-Z]+)(\d+):([A-Z]+)(\d+)$/);
+                if (!match) {
+                    throw new Error(`Unsupported range format: ${range}`);
+                }
+
+                return {
+                    sheetName: match[1],
+                    startCol: columnToIndex(match[2]),
+                    startRow: Number(match[3]) - 1,
+                    endCol: columnToIndex(match[4]),
+                    endRow: Number(match[5]) - 1
+                };
+            }
+
+            async function fetchPublishedSheet(sheetName) {
+                const gid = publishedSheetGids[sheetName];
+
+                if (!gid) {
+                    throw new Error(`Unknown published sheet: ${sheetName}`);
+                }
+
+                const url = `${sheetProxyBaseUrl}/sheet?gid=${gid}&_=${Date.now()}`;
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                return parseCsv(await response.text());
+            }
+
+            async function fetchRangeValues(range) {
+                const parsedRange = parseRange(range);
+                const rows = await fetchPublishedSheet(parsedRange.sheetName);
+
+                return rows
+                    .slice(parsedRange.startRow, parsedRange.endRow + 1)
+                    .map(row => row.slice(parsedRange.startCol, parsedRange.endCol + 1));
+            }
+
+            function normalizeDivision(value) {
+                return String(value || "").trim().toUpperCase().replace("NATIONAL", "NAT");
+            }
+
+            function normalizeText(value) {
+                return String(value || "").replace(/\s+/g, " ").trim();
+            }
+
+            function clearLegacyTimers() {
+                const highestTimerId = window.setInterval(() => {}, 2147483647);
+
+                for (let timerId = 1; timerId <= highestTimerId; timerId++) {
+                    window.clearInterval(timerId);
+                    window.clearTimeout(timerId);
+                }
+            }
+
+            function sortPlayers(players) {
+                return players
+                    .map((player, originalIndex) => ({
+                        ...player,
+                        originalIndex: player.originalIndex ?? originalIndex
+                    }))
+                    .sort((a, b) => {
+                        const divisionDiff = divisionOrder.indexOf(a.division) - divisionOrder.indexOf(b.division);
+                        return divisionDiff || b.originalIndex - a.originalIndex;
+                    });
+            }
+
+            function mapPlayers(rows) {
+                const players = rows
+                    .map((row, originalIndex) => {
+                        const name = normalizeText(row[0]);
+                        const club = normalizeText(row[1]);
+                        const division = normalizeDivision(row[2]);
+
+                        if (!name || !club || !divisionOrder.includes(division)) {
+                            return null;
+                        }
+
+                        return { name, club, division, originalIndex };
+                    })
+                    .filter(Boolean);
+
+                return sortPlayers(players);
+            }
+
+            function renderDivisionStrip() {
+                elements.divisionStrip.innerHTML = "";
+
+                divisionOrder.forEach(division => {
+                    const dot = document.createElement("div");
+                    dot.className = "division-dot";
+                    dot.dataset.division = division;
+                    elements.divisionStrip.appendChild(dot);
+                });
+            }
+
+            function updateDivisionStrip(activeDivision) {
+                elements.divisionStrip.querySelectorAll(".division-dot").forEach(dot => {
+                    dot.classList.toggle("is-active", dot.dataset.division === activeDivision);
+                });
+            }
+
+            function renderPlayer() {
+                const player = state.players[state.index];
+                if (!player) {
+                    return;
+                }
+
+                elements.shell.classList.remove("is-changing");
+                void elements.shell.offsetWidth;
+                elements.shell.classList.add("is-changing");
+
+                elements.divisionLabel.textContent = divisionLabels[player.division] || player.division;
+                elements.divisionShort.textContent = player.division;
+                elements.playerName.textContent = player.name;
+                elements.clubName.textContent = player.club;
+                elements.counter.textContent = `${String(state.index + 1).padStart(2, "0")} / ${String(state.players.length).padStart(2, "0")}`;
+                updateDivisionStrip(player.division);
+                fitCurrentText();
+            }
+
+            function renderWaitingSlide() {
+                state.index = 0;
+                state.hasStarted = false;
+                elements.waitingSlide.classList.remove("is-hidden");
+                elements.shell.classList.remove("is-changing");
+                elements.divisionLabel.textContent = "TOP 6";
+                elements.divisionShort.textContent = "";
+                elements.playerName.textContent = "";
+                elements.clubName.textContent = "";
+                elements.counter.textContent = `00 / ${String(state.players.length).padStart(2, "0")}`;
+                updateDivisionStrip(null);
+            }
+
+            function startPresentation() {
+                if (!state.players.length || state.hasStarted) {
+                    return;
+                }
+
+                clearLegacyTimers();
+                state.hasStarted = true;
+                state.index = 0;
+                elements.waitingSlide.classList.add("is-hidden");
+                renderPlayer();
+            }
+
+            function fitText(element, minSizePx, maxHeightRatio) {
+                element.style.fontSize = "";
+
+                const baseSize = Number.parseFloat(window.getComputedStyle(element).fontSize);
+                let size = baseSize;
+                const maxHeight = window.innerHeight * maxHeightRatio;
+
+                while (
+                    size > minSizePx
+                    && (element.scrollWidth > element.clientWidth || element.scrollHeight > maxHeight)
+                ) {
+                    size -= 4;
+                    element.style.fontSize = `${size}px`;
+                }
+            }
+
+            function fitCurrentText() {
+                window.requestAnimationFrame(() => {
+                    fitText(elements.playerName, 52, 0.36);
+                    fitText(elements.clubName, 32, 0.16);
+                });
+            }
+
+            function nextPlayer() {
+                if (!state.players.length) {
+                    return;
+                }
+
+                state.index = (state.index + 1) % state.players.length;
+                renderPlayer();
+            }
+
+            function previousPlayer() {
+                if (!state.players.length) {
+                    return;
+                }
+
+                state.index = state.index === 0 ? state.players.length - 1 : state.index - 1;
+                renderPlayer();
+            }
+
+            function setupControls() {
+                document.addEventListener("keydown", event => {
+                    if (event.key === "ArrowRight") {
+                        event.preventDefault();
+                        if (!state.hasStarted) {
+                            startPresentation();
+                            return;
+                        }
+                        nextPlayer();
+                    }
+
+                    if (event.key === "ArrowLeft") {
+                        event.preventDefault();
+                        if (!state.hasStarted) {
+                            return;
+                        }
+                        previousPlayer();
+                    }
+
+                    if (event.key === " " || event.key === "Enter") {
+                        event.preventDefault();
+                        if (!state.hasStarted) {
+                            startPresentation();
+                            return;
+                        }
+                        nextPlayer();
+                    }
+                });
+
+                document.addEventListener("click", () => {
+                    if (!state.hasStarted) {
+                        startPresentation();
+                        return;
+                    }
+
+                    nextPlayer();
+                });
+
+                window.addEventListener("resize", fitCurrentText);
+            }
+
+            async function init() {
+                clearLegacyTimers();
+                setupControls();
+                renderDivisionStrip();
+
+                try {
+                    const rows = await fetchRangeValues(playersRange);
+                    state.players = mapPlayers(rows);
+
+                    if (!state.players.length) {
+                        throw new Error("No players found");
+                    }
+
+                    elements.status.classList.add("is-hidden");
+                    elements.shell.dataset.source = "live";
+                    renderWaitingSlide();
+                } catch (error) {
+                    console.warn("Unable to load live players, using fallback list:", error);
+                    state.players = sortPlayers(fallbackPlayers);
+                    elements.status.classList.add("is-hidden");
+                    elements.shell.dataset.source = "fallback";
+                    renderWaitingSlide();
+                }
+            }
+
+            window.addEventListener("load", init);
+        </script>
+    </body>
+</html>

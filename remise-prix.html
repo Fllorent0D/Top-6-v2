@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Remise des prix P6 - TOP 6 Verviers</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                overflow: hidden;
+                font-family: Inter, "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+                background: #121212;
+                color: #ffffff;
+            }
+
+            button {
+                font: inherit;
+            }
+
+            body {
+                background:
+                    radial-gradient(circle at 16% 14%, rgba(255, 65, 54, 0.3), transparent 24%),
+                    radial-gradient(circle at 84% 18%, rgba(53, 126, 221, 0.36), transparent 25%),
+                    linear-gradient(135deg, #111111 0%, #242424 52%, #151515 100%);
+            }
+
+            .screen {
+                position: relative;
+                display: grid;
+                grid-template-rows: auto minmax(0, 1fr) auto;
+                width: 100vw;
+                height: 100vh;
+                padding: clamp(22px, 3vh, 42px) clamp(30px, 4vw, 74px);
+                isolation: isolate;
+            }
+
+            .screen::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: -2;
+                background-image:
+                    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+                background-size: 72px 72px;
+                mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+            }
+
+            .screen::after {
+                content: "";
+                position: absolute;
+                inset: auto -8vw -14vh -8vw;
+                z-index: -1;
+                height: 44vh;
+                background:
+                    linear-gradient(95deg, rgba(255, 65, 54, 0.52), transparent 34%),
+                    linear-gradient(265deg, rgba(53, 126, 221, 0.56), transparent 32%),
+                    linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.55));
+                transform: skewY(-3deg);
+            }
+
+            .topbar {
+                position: relative;
+                z-index: 2;
+                display: grid;
+                grid-template-columns: clamp(122px, 12vw, 220px) minmax(0, 1fr) auto;
+                gap: clamp(18px, 3vw, 48px);
+                align-items: center;
+                min-height: clamp(122px, 15vh, 220px);
+            }
+
+            .brand {
+                display: block;
+                width: clamp(122px, 12vw, 220px);
+                height: clamp(122px, 12vw, 220px);
+                object-fit: contain;
+                object-position: left center;
+                filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55));
+            }
+
+            .event-title {
+                min-width: 0;
+                text-transform: uppercase;
+            }
+
+            .event-kicker {
+                display: inline-flex;
+                align-items: center;
+                min-height: 30px;
+                padding: 0 13px;
+                background: #ffd700;
+                color: #141414;
+                font-size: clamp(0.85rem, 1vw, 1.12rem);
+                font-weight: 950;
+                letter-spacing: 0.08em;
+                transform: skew(-14deg);
+            }
+
+            .event-kicker span {
+                display: block;
+                transform: skew(14deg);
+            }
+
+            h1 {
+                margin: 10px 0 0;
+                color: #ffffff;
+                font-size: clamp(3.6rem, 6vw, 7.8rem);
+                font-weight: 1000;
+                line-height: 0.86;
+                letter-spacing: 0;
+                text-shadow: 0 14px 34px rgba(0, 0, 0, 0.56);
+            }
+
+            .division-badge {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: clamp(270px, 24vw, 440px);
+                min-height: clamp(66px, 8vh, 94px);
+                padding: 12px clamp(22px, 2.2vw, 34px);
+                background: #ffd700;
+                color: #161616;
+                box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+                transform: skew(-14deg);
+            }
+
+            .division-badge span {
+                display: block;
+                max-width: 100%;
+                overflow-wrap: anywhere;
+                font-size: clamp(2rem, 3vw, 4rem);
+                font-weight: 1000;
+                line-height: 0.92;
+                text-align: center;
+                text-transform: uppercase;
+                transform: skew(14deg);
+            }
+
+            .stage {
+                position: relative;
+                z-index: 1;
+                display: grid;
+                align-content: center;
+                min-height: 0;
+            }
+
+            .podium {
+                display: grid;
+                grid-template-columns: minmax(260px, 0.86fr) minmax(320px, 1fr) minmax(260px, 0.86fr);
+                grid-template-areas: "second first third";
+                gap: clamp(18px, 2.2vw, 38px);
+                align-items: end;
+                width: min(1520px, 100%);
+                margin: 0 auto;
+            }
+
+            .award-card {
+                position: relative;
+                display: grid;
+                grid-template-rows: auto minmax(0, 1fr) auto;
+                min-height: clamp(340px, 45vh, 500px);
+                padding: clamp(22px, 2.4vw, 38px);
+                overflow: hidden;
+                border: 1px solid rgba(255, 255, 255, 0.16);
+                border-left: clamp(8px, 0.8vw, 14px) solid var(--accent);
+                border-radius: 8px;
+                background:
+                    linear-gradient(150deg, var(--accent-soft), rgba(255, 255, 255, 0.045) 42%),
+                    rgba(18, 18, 18, 0.9);
+                box-shadow: 0 24px 48px rgba(0, 0, 0, 0.34);
+                text-transform: uppercase;
+            }
+
+            .award-card::before {
+                content: "";
+                position: absolute;
+                inset: -40% -28% auto auto;
+                width: 70%;
+                height: 70%;
+                background: radial-gradient(circle, var(--accent-glow), transparent 62%);
+                transform: rotate(-10deg);
+            }
+
+            .award-card.rank-1 {
+                --accent: #ffd700;
+                --accent-soft: rgba(255, 215, 0, 0.24);
+                --accent-glow: rgba(255, 215, 0, 0.26);
+                grid-area: first;
+                min-height: clamp(410px, 54vh, 600px);
+            }
+
+            .award-card.rank-2 {
+                --accent: #357edd;
+                --accent-soft: rgba(53, 126, 221, 0.24);
+                --accent-glow: rgba(53, 126, 221, 0.28);
+                grid-area: second;
+                min-height: clamp(315px, 41vh, 460px);
+            }
+
+            .award-card.rank-3 {
+                --accent: #ff4136;
+                --accent-soft: rgba(255, 65, 54, 0.22);
+                --accent-glow: rgba(255, 65, 54, 0.26);
+                grid-area: third;
+                min-height: clamp(300px, 39vh, 440px);
+            }
+
+            .rank-line {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 14px;
+                color: var(--accent);
+                font-weight: 1000;
+                line-height: 0.9;
+            }
+
+            .rank-number {
+                font-size: clamp(4.6rem, 8vw, 10.8rem);
+                text-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+            }
+
+            .rank-label {
+                padding-top: clamp(8px, 1vh, 14px);
+                color: rgba(255, 255, 255, 0.76);
+                font-size: clamp(1rem, 1.12vw, 1.45rem);
+                letter-spacing: 0.08em;
+                text-align: right;
+            }
+
+            .winner-name {
+                position: relative;
+                align-self: end;
+                min-width: 0;
+                color: #ffffff;
+                font-size: clamp(2.35rem, 3.7vw, 5.15rem);
+                font-weight: 1000;
+                line-height: 0.92;
+                overflow-wrap: normal;
+                word-break: normal;
+                text-shadow: 0 13px 30px rgba(0, 0, 0, 0.6);
+            }
+
+            .rank-2 .winner-name,
+            .rank-3 .winner-name {
+                font-size: clamp(2rem, 3vw, 4.1rem);
+            }
+
+            .name-part {
+                display: block;
+                max-width: 100%;
+                overflow-wrap: anywhere;
+            }
+
+            .score-line {
+                position: relative;
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 18px;
+                margin-top: clamp(24px, 3vh, 42px);
+                color: var(--accent);
+                font-weight: 1000;
+                line-height: 1;
+            }
+
+            .score-value {
+                font-size: clamp(3rem, 5vw, 7rem);
+            }
+
+            .score-label {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: clamp(1rem, 1.2vw, 1.5rem);
+                letter-spacing: 0.08em;
+            }
+
+            .footer {
+                position: relative;
+                z-index: 2;
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr) auto;
+                gap: clamp(14px, 2vw, 28px);
+                align-items: center;
+                min-height: clamp(52px, 7vh, 78px);
+            }
+
+            .nav-button {
+                display: inline-grid;
+                place-items: center;
+                width: clamp(46px, 4.4vw, 68px);
+                height: clamp(46px, 4.4vw, 68px);
+                border: 1px solid rgba(255, 255, 255, 0.24);
+                border-radius: 6px;
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+                font-size: clamp(1.7rem, 2.2vw, 2.9rem);
+                font-weight: 1000;
+                cursor: pointer;
+            }
+
+            .nav-button:hover,
+            .nav-button:focus-visible {
+                outline: none;
+                border-color: #ffd700;
+                color: #ffd700;
+            }
+
+            .division-tabs {
+                display: flex;
+                min-width: 0;
+                gap: 8px;
+                justify-content: center;
+            }
+
+            .division-tab {
+                min-width: 0;
+                min-height: clamp(42px, 5vh, 58px);
+                padding: 0 clamp(10px, 1vw, 18px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 6px;
+                background: rgba(255, 255, 255, 0.08);
+                color: rgba(255, 255, 255, 0.72);
+                font-size: clamp(0.78rem, 0.9vw, 1.05rem);
+                font-weight: 1000;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+
+            .division-tab.is-active {
+                border-color: #ffd700;
+                background: #ffd700;
+                color: #161616;
+            }
+
+            .confetti {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                overflow: hidden;
+                pointer-events: none;
+            }
+
+            .confetti span {
+                position: absolute;
+                top: -16px;
+                left: var(--x);
+                width: clamp(7px, 0.7vw, 12px);
+                height: clamp(16px, 1.4vw, 26px);
+                background: var(--c);
+                opacity: 0.82;
+                transform: rotate(var(--r));
+                animation: fall var(--d) linear infinite;
+                animation-delay: var(--delay);
+            }
+
+            @keyframes fall {
+                to {
+                    transform: translate3d(var(--drift), 112vh, 0) rotate(calc(var(--r) + 430deg));
+                }
+            }
+
+            .is-transitioning .award-card {
+                animation: cardIn 0.58s cubic-bezier(0.2, 0.85, 0.2, 1) both;
+            }
+
+            .is-transitioning .rank-2 {
+                animation-delay: 0.05s;
+            }
+
+            .is-transitioning .rank-1 {
+                animation-delay: 0.12s;
+            }
+
+            .is-transitioning .rank-3 {
+                animation-delay: 0.18s;
+            }
+
+            @keyframes cardIn {
+                from {
+                    transform: translateY(34px);
+                    opacity: 0;
+                    filter: brightness(0.7);
+                }
+
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                    filter: brightness(1);
+                }
+            }
+
+            @media (max-width: 1180px) {
+                .screen {
+                    overflow-y: auto;
+                    height: auto;
+                    min-height: 100vh;
+                }
+
+                .topbar,
+                .footer {
+                    grid-template-columns: 1fr;
+                    justify-items: stretch;
+                }
+
+                .brand {
+                    justify-self: center;
+                    object-position: center;
+                }
+
+                .division-badge {
+                    min-width: 0;
+                    width: 100%;
+                }
+
+                .podium {
+                    grid-template-columns: 1fr;
+                    grid-template-areas:
+                        "first"
+                        "second"
+                        "third";
+                    align-items: stretch;
+                    padding: 28px 0;
+                }
+
+                .award-card,
+                .award-card.rank-1,
+                .award-card.rank-2,
+                .award-card.rank-3 {
+                    min-height: 280px;
+                }
+
+                .division-tabs {
+                    justify-content: flex-start;
+                    overflow-x: auto;
+                    padding-bottom: 4px;
+                }
+
+                .division-tab {
+                    flex: 0 0 auto;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .confetti span,
+                .is-transitioning .award-card {
+                    animation: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main class="screen" id="screen">
+            <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+            <header class="topbar">
+                <img class="brand" src="top-6-verviers.png" alt="TOP 6 Verviers" />
+                <div class="event-title">
+                    <div class="event-kicker"><span>TOP 6 Verviers</span></div>
+                    <h1>Remise des prix</h1>
+                </div>
+                <div class="division-badge">
+                    <span id="divisionName">Provinciale 6</span>
+                </div>
+            </header>
+
+            <section class="stage" aria-live="polite">
+                <div class="podium" id="podium"></div>
+            </section>
+
+            <footer class="footer">
+                <button class="nav-button" type="button" id="previousButton" aria-label="Division précédente">
+                    ‹
+                </button>
+                <div class="division-tabs" id="divisionTabs" aria-label="Divisions"></div>
+                <button class="nav-button" type="button" id="nextButton" aria-label="Division suivante">
+                    ›
+                </button>
+            </footer>
+        </main>
+
+        <script>
+            const sheetProxyBaseUrl = window.location.protocol === 'file:' ? 'http://127.0.0.1:8765' : '';
+            const publishedSheetGids = {
+                NAT: '1312760054',
+                'PROV-1': '490688118',
+                'PROV-2': '897982353',
+                'PROV-3': '1506993435',
+                'PROV-4': '677604225',
+                'PROV-5': '1829480529',
+                'PROV-6': '1356197496'
+            };
+
+            const divisions = [
+                { key: 'p6', label: 'Provinciale 6', short: 'P6', range: 'PROV-6!D39:O45' },
+                { key: 'p5', label: 'Provinciale 5', short: 'P5', range: 'PROV-5!D39:O45' },
+                { key: 'p4', label: 'Provinciale 4', short: 'P4', range: 'PROV-4!D39:O45' },
+                { key: 'p3', label: 'Provinciale 3', short: 'P3', range: 'PROV-3!D39:O45' },
+                { key: 'p2', label: 'Provinciale 2', short: 'P2', range: 'PROV-2!D39:O45' },
+                { key: 'p1', label: 'Provinciale 1', short: 'P1', range: 'PROV-1!D39:O45' },
+                { key: 'national', label: 'Nationale & WB', short: 'NAT', range: 'NAT!D39:O45' }
+            ];
+
+            const rankLabels = {
+                1: 'Champion',
+                2: 'Deuxième',
+                3: 'Troisième'
+            };
+
+            const sheetCache = new Map();
+            const rankings = new Map();
+            let currentIndex = getInitialIndex();
+
+            const elements = {
+                screen: document.getElementById('screen'),
+                confetti: document.getElementById('confetti'),
+                divisionName: document.getElementById('divisionName'),
+                podium: document.getElementById('podium'),
+                divisionTabs: document.getElementById('divisionTabs'),
+                previousButton: document.getElementById('previousButton'),
+                nextButton: document.getElementById('nextButton')
+            };
+
+            function getInitialIndex() {
+                const params = new URLSearchParams(window.location.search);
+                const requestedDivision = (params.get('division') || window.location.hash.replace('#', '')).toLowerCase();
+                const index = divisions.findIndex(division => {
+                    return division.key === requestedDivision || division.short.toLowerCase() === requestedDivision;
+                });
+
+                return index >= 0 ? index : 0;
+            }
+
+            function parseCsv(csvText) {
+                const rows = [];
+                let row = [];
+                let value = '';
+                let inQuotes = false;
+
+                for (let index = 0; index < csvText.length; index++) {
+                    const char = csvText[index];
+                    const nextChar = csvText[index + 1];
+
+                    if (char === '"' && inQuotes && nextChar === '"') {
+                        value += '"';
+                        index++;
+                    } else if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        row.push(value);
+                        value = '';
+                    } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                        if (char === '\r' && nextChar === '\n') {
+                            index++;
+                        }
+
+                        row.push(value);
+                        rows.push(row);
+                        row = [];
+                        value = '';
+                    } else {
+                        value += char;
+                    }
+                }
+
+                if (value || row.length > 0) {
+                    row.push(value);
+                    rows.push(row);
+                }
+
+                return rows;
+            }
+
+            function columnToIndex(columnName) {
+                return columnName.split('').reduce((index, letter) => {
+                    return index * 26 + letter.charCodeAt(0) - 64;
+                }, 0) - 1;
+            }
+
+            function parseRange(range) {
+                const match = range.match(/^(.+)!([A-Z]+)(\d+):([A-Z]+)(\d+)$/);
+
+                if (!match) {
+                    throw new Error(`Unsupported range format: ${range}`);
+                }
+
+                return {
+                    sheetName: match[1],
+                    startCol: columnToIndex(match[2]),
+                    startRow: Number(match[3]) - 1,
+                    endCol: columnToIndex(match[4]),
+                    endRow: Number(match[5]) - 1
+                };
+            }
+
+            function isUnavailable(value) {
+                return !value || value === '#N/A' || value === 'N/A';
+            }
+
+            function scoreAsNumber(score) {
+                const value = Number(String(score).replace(',', '.').trim());
+                return Number.isFinite(value) ? value : 0;
+            }
+
+            function mapRankingRows(rows) {
+                return rows
+                    .map((row, index) => {
+                        if (row[0] === 'Classement' || row[1] === 'Nom') {
+                            return null;
+                        }
+
+                        if (row.length >= 6 && !isUnavailable(row[0]) && !isUnavailable(row[1]) && !isUnavailable(row[5])) {
+                            return {
+                                rank: row[0],
+                                name: row[1],
+                                score: row[5]
+                            };
+                        }
+
+                        if (row.length >= 2 && !isUnavailable(row[0]) && !isUnavailable(row[1])) {
+                            return {
+                                rank: String(index + 1),
+                                name: row[0],
+                                score: row[1]
+                            };
+                        }
+
+                        return null;
+                    })
+                    .filter(Boolean);
+            }
+
+            async function fetchPublishedSheet(sheetName) {
+                const gid = publishedSheetGids[sheetName];
+
+                if (!gid) {
+                    throw new Error(`Unknown published sheet: ${sheetName}`);
+                }
+
+                const now = Date.now();
+                const cached = sheetCache.get(sheetName);
+
+                if (cached && now - cached.fetchedAt < 25000) {
+                    if (cached.promise) {
+                        return cached.promise;
+                    }
+
+                    return cached.rows;
+                }
+
+                const url = `${sheetProxyBaseUrl}/sheet?gid=${gid}&_=${now}`;
+                const request = fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        return response.text();
+                    })
+                    .then(csvText => {
+                        const rows = parseCsv(csvText);
+                        sheetCache.set(sheetName, { rows, fetchedAt: Date.now() });
+                        return rows;
+                    })
+                    .catch(error => {
+                        sheetCache.delete(sheetName);
+                        throw error;
+                    });
+
+                sheetCache.set(sheetName, { promise: request, fetchedAt: now });
+                return request;
+            }
+
+            async function fetchRangeValues(range) {
+                const parsedRange = parseRange(range);
+                const rows = await fetchPublishedSheet(parsedRange.sheetName);
+
+                return rows
+                    .slice(parsedRange.startRow, parsedRange.endRow + 1)
+                    .map(row => row.slice(parsedRange.startCol, parsedRange.endCol + 1));
+            }
+
+            async function loadDivision(division) {
+                const rows = await fetchRangeValues(division.range);
+                const rankingRows = mapRankingRows(rows);
+
+                if (rankingRows.length > 0 && rankingRows.every(row => scoreAsNumber(row.score) === 0)) {
+                    rankings.set(division.key, []);
+                    return;
+                }
+
+                rankings.set(division.key, rankingRows.slice(0, 3));
+            }
+
+            async function loadAllRankings() {
+                await Promise.all(divisions.map(division => loadDivision(division).catch(error => {
+                    console.error(`Unable to load ${division.label}:`, error);
+                    rankings.set(division.key, []);
+                })));
+
+                renderCurrentDivision();
+            }
+
+            function createAwardCard(row, fallbackRank) {
+                const card = document.createElement('article');
+                card.className = `award-card rank-${fallbackRank}`;
+
+                const rankLine = document.createElement('div');
+                rankLine.className = 'rank-line';
+
+                const rankNumber = document.createElement('div');
+                rankNumber.className = 'rank-number';
+                rankNumber.textContent = fallbackRank;
+
+                const rankLabel = document.createElement('div');
+                rankLabel.className = 'rank-label';
+                rankLabel.textContent = rankLabels[fallbackRank];
+
+                const winnerName = document.createElement('div');
+                winnerName.className = 'winner-name';
+                winnerName.setAttribute('aria-label', row?.name || 'À confirmer');
+                appendNameParts(winnerName, row?.name || 'À confirmer');
+
+                const scoreLine = document.createElement('div');
+                scoreLine.className = 'score-line';
+
+                const scoreLabel = document.createElement('div');
+                scoreLabel.className = 'score-label';
+                scoreLabel.textContent = 'points';
+
+                const scoreValue = document.createElement('div');
+                scoreValue.className = 'score-value';
+                scoreValue.textContent = row?.score || '-';
+
+                rankLine.append(rankNumber, rankLabel);
+                scoreLine.append(scoreLabel, scoreValue);
+                card.append(rankLine, winnerName, scoreLine);
+
+                return card;
+            }
+
+            function appendNameParts(element, name) {
+                const parts = String(name).trim().split(/\s+/).filter(Boolean);
+
+                if (parts.length === 0) {
+                    const fallback = document.createElement('span');
+                    fallback.className = 'name-part';
+                    fallback.textContent = 'À confirmer';
+                    element.appendChild(fallback);
+                    return;
+                }
+
+                parts.forEach(part => {
+                    const span = document.createElement('span');
+                    span.className = 'name-part';
+                    span.textContent = part;
+                    element.appendChild(span);
+                });
+            }
+
+            function renderTabs() {
+                elements.divisionTabs.innerHTML = '';
+
+                divisions.forEach((division, index) => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'division-tab';
+                    button.classList.toggle('is-active', index === currentIndex);
+                    button.textContent = division.short;
+                    button.setAttribute('aria-label', division.label);
+                    button.addEventListener('click', () => showDivision(index));
+                    elements.divisionTabs.appendChild(button);
+                });
+            }
+
+            function renderCurrentDivision() {
+                const division = divisions[currentIndex];
+                const rows = rankings.get(division.key) || [];
+                const podiumRows = [rows[1], rows[0], rows[2]];
+                const fallbackRanks = [2, 1, 3];
+
+                elements.divisionName.textContent = division.label;
+                document.title = `Remise des prix ${division.short} - TOP 6 Verviers`;
+                renderTabs();
+
+                elements.podium.innerHTML = '';
+                podiumRows.forEach((row, index) => {
+                    elements.podium.appendChild(createAwardCard(row, fallbackRanks[index]));
+                });
+
+                elements.screen.classList.remove('is-transitioning');
+                void elements.screen.offsetWidth;
+                elements.screen.classList.add('is-transitioning');
+            }
+
+            function showDivision(index) {
+                currentIndex = (index + divisions.length) % divisions.length;
+                const division = divisions[currentIndex];
+                window.history.replaceState(null, '', `#${division.short.toLowerCase()}`);
+                renderCurrentDivision();
+            }
+
+            function buildConfetti() {
+                const colors = ['#ffd700', '#ff4136', '#357edd', '#ffffff'];
+                const fragment = document.createDocumentFragment();
+
+                for (let index = 0; index < 46; index++) {
+                    const piece = document.createElement('span');
+                    piece.style.setProperty('--x', `${Math.round(Math.random() * 100)}%`);
+                    piece.style.setProperty('--c', colors[index % colors.length]);
+                    piece.style.setProperty('--r', `${Math.round(Math.random() * 180)}deg`);
+                    piece.style.setProperty('--d', `${7 + Math.random() * 7}s`);
+                    piece.style.setProperty('--delay', `${Math.random() * -12}s`);
+                    piece.style.setProperty('--drift', `${Math.round((Math.random() - 0.5) * 220)}px`);
+                    fragment.appendChild(piece);
+                }
+
+                elements.confetti.appendChild(fragment);
+            }
+
+            function setupEvents() {
+                elements.previousButton.addEventListener('click', () => showDivision(currentIndex - 1));
+                elements.nextButton.addEventListener('click', () => showDivision(currentIndex + 1));
+
+                document.addEventListener('keydown', event => {
+                    if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        showDivision(currentIndex - 1);
+                    }
+
+                    if (event.key === 'ArrowRight' || event.key === ' ') {
+                        event.preventDefault();
+                        showDivision(currentIndex + 1);
+                    }
+
+                    if (/^[1-7]$/.test(event.key)) {
+                        event.preventDefault();
+                        showDivision(Number(event.key) - 1);
+                    }
+
+                    if (event.key.toLowerCase() === 'f' && document.fullscreenEnabled) {
+                        event.preventDefault();
+
+                        if (document.fullscreenElement) {
+                            document.exitFullscreen();
+                        } else {
+                            document.documentElement.requestFullscreen();
+                        }
+                    }
+                });
+            }
+
+            buildConfetti();
+            setupEvents();
+            renderCurrentDivision();
+            loadAllRankings();
+            window.setInterval(loadAllRankings, 30000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle ecran TOP 6</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            margin: 0;
+            font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+            background: #111318;
+            color: #f5f7fb;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            min-height: 44px;
+            border: 1px solid #2d3440;
+            border-radius: 6px;
+            background: #202631;
+            color: #f5f7fb;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:hover {
+            border-color: #ffd54a;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.45;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            min-height: 44px;
+            border: 1px solid #2d3440;
+            border-radius: 6px;
+            background: #0d1015;
+            color: #f5f7fb;
+            padding: 0 12px;
+            font-weight: 800;
+        }
+
+        input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            accent-color: #ffd54a;
+        }
+
+        .shell {
+            width: min(1180px, calc(100vw - 32px));
+            margin: 0 auto;
+            padding: 24px 0 32px;
+        }
+
+        .topbar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        h1,
+        h2 {
+            margin: 0;
+            letter-spacing: 0;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #ffd54a;
+        }
+
+        .statusbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            color: #b7c1d2;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .status-pill {
+            border: 1px solid #2d3440;
+            border-radius: 999px;
+            padding: 7px 10px;
+            background: #171c24;
+        }
+
+        .status-pill.is-live {
+            border-color: #32d583;
+            color: #baf7d3;
+        }
+
+        .display-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 16px;
+            border: 1px solid #ffd54a;
+            border-radius: 6px;
+            color: #111318;
+            background: #ffd54a;
+            font-weight: 900;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .transport {
+            display: grid;
+            grid-template-columns: 80px minmax(140px, 1fr) 80px 140px;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .transport button {
+            background: #171c24;
+        }
+
+        .transport .primary {
+            background: #ffd54a;
+            color: #111318;
+            border-color: #ffd54a;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
+            gap: 16px;
+            align-items: start;
+        }
+
+        .panel {
+            border: 1px solid #2d3440;
+            border-radius: 8px;
+            background: #171c24;
+            padding: 16px;
+        }
+
+        .panel + .panel {
+            margin-top: 16px;
+        }
+
+        .list {
+            display: grid;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 12px;
+            align-items: center;
+            min-height: 58px;
+            padding: 10px 12px;
+            border: 1px solid #2d3440;
+            border-radius: 6px;
+            background: #111318;
+        }
+
+        .row.is-active {
+            border-color: #ffd54a;
+            box-shadow: inset 4px 0 0 #ffd54a;
+        }
+
+        .row-label {
+            min-width: 0;
+        }
+
+        .row-title {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 900;
+        }
+
+        .row-meta {
+            display: block;
+            margin-top: 3px;
+            color: #8591a3;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .row button {
+            min-width: 92px;
+            padding: 0 12px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 7px;
+            color: #b7c1d2;
+            font-size: 0.88rem;
+            font-weight: 800;
+        }
+
+        .system-actions {
+            display: grid;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .danger {
+            color: #fff;
+            border-color: #c2410c;
+            background: #7c2d12;
+        }
+
+        .notice {
+            display: none;
+            margin-bottom: 16px;
+            padding: 12px 14px;
+            border: 1px solid #f97316;
+            border-radius: 6px;
+            background: #431407;
+            color: #fed7aa;
+            font-weight: 800;
+        }
+
+        .notice.is-visible {
+            display: block;
+        }
+
+        @media (max-width: 840px) {
+            .topbar,
+            .grid,
+            .transport,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .row {
+                grid-template-columns: auto 1fr;
+            }
+
+            .row button {
+                grid-column: 1 / -1;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <div class="notice" id="storageNotice">
+            Synchronisation locale indisponible dans ce navigateur.
+        </div>
+
+        <header class="topbar">
+            <div>
+                <h1>Controle ecran TOP 6</h1>
+                <div class="statusbar">
+                    <span class="status-pill" id="connectionStatus">En attente</span>
+                    <span class="status-pill" id="activeSlideStatus">Slide: -</span>
+                    <span class="status-pill" id="rotationStatus">Rotation: -</span>
+                </div>
+            </div>
+            <a class="display-link" href="index3.html" target="_blank" rel="noopener">Ouvrir ecran</a>
+        </header>
+
+        <section class="transport" aria-label="Navigation">
+            <button type="button" id="previousButton" title="Slide precedente">&#8592;</button>
+            <button type="button" class="primary" id="pauseButton">Pause</button>
+            <button type="button" id="nextButton" title="Slide suivante">&#8594;</button>
+            <button type="button" id="refreshButton">Rafraichir</button>
+        </section>
+
+        <div class="grid">
+            <section class="panel">
+                <h2>Slides affichees</h2>
+                <div class="list" id="slideControls"></div>
+            </section>
+
+            <div>
+                <section class="panel">
+                    <h2>Divisions terminees</h2>
+                    <div class="list" id="divisionControls"></div>
+                </section>
+
+                <section class="panel">
+                    <h2>Timing</h2>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="rotationSeconds">Rotation slides (s)</label>
+                            <input id="rotationSeconds" type="number" min="5" max="300" step="1" />
+                        </div>
+                        <div class="field">
+                            <label for="refreshSeconds">Rafraichissement scores (s)</label>
+                            <input id="refreshSeconds" type="number" min="10" max="600" step="1" />
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2>Systeme</h2>
+                    <div class="system-actions">
+                        <button type="button" id="resetButton" class="danger">Reinitialiser les reglages</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="realtime-channel.js"></script>
+    <script>
+        const controlStorageKey = 'top6-display-settings-v1';
+        const runtimeStorageKey = 'top6-display-runtime-v1';
+        const commandStorageKey = 'top6-display-command-v1';
+        const controlChannelName = 'top6-display-control';
+        const controlClientId = `control-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
+        const slideLabels = {
+            slide0: 'Logo',
+            slide1: 'Nationale & WB',
+            slide2: 'Provinciale 1',
+            slide3: 'Provinciale 2',
+            slide4: 'Provinciale 3',
+            slide5: 'Provinciale 4',
+            slide6: 'Provinciale 5',
+            slide7: 'Provinciale 6',
+            slide9: 'Classement clubs',
+            slide10: 'Sponsors 1',
+            slide11: 'Sponsors 2'
+        };
+
+        const divisionLabels = {
+            national: 'Nationale & WB',
+            p1: 'Provinciale 1',
+            p2: 'Provinciale 2',
+            p3: 'Provinciale 3',
+            p4: 'Provinciale 4',
+            p5: 'Provinciale 5',
+            p6: 'Provinciale 6'
+        };
+
+        const defaultSlideVisibility = {
+            slide0: true,
+            slide1: true,
+            slide2: true,
+            slide3: true,
+            slide4: true,
+            slide5: true,
+            slide6: true,
+            slide7: true,
+            slide9: false,
+            slide10: false,
+            slide11: false
+        };
+
+        const defaultDivisionStatus = {
+            national: { isFinished: true },
+            p1: { isFinished: false },
+            p2: { isFinished: true },
+            p3: { isFinished: true },
+            p4: { isFinished: true },
+            p5: { isFinished: true },
+            p6: { isFinished: false }
+        };
+
+        const defaultDisplaySettings = {
+            slideVisibility: defaultSlideVisibility,
+            divisionStatus: defaultDivisionStatus,
+            rotationDurationMs: 15000,
+            refreshIntervalMs: 30000,
+            isPaused: false
+        };
+
+        const elements = {
+            storageNotice: document.getElementById('storageNotice'),
+            connectionStatus: document.getElementById('connectionStatus'),
+            activeSlideStatus: document.getElementById('activeSlideStatus'),
+            rotationStatus: document.getElementById('rotationStatus'),
+            slideControls: document.getElementById('slideControls'),
+            divisionControls: document.getElementById('divisionControls'),
+            previousButton: document.getElementById('previousButton'),
+            pauseButton: document.getElementById('pauseButton'),
+            nextButton: document.getElementById('nextButton'),
+            refreshButton: document.getElementById('refreshButton'),
+            resetButton: document.getElementById('resetButton'),
+            rotationSeconds: document.getElementById('rotationSeconds'),
+            refreshSeconds: document.getElementById('refreshSeconds')
+        };
+
+        let controlChannel = null;
+        let settings = normalizeDisplaySettings(readJson(controlStorageKey));
+        let runtime = readJson(runtimeStorageKey) || {};
+
+        function readJson(key) {
+            try {
+                const rawValue = window.localStorage.getItem(key);
+                return rawValue ? JSON.parse(rawValue) : null;
+            } catch (error) {
+                elements.storageNotice.classList.add('is-visible');
+                return null;
+            }
+        }
+
+        function writeJson(key, value) {
+            try {
+                window.localStorage.setItem(key, JSON.stringify(value));
+            } catch (error) {
+                elements.storageNotice.classList.add('is-visible');
+            }
+        }
+
+        function normalizeDuration(value, fallback, min, max) {
+            const numberValue = Number(value);
+            if (!Number.isFinite(numberValue)) {
+                return fallback;
+            }
+
+            return Math.min(Math.max(numberValue, min), max);
+        }
+
+        function normalizeDivisionStatus(status) {
+            const normalized = {};
+
+            Object.entries(defaultDivisionStatus).forEach(([key, defaultStatus]) => {
+                normalized[key] = {
+                    isFinished: Boolean(status?.[key]?.isFinished ?? defaultStatus.isFinished)
+                };
+            });
+
+            return normalized;
+        }
+
+        function normalizeDisplaySettings(value) {
+            const source = value && typeof value === 'object' ? value : {};
+            const sourceVisibility = source.slideVisibility || {};
+            const slideVisibility = {};
+
+            Object.entries(defaultSlideVisibility).forEach(([key, isVisible]) => {
+                slideVisibility[key] = Boolean(sourceVisibility[key] ?? isVisible);
+            });
+
+            if (!Object.values(slideVisibility).some(Boolean)) {
+                slideVisibility.slide0 = true;
+            }
+
+            return {
+                slideVisibility,
+                divisionStatus: normalizeDivisionStatus(source.divisionStatus),
+                rotationDurationMs: normalizeDuration(
+                    source.rotationDurationMs,
+                    defaultDisplaySettings.rotationDurationMs,
+                    5000,
+                    300000
+                ),
+                refreshIntervalMs: normalizeDuration(
+                    source.refreshIntervalMs,
+                    defaultDisplaySettings.refreshIntervalMs,
+                    10000,
+                    600000
+                ),
+                isPaused: Boolean(source.isPaused ?? defaultDisplaySettings.isPaused)
+            };
+        }
+
+        function postMessageToDisplay(message) {
+            if (controlChannel) {
+                controlChannel.postMessage({
+                    ...message,
+                    clientId: controlClientId,
+                    sentAt: Date.now()
+                });
+            }
+        }
+
+        function updateSettings(nextSettings) {
+            settings = normalizeDisplaySettings({
+                ...settings,
+                ...nextSettings
+            });
+
+            writeJson(controlStorageKey, settings);
+            postMessageToDisplay({
+                type: 'settings',
+                settings
+            });
+            render();
+        }
+
+        function sendCommand(command, payload = {}) {
+            const message = {
+                type: 'command',
+                command,
+                payload,
+                clientId: controlClientId,
+                sentAt: Date.now()
+            };
+
+            writeJson(commandStorageKey, message);
+            postMessageToDisplay(message);
+        }
+
+        function render() {
+            renderStatus();
+            renderSlides();
+            renderDivisions();
+
+            elements.pauseButton.textContent = settings.isPaused ? 'Reprendre' : 'Pause';
+            elements.rotationSeconds.value = Math.round(settings.rotationDurationMs / 1000);
+            elements.refreshSeconds.value = Math.round(settings.refreshIntervalMs / 1000);
+        }
+
+        function renderStatus() {
+            const lastUpdate = runtime.updatedAt ? Date.now() - runtime.updatedAt : Infinity;
+            const isLive = lastUpdate < 10000;
+            const activeSlideLabel = runtime.currentSlideId ? slideLabels[runtime.currentSlideId] : '-';
+
+            elements.connectionStatus.textContent = isLive ? 'Ecran connecte' : 'En attente ecran';
+            elements.connectionStatus.classList.toggle('is-live', isLive);
+            elements.activeSlideStatus.textContent = `Slide: ${activeSlideLabel}`;
+            elements.rotationStatus.textContent = settings.isPaused
+                ? 'Rotation: pause'
+                : `Rotation: ${Math.round(settings.rotationDurationMs / 1000)}s`;
+        }
+
+        function renderSlides() {
+            elements.slideControls.innerHTML = '';
+
+            Object.entries(slideLabels).forEach(([slideId, label]) => {
+                const row = document.createElement('div');
+                row.className = 'row';
+                row.classList.toggle('is-active', runtime.currentSlideId === slideId);
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = Boolean(settings.slideVisibility[slideId]);
+                checkbox.setAttribute('aria-label', label);
+                checkbox.addEventListener('change', () => {
+                    const nextVisibility = {
+                        ...settings.slideVisibility,
+                        [slideId]: checkbox.checked
+                    };
+
+                    if (!Object.values(nextVisibility).some(Boolean)) {
+                        checkbox.checked = true;
+                        return;
+                    }
+
+                    updateSettings({ slideVisibility: nextVisibility });
+                });
+
+                const labelBlock = document.createElement('div');
+                labelBlock.className = 'row-label';
+                labelBlock.innerHTML = `<span class="row-title">${label}</span><span class="row-meta">${slideId}</span>`;
+
+                const showButton = document.createElement('button');
+                showButton.type = 'button';
+                showButton.textContent = 'Afficher';
+                showButton.disabled = !settings.slideVisibility[slideId];
+                showButton.addEventListener('click', () => sendCommand('goToSlide', { slideId }));
+
+                row.append(checkbox, labelBlock, showButton);
+                elements.slideControls.appendChild(row);
+            });
+        }
+
+        function renderDivisions() {
+            elements.divisionControls.innerHTML = '';
+
+            Object.entries(divisionLabels).forEach(([divisionKey, label]) => {
+                const row = document.createElement('label');
+                row.className = 'row';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = Boolean(settings.divisionStatus[divisionKey]?.isFinished);
+                checkbox.addEventListener('change', () => {
+                    updateSettings({
+                        divisionStatus: {
+                            ...settings.divisionStatus,
+                            [divisionKey]: { isFinished: checkbox.checked }
+                        }
+                    });
+                });
+
+                const labelBlock = document.createElement('div');
+                labelBlock.className = 'row-label';
+                labelBlock.innerHTML = `<span class="row-title">${label}</span><span class="row-meta">Champion marque</span>`;
+
+                row.append(checkbox, labelBlock);
+                elements.divisionControls.appendChild(row);
+            });
+        }
+
+        function setupEvents() {
+            elements.previousButton.addEventListener('click', () => sendCommand('previous'));
+            elements.nextButton.addEventListener('click', () => sendCommand('next'));
+            elements.refreshButton.addEventListener('click', () => sendCommand('refreshData'));
+            elements.pauseButton.addEventListener('click', () => {
+                updateSettings({ isPaused: !settings.isPaused });
+            });
+            elements.resetButton.addEventListener('click', () => {
+                settings = normalizeDisplaySettings(defaultDisplaySettings);
+                updateSettings(settings);
+                sendCommand('resetSettings');
+            });
+
+            elements.rotationSeconds.addEventListener('change', () => {
+                updateSettings({
+                    rotationDurationMs: normalizeDuration(
+                        Number(elements.rotationSeconds.value) * 1000,
+                        settings.rotationDurationMs,
+                        5000,
+                        300000
+                    )
+                });
+            });
+
+            elements.refreshSeconds.addEventListener('change', () => {
+                updateSettings({
+                    refreshIntervalMs: normalizeDuration(
+                        Number(elements.refreshSeconds.value) * 1000,
+                        settings.refreshIntervalMs,
+                        10000,
+                        600000
+                    )
+                });
+            });
+
+            window.addEventListener('storage', event => {
+                if (event.key === controlStorageKey && event.newValue) {
+                    settings = normalizeDisplaySettings(JSON.parse(event.newValue));
+                    render();
+                }
+
+                if (event.key === runtimeStorageKey && event.newValue) {
+                    runtime = JSON.parse(event.newValue);
+                    renderStatus();
+                    renderSlides();
+                }
+            });
+        }
+
+        function setupChannel() {
+            if (window.RealtimeChannel || 'BroadcastChannel' in window) {
+                controlChannel = window.RealtimeChannel
+                    ? new RealtimeChannel(controlChannelName)
+                    : new BroadcastChannel(controlChannelName);
+                controlChannel.onmessage = event => {
+                    const message = event.data;
+                    if (!message || message.clientId === controlClientId) {
+                        return;
+                    }
+
+                    if (message.type === 'settings') {
+                        settings = normalizeDisplaySettings(message.settings);
+                        writeJson(controlStorageKey, settings);
+                        render();
+                    }
+
+                    if (message.type === 'runtime') {
+                        runtime = message.runtime || {};
+                        writeJson(runtimeStorageKey, runtime);
+                        renderStatus();
+                        renderSlides();
+                    }
+                };
+            }
+
+            postMessageToDisplay({ type: 'request-state' });
+        }
+
+        setupEvents();
+        setupChannel();
+        render();
+        window.setInterval(renderStatus, 1000);
+    </script>
+</body>
+</html>

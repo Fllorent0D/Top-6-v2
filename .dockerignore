@@ -1,0 +1,7 @@
+.DS_Store
+.env
+.env.*
+.git
+node_modules
+top6-windows.zip
+v2
